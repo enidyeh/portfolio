@@ -647,18 +647,23 @@ a.card:hover .card-go {
 .avatar-reset { align-self: flex-start; padding: 0; background: none; border: 0; font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); text-decoration: underline; cursor: pointer; }
 .avatar-reset:hover { color: var(--accent); }
 
-/* ---------- chat dock（页头：贴着「下载」的小圆球） ---------- */
+/* ---------- chat dock（右下角悬浮球） ---------- */
 .chat-dock {
-  position: relative;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 40;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--s-3);
 }
 .chat-ball {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 56px;
+  height: 56px;
   color: var(--paper);
   background: var(--accent);
   border: 0;
@@ -667,18 +672,14 @@ a.card:hover .card-go {
   box-shadow: 0 12px 30px rgba(20, 22, 26, 0.22);
   transition: background-color 0.15s ease, transform 0.15s ease;
 }
-.chat-ball:hover { background: var(--accent-deep); transform: translateY(-1px); }
-.chat-ball svg { width: 17px; height: 17px; }
+.chat-ball:hover { background: var(--accent-deep); transform: translateY(-2px); }
+.chat-ball svg { width: 22px; height: 22px; }
 .chat-panel {
-  /* 挂在圆球下方（.chat-dock 是 position: relative），跟 .dl-panel 同一套做法 */
-  position: absolute;
-  top: calc(100% + 14px);
-  right: 0;
-  z-index: 30;
+  /* 在球上方展开：.chat-dock 是贴底的 fixed 容器，面板放在它里就会往上长 */
   display: flex;
   flex-direction: column;
   gap: var(--s-3);
-  width: min(360px, calc(100vw - 40px));
+  width: min(360px, calc(100vw - 48px));
   max-height: min(72vh, 560px);
   /* 卡片变成长回答时可能顶到 max-height：让它内部滚动，不要溢出到页面上 */
   overflow-y: auto;
@@ -909,11 +910,12 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .foot-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
   .logo-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .logo-cell { min-height: 72px; }
+  /* 悬浮球贴边一点，面板干脆占满窄屏 */
+  .chat-dock { right: 16px; bottom: 16px; }
+  .chat-panel { width: calc(100vw - 32px); }
 }
-/* 320–400px 的小屏：语言切换只留地球图标，圆球再小一号。
-   这两项加起来腾出的宽度，正好让「ENID + 图标 + 四项导航 + 下载 + 数字分身」一行放得下。 */
+/* 320–400px 的小屏：语言切换只留地球图标 —— 腾出的宽度够「ENID + 图标 +
+   四项导航 + 下载」一行放得下（悬浮球已经不在页头了，不用再缩它） */
 @media (max-width: 400px) {
   .lang-switch span { display: none; }
-  .chat-ball { width: 32px; height: 32px; }
-  .chat-ball svg { width: 15px; height: 15px; }
 }

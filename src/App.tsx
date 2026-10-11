@@ -5,6 +5,7 @@ import { langFromPath } from './i18n/lang'
 import LangBoot from './i18n/LangBoot'
 import SiteHeader from './components/SiteHeader'
 import SiteFooter from './components/SiteFooter'
+import ChatDock from './components/ChatDock'
 import HomePage from './pages/HomePage'
 import WorkPage from './pages/WorkPage'
 import WorkDetailPage from './pages/WorkDetailPage'
@@ -59,6 +60,8 @@ export default function App() {
           </Routes>
         </main>
         <SiteFooter />
+        {/* 数字分身：右下角悬浮球（2026-10-12 从页头挪回来） */}
+        <ChatDock />
       </div>
     </LocaleProvider>
   )

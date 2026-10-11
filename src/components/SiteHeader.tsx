@@ -1,7 +1,6 @@
 import { NavLink, Link } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref, useLang } from '../i18n/locale'
-import ChatDock from './ChatDock'
 import DownloadMenu from './DownloadMenu'
 import LangSwitch from './LangSwitch'
 
@@ -37,8 +36,6 @@ export default function SiteHeader() {
             </NavLink>
           ))}
           <DownloadMenu />
-          {/* 数字分身入口：放在「下载」旁边，跟着页头一起吸顶 */}
-          <ChatDock />
         </nav>
       </div>
     </header>
