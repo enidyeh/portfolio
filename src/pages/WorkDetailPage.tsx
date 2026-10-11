@@ -123,14 +123,8 @@ export default function WorkDetailPage() {
           <section className="shell case-doc">
             <h2 className="case-doc-title">{ui.caseDocTitle}</h2>
             <div className="case-doc-pages">
-              {docPages.map((src, i) => (
-                <div className="case-doc-item" key={src}>
-                  {/* 页码：方便和手上的 PDF 逐页对顺序 */}
-                  <span className="case-doc-num">
-                    {String(i + 1).padStart(2, '0')} / {docPages.length}
-                  </span>
-                  <img className="case-doc-page" src={src} alt="" loading="lazy" decoding="async" />
-                </div>
+              {docPages.map((src) => (
+                <img className="case-doc-page" key={src} src={src} alt="" loading="lazy" decoding="async" />
               ))}
             </div>
           </section>

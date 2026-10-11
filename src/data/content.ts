@@ -166,8 +166,10 @@ export type Ui = {
   wxQrNote: string
   /** 案例详情页底部的完整项目文件（PDF 逐页）标题 */
   caseDocTitle: string
-  /** 创业项目图上那个跳小红书的角标 */
+  /** 创业项目图上那个跳小红书的角标（图片链接的无障碍名称） */
   xhsCardLabel: string
+  /** 首页自动播放的视频：解除静音的按钮文案 */
+  unmuteCta: string
   /** 个人介绍页：个人魅力 / 招聘视频两块 */
   aboutCharm: string
   aboutHiring: string
@@ -196,7 +198,7 @@ export type Content = {
   experience: TimelineItem[]
   education: TimelineItem[]
   aboutNote: string
-  worksHead: { title: string }
+  worksHead: { title: string; lede?: string }
   workTracks: TrackView[]
   works: WorkCase[]
   ventureHead: { title: string; lede: string }
@@ -312,6 +314,8 @@ const uiZh: Ui = {
   caseDocTitle: '项目方案',
   /** 创业项目图上那个跳小红书的角标 */
   xhsCardLabel: '小红书主页 ↗',
+  /** 首页自动播放的视频：解除静音的按钮文案 */
+  unmuteCta: '点击开启声音',
   aboutCharm: '个人魅力',
   aboutHiring: '招聘 / 视频',
   aboutCharmNote: '待填：工作之外的东西——爱好、长期在折腾的事、能一起玩起来的场景。',
@@ -429,6 +433,8 @@ const uiEn: Ui = {
   wxQrNote: 'Scan to add on WeChat',
   caseDocTitle: 'Project plan',
   xhsCardLabel: 'Xiaohongshu ↗',
+  /** Homepage autoplaying video: button to unmute */
+  unmuteCta: 'Tap for sound',
   aboutCharm: 'Beyond work',
   aboutHiring: 'Hiring / video',
   aboutCharmNote: 'To be filled: life outside work — interests, long-running side projects, things we could build together.',

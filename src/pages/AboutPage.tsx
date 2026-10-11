@@ -37,6 +37,14 @@ export default function AboutPage() {
                     </li>
                   ))}
                 </ul>
+                {/* 2026-10-12 按本人要求：「个人魅力」与「招聘 / 视频」不再单独成段，
+                    直接并进「简介」这里（内容仍待本人提供）。 */}
+                <p className="section-lede">
+                  <Pending>{ui.aboutCharmNote}</Pending>
+                </p>
+                <p className="section-lede">
+                  <Pending>{ui.aboutHiringNote}</Pending>
+                </p>
               </div>
 
               <div className="doc-block">
@@ -115,24 +123,10 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 2026-10-12 新增：个人魅力篇章 + 招聘 / 视频占位（内容待本人提供） */}
-            <div className="doc-block">
-              <h2>{ui.aboutCharm}</h2>
-              <p className="section-lede">
-                <Pending>{ui.aboutCharmNote}</Pending>
-              </p>
-            </div>
-
-            <div className="doc-block">
-              <h2>{ui.aboutHiring}</h2>
-              <p className="section-lede">
-                <Pending>{ui.aboutHiringNote}</Pending>
-              </p>
-            </div>
-
+            {/* 2026-10-12 按本人要求：「把能力组织成方法…」这句说明删掉，
+                能力之后直接接经历与教育 */}
             <div className="doc-block">
               <h2>{ui.blockCapability}</h2>
-              <p>{ui.methodLede}</p>
               <div>
                 {c.methodGroups.map((m) => (
                   <div className="skill-group" key={m.label}>

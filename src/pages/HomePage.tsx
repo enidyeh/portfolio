@@ -43,7 +43,9 @@ export default function HomePage() {
             <article className="feature">
               {featured.video ? (
                 <div className="feature-media">
-                  <WorkMedia work={featured} />
+                  {/* 2026-10-12 按本人要求：首页视频自动播放（静音起播），
+                      点右上角的「开启声音」才出声 */}
+                  <WorkMedia work={featured} autoplay />
                 </div>
               ) : (
                 <Link

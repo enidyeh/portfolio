@@ -5,8 +5,9 @@ import type { WorkCase, WorkTrackId } from '../works'
 import { asset } from '../../lib/base'
 
 export const worksHead = {
-  // 2026-10-12 at the owner’s request: eyebrow and lede removed.
+  // 2026-10-12 at the owner’s request: the eyebrow stays off, the lede is back (new copy).
   title: 'Different cases that form one complete loop.',
+  lede: 'A selection of cases focused on product design, commercial creativity, and how I think about global growth and commercialisation.',
 }
 
 export const workTracks: {

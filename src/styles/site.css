@@ -297,6 +297,24 @@ a.card:hover .card-go {
   object-fit: contain;
   background: #0d0e11;
 }
+/* 首页自动播放的视频：外面套一层，用来放右上角那颗「开启声音」 */
+.work-media-wrap { position: relative; display: block; width: 100%; height: 100%; }
+.unmute-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  padding: 9px 15px;
+  font: var(--f-meta) / 1 var(--mono);
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(20, 22, 26, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.unmute-btn:hover { background: var(--accent); border-color: var(--accent); }
 /* 详情页顶部的案例媒体：与正文同宽，16/9 */
 .doc-media .work-media {
   width: 100%;
@@ -320,8 +338,7 @@ a.card:hover .card-go {
 .case-doc { margin-top: var(--s-6); }
 .case-doc-title { margin-bottom: var(--s-4); font: 600 var(--f-sub) / 1.4 var(--sans); }
 .case-doc-pages { display: flex; flex-direction: column; gap: var(--s-5); }
-.case-doc-item { display: flex; flex-direction: column; gap: 6px; }
-.case-doc-num { font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
+/* 2026-10-12 按本人要求：不加页码，完全按 PDF 自己的页序排 */
 /* 每页都是 16:9 幻灯片 —— 写死比例，懒加载时页面不会来回跳 */
 .case-doc-page {
   display: block;
@@ -360,7 +377,8 @@ a.card:hover .card-go {
   overflow: hidden;
 }
 .feature-body { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
-.feature-title { font: 600 24px / 1.4 var(--sans); overflow-wrap: anywhere; }
+/* 2026-10-12 按本人要求：首页大展示位的标题再大一点 */
+.feature-title { font: 600 30px / 1.32 var(--sans); overflow-wrap: anywhere; }
 /* 描述与「查看案例」按钮同字号（13px）—— 2026-10-12 按本人要求 */
 .feature-desc { max-width: 46ch; font-size: 13px; line-height: 1.7; color: var(--ink-soft); }
 .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -387,10 +405,12 @@ a.card:hover .card-go {
   min-width: 0;
 }
 .vrow-side { display: flex; align-items: center; gap: var(--s-3); }
-/* 「关注」：圆角红色按钮，点击跳对应小红书主页 */
+/* 「关注」：圆角红色按钮，点击跳对应小红书主页
+   2026-10-12 按本人要求：从右下角移到配图右上角，并且放大 */
 .follow-btn {
-  padding: 7px 15px;
+  padding: 8px 16px;
   font: var(--f-meta) / 1 var(--mono);
+  font-weight: 600;
   letter-spacing: 0.1em;
   color: var(--paper);
   background: var(--accent);
@@ -399,6 +419,16 @@ a.card:hover .card-go {
   transition: background-color 0.15s ease;
 }
 .follow-btn:hover { background: var(--accent-deep); }
+/* 压在配图右上角的那一颗：比行内的更大 */
+.follow-btn--media {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  padding: 11px 22px;
+  font-size: 14px;
+  box-shadow: 0 8px 20px rgba(20, 22, 26, 0.22);
+}
 .vrow-media {
   position: relative;
   /* 方形（用户 2026-10-11 要求）；原来是 180px × 4:3 */
@@ -447,19 +477,8 @@ a.card:hover .card-go {
 .card--venture .card-title-link { color: inherit; }
 .card--venture .card-title-link:hover { color: var(--accent); }
 .card-media-link { position: relative; display: block; height: 100%; }
-/* 图片右下角的角标：点图 = 进小红书主页 */
-.xhs-badge {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  padding: 5px 11px;
-  font: var(--f-meta) / 1 var(--mono);
-  letter-spacing: 0.08em;
-  color: var(--paper);
-  background: rgba(20, 22, 26, 0.62);
-  border-radius: 999px;
-}
-.card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-3); margin-top: auto; }
+/* 2026-10-12 按本人要求：图片上的灰色「小红书主页」角标撤掉（只留右上角那颗「关注」） */
+.card-foot { display: flex; align-items: flex-end; gap: var(--s-3); margin-top: auto; }
 .vrow-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .vrow-arrow { font: var(--f-meta) / 1 var(--mono); color: var(--ink-faint); }
 
@@ -604,6 +623,16 @@ a.card:hover .card-go {
   border-radius: var(--radius);
   box-shadow: 0 16px 36px rgba(20, 22, 26, 0.16);
 }
+/* 鼠标从「微信号」移到面板中间有 10px 空隙，这里补一块透明区；
+   2026-10-12 改成 hover 触发后，没有它指针穿过空隙就会把面板闪掉 */
+.wx-pop::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 12px;
+}
 .wx-qr {
   display: grid;
   place-items: center;
@@ -737,10 +766,11 @@ a.card:hover .card-go {
 .foot-label { margin-bottom: var(--s-3); font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.12em; color: var(--ink-faint); }
 .foot-title { font: 700 15px / 1 var(--mono); letter-spacing: 0.14em; }
 .foot-line { margin-top: 10px; font-size: 13px; line-height: 1.75; color: var(--ink-soft); }
-/* 自我介绍那段限宽到 24em，稳定折成两行（否则在宽屏会被拉成一长行） */
-.foot-statement { max-width: 24em; }
+/* 自我介绍那段限宽到 24em，稳定折成两行（否则在宽屏会被拉成一长行）
+   2026-10-12 按本人要求：这句话的字号再小一点 */
+.foot-statement { max-width: 24em; font-size: 12px; }
 /* 「个人介绍」页的同一句话也限宽成两行；英文那句更长，放宽到 3 行以内 */
-.statement-block { max-width: 24em; }
+.statement-block { max-width: 24em; font-size: 13.5px; }
 :lang(en) .statement-block { max-width: 42em; }
 .foot-list { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-soft); }
 .foot-list a { overflow-wrap: anywhere; }
@@ -767,8 +797,9 @@ a.card:hover .card-go {
 .hero-statement {
   margin: var(--s-4) 0 0;
   max-width: 44ch;
-  /* 2026-10-12 第三轮：本人反馈 12px 太小，要比它大 15（≈27px，回到 --f-title 一档） */
-  font: 600 var(--f-title) / 1.45 var(--sans);
+  /* 2026-10-12 第三轮：本人反馈 12px 太小，要比它大 15（≈27px，回到 --f-title 一档）
+     2026-10-12 第四轮：又说这句「再小一点」，收到 22px（窄屏 19px，见下） */
+  font: 600 22px / 1.5 var(--sans);
   letter-spacing: 0;
   color: var(--ink);
 }
@@ -1159,8 +1190,10 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 @media (max-width: 760px) {
   .nav-en { display: none; }
   .nav { gap: var(--s-2); }
-  /* 首屏定位句桌面端 27px，手机端不再额外缩小 */
-  .hero-statement { font-size: var(--f-title); }
+  /* 首屏定位句桌面端 22px，手机端再收一档 */
+  .hero-statement { font-size: 19px; }
+  /* 首页大展示位标题：桌面 30px，手机上回到 24px 就够了 */
+  .feature-title { font-size: 24px; }
   .vrow-main { grid-template-columns: 112px minmax(0, 1fr); }
   .vrow-arrow { display: none; }
   /* 状态文案偏长时（如 REVERIE 那串）要能折行，否则整页会横向溢出、出现横向滚动条 */

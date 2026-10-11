@@ -68,8 +68,9 @@ export default function VentureCard({
   }
 
   // card：首页与列表页的 2×2 卡片。
-  // 2026-10-12 按本人要求：图片本身就是「小红书主页」的卡片式入口（点图跳小红书），
-  // 标题/文案仍然进项目详情；右上角不再是箭头，而是圆角红色的「关注」按钮。
+  // 2026-10-12 按本人要求：图片就是「小红书主页」的卡片式入口（点图跳小红书），
+  // 标题/文案仍然进项目详情；灰色的「小红书主页」角标撤掉，
+  // 圆角红色的「关注」按钮从卡片右下角移到配图右上角并放大。
   return (
     <div className="card card--venture">
       <span className="card-media">
@@ -82,11 +83,20 @@ export default function VentureCard({
             aria-label={`${venture.name} ${ui.xhsCardLabel}`}
           >
             <VentureMedia venture={venture} />
-            <span className="xhs-badge">{ui.xhsCardLabel}</span>
           </a>
         ) : (
           <VentureMedia venture={venture} />
         )}
+        {venture.xhs ? (
+          <a
+            className="follow-btn follow-btn--media"
+            href={venture.xhs}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {ui.followCta}
+          </a>
+        ) : null}
       </span>
       <h3 className="card-title">
         <Link className="card-title-link" to={href(`/venture/${venture.slug}`)}>
@@ -103,11 +113,6 @@ export default function VentureCard({
             </span>
           ))}
         </div>
-        {venture.xhs ? (
-          <a className="follow-btn" href={venture.xhs} target="_blank" rel="noreferrer">
-            {ui.followCta}
-          </a>
-        ) : null}
       </div>
     </div>
   )

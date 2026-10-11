@@ -10,6 +10,8 @@ export default function WorkPage() {
       <header className="page-head page-head--flat">
         <div className="shell">
           <h2 className="page-title">{c.worksHead.title}</h2>
+          {/* 2026-10-12 按本人要求：大标题下的小标题补回来（文案由本人提供） */}
+          {c.worksHead.lede ? <p className="page-lede">{c.worksHead.lede}</p> : null}
         </div>
       </header>
       <section className="section">
