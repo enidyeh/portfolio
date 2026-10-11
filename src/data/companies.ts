@@ -18,17 +18,15 @@ export type Company = {
   url?: string
 }
 
-/** 我工作过的公司（logo 由本人提供，顺序沿用其提供顺序）。 */
+/** 我工作过的公司（logo 由本人提供；顺序 2026-10-12 按本人指定重排）。 */
 export const companies: Company[] = [
-  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
+  { name: 'komiko', logo: asset('logos/komiko.png') },
   { name: 'opencreator', logo: asset('logos/opencreator.png') },
-  { name: '光鉴科技 DEPTRUM', logo: asset('logos/deptrum.png') },
-  { name: '小红书', logo: asset('logos/xiaohongshu.png') },
   { name: 'Daa', logo: asset('logos/daa.png') },
   { name: 'TUBE', logo: asset('logos/tube.png') },
+  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
   { name: "Momo's Workshop 毛吉吉", logo: asset('logos/momos-workshop.png') },
-  { name: 'komiko', logo: asset('logos/komiko.png') },
+  { name: '光鉴科技 DEPTRUM', logo: asset('logos/deptrum.png') },
   { name: 'POP MART', logo: asset('logos/popmart.png') },
+  { name: '小红书', logo: asset('logos/xiaohongshu.png') },
 ]
-
-export const companiesNote = '公司名录与 logo 由本人提供。'

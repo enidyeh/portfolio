@@ -15,6 +15,8 @@ export type Venture = {
   oneLiner: string
   /** 状态标签 */
   status: string
+  /** 小红书主页（本人提供，2026-10-12） */
+  xhs?: string
   /** 图片右上角的灰色徽标（如「筹备中」）。有徽标时不再重复显示下面的状态胶囊 */
   badge?: string
   tags: string[]
@@ -40,7 +42,7 @@ export type Venture = {
 export const ventureHead = {
   // 2026-10-12 按本人要求：删掉「正在创造」小标题，标题改为「我正在从0到1构建。」
   title: '我正在从0到1构建。',
-  lede: '这里是我正在进行中的思考切片！聚焦青年文化与新消费语境，进行内容与社群的探索。',
+  lede: '进行中的思考切片！聚焦青年文化与新消费语境，进行内容与社群的探索。',
 }
 
 export const ventures: Venture[] = [
@@ -51,7 +53,9 @@ export const ventures: Venture[] = [
     image: asset('venture-reverie.webp'),
     oneLiner: '把青年文化，变成可以走进去的现场。',
     status: '创意市集 · 主题展览 · 文化交流',
-    tags: ['活动品牌', '青年文化', '商业化'],
+    xhs: 'https://www.xiaohongshu.com/user/profile/649917aa000000002b008d69?xsec_token=ABfzm1XTVu1UBRen42srLiMcZX1ASBdXjYvvr-wEVlXKg=&xsec_source=pc_search',
+    // 2026-10-12 按本人要求：状态胶囊去掉，改成下面这组小标签
+    tags: ['创意市集', '主题展览', '文化交流'],
     role: '待填：你在团队中的具体职责。',
     problem: '待填：哪类人遇到了什么具体问题，现有方案为什么不够好。',
     opportunity: '待填：市场机会是什么，你凭什么认为这个需求值得解决。',
@@ -71,6 +75,7 @@ export const ventures: Venture[] = [
     oneLiner: '文化创意型线上集市。',
     status: '筹备中',
     badge: '筹备中',
+    xhs: 'https://www.xiaohongshu.com/user/profile/5ee3a7b0000000000101fb9d?xsec_token=ABzYFn55WHC8Qc6kKy2M4nKtvEENs24S9d27ta75NBNsE%3D&xsec_source=pc_search',
     tags: ['原创产品', '线上集市', '生活好物'],
     role: '待填：你的角色。',
     problem: '待填：目标用户的具体问题。',
@@ -90,6 +95,7 @@ export const ventures: Venture[] = [
     oneLiner: '「青年正发声」的文化内容平台。',
     status: '筹备中',
     badge: '筹备中',
+    xhs: 'https://www.xiaohongshu.com/user/profile/614dd5e400000000020249dd?xsec_token=AB_Vx9ak1d5jq8Hh5539hbBDYPIReL40PjeHF0THv5KVk%3D&xsec_source=pc_search',
     tags: ['文化研究', '人物访谈', '内容共创'],
     role: '产品设计 + 前端实现：从信息架构、交互设计到可运行原型都自己做。',
     problem:
@@ -117,6 +123,7 @@ export const ventures: Venture[] = [
     oneLiner: '让品牌跨域生长，让文化双向流动。',
     status: '筹备中',
     badge: '筹备中',
+    xhs: 'https://www.xiaohongshu.com/user/profile/5e3665730000000001000223?xsec_token=ABTbpa8xFFnHQaGi9EOH1bJnblHwxKKHxMtr_pojBPwpU%3D&xsec_source=pc_search',
     tags: ['品牌出海/入海', '文化策展', '全球营销资源'],
     role: '待填：你在其中的角色。',
     problem: '待填：哪类品牌遇到了什么具体问题。',

@@ -24,11 +24,42 @@ import { asset } from '../lib/base'
  */
 const FIGURE_START_OFFSET = 0.5
 
+/**
+ * 判断这份素材在当前浏览器里 **alpha 到底有没有生效**，用「画一帧到 canvas 再读角落像素」
+ * 的实测办法，而不是特征探测（`canPlayType` 会说谎：Chrome 声称不支持 hvc1，实际能正常
+ * 渲染 alpha；反过来也有浏览器装得下却把 alpha 丢掉）。
+ *
+ * ⚠️ 2026-10-12 用户反馈「小人背景有白色」就是后者：alpha 被丢掉时，透明区那层近白
+ * RGB 会被当作不透明画出来，成一块白底。这里实测不到 alpha 就**保留 multiply**，
+ * 让白底融进背景（人物略微变淡，但不会是一块白块）。
+ * 角落 alpha < 40 才算真的透明。
+ */
+function probeAlpha(video: HTMLVideoElement): boolean {
+  try {
+    const w = video.videoWidth
+    const h = video.videoHeight
+    if (!w || !h) return false
+    const canvas = document.createElement('canvas')
+    canvas.width = w
+    canvas.height = h
+    const ctx = canvas.getContext('2d', { willReadFrequently: true })
+    if (!ctx) return false
+    ctx.clearRect(0, 0, w, h)
+    ctx.drawImage(video, 0, 0, w, h)
+    return ctx.getImageData(3, 3, 1, 1).data[3] < 40
+  } catch {
+    return false
+  }
+}
+
 export default function AvatarFigure({ onEnded }: { onEnded?: () => void }) {
   const [alphaReady, setAlphaReady] = useState(useTransparentFigure)
   const alpha = useTransparentFigure && alphaReady
-  const syncAlpha = (event: SyntheticEvent<HTMLVideoElement>) =>
-    setAlphaReady(event.currentTarget.currentSrc.includes('hero-figure'))
+  /** 命中透明素材 **且** 实测角落确实透明，才关掉 multiply（首帧有画面后才判：loadeddata） */
+  const syncAlpha = (event: SyntheticEvent<HTMLVideoElement>) => {
+    const video = event.currentTarget
+    setAlphaReady(video.currentSrc.includes('hero-figure') && probeAlpha(video))
+  }
 
   /** 让播放头从 FIGURE_START_OFFSET 开始：起播时跳一次，循环回到开头时再跳一次 */
   const keepOffset = (event: SyntheticEvent<HTMLVideoElement>) => {
@@ -53,11 +84,9 @@ export default function AvatarFigure({ onEnded }: { onEnded?: () => void }) {
         playsInline
         preload="auto"
         aria-hidden="true"
-        onLoadedMetadata={(event) => {
-          syncAlpha(event)
-          keepOffset(event)
-        }}
+        onLoadedMetadata={keepOffset}
         onLoadedData={syncAlpha}
+        onCanPlay={syncAlpha}
         onPlaying={keepOffset}
         onTimeUpdate={keepOffset}
         onEnded={onEnded}

@@ -75,7 +75,7 @@ export default function DownloadMenu() {
     }
   }, [open])
 
-  const groups = ['简历', '项目资料'] as const
+  const groups = ['简历', '作品集', '异想集'] as const
 
   return (
     <div className="dl" ref={rootRef}>

@@ -31,6 +31,11 @@ export type WorkCase = {
   pending?: boolean
   /** true 表示占据首页「大展示」位，不再出现在下方三列卡片里 */
   featured?: boolean
+  /**
+   * 完整项目文件：把本人给的 PDF 逐页转成图片（`public/case-pages/<dir>/NN.webp`），
+   * 附在案例正文后面。`count` 是页数。
+   */
+  docPages?: { dir: string; count: number }
 }
 
 export const worksHead = {
@@ -69,6 +74,8 @@ export const works: WorkCase[] = [
     /** 首页「精选项目」的大展示位 */
     featured: true,
     track: 'product',
+    // 完整项目文件：本人提供的「（进行中）phygital base.pdf」，33 页
+    docPages: { dir: 'phygital-base', count: 33 },
     year: '待填',
     role: '待填：你的角色',
     type: '产品设计与项目管理',
@@ -86,6 +93,8 @@ export const works: WorkCase[] = [
     title: '美国街头展览进入意大利的「文化翻译」',
     image: asset('work-common-ground.webp'),
     track: 'commercial',
+    // 完整项目文件：本人提供的「临时展览设计.pdf」，51 页
+    docPages: { dir: 'common-ground', count: 51 },
     tags: ['文化跨语境', '商业化与全球增长', '品牌单位', '活动策划'],
     year: '待填',
     role: '待填：你的角色',
@@ -103,6 +112,8 @@ export const works: WorkCase[] = [
     title: '与欧洲女装品牌一起入华创造生活方式',
     image: asset('work-soho-t.webp'),
     track: 'commercial',
+    // 完整项目文件：本人提供的「SOHO-T.pdf」，33 页
+    docPages: { dir: 'soho-t', count: 33 },
     tags: ['市场进入策略', '品牌营销', '内容创作'],
     year: '待填',
     role: '待填：你的角色',
@@ -120,6 +131,8 @@ export const works: WorkCase[] = [
     title: '传统品牌通过跨境快闪进行形象重塑',
     image: asset('work-annakiki.webp'),
     track: 'commercial',
+    // 完整项目文件：本人提供的「零售设计(2).pdf」，17 页
+    docPages: { dir: 'annakiki', count: 17 },
     tags: ['创新品牌定位', '品牌联名', '快闪活动'],
     year: '待填',
     role: '待填：你的角色',

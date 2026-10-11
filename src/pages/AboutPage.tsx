@@ -4,7 +4,8 @@ import Pending from '../components/Pending'
 export default function AboutPage() {
   const c = useContent()
   const { ui } = c
-  const resumes = c.downloads.filter((d) => d.group === '简历')
+  /** 简历区块：2026-10-12 按本人要求只留《简历》《作品集》两份 */
+  const resumes = c.downloads.filter((d) => d.group === '简历' || d.group === '作品集')
 
   return (
     <>
@@ -16,13 +17,8 @@ export default function AboutPage() {
       </header>
 
       <div className="doc">
-        <div className="shell doc-grid">
-          <aside className="doc-aside">
-            <span>{c.profile.location}</span>
-            <span>{c.profile.role}</span>
-            <span>{c.profile.nameZh || '—'}</span>
-          </aside>
-
+        {/* 2026-10-12 按本人要求：去掉左侧「上海 / 定位 / 姓名」那一栏，所有内容左对齐 */}
+        <div className="shell doc-grid doc-grid--single">
           <div className="doc-body">
             <div className="doc-block">
               <h2>{ui.blockIntro}</h2>
@@ -56,6 +52,21 @@ export default function AboutPage() {
               </div>
             </div>
 
+            {/* 2026-10-12 新增：个人魅力篇章 + 招聘 / 视频占位（内容待本人提供） */}
+            <div className="doc-block">
+              <h2>{ui.aboutCharm}</h2>
+              <p className="section-lede">
+                <Pending>{ui.aboutCharmNote}</Pending>
+              </p>
+            </div>
+
+            <div className="doc-block">
+              <h2>{ui.aboutHiring}</h2>
+              <p className="section-lede">
+                <Pending>{ui.aboutHiringNote}</Pending>
+              </p>
+            </div>
+
             <div className="doc-block">
               <h2>{ui.blockCapability}</h2>
               <p>{ui.methodLede}</p>
@@ -80,12 +91,21 @@ export default function AboutPage() {
               <div className="timeline">
                 {c.experience.map((item, i) => (
                   <div className="tl-item" key={i}>
-                    <span className="tl-when">{item.when}</span>
-                    <span>
-                      <span className="tl-role">{item.role}</span>
+                    <div className="tl-left">
                       {item.org ? <span className="tl-org">{item.org}</span> : null}
-                      {item.desc ? <span className="tl-desc">{item.desc}</span> : null}
-                    </span>
+                      <span className="tl-role">{item.role}</span>
+                      {item.when ? <span className="tl-when">{item.when}</span> : null}
+                    </div>
+                    <div className="tl-right">
+                      {item.desc ? <p className="tl-desc">{item.desc}</p> : null}
+                      {item.details?.length ? (
+                        <ul className="tl-details">
+                          {item.details.map((d) => (
+                            <li key={d}>{d}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -96,11 +116,14 @@ export default function AboutPage() {
               <div className="timeline">
                 {c.education.map((item, i) => (
                   <div className="tl-item" key={i}>
-                    <span className="tl-when">{item.when}</span>
-                    <span>
-                      <span className="tl-role">{item.role}</span>
+                    <div className="tl-left">
                       {item.org ? <span className="tl-org">{item.org}</span> : null}
-                    </span>
+                      <span className="tl-role">{item.role}</span>
+                      {item.when ? <span className="tl-when">{item.when}</span> : null}
+                    </div>
+                    <div className="tl-right">
+                      {item.desc ? <p className="tl-desc">{item.desc}</p> : null}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -145,9 +168,11 @@ export default function AboutPage() {
                   </div>
                 ) : null}
               </div>
-              <p className="section-lede" style={{ marginTop: 'var(--s-5)' }}>
-                {c.aboutNote}
-              </p>
+              {c.aboutNote ? (
+                <p className="section-lede" style={{ marginTop: 'var(--s-5)' }}>
+                  {c.aboutNote}
+                </p>
+              ) : null}
             </div>
           </div>
         </div>

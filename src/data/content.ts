@@ -75,7 +75,7 @@ export type Ui = {
   langSwitchLabel: string
 
   dlPanelAria: string
-  dlGroup: Record<'简历' | '项目资料', string>
+  dlGroup: Record<'简历' | '作品集' | '异想集', string>
   dlPending: string
   dlDownload: string
   dlRequest: string
@@ -155,6 +155,15 @@ export type Ui = {
   methodLede: string
   resumeCta: string
   resumePending: string
+  /** 创业项目详情页的「小红书主页」链接文案 */
+  ventureXhs: string
+  /** 案例详情页底部的完整项目文件（PDF 逐页）标题 */
+  caseDocTitle: string
+  /** 个人介绍页：个人魅力 / 招聘视频两块 */
+  aboutCharm: string
+  aboutHiring: string
+  aboutCharmNote: string
+  aboutHiringNote: string
   metaEmail: string
   metaWechat: string
   metaSocial: string
@@ -181,7 +190,6 @@ export type Content = {
   dataRoom: { text: string }
   ventureNote: string
   companies: Company[]
-  companiesNote: string
   avatarIntro: { question: string; placeholder: string; suggestions: string[] }
   avatarQA: AvatarAnswer[]
   avatarFallback: AvatarReply
@@ -200,7 +208,7 @@ const uiZh: Ui = {
   langSwitchLabel: 'EN',
 
   dlPanelAria: '获取简历',
-  dlGroup: { 简历: '简历', 项目资料: '项目资料' },
+  dlGroup: { 简历: '简历', 作品集: '作品集', 异想集: '品牌合作' },
   dlPending: '待上传',
   dlDownload: '下载',
   dlRequest: '按需索取',
@@ -226,10 +234,10 @@ const uiZh: Ui = {
     '你现在在做哪些项目？',
   ],
   homeVentureEyebrow: '正在创造',
-  homeVentureTitle: '正在创造。',
+  homeVentureTitle: '正在创造',
   homeExperienceEyebrow: '经历',
-  homeExperienceTitle: '经历与背景。',
-  homeCompaniesTitle: '我工作过的公司。',
+  homeExperienceTitle: '经历与背景',
+  homeCompaniesTitle: '曾就职于',
   companiesPending: '待上传 logo',
   allCases: '全部案例 →',
   allVentures: '全部项目 →',
@@ -277,11 +285,17 @@ const uiZh: Ui = {
   blockResume: '简历',
   blockCapability: '能力',
   blockExperience: '经历',
-  blockEducation: '教育 / 交换',
+  blockEducation: '教育',
   blockContact: '联系',
   methodLede: '把能力组织成方法，而不是罗列软件和关键词。',
   resumeCta: '下载 PDF ↓',
   resumePending: '待填：把两份简历 PDF 放进 public/',
+  ventureXhs: '小红书主页 →',
+  caseDocTitle: '完整项目文件',
+  aboutCharm: '个人魅力',
+  aboutHiring: '招聘 / 视频',
+  aboutCharmNote: '待填：工作之外的东西——爱好、长期在折腾的事、能一起玩起来的场景。',
+  aboutHiringNote: '待填：自我介绍视频，或招聘入口。',
   metaEmail: '邮箱',
   metaWechat: '微信',
   metaSocial: '社交',
@@ -303,7 +317,7 @@ const uiEn: Ui = {
   langSwitchLabel: '中文',
 
   dlPanelAria: 'Résumé',
-  dlGroup: { 简历: 'Résumé', 项目资料: 'Materials' },
+  dlGroup: { 简历: 'Résumé', 作品集: 'Portfolio', 异想集: 'Partnership' },
   dlPending: 'Pending upload',
   dlDownload: 'Download',
   dlRequest: 'On request',
@@ -329,10 +343,10 @@ const uiEn: Ui = {
     'What are you building right now?',
   ],
   homeVentureEyebrow: 'Building what’s next',
-  homeVentureTitle: 'Building.',
+  homeVentureTitle: 'Building',
   homeExperienceEyebrow: 'Experience',
-  homeExperienceTitle: 'Experience and background.',
-  homeCompaniesTitle: 'Companies I have worked with.',
+  homeExperienceTitle: 'Experience & background',
+  homeCompaniesTitle: 'Previously at',
   companiesPending: 'Logo pending',
   allCases: 'All cases →',
   allVentures: 'All projects →',
@@ -385,6 +399,12 @@ const uiEn: Ui = {
   methodLede: 'Capability organised as a method, not a list of software and keywords.',
   resumeCta: 'Download PDF ↓',
   resumePending: 'To be filled: place both résumé PDFs in public/',
+  ventureXhs: 'Xiaohongshu profile →',
+  caseDocTitle: 'Full project document',
+  aboutCharm: 'Beyond work',
+  aboutHiring: 'Hiring / video',
+  aboutCharmNote: 'To be filled: life outside work — interests, long-running side projects, things we could build together.',
+  aboutHiringNote: 'To be filled: an intro video, or a hiring entry point.',
   metaEmail: 'Email',
   metaWechat: 'WeChat',
   metaSocial: 'Social',
@@ -427,7 +447,6 @@ const zh: Content = {
   dataRoom: zhVentures.dataRoom,
   ventureNote: zhVentures.ventureNote,
   companies: zhCompanies.companies,
-  companiesNote: zhCompanies.companiesNote,
   avatarIntro: zhAvatar.avatarIntro,
   avatarQA: zhAvatar.avatarQA,
   avatarFallback: zhAvatar.avatarFallback,
@@ -466,7 +485,6 @@ const en: Content = {
   dataRoom: enVentures.dataRoom,
   ventureNote: enVentures.ventureNote,
   companies: enCompanies.companies,
-  companiesNote: enCompanies.companiesNote,
   avatarIntro: enAvatar.avatarIntro,
   avatarQA: enAvatar.avatarQA,
   avatarFallback: enAvatar.avatarFallback,

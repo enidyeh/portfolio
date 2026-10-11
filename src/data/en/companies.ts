@@ -8,15 +8,13 @@ import type { Company } from '../companies'
 
 /** Companies I have worked with. Logos supplied by the site owner. */
 export const companies: Company[] = [
-  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
+  { name: 'komiko', logo: asset('logos/komiko.png') },
   { name: 'opencreator', logo: asset('logos/opencreator.png') },
-  { name: 'DEPTRUM', logo: asset('logos/deptrum.png') },
-  { name: 'Xiaohongshu', logo: asset('logos/xiaohongshu.png') },
   { name: 'Daa', logo: asset('logos/daa.png') },
   { name: 'TUBE', logo: asset('logos/tube.png') },
+  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
   { name: "Momo's Workshop", logo: asset('logos/momos-workshop.png') },
-  { name: 'komiko', logo: asset('logos/komiko.png') },
+  { name: 'DEPTRUM', logo: asset('logos/deptrum.png') },
   { name: 'POP MART', logo: asset('logos/popmart.png') },
+  { name: 'Xiaohongshu', logo: asset('logos/xiaohongshu.png') },
 ]
-
-export const companiesNote = 'Company names and logos supplied by the site owner.'

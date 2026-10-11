@@ -215,6 +215,8 @@ a.card:hover, a.card:focus-visible { border-color: var(--accent); transform: tra
 .card-title { font: 600 var(--f-sub) / 1.45 var(--sans); overflow-wrap: anywhere; }
 /* 大卡（1×1）：标题升一级，整行铺开时才不像被拉长的普通卡片 */
 .card--large .card-title { font: 600 var(--f-title) / 1.35 var(--sans); }
+/* 单个案例独占一行的「大窗口」卡片不挂右下角箭头（2026-10-12 按本人要求） */
+.card--large .card-go { display: none; }
 .card-desc { font-size: 14px; line-height: 1.75; color: var(--ink-soft); overflow-wrap: anywhere; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 /* 图片右下角的「进入」箭头：整张卡片本来就是链接，这个只是把「可点」显出来。
@@ -305,6 +307,35 @@ a.card:hover .card-go {
 }
 .doc-media { margin-bottom: var(--s-6); }
 
+/* 创业项目详情页顶部的项目图：整幅显示，不裁切 */
+.venture-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* ---------- case document（案例详情：本人给的 PDF 逐页） ---------- */
+.case-doc { margin-top: var(--s-6); }
+.case-doc-title { margin-bottom: var(--s-4); font: 600 var(--f-sub) / 1.4 var(--sans); }
+.case-doc-pages { display: flex; flex-direction: column; gap: var(--s-4); }
+/* 每页都是 16:9 幻灯片 —— 写死比例，懒加载时页面不会来回跳 */
+.case-doc-page {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* 页头下面的文字链接（如小红书主页） */
+.page-links { margin-top: var(--s-4); }
+.link-arrow { font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.1em; color: var(--accent); }
+.link-arrow:hover { text-decoration: underline; }
+
 /* ---------- featured case（精选项目的大展示） ---------- */
 .feature {
   display: grid;
@@ -325,8 +356,9 @@ a.card:hover .card-go {
   overflow: hidden;
 }
 .feature-body { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
-.feature-title { font: 600 var(--f-title) / 1.35 var(--sans); overflow-wrap: anywhere; }
-.feature-desc { max-width: 46ch; color: var(--ink-soft); }
+.feature-title { font: 600 21px / 1.4 var(--sans); overflow-wrap: anywhere; }
+/* 描述与「查看案例」按钮同字号（13px）—— 2026-10-12 按本人要求 */
+.feature-desc { max-width: 46ch; font-size: 13px; line-height: 1.7; color: var(--ink-soft); }
 .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .feature-body .btn { align-self: flex-start; margin-top: var(--s-2); }
 
@@ -351,11 +383,12 @@ a.card:hover .card-go {
   overflow: hidden;
 }
 .vrow-media .work-media { object-fit: cover; }
-/* 图片右上角的灰色状态徽标（「筹备中」这类尚未上线的项目） */
+/* 图片右下角的灰色状态徽标（「筹备中」这类尚未上线的项目）
+   2026-10-12 按本人要求：从右上角改到右下角 */
 .venture-badge {
   position: absolute;
-  top: 8px;
   right: 8px;
+  bottom: 8px;
   padding: 4px 9px;
   font: var(--f-meta) / 1 var(--mono);
   letter-spacing: 0.08em;
@@ -379,6 +412,9 @@ a.card:hover .card-go {
   color: var(--ink-faint);
 }
 .vrow-desc { margin-top: 6px; max-width: 62ch; font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+/* 「正在创造」卡片 / 首页行里的小标签：浅红底 + 红字 */
+.tag--accent { color: var(--accent); background: var(--accent-wash); border-color: transparent; }
+.vrow-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .vrow-arrow { font: var(--f-meta) / 1 var(--mono); color: var(--ink-faint); }
 
 /* ---------- timeline group（首页「经历与背景」） ---------- */
@@ -437,6 +473,9 @@ a.card:hover .card-go {
 /* ---------- detail document ---------- */
 .doc { padding: var(--s-6) 0; }
 .doc-grid { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: var(--s-5); align-items: start; }
+/* 个人介绍页：去掉左侧那一栏，所有内容左对齐（2026-10-12 按本人要求） */
+.doc-grid--single { grid-template-columns: minmax(0, 1fr); }
+.doc-grid--single .doc-body { max-width: none; }
 .doc-aside {
   position: sticky;
   top: calc(var(--header-h) + 20px);
@@ -461,20 +500,35 @@ a.card:hover .card-go {
 .meta-key { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
 .meta-val { color: var(--ink-soft); line-height: 1.75; overflow-wrap: anywhere; }
 
-/* ---------- timeline ---------- */
+/* ---------- timeline（经历 / 教育） ----------
+   2026-10-12 按本人要求改成两栏：左边 公司(粗) / 岗位 / 时间(灰)，右边 描述 + 编号要点 */
 .timeline { display: flex; flex-direction: column; }
 .tl-item {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: var(--s-4);
+  grid-template-columns: minmax(0, 240px) minmax(0, 1fr);
+  gap: var(--s-5);
   padding: var(--s-4) 0;
   border-top: 1px solid var(--line);
 }
 .tl-item:last-child { border-bottom: 1px solid var(--line); }
-.tl-when { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); }
-.tl-role { font-weight: 600; }
-.tl-org { margin-top: 4px; font-size: 13px; color: var(--ink-faint); }
-.tl-desc { margin-top: 6px; font-size: 14px; line-height: 1.75; color: var(--ink-soft); }
+.tl-left { display: flex; flex-direction: column; gap: 5px; }
+.tl-org { font: 700 14px / 1.5 var(--sans); color: var(--ink); }
+.tl-role { font-size: 13px; line-height: 1.6; color: var(--ink); }
+.tl-when { font: var(--f-meta) / 1.5 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); }
+.tl-right { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
+.tl-desc { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
+.tl-details { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tl-details li { position: relative; padding-left: 14px; font-size: 13px; line-height: 1.8; color: var(--ink-soft); }
+.tl-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.66em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
 /* ---------- skill groups ---------- */
 .skill-group { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: var(--s-4); padding: var(--s-4) 0; border-top: 1px solid var(--line); }
@@ -489,10 +543,13 @@ a.card:hover .card-go {
 .site-footer { margin-top: auto; background: var(--paper-raised); border-top: 1px solid var(--line); }
 .site-footer-inner {
   display: grid;
-  /* 3 列：品牌 / 联系 / 项目。社交那一列在 2026-10-11 随小红书一起撤下 */
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--s-5);
-  padding: var(--s-6) 0 var(--s-5);
+  /* 3 列：品牌 / 联系 / 项目。社交那一列在 2026-10-11 随小红书一起撤下。
+     品牌那列给多一点宽度，联系 / 项目两列靠近一点（原来三等分 + 32px 间距显得很空）。
+     ⚠️ 纵向间距只能用 padding-block：写 padding 简写会把 .shell 的左右内边距一起清掉，
+     页脚内容就会贴到屏幕边上（2026-10-12 用户报的就是这个）。 */
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s-4);
+  padding-block: var(--s-6) var(--s-5);
 }
 .foot-label { margin-bottom: var(--s-3); font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.12em; color: var(--ink-faint); }
 .foot-title { font: 700 15px / 1 var(--mono); letter-spacing: 0.14em; }
@@ -510,7 +567,8 @@ a.card:hover .card-go {
   align-items: center;
   justify-content: space-between;
   gap: var(--s-4);
-  padding: var(--s-4) 0;
+  /* 同样只动纵向：横向内边距来自 .shell */
+  padding-block: var(--s-4);
   border-top: 1px solid var(--line);
   font: var(--f-meta) / 1 var(--mono);
   letter-spacing: 0.08em;
@@ -526,8 +584,10 @@ a.card:hover .card-go {
 .hero-statement {
   margin: var(--s-4) 0 0;
   max-width: 44ch;
-  font: 600 var(--f-title) / 1.45 var(--sans);
-  color: var(--ink);
+  /* 2026-10-12 按本人要求：字号缩小一倍（27px → 13.5px 一档） */
+  font: 600 13.5px / 1.8 var(--sans);
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
 }
 .pillars { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s-5); }
 
@@ -781,13 +841,13 @@ a.card:hover .card-go {
 
 /* ---------- callout ---------- */
 .callout { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); margin-top: var(--s-5); padding: var(--s-5); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-sunken); }
-/* 合作小卡片：就一行 —— 左边一句话、右边一个联系方式按钮 */
+/* 合作小卡片：就一行 —— 左边一句话、右边一个联系方式按钮。
+   2026-10-12 按本人要求：右边与上面的线条边界对齐（去掉 760px 的限宽）。 */
 .callout--mini {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: var(--s-4);
-  max-width: 760px;
   padding: var(--s-4) var(--s-5);
 }
 .callout-title { font: 600 var(--f-sub) / 1.4 var(--sans); }

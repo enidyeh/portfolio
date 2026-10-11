@@ -38,16 +38,18 @@ export default function VentureCard({
           <VentureMedia venture={venture} />
         </span>
         <span className="vrow-body">
-          {/* 读序：项目名 → 一句话定位 → 状态。状态做成圆角小胶囊，跟卡片上的标签同一套观感；
-              已经用图片右上角的灰色徽标表示的（如「筹备中」），这里就不再重复一遍。 */}
+          {/* 读序：项目名 → 一句话定位 → 小标签。
+              2026-10-12 按本人要求：原来的红色状态胶囊去掉，内容改成下面这组小标签；
+              首页这一行的小标签用浅红底 + 红字（.tag--accent）。 */}
           <span className="vrow-title">{venture.name}</span>
           <span className="vrow-desc">{venture.oneLiner}</span>
-          {venture.badge ? null : (
-            <span className="vrow-meta">
-              {showEn ? <span className="vrow-en">{venture.en}</span> : null}
-              <span className="status">{venture.status}</span>
-            </span>
-          )}
+          <span className="vrow-tags">
+            {venture.tags.map((t) => (
+              <span key={t} className="tag tag--accent">
+                {t}
+              </span>
+            ))}
+          </span>
         </span>
         <span className="vrow-arrow" aria-hidden="true">
           →
@@ -63,12 +65,7 @@ export default function VentureCard({
         <VentureMedia venture={venture} />
       </span>
       <h3 className="card-title">{venture.name}</h3>
-      {venture.badge ? null : (
-        <div className="card-top">
-          {showEn ? <span className="card-meta">{venture.en}</span> : <span />}
-          <span className="status">{venture.status}</span>
-        </div>
-      )}
+      {showEn ? <span className="card-meta">{venture.en}</span> : null}
       <p className="card-desc">{venture.oneLiner}</p>
       <div className="card-tags">
         {venture.tags.map((t) => (

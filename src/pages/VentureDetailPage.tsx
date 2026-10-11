@@ -1,14 +1,20 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useContent } from '../data/content'
+import { useHref } from '../i18n/locale'
 import NotFoundPage from './NotFoundPage'
 
 export default function VentureDetailPage() {
   const { slug } = useParams()
   const c = useContent()
+  const href = useHref()
   const { ui } = c
-  const venture = c.ventures.find((v) => v.slug === slug)
+  const index = c.ventures.findIndex((v) => v.slug === slug)
 
-  if (!venture) return <NotFoundPage />
+  if (index < 0) return <NotFoundPage />
+
+  const venture = c.ventures[index]
+  const prev = c.ventures[(index - 1 + c.ventures.length) % c.ventures.length]
+  const next = c.ventures[(index + 1) % c.ventures.length]
 
   const answers = [
     venture.problem,
@@ -23,26 +29,36 @@ export default function VentureDetailPage() {
     <>
       <header className="page-head">
         <div className="shell">
-          <p className="eyebrow">
-            {ui.ventureEyebrow} · {venture.status}
-          </p>
+          {/* 2026-10-12 按本人要求：删掉「正在创造 · 状态」小字，也删掉下面那排圆角小标题 */}
           <h1 className="page-title">{venture.name}</h1>
           <p className="page-lede">{venture.oneLiner}</p>
-          <ul className="pillars">
-            {venture.tags.map((t) => (
-              <li key={t} className="tag">
-                {t}
-              </li>
-            ))}
-          </ul>
+          {venture.xhs ? (
+            <p className="page-links">
+              <a className="link-arrow" href={venture.xhs} target="_blank" rel="noreferrer">
+                {ui.ventureXhs}
+              </a>
+            </p>
+          ) : null}
         </div>
       </header>
 
       <div className="doc">
+        {/* 本人提供的项目图（点进来先看图，再看正文） */}
+        {venture.image ? (
+          <div className="shell doc-media">
+            <img
+              className="venture-hero"
+              src={venture.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        ) : null}
         <div className="shell doc-grid">
           <aside className="doc-aside">
             <span>{venture.en}</span>
-            <span>{venture.status}</span>
+            {/* 状态文案已改成图片上的徽标 / 列表页的小标签，这里不再重复（2026-10-12） */}
             {venture.demo ? <span>{ui.demoLabel}</span> : null}
           </aside>
 
@@ -84,7 +100,51 @@ export default function VentureDetailPage() {
             </div>
           </div>
         </div>
+
+        {/* 窄屏的翻页条（宽屏走下面的悬浮箭头），与精选案例详情页同一套 */}
+        <div className="shell">
+          <nav className="case-pager" aria-label={ui.caseNavAria}>
+            <Link
+              className="case-pager-link case-pager-link--prev"
+              to={href(`/venture/${prev.slug}`)}
+            >
+              <span className="case-pager-dir" aria-hidden="true">←</span>
+              <span className="case-pager-body">
+                <span className="case-pager-label">{ui.casePrev}</span>
+                <span className="case-pager-title">{prev.name}</span>
+              </span>
+            </Link>
+            <Link
+              className="case-pager-link case-pager-link--next"
+              to={href(`/venture/${next.slug}`)}
+            >
+              <span className="case-pager-dir" aria-hidden="true">→</span>
+              <span className="case-pager-body">
+                <span className="case-pager-label">{ui.caseNext}</span>
+                <span className="case-pager-title">{next.name}</span>
+              </span>
+            </Link>
+          </nav>
+        </div>
       </div>
+
+      {/* 宽屏：悬浮在页面左右两侧中间的上一个 / 下一个项目 */}
+      <Link
+        className="case-nav case-nav--prev"
+        to={href(`/venture/${prev.slug}`)}
+        title={`${ui.casePrev} ${prev.name}`}
+        aria-label={`${ui.casePrev} ${prev.name}`}
+      >
+        <span aria-hidden="true">←</span>
+      </Link>
+      <Link
+        className="case-nav case-nav--next"
+        to={href(`/venture/${next.slug}`)}
+        title={`${ui.caseNext} ${next.name}`}
+        aria-label={`${ui.caseNext} ${next.name}`}
+      >
+        <span aria-hidden="true">→</span>
+      </Link>
     </>
   )
 }

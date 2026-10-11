@@ -17,7 +17,8 @@ export type DownloadItem = {
   note: string
   /** 直链；留空表示「按需索取」，引导到联系方式 */
   url?: string
-  group: '简历' | '项目资料'
+  /** 2026-10-12 起：简历 / 作品集 / 异想集品牌合作 */
+  group: '简历' | '作品集' | '异想集'
   /** 文件尚未上传 */
   pending?: boolean
 }
@@ -59,32 +60,25 @@ export const profile = {
 /** 站点通用说明：所有标注「待填」的内容都以此为准 */
 export const siteNote = '仍有部分内容尚未由本人提供，对外发布前会先补齐。'
 
-/** 资料下载：页头「资料下载」浮窗 + 关于页的简历区块共用这一份。 */
+/** 获取简历：页头浮窗 + 关于页共用这一份。
+ *  2026-10-12 按本人要求精简：只留《简历》《作品集》《异想集品牌合作》。 */
 export const downloads: DownloadItem[] = [
   {
     group: '简历',
-    label: '商业化版简历',
-    note: '面向商业化 / 增长岗位：强调市场洞察、增长与商业结果。',
-    url: asset('resume-commercial.pdf'),
-    pending: true,
+    label: '简历',
+    note: '一页版简历，含教育、实习与项目经历。',
+    url: asset('resume.pdf'),
   },
   {
-    group: '简历',
-    label: '产品版简历',
-    note: '面向产品 / AI 岗位：强调用户问题、产品方案、原型与验证。',
-    url: asset('resume-product.pdf'),
-    pending: true,
+    group: '作品集',
+    label: '作品集',
+    note: '完整作品集 PDF。',
+    url: asset('portfolio.pdf'),
   },
   {
-    group: '项目资料',
-    label: '精选项目总览',
-    note: '四个案例的一页式摘要，适合快速浏览。',
-    url: asset('portfolio-overview.pdf'),
-    pending: true,
-  },
-  {
-    group: '项目资料',
-    label: '合作 / 融资资料',
-    note: '创业项目的商业与融资材料，按需索取，不公开下载。',
+    group: '异想集',
+    label: '异想集品牌合作',
+    note: '异想集「游园惊梦」合作手册，供品牌与场地方了解合作方式。',
+    url: asset('reverie-collab.pdf'),
   },
 ]

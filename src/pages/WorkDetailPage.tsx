@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
+import { asset } from '../lib/base'
 import WorkMedia from '../components/WorkMedia'
 import NotFoundPage from './NotFoundPage'
 
@@ -16,14 +17,18 @@ export default function WorkDetailPage() {
   const work = c.works[index]
   const prev = c.works[(index - 1 + c.works.length) % c.works.length]
   const next = c.works[(index + 1) % c.works.length]
+  /** 完整项目文件（本人给的 PDF 逐页图片）；16:9 幻灯片，容器按 16/9 占位不跳动 */
+  const docPages = work.docPages
+    ? Array.from({ length: work.docPages.count }, (_, i) =>
+        asset(`case-pages/${work.docPages!.dir}/${String(i + 1).padStart(2, '0')}.webp`),
+      )
+    : []
 
   return (
     <>
       <header className="page-head">
         <div className="shell">
-          <p className="eyebrow">
-            {ui.caseEyebrow} · {work.type}
-          </p>
+          {/* 2026-10-12 按本人要求：删掉「精选案例 · 项目类型」那一行小字 */}
           <h1 className="page-title">{work.title}</h1>
           <p className="page-lede">{work.summary}</p>
         </div>
@@ -110,6 +115,27 @@ export default function WorkDetailPage() {
             </Link>
           </nav>
         </div>
+
+        {/* 完整项目文件：本人提供的 PDF 逐页转成图片。
+            手机端要求排在「上一篇 / 下一篇」翻页条之后 —— 宽屏下 .case-pager 是
+            display:none 不占位，所以放在它后面既满足手机顺序、又不影响桌面。 */}
+        {docPages.length ? (
+          <section className="shell case-doc">
+            <h2 className="case-doc-title">{ui.caseDocTitle}</h2>
+            <div className="case-doc-pages">
+              {docPages.map((src) => (
+                <img
+                  key={src}
+                  className="case-doc-page"
+                  src={src}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
 
         {/* 宽屏：上一个 / 下一个案例，悬浮在页面左右两侧中间。

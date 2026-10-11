@@ -7,7 +7,7 @@ import { asset } from '../../lib/base'
 export const ventureHead = {
   // 2026-10-12 at the owner’s request: eyebrow removed, title reworded.
   title: 'I’m building things from 0 to 1.',
-  lede: 'This is a slice of what I’m thinking about right now — youth culture and the new consumer context, explored through content and community.',
+  lede: 'A slice of what I’m thinking about right now — youth culture and the new consumer context, explored through content and community.',
 }
 
 export const ventures: Venture[] = [
@@ -18,7 +18,9 @@ export const ventures: Venture[] = [
     image: asset('venture-reverie.webp'),
     oneLiner: 'Turning youth culture into a place you can walk into.',
     status: 'Creative markets · Themed exhibitions · Cultural exchange',
-    tags: ['Events brand', 'Youth culture', 'Commercialisation'],
+    xhs: 'https://www.xiaohongshu.com/user/profile/649917aa000000002b008d69?xsec_token=ABfzm1XTVu1UBRen42srLiMcZX1ASBdXjYvvr-wEVlXKg=&xsec_source=pc_search',
+    // 2026-10-12: the status chip is replaced by these small tags
+    tags: ['Creative markets', 'Themed exhibitions', 'Cultural exchange'],
     role: 'To be filled: your specific role in the team.',
     problem: 'To be filled: which people hit which specific problem, and why existing options fall short.',
     opportunity: 'To be filled: what the market opportunity is, and why this need is worth solving.',
@@ -38,6 +40,7 @@ export const ventures: Venture[] = [
     oneLiner: 'A cultural-creative online market.',
     status: 'In preparation',
     badge: 'In preparation',
+    xhs: 'https://www.xiaohongshu.com/user/profile/5ee3a7b0000000000101fb9d?xsec_token=ABzYFn55WHC8Qc6kKy2M4nKtvEENs24S9d27ta75NBNsE%3D&xsec_source=pc_search',
     tags: ['Original products', 'Online market', 'Everyday goods'],
     role: 'To be filled: your role.',
     problem: 'To be filled: the specific problem for the target users.',
@@ -57,6 +60,7 @@ export const ventures: Venture[] = [
     oneLiner: 'A culture platform where “young voices speak”.',
     status: 'In preparation',
     badge: 'In preparation',
+    xhs: 'https://www.xiaohongshu.com/user/profile/614dd5e400000000020249dd?xsec_token=AB_Vx9ak1d5jq8Hh5539hbBDYPIReL40PjeHF0THv5KVk%3D&xsec_source=pc_search',
     tags: ['Cultural research', 'Interviews', 'Co-creation'],
     role: 'Product design and front-end build: information architecture, interaction design and a working prototype, all done myself.',
     problem:
@@ -86,6 +90,7 @@ export const ventures: Venture[] = [
     oneLiner: 'Let brands grow across borders, and let culture flow both ways.',
     status: 'In preparation',
     badge: 'In preparation',
+    xhs: 'https://www.xiaohongshu.com/user/profile/5e3665730000000001000223?xsec_token=ABTbpa8xFFnHQaGi9EOH1bJnblHwxKKHxMtr_pojBPwpU%3D&xsec_source=pc_search',
     tags: ['Brand expansion in and out of China', 'Cultural curation', 'Global marketing resources'],
     role: 'To be filled: your role in it.',
     problem: 'To be filled: which brands hit which specific problem.',

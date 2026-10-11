@@ -155,10 +155,6 @@ export default function HomePage() {
               ))}
             </ul>
           )}
-
-          <p className="section-lede" style={{ marginTop: 'var(--s-4)' }}>
-            {c.companiesNote}
-          </p>
         </div>
       </section>
 
@@ -167,7 +163,7 @@ export default function HomePage() {
         <div className="shell">
           <div className="section-head">
             <div>
-              <p className="eyebrow">{ui.homeExperienceEyebrow}</p>
+              {/* 2026-10-12 按本人要求：删掉「经历」这个小字 */}
               <h2 className="section-title">{ui.homeExperienceTitle}</h2>
             </div>
             <Link className="section-more" to={href('/about')}>

@@ -38,6 +38,8 @@ export const works: WorkCase[] = [
     title: 'Digital Asset Management in the Data-Sovereignty Era',
     featured: true,
     track: 'product',
+    // Full project document: 33 pages, supplied by the owner
+    docPages: { dir: 'phygital-base', count: 33 },
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'Product design and project management',
@@ -55,6 +57,8 @@ export const works: WorkCase[] = [
     title: 'A US street exhibition enters Italy: a “cultural translation”',
     image: asset('work-common-ground.webp'),
     track: 'commercial',
+    // Full project document: 51 pages, supplied by the owner
+    docPages: { dir: 'common-ground', count: 51 },
     tags: ['Cross-context culture', 'Commercial growth', 'Brand partner', 'Event planning'],
     year: 'To be filled',
     role: 'To be filled: your role',
@@ -72,6 +76,8 @@ export const works: WorkCase[] = [
     title: 'Building a lifestyle in China with a European womenswear brand',
     image: asset('work-soho-t.webp'),
     track: 'commercial',
+    // Full project document: 33 pages, supplied by the owner
+    docPages: { dir: 'soho-t', count: 33 },
     tags: ['Market entry strategy', 'Brand marketing', 'Content creation'],
     year: 'To be filled',
     role: 'To be filled: your role',
@@ -89,6 +95,8 @@ export const works: WorkCase[] = [
     title: 'A heritage brand rebuilding its image through cross-border pop-ups',
     image: asset('work-annakiki.webp'),
     track: 'commercial',
+    // Full project document: 17 pages, supplied by the owner
+    docPages: { dir: 'annakiki', count: 17 },
     tags: ['Brand repositioning', 'Brand collaborations', 'Pop-up events'],
     year: 'To be filled',
     role: 'To be filled: your role',

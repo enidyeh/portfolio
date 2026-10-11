@@ -9,7 +9,8 @@ export default function VenturePage() {
   const { ui } = c
   return (
     <>
-      <header className="page-head">
+      {/* 页头：2026-10-12 按本人要求删掉「正在创造」小标题与下面那条分割线 */}
+      <header className="page-head page-head--flat">
         <div className="shell">
           <h2 className="page-title">{c.ventureHead.title}</h2>
           <p className="page-lede">{c.ventureHead.lede}</p>

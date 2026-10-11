@@ -28,47 +28,81 @@ export const method: { en: string; zh: string; items: string[] }[] = [
   },
 ]
 
+/**
+ * Experience and education — 2026-10-12, entered line by line from the owner's
+ * own résumé (left: company / role / dates; right: summary + numbered bullets,
+ * copied rather than rewritten).
+ */
 export const experience: TimelineItem[] = [
   {
-    when: '2025.06 — 2025.08',
-    role: 'Overseas marketing intern',
+    when: '',
+    role: 'Venture · independent planning and operations',
+    org: 'REVERIE 异想集',
+    desc: 'Planned and ran more than ten events single-handedly: a community of 2,500+ members, 5,000+ attendees on site, and 30+ artists brought in. Organised film screenings including Spider-Man: Across the Spider-Verse, Barbie and Taylor Swift: The Eras Tour — as the organiser I ran the team and the community, planned the event flow, pushed execution and locked the details, delivering each event smoothly and to strong feedback.',
+    details: [
+      'Designed posters, long-form graphics and copy that pulled in a large community following, with 700+ people attending offline events.',
+      'Partnered with cinemas and brands to plan the events; voice actors from the films and creators with 10k+ likes on Chinese platforms made exclusive easter eggs.',
+      'Worked with 20+ artists on merchandise: more than 50 product types and more than 6,000 units.',
+      'Built a 20+ person team covering promotion, community management, external partnerships, merchandise production and on-site order.',
+    ],
+  },
+  {
+    when: '2026.2 — 2026.4',
+    role: 'AI product overseas marketing',
     org: 'Opencreator',
-    desc: 'Creator partnerships and community: built a network of 50+ overseas KOL/KOC and anime communities, ran the Discord community and the “AI AMV” challenge, and planned content for TikTok, Instagram and X.',
+    details: [
+      'Creator partnerships: built relationships with overseas KOL/KOC that matched the brand, ran collaborations, shot product videos, grew the creator database and set up an influencer SOP — supporting 50+ overseas creators and related anime communities.',
+      'Community and user engagement: independently ran the Discord community — content and interaction — and planned and executed the “AI AMV” animation music-video challenge, using theme planning, competition design and community partnerships to lift activity and keep the space positive.',
+      'Overseas social media: content planning for TikTok, Instagram and X, tracking overseas trends across anime culture and AI tools, and feeding creative topics and directions into campaign planning.',
+      'Cross-cultural communication: worked with the US team as one of the main bridges to overseas creators and community members, handling requests in English and resolving issues.',
+    ],
   },
   {
-    when: '2025.09 — 2025.12',
+    when: '2025.9 — 2025.12',
     role: 'Overseas PR intern',
-    org: 'Guilin Jimuqiu Cosmetics (brand “Momo’s Workshop”)',
-    desc: 'Brand communication overseas: maintained a database of 5,000+ creators, worked with 500+ KOL/KOC, owned seeding, creative briefs and content reviews, and supported the brand’s DTC site and cross-border operations.',
+    org: 'Guilin Jimuqiu Cosmetics',
+    details: [
+      'Creative planning: joined overseas promotion and creative planning for the brand “Momo’s Workshop”, helping land campaigns and plan the DTC site, and providing creative support for brand content.',
+      'Creator partnerships: built and managed KOL/KOC on Instagram, TikTok and YouTube; the database now holds 5,000+ creators with 500+ collaborations.',
+      'Sampling: sent samples to overseas creators according to brand tone and product plan, wrote creative briefs, and followed content output and quality.',
+      'Content management: tracked delivery data and collaboration progress, collected video links, gathered feedback through regular interaction, ran reviews and improvements, and proposed optimisations based on creator feedback.',
+      'Cross-border operations: supported overseas business matters such as logistics and channel follow-up, building a full picture of cross-border workflows.',
+    ],
   },
   {
-    when: '2024.03 — 2024.06',
+    when: '2024.3 — 2024.6',
     role: 'Creative project management intern',
     org: 'Pop Mart',
-    desc: 'Worked on launch campaigns for 20+ products (SKULLPANDA, Disney Donald Duck, Jackson Wang, LABUBU, MOLLY); coordinated 25+ internal and external teams to cut the project cycle by 20%, with over 10 million social impressions within 48 hours of launch.',
+    details: [
+      'Product launches: worked on campaigns for 20+ launches including SKULLPANDA, Disney Donald Duck, Jackson Wang, LABUBU and MOLLY, building product positioning, campaign plans and social content strategy with the team.',
+      'Project management: coordinated 25+ internal and external teams, optimising product, photography, design and KOL content distribution to protect delivery quality; cut the project cycle by 20% while delivering on time, with over 10 million social impressions within 48 hours of launch.',
+      'Data optimisation: analysed social engagement data, ran regular reviews and turned them into improved campaign plans.',
+    ],
   },
   {
-    when: '2023.10 — 2024.02',
+    when: '2023.10 — 2024.10',
     role: 'Commercial design intern',
     org: 'Xiaohongshu (Xingyin Information Technology)',
-    desc: 'Cross-team visual marketing for “REDesign”: planned the official campaign 「我就要这样生活」, ran the 「字体月月报」 column, and produced visuals and livestream assets for the 2024 WILL commercial partner conference.',
+    details: [
+      'Campaign planning: cross-team visual marketing for the “REDesign” team, planning official campaigns and creative proposals against Xiaohongshu’s marketing goals; owned the 「我就要这样生活」 campaign, planning its communications and visual assets.',
+      'Visual marketing: ran the “REDesign” account and created the 「字体月月报」 column, building a design community and lifting brand recognition; produced conference visuals and livestream assets for the 2024 WILL commercial partner conference.',
+    ],
   },
 ]
 
 export const education: TimelineItem[] = [
   {
     when: '2022 — 2027',
-    role: 'BA · Product Design',
-    org: 'Jiangnan University',
-    desc: 'Ranked 2nd in China for design (ShanghaiRanking); final-year project on phygital smart product design in the data-sovereignty era was awarded a university-level outstanding thesis.',
+    role: 'Product design · BA',
+    org: 'Jiangnan University (2nd in China for design)',
+    desc: 'Final-year project, “Phygital smart product design in the data-sovereignty era”, was awarded a university-level outstanding thesis.',
   },
   {
     when: '2024 — 2025',
-    role: 'BA · Fashion Marketing and Branding (one-year exchange)',
-    org: 'Politecnico di Milano',
-    desc: 'Ranked 7th in the world for art and design (QS); awarded the Jiangsu government scholarship for overseas study (top 5%). Taught in English, covering brand communication, industry trends, fashion retail and exhibition design.',
+    role: 'Fashion marketing and branding · BA (one-year exchange)',
+    org: 'Politecnico di Milano (7th in the world, QS art & design)',
+    desc: 'Awarded the Jiangsu government scholarship for overseas study (top 5%), studying influential marketing by the world’s leading brands, brand communication, industry trends, fashion retail and exhibition design. Taught in English; also completed a US SWT placement and am about to live in 20 countries — fully accessible.',
   },
 ]
 
-export const aboutNote =
-  'Experience and education come from the owner’s own résumé (added 2026-10-12). Both résumé PDFs become downloadable once they are placed in public/.'
+export const aboutNote = ''
