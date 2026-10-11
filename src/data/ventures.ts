@@ -3,10 +3,14 @@
 // Business Model / Validation / Next Milestone。
 // 未经验证的部分必须标为假设，不包装成已有业绩；未公开的商业信息不写入。
 
+import { asset } from '../lib/base'
+
 export type Venture = {
   slug: string
   name: string
   en: string
+  /** 方形配图（public/ 下），800×800；没填就显示占位图 */
+  image?: string
   /** 一句话定位 */
   oneLiner: string
   /** 状态标签 */
@@ -42,8 +46,9 @@ export const ventures: Venture[] = [
     slug: 'reverie',
     name: 'REVERIE 异想集',
     en: 'REVERIE',
-    oneLiner: '待填：一句话定位（文化主题 / 活动品牌的方向）。',
-    status: '进行中',
+    image: asset('venture-reverie.webp'),
+    oneLiner: '把青年文化，变成可以走进去的现场。',
+    status: '创意市集 · 主题展览 · 文化交流',
     tags: ['活动品牌', '青年文化', '商业化'],
     role: '待填：你在团队中的具体职责。',
     problem: '待填：哪类人遇到了什么具体问题，现有方案为什么不够好。',
@@ -60,6 +65,7 @@ export const ventures: Venture[] = [
     slug: 'unseen',
     name: '暗盒 UNSEEN',
     en: 'UNSEEN',
+    image: asset('venture-unseen.webp'),
     oneLiner:
       '给上海青年的一本「每月一期」的城市探索刊物：从发现，到事件、市集与空间，最后落到你自己的身份记录。',
     status: '原型 / 演示',
@@ -84,6 +90,7 @@ export const ventures: Venture[] = [
     slug: 'yixiang-shop',
     name: '异想商店',
     en: 'YIXIANG SHOP',
+    image: asset('venture-yixiang-shop.webp'),
     oneLiner: '待填：一句话定位（卖什么、卖给谁、和异想集是什么关系）。',
     status: '筹备中',
     tags: ['商业', '零售'],
@@ -92,6 +99,26 @@ export const ventures: Venture[] = [
     opportunity: '待填：市场机会与判断依据。',
     solution: '待填：第一阶段只解决哪个问题；与 REVERIE 的关系。',
     businessModel: '待填：谁付钱、毛利与收入如何产生。',
+    validation: '待填：已有的验证证据；哪些仍是假设。',
+    nextMilestone: '待填：下一步要验证什么、需要什么资源。',
+    collab: '待填：开放的合作方向。',
+    pending: true,
+  },
+  {
+    // 2026-10-11 按本人要求新增的第四个品牌。
+    // 一句话定位取自域见自己的 README（面向 0→1 品牌的对外获客/服务站点），其余待本人确认。
+    slug: 'realmview',
+    name: '域见 REALMVIEW',
+    en: 'REALMVIEW',
+    image: asset('venture-realmview.webp'),
+    oneLiner: '面向 0→1 品牌的营销服务：需要什么、服务与报价、合作方式。',
+    status: '服务站点',
+    tags: ['品牌营销', '达人合作', '内容栏目'],
+    role: '待填：你在其中的角色。',
+    problem: '待填：哪类品牌遇到了什么具体问题。',
+    opportunity: '待填：市场机会与判断依据。',
+    solution: '待填：第一阶段只解决哪个问题。',
+    businessModel: '待填：谁付钱、报价与收入如何产生。',
     validation: '待填：已有的验证证据；哪些仍是假设。',
     nextMilestone: '待填：下一步要验证什么、需要什么资源。',
     collab: '待填：开放的合作方向。',

@@ -3,6 +3,15 @@ import type { Venture } from '../data/ventures'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 
+/** 方形配图：有图就显示图，没图保留占位块（两个版式共用） */
+function VentureMedia({ venture }: { venture: Venture }) {
+  const c = useContent()
+  if (venture.image) {
+    return <img className="work-media" src={venture.image} alt="" loading="lazy" decoding="async" />
+  }
+  return <span className="ph">{c.ui.phImage}</span>
+}
+
 export default function VentureCard({
   venture,
   layout = 'card',
@@ -11,9 +20,7 @@ export default function VentureCard({
   /** row：首页「正在创造」的竖排列表；card：列表页的三列卡片 */
   layout?: 'card' | 'row'
 }) {
-  const c = useContent()
   const href = useHref()
-  const { ui } = c
   // 英文站上 name 与 en 是同一个词（如 REVERIE），重复显示没意义
   const showEn = venture.en !== venture.name
 
@@ -21,13 +28,14 @@ export default function VentureCard({
     return (
       <Link className="vrow" to={href(`/venture/${venture.slug}`)}>
         <span className="vrow-media">
-          <span className="ph">{ui.phImage}</span>
+          <VentureMedia venture={venture} />
         </span>
         <span className="vrow-body">
           <span className="vrow-title">{venture.name}</span>
+          {/* 状态做成圆角小胶囊，跟卡片上的标签同一套观感 */}
           <span className="vrow-meta">
-            {showEn ? `${venture.en} · ` : ''}
-            {venture.status}
+            {showEn ? <span className="vrow-en">{venture.en}</span> : null}
+            <span className="status">{venture.status}</span>
           </span>
           <span className="vrow-desc">{venture.oneLiner}</span>
         </span>
@@ -40,8 +48,8 @@ export default function VentureCard({
 
   return (
     <Link className="card" to={href(`/venture/${venture.slug}`)}>
-      <span className="card-media">
-        <span className="ph">{ui.phImage}</span>
+      <span className="card-media card-media--square">
+        <VentureMedia venture={venture} />
       </span>
       <h3 className="card-title">{venture.name}</h3>
       <div className="card-top">

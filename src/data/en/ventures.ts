@@ -2,6 +2,7 @@
 // 英文文案，与 `../ventures.ts` 一一对应。
 
 import type { Venture } from '../ventures'
+import { asset } from '../../lib/base'
 
 export const ventureHead = {
   eyebrow: 'Venture',
@@ -14,8 +15,9 @@ export const ventures: Venture[] = [
     slug: 'reverie',
     name: 'REVERIE',
     en: 'REVERIE',
-    oneLiner: 'To be filled: one-line positioning (the direction of the cultural theme / events brand).',
-    status: 'In progress',
+    image: asset('venture-reverie.webp'),
+    oneLiner: 'Turning youth culture into a place you can walk into.',
+    status: 'Creative markets · Themed exhibitions · Cultural exchange',
     tags: ['Events brand', 'Youth culture', 'Commercialisation'],
     role: 'To be filled: your specific role in the team.',
     problem: 'To be filled: which people hit which specific problem, and why existing options fall short.',
@@ -32,6 +34,7 @@ export const ventures: Venture[] = [
     slug: 'unseen',
     name: 'UNSEEN',
     en: 'UNSEEN',
+    image: asset('venture-unseen.webp'),
     oneLiner:
       'A monthly city-exploration publication for young people in Shanghai: discovery, then events, markets and spaces, and finally your own identity record.',
     status: 'Prototype / demo',
@@ -57,6 +60,7 @@ export const ventures: Venture[] = [
     slug: 'yixiang-shop',
     name: 'YIXIANG SHOP',
     en: 'YIXIANG SHOP',
+    image: asset('venture-yixiang-shop.webp'),
     oneLiner: 'To be filled: one-line positioning (what it sells, to whom, and how it relates to REVERIE).',
     status: 'In preparation',
     tags: ['Commerce', 'Retail'],
@@ -65,6 +69,28 @@ export const ventures: Venture[] = [
     opportunity: 'To be filled: the market opportunity and the evidence behind it.',
     solution: 'To be filled: which single problem phase one solves, and how it relates to REVERIE.',
     businessModel: 'To be filled: who pays, and how margin and revenue are generated.',
+    validation: 'To be filled: the evidence gathered so far, and what is still an assumption.',
+    nextMilestone: 'To be filled: what to validate next, and what resources it needs.',
+    collab: 'To be filled: open partnership directions.',
+    pending: true,
+  },
+  {
+    // Added 2026-10-11 at the site owner's request: the fourth brand.
+    // The one-liner comes from REALMVIEW's own README (an outbound service site
+    // for 0→1 brands); everything else is left for the owner to confirm.
+    slug: 'realmview',
+    name: 'REALMVIEW',
+    en: 'REALMVIEW',
+    image: asset('venture-realmview.webp'),
+    oneLiner:
+      'A marketing service for 0→1 brands: what they need, services and pricing, ways to work together.',
+    status: 'Service site',
+    tags: ['Brand marketing', 'Creator partnerships', 'Editorial'],
+    role: 'To be filled: your role in it.',
+    problem: 'To be filled: which brands hit which specific problem.',
+    opportunity: 'To be filled: the market opportunity and the evidence behind it.',
+    solution: 'To be filled: which single problem phase one solves.',
+    businessModel: 'To be filled: who pays, and how pricing and revenue are generated.',
     validation: 'To be filled: the evidence gathered so far, and what is still an assumption.',
     nextMilestone: 'To be filled: what to validate next, and what resources it needs.',
     collab: 'To be filled: open partnership directions.',

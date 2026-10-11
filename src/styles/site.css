@@ -186,6 +186,8 @@ button, input, textarea { color: inherit; font: inherit; }
 .grid { display: grid; gap: var(--s-4); margin-top: var(--s-5); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* 「正在创造」列表页：四个项目排 2×2；窄屏降为单列（卡片字多，两列挤不下） */
+.grid--venture { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 /* 案例网格固定 2 列（四个案例排成 2×2）：
    宽屏若是 3 列，第四个会孤立成一行 —— 2×2 才是齐的。 */
 .grid--cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -292,6 +294,9 @@ a.card:hover .card-go {
   object-fit: contain;
   background: #0d0e11;
 }
+/* 创业项目的配图做成方形（案例卡片仍是 16:10）。
+   ⚠️ 必须写在 .card-media 之后 —— 两者都是单类名选择器，靠顺序决定谁生效。 */
+.card-media--square { aspect-ratio: 1 / 1; }
 /* 详情页顶部的案例媒体：与正文同宽，16/9 */
 .doc-media .work-media {
   width: 100%;
@@ -340,17 +345,26 @@ a.card:hover .card-go {
 .vrow:hover { border-bottom-color: var(--accent); }
 .vrow-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  /* 方形（用户 2026-10-11 要求）；原来是 180px × 4:3 */
+  aspect-ratio: 1 / 1;
   background: var(--paper-sunken);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
 }
+.vrow-media .work-media { object-fit: cover; }
 .vrow-body { display: flex; flex-direction: column; min-width: 0; }
 .vrow-title { font: 600 var(--f-sub) / 1.4 var(--sans); }
 .vrow-meta {
-  margin-top: 4px;
-  font: var(--f-meta) / 1.6 var(--mono);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+/* 项目代号（REVERIE / UNSEEN）保持灰色小字，状态用下面的 .status 圆角胶囊 */
+.vrow-en {
+  font: var(--f-meta) / 1 var(--mono);
   letter-spacing: 0.08em;
   color: var(--ink-faint);
 }
@@ -549,6 +563,8 @@ a.card:hover .card-go {
 .avatar-send svg { width: 16px; height: 16px; }
 .avatar-note { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.06em; color: var(--ink-faint); }
 .avatar-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+/* 首页「常见问题」：就是 .chip，只是跟问题框拉开一点距离 */
+.hero-faq { margin-top: var(--s-1); }
 
 /* ---------- 问答卡片（一叠，可以左右翻） ---------- */
 .convo { display: flex; flex-direction: column; gap: var(--s-3); }
@@ -871,6 +887,7 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   }
   .case-pager-title { font-size: 15px; line-height: 1.5; }
   .resume-grid { grid-template-columns: minmax(0, 1fr); }
+  .grid--venture { grid-template-columns: minmax(0, 1fr); }
   .doc-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
   .doc-aside { position: static; flex-direction: row; flex-wrap: wrap; gap: var(--s-3); }
   .logo-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }

@@ -6,7 +6,7 @@ import { asset } from '../../lib/base'
 
 export const worksHead = {
   eyebrow: 'Selected Work',
-  title: 'Five different cases that form one complete loop.',
+  title: 'Different cases that form one complete loop.',
   lede: 'Commercial projects prove I can ship an idea; AI products prove I can design a solution; global growth proves I understand markets and commercialisation. Every case follows the same structure: problem, my role, key decisions and process, outcome, reflection.',
 }
 
@@ -56,6 +56,7 @@ export const works: WorkCase[] = [
     title: 'A US street exhibition enters Italy: a “cultural translation”',
     image: asset('work-common-ground.webp'),
     track: 'commercial',
+    tags: ['Cross-context culture', 'Commercial growth', 'Brand partner', 'Event planning'],
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'AI product',
@@ -72,6 +73,7 @@ export const works: WorkCase[] = [
     title: 'Building a lifestyle in China with a European womenswear brand',
     image: asset('work-soho-t.webp'),
     track: 'commercial',
+    tags: ['Global brand growth', 'Market entry strategy', 'Brand marketing', 'Content creation'],
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'Global brand growth',
@@ -88,6 +90,7 @@ export const works: WorkCase[] = [
     title: 'A heritage brand rebuilding its image through cross-border pop-ups',
     image: asset('work-annakiki.webp'),
     track: 'commercial',
+    tags: ['Brand repositioning', 'Brand collaborations', 'Pop-up events'],
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'To be filled: project type',
@@ -104,6 +107,7 @@ export const works: WorkCase[] = [
     title: 'A beauty e-commerce brand expanding into overseas markets',
     image: asset('work-momos-workshop.webp'),
     track: 'commercial',
+    tags: ['Cross-border e-commerce', 'Europe & US markets', 'Content marketing', 'KOL/KOC'],
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'To be filled: project type',

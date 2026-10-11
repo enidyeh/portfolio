@@ -23,6 +23,8 @@ export type WorkCase = {
   reflection: string
   /** 案例配图（`public/` 下的路径） */
   image?: string
+  /** 卡片上的小标题（标签）。填了就按这份显示，不再自动拼类型 / 分类 / 角色 */
+  tags?: string[]
   /** 案例视频；首页大展示位遇到它会换成播放器，而不是可点的链接卡片 */
   video?: { src: string; poster: string }
   /** true 表示内容尚未提供，界面会显示待填提示 */
@@ -33,7 +35,7 @@ export type WorkCase = {
 
 export const worksHead = {
   eyebrow: '精选项目',
-  title: '五个不同的案例，形成一条完整的能力闭环。',
+  title: '不同的案例，形成完整的能力闭环。',
   lede: '商业项目证明能把创意落地，AI 产品证明能设计解决方案，全球增长证明能理解市场与商业化。每个案例都按同一套结构写：问题、我的职责、关键决策与过程、结果、复盘。',
 }
 
@@ -84,6 +86,7 @@ export const works: WorkCase[] = [
     title: '美国街头展览进入意大利的「文化翻译」',
     image: asset('work-common-ground.webp'),
     track: 'commercial',
+    tags: ['文化跨语境', '商业化与全球增长', '品牌单位', '活动策划'],
     year: '待填',
     role: '待填：你的角色',
     type: 'AI 产品',
@@ -100,6 +103,7 @@ export const works: WorkCase[] = [
     title: '与欧洲女装品牌一起入华创造生活方式',
     image: asset('work-soho-t.webp'),
     track: 'commercial',
+    tags: ['全球品牌增长', '市场进入策略', '品牌营销', '内容创作'],
     year: '待填',
     role: '待填：你的角色',
     type: '全球品牌增长',
@@ -116,6 +120,7 @@ export const works: WorkCase[] = [
     title: '传统品牌通过跨境快闪进行形象重塑',
     image: asset('work-annakiki.webp'),
     track: 'commercial',
+    tags: ['创新品牌定位', '品牌联名', '快闪活动'],
     year: '待填',
     role: '待填：你的角色',
     type: '待填：项目类型',
@@ -132,6 +137,7 @@ export const works: WorkCase[] = [
     title: '美妆电商品牌拓展海外市场',
     image: asset('work-momos-workshop.webp'),
     track: 'commercial',
+    tags: ['跨境电商', '欧美市场', '内容营销', 'KOL/KOC'],
     year: '待填',
     role: '待填：你的角色',
     type: '待填：项目类型',

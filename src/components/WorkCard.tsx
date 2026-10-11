@@ -19,12 +19,14 @@ export default function WorkCard({ work, large = false }: { work: WorkCase; larg
         </span>
       </span>
       <h3 className="card-title">{work.title}</h3>
-      {/* 卡片上不放灰字小标和一句话说明（按用户要求删除）；
-          项目类型改为跟分类 / 角色同一层级的小标签 */}
+      {/* 卡片上的小标题：案例自带 tags 就按它显示，否则回退到类型 / 分类 / 角色。
+          灰字小标和一句话说明已按用户要求删除。 */}
       <div className="card-tags">
-        {work.type ? <span className="tag">{work.type}</span> : null}
-        {track ? <span className="tag">{track.label}</span> : null}
-        {work.role ? <span className="tag">{work.role}</span> : null}
+        {(work.tags ?? [work.type, track?.label, work.role].filter(Boolean)).map((chip) => (
+          <span className="tag" key={chip}>
+            {chip}
+          </span>
+        ))}
       </div>
     </Link>
   )

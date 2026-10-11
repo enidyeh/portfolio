@@ -96,6 +96,8 @@ export type Ui = {
   ctaResume: string
 
   sectionWork: string
+  /** 首页 HERO 的常见问题：点一下等于问数字分身，不跳页（原来是三个跳转按钮） */
+  heroFaq: string[]
   homeVentureEyebrow: string
   homeVentureTitle: string
   homeExperienceEyebrow: string
@@ -222,8 +224,13 @@ const uiZh: Ui = {
   ctaResume: '下载简历',
 
   sectionWork: '精选项目',
+  heroFaq: [
+    '你做过哪些类型的案例？',
+    '你现在在做哪些项目？',
+    '你是怎么判断一个项目值不值得做的？',
+  ],
   homeVentureEyebrow: '正在创造',
-  homeVentureTitle: '创业项目、合作与联系。',
+  homeVentureTitle: '正在创造。',
   homeExperienceEyebrow: '经历',
   homeExperienceTitle: '经历与背景。',
   homeCompaniesEyebrow: '履历',
@@ -323,8 +330,13 @@ const uiEn: Ui = {
   ctaResume: 'Download résumé',
 
   sectionWork: 'Selected Projects',
+  heroFaq: [
+    'What kinds of cases have you worked on?',
+    'What are you building right now?',
+    'How do you judge whether a project is worth doing?',
+  ],
   homeVentureEyebrow: 'Building what’s next',
-  homeVentureTitle: 'Ventures, partnership and contact.',
+  homeVentureTitle: 'Building.',
   homeExperienceEyebrow: 'Experience',
   homeExperienceTitle: 'Experience and background.',
   homeCompaniesEyebrow: 'Track record',

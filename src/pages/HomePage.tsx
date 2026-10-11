@@ -81,7 +81,6 @@ export default function HomePage() {
         <div className="shell">
           <div className="section-head">
             <div>
-              <p className="eyebrow">{ui.homeVentureEyebrow}</p>
               <h2 className="section-title">{ui.homeVentureTitle}</h2>
             </div>
             <Link className="section-more" to={href('/venture')}>

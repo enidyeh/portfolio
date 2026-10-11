@@ -1,7 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
 import { useContent } from '../data/content'
-import { useHref } from '../i18n/locale'
 import { asset } from '../lib/base'
 import AvatarConsole from './AvatarConsole'
 import AvatarFigure from './AvatarFigure'
@@ -21,8 +19,6 @@ export default function HeroBlock() {
   const [figureGone, setFigureGone] = useState(false)
 
   const c = useContent()
-  const href = useHref()
-  const { ui } = c
 
   return (
     <section
@@ -36,18 +32,6 @@ export default function HeroBlock() {
           <h1 className="hero-title">{c.profile.headline}</h1>
           {c.profile.lede ? <p className="hero-statement">{c.profile.lede}</p> : null}
           <AvatarConsole variant="inline" />
-
-          <div className="hero-actions">
-            <Link className="btn btn--primary" to={href('/work')}>
-              {ui.ctaWork}
-            </Link>
-            <Link className="btn" to={href('/venture')}>
-              {ui.ctaVenture}
-            </Link>
-            <Link className="btn" to={href('/about#resume')}>
-              {ui.ctaResume}
-            </Link>
-          </div>
         </div>
 
         <aside className={figureGone ? 'hero-aside is-collapsed' : 'hero-aside'}>

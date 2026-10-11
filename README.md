@@ -58,10 +58,10 @@ npm run preview   # http://localhost:5374/portfolio/
 
 | 路径 | 内容 |
 | --- | --- |
-| `/` | 首页（自上而下）：① HERO（英文主标题 / 中文定位句 / 对话框 / 三按钮 + 人物视频；手机端视频在最上方，播完收起） ② 精选项目（大展示 PHYGITAL BASE + 四张案例卡片） ③ 正在创造与联系（竖排） ④ **我工作过的公司**（logo 墙，logo 由本人提供，未提供时是虚线占位格） ⑤ 经历与背景（经历 + 教育时间线） |
+| `/` | 首页（自上而下）：① HERO（英文主标题 / 中文定位句 / 对话框 + **常见问题** + 人物视频；手机端视频在最上方，播完收起） ② 精选项目（大展示 PHYGITAL BASE + 四张案例卡片） ③ 正在创造（四个项目竖排，方形配图） ④ **我工作过的公司**（logo 墙，logo 由本人提供，未提供时是虚线占位格） ⑤ 经历与背景（经历 + 教育时间线） |
 | `/work` | 精选项目，按 `01 Product & AI`（只有 PHYGITAL BASE，整行 1×1 大卡）、`02 Commercial Growth`（其余四个，2×2）两条路径分组 |
 | `/work/:slug` | 案例：问题 / 我的职责 / 关键决策与过程 / 结果 / 复盘 |
-| `/venture` | 正在创造：REVERIE 异想集 / 暗盒 UNSEEN / 异想商店 |
+| `/venture` | 正在创造：REVERIE 异想集 / 暗盒 UNSEEN / 异想商店 / 域见 REALMVIEW（四个项目 2×2） |
 | `/venture/:slug` | 项目：六个问题（Problem / Opportunity / Solution / Business Model / Validation / Next Milestone）+ 合作需求 |
 | `/about` | 个人介绍：简介、简历（两套）、能力、经历、教育、联系 |
 | `/about#resume` | 简历区块锚点（首页「下载简历」按钮指向这里） |
@@ -75,8 +75,11 @@ npm run preview   # http://localhost:5374/portfolio/
 
 **数字分身**有两处入口，都复用 `components/AvatarConsole.tsx`，**各自独立保存会话**：
 
-- 首页 HERO 内的输入框（`variant="inline"`：不出建议问题、不自动聚焦）
-  —— 2026-10-11 起**只留在首页**，子页面（/work、/venture、/about）不再放提问框
+- 首页 HERO 内的输入框（`variant="inline"`：不自动聚焦）
+  —— 2026-10-11 起**只留在首页**，子页面（/work、/venture、/about）不再放提问框；
+  原来的三个跳转按钮（精选项目 / 正在创造 / 下载简历）也换成了一排
+  **常见问题**（`ui.heroFaq`）：点一下等于问数字分身，不跳页，
+  回答里带一个去精选项目 / 正在创造的入口
 - 页头「资料下载」旁边的圆形按钮 `components/ChatDock.tsx`（`variant="dock"`：全站可用、带建议问题）
 
 问答历史是**一叠可以左右翻的卡片**：一次只显示一组（问题 + 回答），最多留 5 组，
@@ -159,6 +162,9 @@ src/
 这只是当前的分组，改 `track` 字段即可调整；`/work` 上的大卡是按
 「该路径只有 1 个案例」自动生效的（`WorkPage` → `.grid--cases--single` + `WorkCard large`）。
 若某个案例其实是「独立研究项目」，要在文案里明确标注，不要写成客户业绩。
+
+卡片上的小标题来自案例自带的 `tags`（2026-10-11 由本人逐条指定）；没填 `tags` 的
+（目前只有 PHYGITAL BASE）会回退成「类型 / 分类 / 角色」三个标签。
 
 ## 对外发布前必须做的事
 

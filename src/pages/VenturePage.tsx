@@ -19,7 +19,8 @@ export default function VenturePage() {
 
       <section className="section">
         <div className="shell">
-          <div className="grid grid--3">
+            {/* 四个项目排 2×2（原为三列，加进第四个后会变成 3+1） */}
+            <div className="grid grid--venture">
             {c.ventures.map((v) => (
               <VentureCard key={v.slug} venture={v} />
             ))}

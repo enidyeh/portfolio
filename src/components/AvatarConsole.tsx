@@ -188,6 +188,20 @@ export default function AvatarConsole({ variant = 'dock' }: { variant?: 'inline'
           </div>
         </div>
       ) : null}
+
+      {/* 首页的「常见问题」：坐在问题框下面（原来是三个跳转按钮）。
+          点一下就是「问数字分身」，不跳页；回答里会带一个去精选项目 / 正在创造的入口。 */}
+      {variant === 'inline' && pairs.length === 0 ? (
+        <ul className="avatar-chips hero-faq">
+          {ui.heroFaq.map((question) => (
+            <li key={question}>
+              <button type="button" className="chip" onClick={() => ask(question)}>
+                {question}
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
   )
 }
