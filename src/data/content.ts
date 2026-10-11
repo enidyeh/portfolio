@@ -157,6 +157,13 @@ export type Ui = {
   resumePending: string
   /** 创业项目详情页的「小红书主页」链接文案 */
   ventureXhs: string
+  /** 「正在创造」每一行右侧的圆角红色按钮（跳对应小红书主页） */
+  followCta: string
+  /** 页脚联系栏里的「邮箱 · 」前缀（与下面「微信 · 」对齐） */
+  emailPrefix: string
+  /** 微信二维码占位（图片由本人提供后替换） */
+  wxQrPending: string
+  wxQrNote: string
   /** 案例详情页底部的完整项目文件（PDF 逐页）标题 */
   caseDocTitle: string
   /** 个人介绍页：个人魅力 / 招聘视频两块 */
@@ -291,6 +298,10 @@ const uiZh: Ui = {
   resumeCta: '下载 PDF ↓',
   resumePending: '待填：把两份简历 PDF 放进 public/',
   ventureXhs: '小红书主页 →',
+  followCta: '关注',
+  emailPrefix: '邮箱 · ',
+  wxQrPending: '待填：微信二维码',
+  wxQrNote: '扫码加微信',
   caseDocTitle: '完整项目文件',
   aboutCharm: '个人魅力',
   aboutHiring: '招聘 / 视频',
@@ -400,6 +411,10 @@ const uiEn: Ui = {
   resumeCta: 'Download PDF ↓',
   resumePending: 'To be filled: place both résumé PDFs in public/',
   ventureXhs: 'Xiaohongshu profile →',
+  followCta: 'Follow',
+  emailPrefix: 'Email · ',
+  wxQrPending: 'To be filled: WeChat QR code',
+  wxQrNote: 'Scan to add on WeChat',
   caseDocTitle: 'Full project document',
   aboutCharm: 'Beyond work',
   aboutHiring: 'Hiring / video',

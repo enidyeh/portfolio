@@ -356,7 +356,7 @@ a.card:hover .card-go {
   overflow: hidden;
 }
 .feature-body { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
-.feature-title { font: 600 21px / 1.4 var(--sans); overflow-wrap: anywhere; }
+.feature-title { font: 600 24px / 1.4 var(--sans); overflow-wrap: anywhere; }
 /* 描述与「查看案例」按钮同字号（13px）—— 2026-10-12 按本人要求 */
 .feature-desc { max-width: 46ch; font-size: 13px; line-height: 1.7; color: var(--ink-soft); }
 .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -365,14 +365,36 @@ a.card:hover .card-go {
 /* ---------- venture rows（正在创造：竖排） ---------- */
 .vlist { display: flex; flex-direction: column; margin-top: var(--s-5); border-top: 2px solid var(--ink); }
 .vrow {
+  /* 外层是 div：右边要放一个跳小红书的「关注」按钮，<a> 里不能套 <a>。
+     整行的 hover / 分隔线挂在这一层，正文链接是里面的 .vrow-main。 */
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--s-4);
   align-items: center;
   padding: var(--s-4) 0;
   border-bottom: 1px solid var(--line);
 }
 .vrow:hover { border-bottom-color: var(--accent); }
+.vrow-main {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: var(--s-4);
+  align-items: center;
+  min-width: 0;
+}
+.vrow-side { display: flex; align-items: center; gap: var(--s-3); }
+/* 「关注」：圆角红色按钮，点击跳对应小红书主页 */
+.follow-btn {
+  padding: 7px 15px;
+  font: var(--f-meta) / 1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--paper);
+  background: var(--accent);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+.follow-btn:hover { background: var(--accent-deep); }
 .vrow-media {
   position: relative;
   /* 方形（用户 2026-10-11 要求）；原来是 180px × 4:3 */
@@ -499,8 +521,108 @@ a.card:hover .card-go {
 .meta-row { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: var(--s-3); align-items: baseline; }
 .meta-key { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
 .meta-val { color: var(--ink-soft); line-height: 1.75; overflow-wrap: anywhere; }
+/* 邮箱显示成大写（地址本身不动，链接仍是小写） */
+.email-strong { text-transform: uppercase; letter-spacing: 0.03em; }
 
-/* ---------- timeline（经历 / 教育） ----------
+/* ---------- 微信：点一下弹出二维码 ---------- */
+.wx { position: relative; display: inline-block; }
+.wx-trigger {
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.wx-trigger:hover { color: var(--accent); }
+.wx-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 168px;
+  padding: var(--s-3);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 16px 36px rgba(20, 22, 26, 0.16);
+}
+.wx-qr {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  padding: 8px;
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  font: var(--f-meta) / 1.5 var(--mono);
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+  text-align: center;
+}
+.wx-img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.wx-note { font: var(--f-meta) / 1.4 var(--mono); letter-spacing: 0.06em; color: var(--ink-faint); }
+
+/* ---------- 首页「经历与背景」时间线 ----------
+   2026-10-12 按本人要求：鼠标移到任意一行都会浮起，点一下跳「个人介绍」的简历区块 */
+.tl-track { position: relative; display: flex; flex-direction: column; }
+.tl-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: var(--s-3) var(--s-3) var(--s-3) var(--s-5);
+  border-radius: var(--radius);
+  transition: transform 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+}
+.tl-row:hover,
+.tl-row:focus-visible {
+  transform: translateY(-2px);
+  background: var(--paper-raised);
+  box-shadow: 0 12px 28px rgba(20, 22, 26, 0.09);
+}
+/* 一条竖线 + 每行一个圆点 */
+.tl-row::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line);
+}
+.tl-row:first-child::before { top: 50%; }
+.tl-row:last-child::before { bottom: 50%; }
+.tl-dot {
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  width: 11px;
+  height: 11px;
+  margin-top: -5.5px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  background: var(--paper);
+}
+.tl-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.tl-go {
+  font: var(--f-meta) / 1 var(--mono);
+  color: var(--ink-faint);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.tl-row:hover .tl-go,
+.tl-row:focus-visible .tl-go { opacity: 1; transform: translateX(0); }
+
+/* ---------- timeline（个人介绍页的经历 / 教育） ----------
    2026-10-12 按本人要求改成两栏：左边 公司(粗) / 岗位 / 时间(灰)，右边 描述 + 编号要点 */
 .timeline { display: flex; flex-direction: column; }
 .tl-item {
@@ -584,10 +706,10 @@ a.card:hover .card-go {
 .hero-statement {
   margin: var(--s-4) 0 0;
   max-width: 44ch;
-  /* 2026-10-12 按本人要求连续缩了两次：27px → 13.5px → 12px */
-  font: 600 12px / 1.9 var(--sans);
-  letter-spacing: 0.01em;
-  color: var(--ink-soft);
+  /* 2026-10-12 第三轮：本人反馈 12px 太小，要比它大 15（≈27px，回到 --f-title 一档） */
+  font: 600 var(--f-title) / 1.45 var(--sans);
+  letter-spacing: 0;
+  color: var(--ink);
 }
 .pillars { display: flex; flex-wrap: wrap; gap: 8px; margin-top: var(--s-5); }
 
@@ -976,9 +1098,9 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 @media (max-width: 760px) {
   .nav-en { display: none; }
   .nav { gap: var(--s-2); }
-  /* 首屏定位句桌面端缩到 12px；手机端守住「最小字号 13px」这条线 */
-  .hero-statement { font-size: 13px; }
-  .vrow { grid-template-columns: 112px minmax(0, 1fr); }
+  /* 首屏定位句桌面端 27px，手机端不再额外缩小 */
+  .hero-statement { font-size: var(--f-title); }
+  .vrow-main { grid-template-columns: 112px minmax(0, 1fr); }
   .vrow-arrow { display: none; }
   /* 状态文案偏长时（如 REVERIE 那串）要能折行，否则整页会横向溢出、出现横向滚动条 */
   .vrow-body .status { white-space: normal; }
@@ -1028,6 +1150,7 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .logo-img { height: 34px; }
   .logo-item { margin-right: var(--s-5); }
   .tl-item, .skill-group, .qa-item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .tl-row { grid-template-columns: 96px minmax(0, 1fr) auto; gap: var(--s-3); padding-left: var(--s-4); }
   .meta-row { grid-template-columns: 80px minmax(0, 1fr); }
 }
 @media (max-width: 520px) {

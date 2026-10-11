@@ -45,7 +45,7 @@ export const method: { en: string; zh: string; items: string[] }[] = [
  */
 export const experience: TimelineItem[] = [
   {
-    when: '',
+    when: '2026.6 — 至今',
     role: '创业项目 · 独立策划与运营',
     org: '异想集 REVERIE',
     desc: '独立运营策划十余场活动，社群累计 2500+ 位成员，现场参与观众 5000+，联系艺术家逾 30 位。举办《蜘蛛侠：纵横宇宙》《芭比》《泰勒·斯威夫特：时代巡演大电影》等电影观影活动：作为组织者管理团队与社群，策划活动流程，推动团队执行并敲定细节，保证活动顺利完成并获得大量好评。',

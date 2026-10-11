@@ -22,9 +22,9 @@ export type Company = {
 export const companies: Company[] = [
   { name: 'komiko', logo: asset('logos/komiko.png') },
   { name: 'opencreator', logo: asset('logos/opencreator.png') },
+  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
   { name: 'Daa', logo: asset('logos/daa.png') },
   { name: 'TUBE', logo: asset('logos/tube.png') },
-  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
   { name: "Momo's Workshop 毛吉吉", logo: asset('logos/momos-workshop.png') },
   { name: '光鉴科技 DEPTRUM', logo: asset('logos/deptrum.png') },
   { name: 'POP MART', logo: asset('logos/popmart.png') },

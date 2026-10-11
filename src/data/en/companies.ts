@@ -10,9 +10,9 @@ import type { Company } from '../companies'
 export const companies: Company[] = [
   { name: 'komiko', logo: asset('logos/komiko.png') },
   { name: 'opencreator', logo: asset('logos/opencreator.png') },
+  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
   { name: 'Daa', logo: asset('logos/daa.png') },
   { name: 'TUBE', logo: asset('logos/tube.png') },
-  { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
   { name: "Momo's Workshop", logo: asset('logos/momos-workshop.png') },
   { name: 'DEPTRUM', logo: asset('logos/deptrum.png') },
   { name: 'POP MART', logo: asset('logos/popmart.png') },

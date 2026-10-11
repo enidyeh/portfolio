@@ -170,37 +170,22 @@ export default function HomePage() {
               {ui.aboutMore}
             </Link>
           </div>
-          <div style={{ marginTop: 'var(--s-5)' }}>
-            <div className="tl-group">
-              <p className="tl-group-label">{ui.tlExperience}</p>
-              <div className="timeline">
-                {c.experience.map((item, i) => (
-                  <div className="tl-item" key={i}>
-                    <span className="tl-when">{item.when}</span>
-                    <span>
-                      <span className="tl-role">{item.role}</span>
-                      {item.org ? <span className="tl-org">{item.org}</span> : null}
-                      {item.desc ? <span className="tl-desc">{item.desc}</span> : null}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="tl-group">
-              <p className="tl-group-label">{ui.tlEducation}</p>
-              <div className="timeline">
-                {c.education.map((item, i) => (
-                  <div className="tl-item" key={i}>
-                    <span className="tl-when">{item.when}</span>
-                    <span>
-                      <span className="tl-role">{item.role}</span>
-                      {item.org ? <span className="tl-org">{item.org}</span> : null}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          {/* 时间线：鼠标移到任意一行都会浮起，点一下进「个人介绍」的简历区块看详细版。
+              经历与教育合成一条时间线（两侧的「经历 / 教育」小字 2026-10-12 按本人要求去掉）。 */}
+          <div className="tl-track" style={{ marginTop: 'var(--s-5)' }}>
+            {[...c.experience, ...c.education].map((item, i) => (
+              <Link className="tl-row" to={href('/about#resume')} key={`${item.org}-${i}`}>
+                <span className="tl-dot" aria-hidden="true" />
+                <span className="tl-when">{item.when}</span>
+                <span className="tl-main">
+                  {item.org ? <span className="tl-org">{item.org}</span> : null}
+                  <span className="tl-role">{item.role}</span>
+                </span>
+                <span className="tl-go" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

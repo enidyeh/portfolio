@@ -1,5 +1,6 @@
 import { useContent } from '../data/content'
 import Pending from '../components/Pending'
+import WeChatReveal from '../components/WeChatReveal'
 
 export default function AboutPage() {
   const c = useContent()
@@ -136,7 +137,9 @@ export default function AboutPage() {
                   <span className="meta-key">{ui.metaEmail}</span>
                   <span className="meta-val">
                     {c.profile.email ? (
-                      <a href={`mailto:${c.profile.email}`}>{c.profile.email}</a>
+                      <a className="email-strong" href={`mailto:${c.profile.email}`}>
+                        {c.profile.email}
+                      </a>
                     ) : (
                       <Pending>{ui.pendingEmail}</Pending>
                     )}
@@ -145,7 +148,11 @@ export default function AboutPage() {
                 <div className="meta-row">
                   <span className="meta-key">{ui.metaWechat}</span>
                   <span className="meta-val">
-                    {c.profile.wechat || <Pending>{ui.pendingWechat}</Pending>}
+                    {c.profile.wechat ? (
+                      <WeChatReveal handle={c.profile.wechat} />
+                    ) : (
+                      <Pending>{ui.pendingWechat}</Pending>
+                    )}
                   </span>
                 </div>
                 {/* 社交：小红书已于 2026-10-11 按本人要求撤下；没有条目时整行不渲染 */}

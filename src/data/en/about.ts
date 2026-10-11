@@ -35,7 +35,7 @@ export const method: { en: string; zh: string; items: string[] }[] = [
  */
 export const experience: TimelineItem[] = [
   {
-    when: '',
+    when: '2026.6 — Present',
     role: 'Venture · independent planning and operations',
     org: 'REVERIE 异想集',
     desc: 'Planned and ran more than ten events single-handedly: a community of 2,500+ members, 5,000+ attendees on site, and 30+ artists brought in. Organised film screenings including Spider-Man: Across the Spider-Verse, Barbie and Taylor Swift: The Eras Tour — as the organiser I ran the team and the community, planned the event flow, pushed execution and locked the details, delivering each event smoothly and to strong feedback.',

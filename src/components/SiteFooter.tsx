@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 import Pending from './Pending'
+import WeChatReveal from './WeChatReveal'
 
 export default function SiteFooter() {
   const c = useContent()
@@ -21,14 +22,19 @@ export default function SiteFooter() {
           <ul className="foot-list">
             <li>
               {c.profile.email ? (
-                <a href={`mailto:${c.profile.email}`}>{c.profile.email}</a>
+                <>
+                  {ui.emailPrefix}
+                  <a className="email-strong" href={`mailto:${c.profile.email}`}>
+                    {c.profile.email}
+                  </a>
+                </>
               ) : (
                 <Pending>{ui.pendingEmail}</Pending>
               )}
             </li>
             <li>
               {c.profile.wechat ? (
-                `${ui.wechatPrefix}${c.profile.wechat}`
+                <WeChatReveal handle={c.profile.wechat} prefix={ui.wechatPrefix} />
               ) : (
                 <Pending>{ui.pendingWechat}</Pending>
               )}
