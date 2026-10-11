@@ -92,10 +92,12 @@ export default function HomePage() {
               <VentureCard key={v.slug} venture={v} layout="row" />
             ))}
           </div>
-          <div className="callout">
+          {/* 合作小卡片（与 /venture 页同一张） */}
+          <div className="callout callout--mini">
             <p className="eyebrow">{c.dataRoom.eyebrow}</p>
+            <h2 className="callout-title">{c.dataRoom.title}</h2>
             <p className="callout-body">{c.dataRoom.body}</p>
-            <Link className="btn" to={href('/about')}>
+            <Link className="btn" to={href('/about#contact')}>
               {ui.contactCta}
             </Link>
           </div>

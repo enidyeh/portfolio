@@ -30,11 +30,12 @@ export default function VenturePage() {
 
       <section className="section">
         <div className="shell">
-          <div className="callout">
+          {/* 合作小卡片：欢迎一起创造 + 一个联系方式入口（与首页同一张） */}
+          <div className="callout callout--mini">
             <p className="eyebrow">{c.dataRoom.eyebrow}</p>
-            <h2 className="section-title">{c.dataRoom.title}</h2>
+            <h2 className="callout-title">{c.dataRoom.title}</h2>
             <p className="callout-body">{c.dataRoom.body}</p>
-            <Link className="btn" to={href('/about')}>
+            <Link className="btn" to={href('/about#contact')}>
               {ui.contactCta}
             </Link>
           </div>

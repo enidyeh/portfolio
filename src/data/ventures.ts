@@ -126,11 +126,11 @@ export const ventures: Venture[] = [
   },
 ]
 
-/** 融资资料入口：按需索取，不用密码页代替商业逻辑。 */
+/** 合作入口：从「融资资料按需索取」改成开放的合作邀请（两页共用一个小卡片）。 */
 export const dataRoom = {
-  eyebrow: '投资人',
-  title: '融资资料按需索取。',
-  body: '公开页面只展示项目逻辑与验证进度；具体的财务、模型与融资条款在沟通后单独提供。需要请直接联系。',
+  eyebrow: '合作',
+  title: '欢迎一起创造、探讨。',
+  body: '项目、合作，或者只是聊聊想法，都可以直接找我。',
 }
 
 export const ventureNote =

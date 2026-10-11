@@ -48,7 +48,8 @@ export default function VentureCard({
 
   return (
     <Link className="card" to={href(`/venture/${venture.slug}`)}>
-      <span className="card-media card-media--square">
+      {/* 列表页卡片用 16:9（与精选项目子页面一致）；首页那一行保持方形（.vrow-media） */}
+      <span className="card-media">
         <VentureMedia venture={venture} />
       </span>
       <h3 className="card-title">{venture.name}</h3>

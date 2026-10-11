@@ -276,9 +276,10 @@ a.card:hover .card-go {
   background-color: var(--paper-sunken);
   background-image: repeating-linear-gradient(45deg, rgba(20, 22, 26, 0.045) 0 2px, transparent 2px 12px);
 }
+/* 案例 / 项目卡片的媒体：16:9 横屏（原来是 16:10）—— 与精选项目子页面一致 */
 .card-media {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   margin: calc(-1 * var(--s-4)) calc(-1 * var(--s-4)) 0;
   border-bottom: 1px solid var(--line);
   overflow: hidden;
@@ -294,9 +295,6 @@ a.card:hover .card-go {
   object-fit: contain;
   background: #0d0e11;
 }
-/* 创业项目的配图做成方形（案例卡片仍是 16:10）。
-   ⚠️ 必须写在 .card-media 之后 —— 两者都是单类名选择器，靠顺序决定谁生效。 */
-.card-media--square { aspect-ratio: 1 / 1; }
 /* 详情页顶部的案例媒体：与正文同宽，16/9 */
 .doc-media .work-media {
   width: 100%;
@@ -327,7 +325,7 @@ a.card:hover .card-go {
   overflow: hidden;
 }
 .feature-body { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
-.feature-title { font: 600 var(--f-display) / var(--f-display-leading) var(--sans); overflow-wrap: anywhere; }
+.feature-title { font: 600 var(--f-title) / 1.35 var(--sans); overflow-wrap: anywhere; }
 .feature-desc { max-width: 46ch; color: var(--ink-soft); }
 .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .feature-body .btn { align-self: flex-start; margin-top: var(--s-2); }
@@ -726,6 +724,13 @@ a.card:hover .card-go {
 
 /* ---------- callout ---------- */
 .callout { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); margin-top: var(--s-5); padding: var(--s-5); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-sunken); }
+/* 合作小卡片：不再是一条整宽的融资横幅，收窄成一枚小卡 */
+.callout--mini {
+  max-width: 620px;
+  padding: var(--s-4) var(--s-5);
+  gap: var(--s-2);
+}
+.callout-title { font: 600 var(--f-sub) / 1.4 var(--sans); }
 .callout-body { max-width: 64ch; color: var(--ink-soft); line-height: 1.8; }
 
 /* ---------- resume ---------- */

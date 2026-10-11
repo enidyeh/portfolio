@@ -99,9 +99,9 @@ export const ventures: Venture[] = [
 ]
 
 export const dataRoom = {
-  eyebrow: 'Investor',
-  title: 'Fundraising material on request.',
-  body: 'Public pages show only project logic and validation progress. Financials, models and fundraising terms are shared separately once we have talked. Get in touch and I will send them over.',
+  eyebrow: 'Working together',
+  title: 'Let’s create and explore together.',
+  body: 'A project, a collaboration, or just an idea worth talking through — reach out any time.',
 }
 
 export const ventureNote =
