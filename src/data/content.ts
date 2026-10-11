@@ -181,7 +181,7 @@ export type Content = {
   worksNote: string
   ventureHead: { eyebrow: string; title: string; lede: string }
   ventures: Venture[]
-  dataRoom: { eyebrow: string; title: string; body: string }
+  dataRoom: { text: string }
   ventureNote: string
   companies: Company[]
   companiesNote: string

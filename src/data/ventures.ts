@@ -126,11 +126,9 @@ export const ventures: Venture[] = [
   },
 ]
 
-/** 合作入口：从「融资资料按需索取」改成开放的合作邀请（两页共用一个小卡片）。 */
+/** 合作入口：一句话 + 联系方式按钮（首页与 /venture 共用一张小卡片）。 */
 export const dataRoom = {
-  eyebrow: '合作',
-  title: '欢迎一起创造、探讨。',
-  body: '项目、合作，或者只是聊聊想法，都可以直接找我。',
+  text: '欢迎一起创造、探讨。',
 }
 
 export const ventureNote =
