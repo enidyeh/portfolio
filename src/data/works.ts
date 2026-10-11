@@ -33,7 +33,7 @@ export type WorkCase = {
 
 export const worksHead = {
   eyebrow: '精选项目',
-  title: '五个案例，一条完整的能力闭环。',
+  title: '五个不同的案例，形成一条完整的能力闭环。',
   lede: '商业项目证明能把创意落地，AI 产品证明能设计解决方案，全球增长证明能理解市场与商业化。每个案例都按同一套结构写：问题、我的职责、关键决策与过程、结果、复盘。',
 }
 
@@ -45,18 +45,18 @@ export const workTracks: {
   items: string[]
 }[] = [
   {
-    id: 'commercial',
-    no: '01',
-    en: 'Commercial Growth',
-    zh: '商业化与全球增长',
-    items: ['品牌增长', '跨境商业化', '内容与创作者生态', '商业项目复盘'],
-  },
-  {
     id: 'product',
-    no: '02',
+    no: '01',
     en: 'Product & AI',
     zh: '产品策略与 AI 应用',
     items: ['用户问题与需求', '产品方案与原型', 'AI 工作流', '产品验证与迭代'],
+  },
+  {
+    id: 'commercial',
+    no: '02',
+    en: 'Commercial Growth',
+    zh: '商业化与全球增长',
+    items: ['品牌增长', '跨境商业化', '内容与创作者生态', '商业项目复盘'],
   },
 ]
 
@@ -66,7 +66,7 @@ export const works: WorkCase[] = [
     title: '数据主权时代的数字资产管理',
     /** 首页「精选项目」的大展示位 */
     featured: true,
-    track: 'commercial',
+    track: 'product',
     year: '待填',
     role: '待填：你的角色',
     type: '产品设计与项目管理',
@@ -83,7 +83,7 @@ export const works: WorkCase[] = [
     slug: 'common-ground',
     title: '美国街头展览进入意大利的「文化翻译」',
     image: asset('work-common-ground.webp'),
-    track: 'product',
+    track: 'commercial',
     year: '待填',
     role: '待填：你的角色',
     type: 'AI 产品',
@@ -129,6 +129,7 @@ export const works: WorkCase[] = [
   {
     slug: 'momos-workshop',
     title: '美妆电商品牌拓展海外市场',
+    image: asset('work-momos-workshop.webp'),
     track: 'commercial',
     year: '待填',
     role: '待填：你的角色',

@@ -41,7 +41,7 @@ export const avatarQA: AvatarAnswer[] = [
     id: 'cases',
     keywords: ['案例', '做过', '作品', '项目经验'],
     answer:
-      '精选案例有五个。PHYGITAL BASE（产品设计与项目管理）、SOHO-T、ANNAKIKI、Momo\'s Workshop 属于商业化与全球增长；COMMON GROUND（AI 产品）属于产品策略与 AI 应用。它们串成一条闭环——能把创意落地、能设计解决方案、能理解市场与商业化。每个案例里的具体数据还在补充。',
+      '精选案例有五个。产品策略与 AI 应用这条线：PHYGITAL BASE（产品设计与项目管理）；商业化与全球增长这条线：COMMON GROUND（AI 产品）、SOHO-T、ANNAKIKI、Momo\'s Workshop。它们串成一条闭环——能把创意落地、能设计解决方案、能理解市场与商业化。每个案例里的具体数据还在补充。',
     link: { label: '看精选案例', to: '/work' },
   },
   {
@@ -62,7 +62,7 @@ export const avatarQA: AvatarAnswer[] = [
     id: 'contact',
     keywords: ['联系', '邮箱', '微信', '简历', '合作', '招聘', '投递', '下载'],
     answer:
-      '联系方式与资料下载都在「个人介绍」里，包含两套定制简历（商业化版 / 产品版）。邮箱与微信还在补充中。',
+      '联系方式与资料下载都在「个人介绍」里：邮箱 enidyeh2002@gmail.com、微信 ENIDYEAH，另有商业化版与产品版两套定制简历。',
     link: { label: '去个人介绍', to: '/about#resume' },
   },
 ]

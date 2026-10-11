@@ -20,18 +20,11 @@ export const profile = {
     'Right now I focus on AI product strategy and global commercialisation. Confirm the user problem first, then find the smallest workable solution and prove it.',
   ],
   pillars: ['Product thinking', 'Global growth', 'AI in practice', 'Shipping'],
-  email: '',
-  wechat: '',
-  social: [
-    {
-      label: 'Xiaohongshu',
-      url: 'https://www.xiaohongshu.com/user/profile/5b8a63890ddda30001ded374?xsec_token=AB0bl2LxP7ZdfPYO5BLCC6Bh9HJnKIi4_Z7gHDD5dUlLw%3D&xsec_source=pc_search',
-    },
-    {
-      label: 'Xiaohongshu',
-      url: 'https://www.xiaohongshu.com/user/profile/64f89acf0000000004024dac?xsec_token=ABU_O_y4uSGyexANn0Z_ib5OJHwnHsBwGzDqPOGT37uMU%3D&xsec_source=pc_search',
-    },
-  ] as SocialLink[],
+  email: 'enidyeh2002@gmail.com',
+  wechat: 'ENIDYEAH',
+  // Social profiles: Xiaohongshu links were taken down on 2026-10-11 (the old
+  // URLs carried expiring xsec_token params). Add real profile URLs back here.
+  social: [] as SocialLink[],
 }
 
 export const siteNote =

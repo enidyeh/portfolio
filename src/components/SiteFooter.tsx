@@ -39,25 +39,6 @@ export default function SiteFooter() {
           </ul>
         </div>
         <div>
-          <p className="foot-label">{ui.footSocial}</p>
-          <ul className="foot-list">
-            {c.profile.social.length > 0 ? (
-              c.profile.social.map((s) => (
-                <li key={s.url}>
-                  <a href={s.url} target="_blank" rel="noreferrer">
-                    {s.label}
-                    {s.handle ? ` · ${s.handle}` : ''}
-                  </a>
-                </li>
-              ))
-            ) : (
-              <li>
-                <Pending>{ui.pendingSocial}</Pending>
-              </li>
-            )}
-          </ul>
-        </div>
-        <div>
           <p className="foot-label">{ui.footProjects}</p>
           <ul className="foot-list">
             {c.ventures.map((v) => (

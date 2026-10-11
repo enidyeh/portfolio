@@ -31,7 +31,7 @@ export const avatarQA: AvatarAnswer[] = [
     id: 'cases',
     keywords: ['case', 'project', 'portfolio', 'work', 'done', 'experience'],
     answer:
-      'There are five cases. PHYGITAL BASE (product design and project management), SOHO-T, ANNAKIKI and Momo’s Workshop sit on the commercial growth track; COMMON GROUND (AI product) sits on product strategy and AI. Together they form a loop — shipping an idea, designing a solution, understanding a market. The specific numbers are still being filled in.',
+      'There are five cases. Product & AI: PHYGITAL BASE (product design and project management). Commercial growth: COMMON GROUND (AI product), SOHO-T, ANNAKIKI and Momo’s Workshop. Together they form a loop — shipping an idea, designing a solution, understanding a market. The specific numbers are still being filled in.',
     link: { label: 'See the cases', to: '/work' },
   },
   {
@@ -52,7 +52,7 @@ export const avatarQA: AvatarAnswer[] = [
     id: 'contact',
     keywords: ['contact', 'email', 'wechat', 'résumé', 'resume', 'cv', 'partner', 'hiring', 'download'],
     answer:
-      'Contact details and downloads are on the About page, including two tailored résumés (commercial and product). Email and WeChat are still being filled in.',
+      'Contact details and downloads are on the About page: email enidyeh2002@gmail.com, WeChat ENIDYEAH, plus two tailored résumés (commercial and product).',
     link: { label: 'Go to About', to: '/about#resume' },
   },
 ]

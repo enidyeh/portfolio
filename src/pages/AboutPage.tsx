@@ -131,22 +131,25 @@ export default function AboutPage() {
                     {c.profile.wechat || <Pending>{ui.pendingWechat}</Pending>}
                   </span>
                 </div>
-                <div className="meta-row">
-                  <span className="meta-key">{ui.metaSocial}</span>
-                  <span className="meta-val">
-                    {c.profile.social.map((s) => (
-                      <a
-                        key={s.url}
-                        href={s.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ display: 'block' }}
-                      >
-                        {s.label}
-                      </a>
-                    ))}
-                  </span>
-                </div>
+                {/* 社交：小红书已于 2026-10-11 按本人要求撤下；没有条目时整行不渲染 */}
+                {c.profile.social.length > 0 ? (
+                  <div className="meta-row">
+                    <span className="meta-key">{ui.metaSocial}</span>
+                    <span className="meta-val">
+                      {c.profile.social.map((s) => (
+                        <a
+                          key={s.url}
+                          href={s.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ display: 'block' }}
+                        >
+                          {s.label}
+                        </a>
+                      ))}
+                    </span>
+                  </div>
+                ) : null}
               </div>
               <p className="section-lede" style={{ marginTop: 'var(--s-5)' }}>
                 {c.aboutNote}

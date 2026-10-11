@@ -135,10 +135,9 @@ button, input, textarea { color: inherit; font: inherit; }
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
 
-/* 内页精简版 HERO：只留提问框 + 三个按钮，不要主标题 / 定位句 / 人物视频 */
+/* 内页精简版 HERO：只留三个按钮，不要主标题 / 定位句 / 人物视频 / 提问框 */
 .hero--compact { padding: var(--s-6) 0; }
 .hero--compact .hero-grid { grid-template-columns: minmax(0, 1fr); }
-.hero--compact .avatar--inline { margin-top: 0; }
 
 /* ---------- buttons ---------- */
 .btn {
@@ -190,6 +189,9 @@ button, input, textarea { color: inherit; font: inherit; }
 /* 案例网格固定 2 列（四个案例排成 2×2）：
    宽屏若是 3 列，第四个会孤立成一行 —— 2×2 才是齐的。 */
 .grid--cases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* 只有一个案例的路径（01 产品策略与 AI 应用里的 PHYGITAL BASE）：整行铺开成 1×1 大卡。
+   必须写在 .grid--cases 之后 —— 两个都是单类名选择器，靠顺序决定谁生效。 */
+.grid--cases--single { grid-template-columns: minmax(0, 1fr); }
 .card {
   display: flex;
   flex-direction: column;
@@ -208,8 +210,35 @@ a.card:hover { border-color: var(--rule); transform: translateY(-2px); }
 .card-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
 .card-meta { font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
 .card-title { font: 600 var(--f-sub) / 1.45 var(--sans); overflow-wrap: anywhere; }
+/* 大卡（1×1）：标题升一级，整行铺开时才不像被拉长的普通卡片 */
+.card--large .card-title { font: 600 var(--f-title) / 1.35 var(--sans); }
 .card-desc { font-size: 14px; line-height: 1.75; color: var(--ink-soft); overflow-wrap: anywhere; }
 .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+/* 图片右下角的「进入」箭头：整张卡片本来就是链接，这个只是把「可点」显出来。
+   pointer-events: none —— 点击穿过它落到卡片（或视频控制条）上，不拦手势。 */
+.card-go {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--paper);
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+  box-shadow: 0 4px 14px rgba(20, 22, 26, 0.22);
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+a.card:hover .card-go {
+  background: var(--accent-deep);
+  transform: translate(2px, -2px) scale(1.06);
+}
+/* 视频卡片的控制条在底部，箭头往上让开一点，不压住播放进度 */
+.card-media--video .card-go { bottom: 54px; }
 .tag {
   padding: 4px 9px;
   font: var(--f-meta) / 1 var(--mono);
@@ -433,7 +462,8 @@ a.card:hover { border-color: var(--rule); transform: translateY(-2px); }
 .site-footer { margin-top: auto; background: var(--paper-raised); border-top: 1px solid var(--line); }
 .site-footer-inner {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* 3 列：品牌 / 联系 / 项目。社交那一列在 2026-10-11 随小红书一起撤下 */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--s-5);
   padding: var(--s-6) 0 var(--s-5);
 }

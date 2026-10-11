@@ -6,7 +6,7 @@ import { asset } from '../../lib/base'
 
 export const worksHead = {
   eyebrow: 'Selected Work',
-  title: 'Five cases, one complete loop.',
+  title: 'Five different cases that form one complete loop.',
   lede: 'Commercial projects prove I can ship an idea; AI products prove I can design a solution; global growth proves I understand markets and commercialisation. Every case follows the same structure: problem, my role, key decisions and process, outcome, reflection.',
 }
 
@@ -18,18 +18,18 @@ export const workTracks: {
   items: string[]
 }[] = [
   {
-    id: 'commercial',
-    no: '01',
-    en: 'Commercial Growth',
-    zh: 'Commercial Growth',
-    items: ['Brand growth', 'Cross-border commercialisation', 'Content and creator ecosystems', 'Commercial post-mortems'],
-  },
-  {
     id: 'product',
-    no: '02',
+    no: '01',
     en: 'Product & AI',
     zh: 'Product & AI',
     items: ['User problems and needs', 'Product solutions and prototypes', 'AI workflows', 'Validation and iteration'],
+  },
+  {
+    id: 'commercial',
+    no: '02',
+    en: 'Commercial Growth',
+    zh: 'Commercial Growth',
+    items: ['Brand growth', 'Cross-border commercialisation', 'Content and creator ecosystems', 'Commercial post-mortems'],
   },
 ]
 
@@ -38,7 +38,7 @@ export const works: WorkCase[] = [
     slug: 'phygital-base',
     title: 'Digital Asset Management in the Data-Sovereignty Era',
     featured: true,
-    track: 'commercial',
+    track: 'product',
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'Product design and project management',
@@ -55,7 +55,7 @@ export const works: WorkCase[] = [
     slug: 'common-ground',
     title: 'A US street exhibition enters Italy: a “cultural translation”',
     image: asset('work-common-ground.webp'),
-    track: 'product',
+    track: 'commercial',
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'AI product',
@@ -101,6 +101,7 @@ export const works: WorkCase[] = [
   {
     slug: 'momos-workshop',
     title: 'A beauty e-commerce brand expanding into overseas markets',
+    image: asset('work-momos-workshop.webp'),
     track: 'commercial',
     year: 'To be filled',
     role: 'To be filled: your role',

@@ -58,8 +58,8 @@ npm run preview   # http://localhost:5374/portfolio/
 
 | 路径 | 内容 |
 | --- | --- |
-| `/` | 首页（自上而下）：① HERO（英文主标题 / 中文定位句 / 对话框 / 三按钮 + 人物视频；手机端视频在最上方，播完收起） ② 精选项目（大展示 PHYGITAL BASE + 三张案例卡片） ③ 正在创造与联系（竖排） ④ 经历与背景（经历 + 教育时间线） |
-| `/work` | 精选项目，按 `01 Commercial Growth`、`02 Product & AI` 两条路径分组 |
+| `/` | 首页（自上而下）：① HERO（英文主标题 / 中文定位句 / 对话框 / 三按钮 + 人物视频；手机端视频在最上方，播完收起） ② 精选项目（大展示 PHYGITAL BASE + 四张案例卡片） ③ 正在创造与联系（竖排） ④ **我工作过的公司**（logo 墙，logo 由本人提供，未提供时是虚线占位格） ⑤ 经历与背景（经历 + 教育时间线） |
+| `/work` | 精选项目，按 `01 Product & AI`（只有 PHYGITAL BASE，整行 1×1 大卡）、`02 Commercial Growth`（其余四个，2×2）两条路径分组 |
 | `/work/:slug` | 案例：问题 / 我的职责 / 关键决策与过程 / 结果 / 复盘 |
 | `/venture` | 正在创造：REVERIE 异想集 / 暗盒 UNSEEN / 异想商店 |
 | `/venture/:slug` | 项目：六个问题（Problem / Opportunity / Solution / Business Model / Validation / Next Milestone）+ 合作需求 |
@@ -76,7 +76,11 @@ npm run preview   # http://localhost:5374/portfolio/
 **数字分身**有两处入口，都复用 `components/AvatarConsole.tsx`，**各自独立保存会话**：
 
 - 首页 HERO 内的输入框（`variant="inline"`：不出建议问题、不自动聚焦）
-- 右下角悬浮球 `components/ChatDock.tsx`（`variant="dock"`：全站可用、带建议问题）
+  —— 2026-10-11 起**只留在首页**，子页面（/work、/venture、/about）不再放提问框
+- 页头「资料下载」旁边的圆形按钮 `components/ChatDock.tsx`（`variant="dock"`：全站可用、带建议问题）
+
+问答历史是**一叠可以左右翻的卡片**：一次只显示一组（问题 + 回答），最多留 5 组，
+满了以后新的一组把最旧的一组顶掉（`MAX_PAIRS`）。
 
 两者都是本地演示：输入问题（或点建议问题）后用关键词匹配 `data/avatar.ts` 里的预设回答，
 并给出对应页面入口。**不调用任何模型、不发网络请求、不保存输入**，界面上标有「演示」。
@@ -128,31 +132,33 @@ src/
 
 | 位置 | 待补内容 |
 | --- | --- |
-| `data/profile.ts` | 中文姓名、邮箱、微信；`headlineEn` / `statement` / `intro` / `pillars` 口径确认 |
-| `data/profile.ts` | 两个小红书主页的**账号名 / 定位**（当前 label 都是「小红书」） |
+| `data/profile.ts` | 中文姓名；`headlineEn` / `statement` / `intro` / `pillars` 口径确认 |
 | `data/profile.ts` | `downloads` 里各项是否保留、分组是否合适；“待上传”标记在文件放好后要删掉 |
 | `public/` | `resume-commercial.pdf`、`resume-product.pdf`、`portfolio-overview.pdf`（即浮窗里标「待上传」的三项） |
-| `data/works.ts` | 四个案例（PHYGITAL BASE / COMMON GROUND / SOHO-T / ANNAKIKI）的真实内容 |
-| `data/works.ts` | **四个案例与两条路径的对应关系**（当前是按顺序暂定，见下）；ANNAKIKI 的 `type` 也待填 |
-| 首页大展示位 | 图片 / 视频占位（`featured` 案例 PHYGITAL BASE）替换为真实素材 |
+| `data/works.ts` | 五个案例（PHYGITAL BASE / COMMON GROUND / SOHO-T / ANNAKIKI / Momo's Workshop）的正文内容：`problem` / `contribution` / `decisions` / `outcome` / `reflection` 全还是「待填」 |
+| `data/works.ts` | ANNAKIKI、Momo's Workshop 的 `type` 仍待填（现在显示成「项目类型」） |
+| `public/hero-room.jpg` | 已不再引用（首屏背景换成 `hero-bg.webp`），可删 |
 | `data/ventures.ts` | REVERIE 异想集、异想商店的六问内容；暗盒的商业模式与下一步 |
 | `data/about.ts` | 经历时间线、教育 / 交换经历 |
-| `data/avatar.ts` | 五个预设回答的文案、建议问题与关键词是否准确 |
+| `data/companies.ts` | 「我工作过的公司」的公司名 + logo 图片（现在 `companies` 是空数组，首页显示 6 个虚线占位格） |
+| `data/avatar.ts` | 预设回答的文案、建议问题与关键词是否准确 |
 | `public/avatar.mp4` + `avatar-poster.webp` | 替换成最终版的人物视频与封面帧（换文件即可，无需改代码） |
-| `headlineEn` | 现在只放在关于页；如果首页要再展示英文定位句，再从 `profile.ts` 取出 |
 | `index.html` | `og:*` 与 `description` 换成正式定位；补 `og:image` |
 
 ### 关于案例的分类
 
-`data/works.ts` 里各案例的 `track` 是**按你给的顺序**暂定的：
+`data/works.ts` 里各案例的 `track` 按 2026-10-11 用户指定的分组：
 
-- `PHYGITAL BASE` → `01 Commercial Growth`（商业化与项目管理）—— 首页「大展示」位（`featured: true`），不再出现在下方三列卡片里
-- `COMMON GROUND` → `02 Product & AI`（AI 产品）
-- `SOHO-T` → `01 Commercial Growth`（全球品牌增长）
-- `ANNAKIKI` → `01 Commercial Growth`（项目类型待填）
+- `PHYGITAL BASE` → `01 Product & AI`（产品设计与项目管理）—— 首页「大展示」位（`featured: true`），
+  在 `/work` 上也是整行铺开的 1×1 大卡；两个地方都不再出现在普通卡片网格里
+- `COMMON GROUND` → `02 Commercial Growth`（AI 产品）
+- `SOHO-T` → `02 Commercial Growth`（全球品牌增长）
+- `ANNAKIKI` → `02 Commercial Growth`（项目类型待填）
+- `Momo's Workshop` → `02 Commercial Growth`（美妆电商拓展海外市场）
 
-这只是初步判断，改 `track` 字段即可调整。若某个案例其实是「独立研究项目」，
-要在文案里明确标注，不要写成客户业绩。
+这只是当前的分组，改 `track` 字段即可调整；`/work` 上的大卡是按
+「该路径只有 1 个案例」自动生效的（`WorkPage` → `.grid--cases--single` + `WorkCard large`）。
+若某个案例其实是「独立研究项目」，要在文案里明确标注，不要写成客户业绩。
 
 ## 对外发布前必须做的事
 
@@ -160,9 +166,10 @@ src/
 2. **核对定位口径**：`headlineEn` / `statement` / `intro` / `pillars` 是起草稿，需本人确认。
 3. **替换演示地址**：`data/ventures.ts` 的 `liveUrl` 目前是本地地址（`localhost:5173`）。
 4. **两份简历**：商业化版强调增长与商业结果，产品版强调用户问题与验证；不要只改标题。
-   确认 PDF 内不含真实手机号等敏感信息。
-5. **小红书链接**：现行链接带 `xsec_token`，可能失效；建议换成不含 token 的主页地址。
-6. **不公开敏感信息**：融资与财务细节只在私下沟通，不写入公开页面。
+   确认 PDF 内不含真实手机号等敏感信息。（现在浮窗与关于页都还在标「待上传」）
+5. **不公开敏感信息**：融资与财务细节只在私下沟通，不写入公开页面。
+6. **公开前再看一眼联系方式**：页脚与关于页现在直接展示 `enidyeh2002@gmail.com` / 微信 `ENIDYEAH`，
+   公开仓库与公开站点都可被爬到；小红书已按本人要求撤下（`profile.social` 为空数组，加回来即可）。
 
 ## 演示与隐私边界
 

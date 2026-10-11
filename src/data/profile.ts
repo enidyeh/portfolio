@@ -49,20 +49,11 @@ export const profile = {
   ],
   /** 四个能力支点 */
   pillars: ['产品思维', '全球商业化', 'AI 应用', '项目落地'],
-  /** 联系方式（待填） */
-  email: '',
-  wechat: '',
-  /** 社交主页 */
-  social: [
-    {
-      label: '小红书',
-      url: 'https://www.xiaohongshu.com/user/profile/5b8a63890ddda30001ded374?xsec_token=AB0bl2LxP7ZdfPYO5BLCC6Bh9HJnKIi4_Z7gHDD5dUlLw%3D&xsec_source=pc_search',
-    },
-    {
-      label: '小红书',
-      url: 'https://www.xiaohongshu.com/user/profile/64f89acf0000000004024dac?xsec_token=ABU_O_y4uSGyexANn0Z_ib5OJHwnHsBwGzDqPOGT37uMU%3D&xsec_source=pc_search',
-    },
-  ] as SocialLink[],
+  /** 联系方式 */
+  email: 'enidyeh2002@gmail.com',
+  wechat: 'ENIDYEAH',
+  /** 社交主页：2026-10-11 按本人要求先撤下小红书（原链带 xsec_token、易失效），有正式主页地址再加回来 */
+  social: [] as SocialLink[],
 }
 
 /** 站点通用说明：所有标注「待填」的内容都以此为准 */

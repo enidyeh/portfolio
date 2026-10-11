@@ -14,7 +14,8 @@ function isMobileLayout() {
 
 /** 首屏 HERO。
  *  - `full`（默认，首页）：英文主标题 + 中文定位句 + 对话框 + 三按钮 + 人物视频
- *  - `compact`（/work、/venture、/about）：只保留对话框 + 三按钮
+ *  - `compact`（/work、/venture、/about）：只保留三个按钮
+ *    提问框 2026-10-11 按用户要求从子页面撤下 —— 只留在首页（页头那颗浮球全站都在）。
  *  注意：定位行与四个支点标签已按用户要求删除，不要加回来。 */
 export default function HeroBlock({ variant = 'full' }: { variant?: 'full' | 'compact' }) {
   const [mobile] = useState(isMobileLayout)
@@ -38,10 +39,9 @@ export default function HeroBlock({ variant = 'full' }: { variant?: 'full' | 'co
             <>
               <h1 className="hero-title">{c.profile.headline}</h1>
               {c.profile.lede ? <p className="hero-statement">{c.profile.lede}</p> : null}
+              <AvatarConsole variant="inline" />
             </>
           ) : null}
-
-          <AvatarConsole variant="inline" />
 
           <div className="hero-actions">
             <Link className="btn btn--primary" to={href('/work')}>

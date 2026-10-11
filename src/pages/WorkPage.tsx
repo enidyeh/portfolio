@@ -31,9 +31,16 @@ export default function WorkPage() {
                     </li>
                   ))}
                 </ul>
-                <div className="grid grid--cases">
+                {/* 一个案例 → 整行一张 1×1 大卡；多个案例 → 2×2（见 .grid--cases） */}
+                <div
+                  className={
+                    items.length === 1
+                      ? 'grid grid--cases grid--cases--single'
+                      : 'grid grid--cases'
+                  }
+                >
                   {items.map((w) => (
-                    <WorkCard key={w.slug} work={w} />
+                    <WorkCard key={w.slug} work={w} large={items.length === 1} />
                   ))}
                 </div>
               </div>
