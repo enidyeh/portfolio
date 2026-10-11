@@ -17,6 +17,8 @@ export default function HomePage() {
   /** 大展示位（PHYGITAL BASE）+ 下方三列卡片 */
   const featured = c.works.find((w) => w.featured)
   const cases = c.works.filter((w) => !w.featured)
+  /** 轮播把同一份名单铺 4 遍：整体左移 50% 就正好接上，可视区永远不空 */
+  const logoLoop = [...c.companies, ...c.companies, ...c.companies, ...c.companies]
 
   return (
     <>
@@ -102,12 +104,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 04 COMPANIES：我工作过的公司（logo 墙，logo 由本人提供） */}
+      {/* 04 COMPANIES：我工作过的公司（logo 轮播，logo 由本人提供） */}
       <section className="section">
         <div className="shell">
           <div className="section-head">
             <div>
-              <p className="eyebrow">{ui.homeCompaniesEyebrow}</p>
               <h2 className="section-title">{ui.homeCompaniesTitle}</h2>
             </div>
             <Link className="section-more" to={href('/about')}>
@@ -115,30 +116,45 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* 没填 logo 之前显示虚线占位格；填了以后自动换成 logo（无 logo 的退化成公司名） */}
-          <ul className="logo-row">
-            {c.companies.length > 0
-              ? c.companies.map((company) => (
-                  <li className="logo-cell" key={company.name}>
-                    {company.logo ? (
-                      <img
-                        className="logo-img"
-                        src={company.logo}
-                        alt={company.name}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <span className="logo-name">{company.name}</span>
-                    )}
-                  </li>
-                ))
-              : LOGO_SLOTS.map((slot) => (
-                  <li className="logo-cell is-empty" key={slot}>
-                    <span>{ui.companiesPending}</span>
-                  </li>
-                ))}
-          </ul>
+          {/* 有 logo：一条无缝循环的跑马灯。同一份列表渲染 4 遍、整体左移 50%，
+              任意时刻可视区都被铺满（见 site.css 的 .logo-marquee）。 */}
+          {c.companies.length > 0 ? (
+            <div className="logo-marquee">
+              <ul className="logo-track">
+                {logoLoop.map((company, index) => {
+                  const isCopy = index >= c.companies.length
+                  return (
+                    <li
+                      className="logo-item"
+                      key={`${company.name}-${index}`}
+                      aria-hidden={isCopy || undefined}
+                    >
+                      {company.logo ? (
+                        <img
+                          className="logo-img"
+                          src={company.logo}
+                          alt={isCopy ? '' : company.name}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <span className="logo-name">{company.name}</span>
+                      )}
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          ) : (
+            /* 还没填 logo 之前：虚线占位格，不会被当成真实履历 */
+            <ul className="logo-row">
+              {LOGO_SLOTS.map((slot) => (
+                <li className="logo-cell is-empty" key={slot}>
+                  <span>{ui.companiesPending}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <p className="section-lede" style={{ marginTop: 'var(--s-4)' }}>
             {c.companiesNote}

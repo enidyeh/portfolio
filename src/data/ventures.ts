@@ -15,6 +15,8 @@ export type Venture = {
   oneLiner: string
   /** 状态标签 */
   status: string
+  /** 图片右上角的灰色徽标（如「筹备中」）。有徽标时不再重复显示下面的状态胶囊 */
+  badge?: string
   tags: string[]
   /** 团队中的角色 */
   role: string
@@ -66,9 +68,10 @@ export const ventures: Venture[] = [
     name: '异想商店 REVERIE SHOP',
     en: 'REVERIE SHOP',
     image: asset('venture-yixiang-shop.webp'),
-    oneLiner: '待填：一句话定位（卖什么、卖给谁、和异想集是什么关系）。',
+    oneLiner: '文化创意型线上集市。',
     status: '筹备中',
-    tags: ['商业', '零售'],
+    badge: '筹备中',
+    tags: ['原创产品', '线上集市', '生活好物'],
     role: '待填：你的角色。',
     problem: '待填：目标用户的具体问题。',
     opportunity: '待填：市场机会与判断依据。',
@@ -84,10 +87,10 @@ export const ventures: Venture[] = [
     name: '暗盒 UNSEEN',
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
-    oneLiner:
-      '给上海青年的一本「每月一期」的城市探索刊物：从发现，到事件、市集与空间，最后落到你自己的身份记录。',
-    status: '原型 / 演示',
-    tags: ['产品设计', '青年文化', '移动端'],
+    oneLiner: '「青年正发声」的文化内容平台。',
+    status: '筹备中',
+    badge: '筹备中',
+    tags: ['文化研究', '人物访谈', '内容共创'],
     role: '产品设计 + 前端实现：从信息架构、交互设计到可运行原型都自己做。',
     problem:
       '在上海生活、想认真体验这座城市的年轻人，现有的方式是继续刷信息流——内容很多，但缺少有策展、有编辑选择的体验入口。',
@@ -112,7 +115,8 @@ export const ventures: Venture[] = [
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
     oneLiner: '面向 0→1 品牌的营销服务：需要什么、服务与报价、合作方式。',
-    status: '服务站点',
+    status: '筹备中',
+    badge: '筹备中',
     tags: ['品牌营销', '达人合作', '内容栏目'],
     role: '待填：你在其中的角色。',
     problem: '待填：哪类品牌遇到了什么具体问题。',
@@ -128,7 +132,7 @@ export const ventures: Venture[] = [
 
 /** 合作入口：一句话 + 联系方式按钮（首页与 /venture 共用一张小卡片）。 */
 export const dataRoom = {
-  text: '欢迎一起创造、探讨。',
+  text: '欢迎一起探讨、创造。',
 }
 
 export const ventureNote =

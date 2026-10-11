@@ -107,8 +107,6 @@ export default function AvatarConsole({ variant = 'dock' }: { variant?: 'inline'
         </ul>
       ) : null}
 
-      <p className="avatar-note">{c.avatarIntro.note}</p>
-
       <form
         className="avatar-input"
         onSubmit={(event) => {

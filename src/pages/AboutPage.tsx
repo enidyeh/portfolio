@@ -27,7 +27,8 @@ export default function AboutPage() {
           <div className="doc-body">
             <div className="doc-block">
               <h2>{ui.blockIntro}</h2>
-              <p>{c.profile.statement}</p>
+              {/* 定位这句话限宽成两行，不要让它被拉成一整行（见 .statement-block） */}
+              <p className="statement-block">{c.profile.statement}</p>
               {c.profile.intro.map((line) => (
                 <p key={line}>{line}</p>
               ))}

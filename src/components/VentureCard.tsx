@@ -3,13 +3,20 @@ import type { Venture } from '../data/ventures'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 
-/** 方形配图：有图就显示图，没图保留占位块（两个版式共用） */
+/** 方形配图：有图就显示图，没图保留占位块（两个版式共用）。
+ *  父级 .vrow-media / .card-media 都是 position: relative，徽标直接叠在图片右上角。 */
 function VentureMedia({ venture }: { venture: Venture }) {
   const c = useContent()
-  if (venture.image) {
-    return <img className="work-media" src={venture.image} alt="" loading="lazy" decoding="async" />
-  }
-  return <span className="ph">{c.ui.phImage}</span>
+  return (
+    <>
+      {venture.image ? (
+        <img className="work-media" src={venture.image} alt="" loading="lazy" decoding="async" />
+      ) : (
+        <span className="ph">{c.ui.phImage}</span>
+      )}
+      {venture.badge ? <span className="venture-badge">{venture.badge}</span> : null}
+    </>
+  )
 }
 
 export default function VentureCard({
@@ -31,13 +38,16 @@ export default function VentureCard({
           <VentureMedia venture={venture} />
         </span>
         <span className="vrow-body">
-          {/* 读序：项目名 → 一句话定位 → 状态。状态做成圆角小胶囊，跟卡片上的标签同一套观感 */}
+          {/* 读序：项目名 → 一句话定位 → 状态。状态做成圆角小胶囊，跟卡片上的标签同一套观感；
+              已经用图片右上角的灰色徽标表示的（如「筹备中」），这里就不再重复一遍。 */}
           <span className="vrow-title">{venture.name}</span>
           <span className="vrow-desc">{venture.oneLiner}</span>
-          <span className="vrow-meta">
-            {showEn ? <span className="vrow-en">{venture.en}</span> : null}
-            <span className="status">{venture.status}</span>
-          </span>
+          {venture.badge ? null : (
+            <span className="vrow-meta">
+              {showEn ? <span className="vrow-en">{venture.en}</span> : null}
+              <span className="status">{venture.status}</span>
+            </span>
+          )}
         </span>
         <span className="vrow-arrow" aria-hidden="true">
           →
@@ -53,10 +63,12 @@ export default function VentureCard({
         <VentureMedia venture={venture} />
       </span>
       <h3 className="card-title">{venture.name}</h3>
-      <div className="card-top">
-        {showEn ? <span className="card-meta">{venture.en}</span> : <span />}
-        <span className="status">{venture.status}</span>
-      </div>
+      {venture.badge ? null : (
+        <div className="card-top">
+          {showEn ? <span className="card-meta">{venture.en}</span> : <span />}
+          <span className="status">{venture.status}</span>
+        </div>
+      )}
       <p className="card-desc">{venture.oneLiner}</p>
       <div className="card-tags">
         {venture.tags.map((t) => (

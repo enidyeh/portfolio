@@ -14,7 +14,7 @@ export default function SiteFooter() {
         <div>
           <p className="foot-title">{c.profile.wordmark}</p>
           <p className="foot-line">{c.profile.role}</p>
-          <p className="foot-line">{c.profile.statement}</p>
+          <p className="foot-line foot-statement">{c.profile.statement}</p>
         </div>
         <div>
           <p className="foot-label">{ui.footContact}</p>

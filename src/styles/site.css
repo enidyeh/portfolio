@@ -57,7 +57,7 @@ button, input, textarea { color: inherit; font: inherit; }
 /* flex: none —— 页头右侧内容多（导航 + 下载 + 数字分身），窄屏时不能让 ENID 被压瘪到 0 宽，
    否则文字会溢出并压在旁边的语言切换上。 */
 .brand { display: flex; flex-direction: column; gap: 3px; flex: none; }
-.brand-mark { font: 700 15px / 1 var(--mono); letter-spacing: 0.14em; }
+.brand-mark { font: 700 15px / 1 var(--mono); letter-spacing: 0.14em; color: var(--accent); }
 
 /* 语言切换：ENID 旁边的小图标按钮 */
 .brand-group { display: flex; align-items: center; gap: var(--s-3); min-width: 0; }
@@ -351,6 +351,18 @@ a.card:hover .card-go {
   overflow: hidden;
 }
 .vrow-media .work-media { object-fit: cover; }
+/* 图片右上角的灰色状态徽标（「筹备中」这类尚未上线的项目） */
+.venture-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 9px;
+  font: var(--f-meta) / 1 var(--mono);
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(20, 22, 26, 0.55);
+  border-radius: 999px;
+}
 .vrow-body { display: flex; flex-direction: column; min-width: 0; }
 .vrow-title { font: 600 var(--f-sub) / 1.4 var(--sans); }
 .vrow-meta {
@@ -483,6 +495,11 @@ a.card:hover .card-go {
 .foot-label { margin-bottom: var(--s-3); font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.12em; color: var(--ink-faint); }
 .foot-title { font: 700 15px / 1 var(--mono); letter-spacing: 0.14em; }
 .foot-line { margin-top: 10px; font-size: 13px; line-height: 1.75; color: var(--ink-soft); }
+/* 自我介绍那段限宽到 24em，稳定折成两行（否则在宽屏会被拉成一长行） */
+.foot-statement { max-width: 24em; }
+/* 「个人介绍」页的同一句话也限宽成两行；英文那句更长，放宽到 3 行以内 */
+.statement-block { max-width: 24em; }
+:lang(en) .statement-block { max-width: 42em; }
 .foot-list { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-soft); }
 .foot-list a { overflow-wrap: anywhere; }
 .foot-list a:hover { color: var(--accent); }
@@ -632,9 +649,45 @@ a.card:hover .card-go {
   letter-spacing: 0.06em;
   text-align: center;
 }
-.logo-img { max-height: 48px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.8; transition: filter 0.15s ease, opacity 0.15s ease; }
-.logo-cell:hover .logo-img { filter: none; opacity: 1; }
-.logo-name { font: 600 var(--f-meta) / 1.4 var(--mono); letter-spacing: 0.08em; text-align: center; }
+/* ---------- 合作过的公司：logo 轮播 ---------- */
+.logo-marquee {
+  margin-top: var(--s-5);
+  overflow: hidden;
+  /* 两侧渐隐，logo 进出画面不生硬 */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.logo-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: logo-scroll 90s linear infinite;
+}
+.logo-track:hover { animation-play-state: paused; }
+/* 间距用 margin-right 而不是 gap：四个副本等宽，整体平移 50% 才能严丝合缝 */
+.logo-item { display: flex; align-items: center; margin-right: var(--s-6); }
+.logo-img {
+  height: 42px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.logo-item:hover .logo-img { filter: none; opacity: 1; }
+.logo-name { font: 600 var(--f-meta) / 1.4 var(--mono); letter-spacing: 0.08em; white-space: nowrap; }
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; flex-wrap: wrap; justify-content: center; width: auto; row-gap: var(--s-4); }
+  .logo-marquee { -webkit-mask-image: none; mask-image: none; }
+}
 .chip { padding: 7px 12px; font-size: 13px; color: var(--ink-soft); background: var(--paper-raised); border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
 .chip:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-wash); }
 .turn { display: flex; flex-direction: column; gap: 4px; max-width: 62ch; padding: var(--s-3) var(--s-4); border-radius: var(--radius); }
@@ -862,6 +915,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .nav { gap: var(--s-2); }
   .vrow { grid-template-columns: 112px minmax(0, 1fr); }
   .vrow-arrow { display: none; }
+  /* 状态文案偏长时（如 REVERIE 那串）要能折行，否则整页会横向溢出、出现横向滚动条 */
+  .vrow-body .status { white-space: normal; }
   /* 案例网格：窄屏改成一条竖列，卡片一个接一个（用户 2026-10-12 要求；
      原来是硬撑 2 列，手机上每张卡只有半个屏宽）。 */
   .grid--2 { grid-template-columns: minmax(0, 1fr); }
@@ -905,6 +960,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .doc-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
   .doc-aside { position: static; flex-direction: row; flex-wrap: wrap; gap: var(--s-3); }
   .logo-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .logo-img { height: 34px; }
+  .logo-item { margin-right: var(--s-5); }
   .tl-item, .skill-group, .qa-item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .meta-row { grid-template-columns: 80px minmax(0, 1fr); }
 }

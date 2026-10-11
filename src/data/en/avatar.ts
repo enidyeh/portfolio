@@ -1,15 +1,15 @@
 // English copy. Mirrors `../avatar.ts` one-to-one.
 //
-// ⚠️ Demo boundary (same as the Chinese side): every answer is a LOCAL preset matched by
-// keyword. It is not a real AI model, sends no network request and stores nothing.
-// Keep the “Demo” label in the UI until a real model is wired up.
+// ⚠️ Implementation boundary (same as the Chinese side): every answer is a LOCAL
+// preset matched by keyword. It is not a real AI model, sends no network request
+// and stores nothing. The on-screen “Demo · answers come from local presets…”
+// line was removed on 2026-10-12 at the owner’s request.
 
 import type { AvatarAnswer, AvatarReply } from '../avatar'
 
 export const avatarIntro = {
   question: 'What can I help with?',
   placeholder: 'Ask me a question…',
-  note: 'Demo · answers come from local presets, not a real AI. No network requests are sent.',
   suggestions: [
     'What are you best at?',
     'What projects have you done?',

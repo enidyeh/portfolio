@@ -102,7 +102,6 @@ export type Ui = {
   homeVentureTitle: string
   homeExperienceEyebrow: string
   homeExperienceTitle: string
-  homeCompaniesEyebrow: string
   homeCompaniesTitle: string
   companiesPending: string
   allCases: string
@@ -185,7 +184,7 @@ export type Content = {
   ventureNote: string
   companies: Company[]
   companiesNote: string
-  avatarIntro: { question: string; placeholder: string; note: string; suggestions: string[] }
+  avatarIntro: { question: string; placeholder: string; suggestions: string[] }
   avatarQA: AvatarAnswer[]
   avatarFallback: AvatarReply
   ui: Ui
@@ -227,13 +226,11 @@ const uiZh: Ui = {
   heroFaq: [
     '你做过哪些类型的案例？',
     '你现在在做哪些项目？',
-    '你是怎么判断一个项目值不值得做的？',
   ],
   homeVentureEyebrow: '正在创造',
   homeVentureTitle: '正在创造。',
   homeExperienceEyebrow: '经历',
   homeExperienceTitle: '经历与背景。',
-  homeCompaniesEyebrow: '履历',
   homeCompaniesTitle: '我工作过的公司。',
   companiesPending: '待上传 logo',
   allCases: '全部案例 →',
@@ -333,13 +330,11 @@ const uiEn: Ui = {
   heroFaq: [
     'What kinds of cases have you worked on?',
     'What are you building right now?',
-    'How do you judge whether a project is worth doing?',
   ],
   homeVentureEyebrow: 'Building what’s next',
   homeVentureTitle: 'Building.',
   homeExperienceEyebrow: 'Experience',
   homeExperienceTitle: 'Experience and background.',
-  homeCompaniesEyebrow: 'Track record',
   homeCompaniesTitle: 'Companies I have worked with.',
   companiesPending: 'Logo pending',
   allCases: 'All cases →',

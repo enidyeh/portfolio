@@ -35,9 +35,10 @@ export const ventures: Venture[] = [
     name: 'REVERIE SHOP',
     en: 'REVERIE SHOP',
     image: asset('venture-yixiang-shop.webp'),
-    oneLiner: 'To be filled: one-line positioning (what it sells, to whom, and how it relates to REVERIE).',
+    oneLiner: 'A cultural-creative online market.',
     status: 'In preparation',
-    tags: ['Commerce', 'Retail'],
+    badge: 'In preparation',
+    tags: ['Original products', 'Online market', 'Everyday goods'],
     role: 'To be filled: your role.',
     problem: 'To be filled: the specific problem for the target users.',
     opportunity: 'To be filled: the market opportunity and the evidence behind it.',
@@ -53,10 +54,10 @@ export const ventures: Venture[] = [
     name: 'UNSEEN',
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
-    oneLiner:
-      'A monthly city-exploration publication for young people in Shanghai: discovery, then events, markets and spaces, and finally your own identity record.',
-    status: 'Prototype / demo',
-    tags: ['Product design', 'Youth culture', 'Mobile'],
+    oneLiner: 'A culture platform where “young voices speak”.',
+    status: 'In preparation',
+    badge: 'In preparation',
+    tags: ['Cultural research', 'Interviews', 'Co-creation'],
     role: 'Product design and front-end build: information architecture, interaction design and a working prototype, all done myself.',
     problem:
       'Young people in Shanghai who want to genuinely experience the city still default to scrolling a feed. There is plenty of content, but few curated, editorially chosen ways in.',
@@ -84,7 +85,8 @@ export const ventures: Venture[] = [
     image: asset('venture-realmview.webp'),
     oneLiner:
       'A marketing service for 0→1 brands: what they need, services and pricing, ways to work together.',
-    status: 'Service site',
+    status: 'In preparation',
+    badge: 'In preparation',
     tags: ['Brand marketing', 'Creator partnerships', 'Editorial'],
     role: 'To be filled: your role in it.',
     problem: 'To be filled: which brands hit which specific problem.',
@@ -99,7 +101,7 @@ export const ventures: Venture[] = [
 ]
 
 export const dataRoom = {
-  text: 'Let’s create and explore together.',
+  text: 'Let’s explore and create together.',
 }
 
 export const ventureNote =

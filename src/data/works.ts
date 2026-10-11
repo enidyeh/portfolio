@@ -56,8 +56,8 @@ export const workTracks: {
   {
     id: 'commercial',
     no: '02',
-    en: 'Commercial Growth',
-    zh: '商业化与全球增长',
+    en: 'Global growth',
+    zh: '全球增长',
     items: ['品牌增长', '跨境商业化', '内容与创作者生态', '商业项目复盘'],
   },
 ]
@@ -103,7 +103,7 @@ export const works: WorkCase[] = [
     title: '与欧洲女装品牌一起入华创造生活方式',
     image: asset('work-soho-t.webp'),
     track: 'commercial',
-    tags: ['全球品牌增长', '市场进入策略', '品牌营销', '内容创作'],
+    tags: ['市场进入策略', '品牌营销', '内容创作'],
     year: '待填',
     role: '待填：你的角色',
     type: '全球品牌增长',

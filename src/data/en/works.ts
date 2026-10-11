@@ -27,8 +27,8 @@ export const workTracks: {
   {
     id: 'commercial',
     no: '02',
-    en: 'Commercial Growth',
-    zh: 'Commercial Growth',
+    en: 'Global growth',
+    zh: 'Global growth',
     items: ['Brand growth', 'Cross-border commercialisation', 'Content and creator ecosystems', 'Commercial post-mortems'],
   },
 ]
@@ -73,7 +73,7 @@ export const works: WorkCase[] = [
     title: 'Building a lifestyle in China with a European womenswear brand',
     image: asset('work-soho-t.webp'),
     track: 'commercial',
-    tags: ['Global brand growth', 'Market entry strategy', 'Brand marketing', 'Content creation'],
+    tags: ['Market entry strategy', 'Brand marketing', 'Content creation'],
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'Global brand growth',
