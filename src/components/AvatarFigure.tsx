@@ -17,11 +17,28 @@ import { asset } from '../lib/base'
  *
  * 纯装饰，对辅助技术隐藏。
  */
+/**
+ * 起播偏移（秒）。2026-10-12 按本人要求：人物视频整体「提前」0.5 秒起播 ——
+ * 也就是跳过开头那 0.5 秒，从 0.5s 处开始放，这样人物的动作和背景就对得上了。
+ * 要调方向或幅度，只改这个常数（设 0 就是原来的从 0 开始播）。
+ */
+const FIGURE_START_OFFSET = 0.5
+
 export default function AvatarFigure({ onEnded }: { onEnded?: () => void }) {
   const [alphaReady, setAlphaReady] = useState(useTransparentFigure)
   const alpha = useTransparentFigure && alphaReady
   const syncAlpha = (event: SyntheticEvent<HTMLVideoElement>) =>
     setAlphaReady(event.currentTarget.currentSrc.includes('hero-figure'))
+
+  /** 让播放头从 FIGURE_START_OFFSET 开始：起播时跳一次，循环回到开头时再跳一次 */
+  const keepOffset = (event: SyntheticEvent<HTMLVideoElement>) => {
+    const video = event.currentTarget
+    if (!FIGURE_START_OFFSET || video.paused) return
+    const { currentTime, duration } = video
+    if (duration && currentTime < FIGURE_START_OFFSET) {
+      video.currentTime = FIGURE_START_OFFSET
+    }
+  }
 
   return (
     <div className={alpha ? 'figure figure--alpha' : 'figure'}>
@@ -36,8 +53,13 @@ export default function AvatarFigure({ onEnded }: { onEnded?: () => void }) {
         playsInline
         preload="auto"
         aria-hidden="true"
-        onLoadedMetadata={syncAlpha}
+        onLoadedMetadata={(event) => {
+          syncAlpha(event)
+          keepOffset(event)
+        }}
         onLoadedData={syncAlpha}
+        onPlaying={keepOffset}
+        onTimeUpdate={keepOffset}
         onEnded={onEnded}
       >
         {useTransparentFigure ? (
@@ -45,7 +67,8 @@ export default function AvatarFigure({ onEnded }: { onEnded?: () => void }) {
             <source key={s.src} src={s.src} type={s.type} />
           ))
         ) : (
-          <source src="/avatar.mp4" type="video/mp4" />
+          /* ⚠️ 必须过 asset()：站点部署在 /portfolio/ 子路径下，写死 /avatar.mp4 会 404 */
+          <source src={asset('avatar.mp4')} type="video/mp4" />
         )}
       </video>
     </div>

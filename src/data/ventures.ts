@@ -38,9 +38,9 @@ export type Venture = {
 }
 
 export const ventureHead = {
-  eyebrow: '正在创造',
-  title: '创业项目、投资与合作。',
-  lede: '每个项目回答同样六个问题：问题、机会、方案、商业模式、验证进度、下一个里程碑。尚未验证的部分会明确标为假设，不包装成已有业绩。',
+  // 2026-10-12 按本人要求：删掉「正在创造」小标题，标题改为「我正在从0到1构建。」
+  title: '我正在从0到1构建。',
+  lede: '这里是我正在进行中的思考切片！聚焦青年文化与新消费语境，进行内容与社群的探索。',
 }
 
 export const ventures: Venture[] = [
@@ -114,10 +114,10 @@ export const ventures: Venture[] = [
     name: '域见 REALMVIEW',
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
-    oneLiner: '面向 0→1 品牌的营销服务：需要什么、服务与报价、合作方式。',
+    oneLiner: '让品牌跨域生长，让文化双向流动。',
     status: '筹备中',
     badge: '筹备中',
-    tags: ['品牌营销', '达人合作', '内容栏目'],
+    tags: ['品牌出海/入海', '文化策展', '全球营销资源'],
     role: '待填：你在其中的角色。',
     problem: '待填：哪类品牌遇到了什么具体问题。',
     opportunity: '待填：市场机会与判断依据。',

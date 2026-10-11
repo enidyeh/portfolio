@@ -5,9 +5,9 @@ import type { Venture } from '../ventures'
 import { asset } from '../../lib/base'
 
 export const ventureHead = {
-  eyebrow: 'Venture',
-  title: 'Ventures, investment and partnership.',
-  lede: 'Every project answers the same six questions: problem, opportunity, solution, business model, validation, next milestone. Anything not yet validated is labelled as an assumption rather than dressed up as a track record.',
+  // 2026-10-12 at the owner’s request: eyebrow removed, title reworded.
+  title: 'I’m building things from 0 to 1.',
+  lede: 'This is a slice of what I’m thinking about right now — youth culture and the new consumer context, explored through content and community.',
 }
 
 export const ventures: Venture[] = [
@@ -83,11 +83,10 @@ export const ventures: Venture[] = [
     name: 'REALMVIEW',
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
-    oneLiner:
-      'A marketing service for 0→1 brands: what they need, services and pricing, ways to work together.',
+    oneLiner: 'Let brands grow across borders, and let culture flow both ways.',
     status: 'In preparation',
     badge: 'In preparation',
-    tags: ['Brand marketing', 'Creator partnerships', 'Editorial'],
+    tags: ['Brand expansion in and out of China', 'Cultural curation', 'Global marketing resources'],
     role: 'To be filled: your role in it.',
     problem: 'To be filled: which brands hit which specific problem.',
     opportunity: 'To be filled: the market opportunity and the evidence behind it.',

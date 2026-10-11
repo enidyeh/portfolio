@@ -10,7 +10,6 @@ export default function AboutPage() {
     <>
       <header className="page-head">
         <div className="shell">
-          <p className="eyebrow">{c.aboutHead.eyebrow}</p>
           <h2 className="page-title">{c.aboutHead.title}</h2>
           <p className="page-lede">{c.aboutHead.lede}</p>
         </div>
@@ -44,7 +43,6 @@ export default function AboutPage() {
             {/* 简历：两份定制版本 */}
             <div className="doc-block" id="resume">
               <h2>{ui.blockResume}</h2>
-              <p>{ui.resumeLede}</p>
               <div className="resume-grid">
                 {resumes.map((r) => (
                   <div className="resume-card" key={r.label}>
@@ -56,9 +54,6 @@ export default function AboutPage() {
                   </div>
                 ))}
               </div>
-              <p className="section-lede" style={{ marginTop: 'var(--s-4)' }}>
-                <Pending>{ui.resumePending}</Pending>
-              </p>
             </div>
 
             <div className="doc-block">

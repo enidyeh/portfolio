@@ -5,11 +5,11 @@ export default function WorkPage() {
   const c = useContent()
   return (
     <>
-      <header className="page-head">
+      {/* 页面标题保留；「精选项目」小标题与下面那段说明 2026-10-12 按本人要求删掉，
+          也不再画分割线，正文直接从 01 开始（.page-head--flat） */}
+      <header className="page-head page-head--flat">
         <div className="shell">
-          <p className="eyebrow">{c.worksHead.eyebrow}</p>
           <h2 className="page-title">{c.worksHead.title}</h2>
-          <p className="page-lede">{c.worksHead.lede}</p>
         </div>
       </header>
       <section className="section">
@@ -22,11 +22,10 @@ export default function WorkPage() {
                   <span className="track-no">{track.no}</span>
                   <h2 className="track-title">{track.label}</h2>
                 </div>
-                <ul className="track-items">
+                {/* 一句说明，不用圆角标签（2026-10-12 按本人要求去掉框） */}
+                <ul className="track-notes">
                   {track.items.map((i) => (
-                    <li key={i} className="tag">
-                      {i}
-                    </li>
+                    <li key={i}>{i}</li>
                   ))}
                 </ul>
                 {/* 一个案例 → 整行一张 1×1 大卡；多个案例 → 2×2（见 .grid--cases） */}
@@ -44,9 +43,6 @@ export default function WorkPage() {
               </div>
             )
           })}
-          <p className="section-lede" style={{ marginTop: 'var(--s-6)' }}>
-            {c.worksNote}
-          </p>
         </div>
       </section>
     </>

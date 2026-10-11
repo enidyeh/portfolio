@@ -26,7 +26,24 @@
  */
 import { asset } from '../lib/base'
 
-export const useTransparentFigure = true
+/**
+ * 当前浏览器能不能真的播「HEVC with alpha」。
+ *
+ * ⚠️ 这一步很关键，别删：只有 Safari / AVFoundation 系解码器认 hvc1 的 alpha 层。
+ * Chrome、Edge、Firefox 会**照样把 .mov 装进 `<video>`**（因为 source 的 type 只写了
+ * `video/mp4`，容器层面通过），但解码时丢掉 alpha 通道 —— 透明区域那层近白的 RGB
+ * 就实打实地画出来了，也就是「画面里一块白底」。
+ *
+ * 所以：不支持时**主动不用** `hero-figure.mov`，退回白底 + multiply 的老素材
+ * （效果差一点，但不会是白色矩形）。
+ */
+function detectHevcAlpha(): boolean {
+  if (typeof document === 'undefined') return false
+  const probe = document.createElement('video')
+  return probe.canPlayType('video/mp4; codecs="hvc1"') !== ''
+}
+
+export const useTransparentFigure = detectHevcAlpha()
 
 /**
  * 透明底素材。浏览器按顺序取第一个「类型支持且能加载成功」的。

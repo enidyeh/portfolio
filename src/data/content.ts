@@ -153,7 +153,6 @@ export type Ui = {
   blockEducation: string
   blockContact: string
   methodLede: string
-  resumeLede: string
   resumeCta: string
   resumePending: string
   metaEmail: string
@@ -169,16 +168,15 @@ export type Content = {
   profile: ProfileView
   siteNote: string
   downloads: DownloadItem[]
-  aboutHead: { eyebrow: string; title: string; lede: string }
+  aboutHead: { title: string; lede: string }
   methodGroups: MethodGroup[]
   experience: TimelineItem[]
   education: TimelineItem[]
   aboutNote: string
-  worksHead: { eyebrow: string; title: string; lede: string }
+  worksHead: { title: string }
   workTracks: TrackView[]
   works: WorkCase[]
-  worksNote: string
-  ventureHead: { eyebrow: string; title: string; lede: string }
+  ventureHead: { title: string; lede: string }
   ventures: Venture[]
   dataRoom: { text: string }
   ventureNote: string
@@ -196,12 +194,12 @@ const uiZh: Ui = {
   navWork: '精选项目',
   navVenture: '正在创造',
   navAbout: '个人介绍',
-  navDownloads: '资料下载',
+  navDownloads: '获取简历',
   brandAria: 'ENID，回到首页',
   langSwitchAria: '切换到英文',
   langSwitchLabel: 'EN',
 
-  dlPanelAria: '资料下载',
+  dlPanelAria: '获取简历',
   dlGroup: { 简历: '简历', 项目资料: '项目资料' },
   dlPending: '待上传',
   dlDownload: '下载',
@@ -282,7 +280,6 @@ const uiZh: Ui = {
   blockEducation: '教育 / 交换',
   blockContact: '联系',
   methodLede: '把能力组织成方法，而不是罗列软件和关键词。',
-  resumeLede: '网站讲的是长期能力，简历则针对具体岗位。按投递方向选择对应的一份。',
   resumeCta: '下载 PDF ↓',
   resumePending: '待填：把两份简历 PDF 放进 public/',
   metaEmail: '邮箱',
@@ -300,12 +297,12 @@ const uiEn: Ui = {
   navWork: 'WORK',
   navVenture: 'BUILDING',
   navAbout: 'ABOUT',
-  navDownloads: 'DOWNLOADS',
+  navDownloads: 'RÉSUMÉ',
   brandAria: 'ENID — back to home',
   langSwitchAria: 'Switch to Chinese',
   langSwitchLabel: '中文',
 
-  dlPanelAria: 'Downloads',
+  dlPanelAria: 'Résumé',
   dlGroup: { 简历: 'Résumé', 项目资料: 'Materials' },
   dlPending: 'Pending upload',
   dlDownload: 'Download',
@@ -386,8 +383,6 @@ const uiEn: Ui = {
   blockEducation: 'Education',
   blockContact: 'Contact',
   methodLede: 'Capability organised as a method, not a list of software and keywords.',
-  resumeLede:
-    'The site is about long-term capability; a résumé targets a specific role. Pick the one that matches where you are applying.',
   resumeCta: 'Download PDF ↓',
   resumePending: 'To be filled: place both résumé PDFs in public/',
   metaEmail: 'Email',
@@ -427,7 +422,6 @@ const zh: Content = {
   worksHead: zhWorks.worksHead,
   workTracks: zhWorks.workTracks.map((t) => ({ id: t.id, no: t.no, label: t.zh, items: t.items })),
   works: zhWorks.works,
-  worksNote: zhWorks.worksNote,
   ventureHead: zhVentures.ventureHead,
   ventures: zhVentures.ventures,
   dataRoom: zhVentures.dataRoom,
@@ -467,7 +461,6 @@ const en: Content = {
   worksHead: enWorks.worksHead,
   workTracks: enWorks.workTracks.map((t) => ({ id: t.id, no: t.no, label: t.en, items: t.items })),
   works: enWorks.works,
-  worksNote: enWorks.worksNote,
   ventureHead: enVentures.ventureHead,
   ventures: enVentures.ventures,
   dataRoom: enVentures.dataRoom,

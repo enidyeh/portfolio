@@ -11,7 +11,6 @@ export default function VenturePage() {
     <>
       <header className="page-head">
         <div className="shell">
-          <p className="eyebrow">{c.ventureHead.eyebrow}</p>
           <h2 className="page-title">{c.ventureHead.title}</h2>
           <p className="page-lede">{c.ventureHead.lede}</p>
         </div>

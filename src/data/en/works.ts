@@ -5,9 +5,8 @@ import type { WorkCase, WorkTrackId } from '../works'
 import { asset } from '../../lib/base'
 
 export const worksHead = {
-  eyebrow: 'Selected Work',
+  // 2026-10-12 at the owner’s request: eyebrow and lede removed.
   title: 'Different cases that form one complete loop.',
-  lede: 'Commercial projects prove I can ship an idea; AI products prove I can design a solution; global growth proves I understand markets and commercialisation. Every case follows the same structure: problem, my role, key decisions and process, outcome, reflection.',
 }
 
 export const workTracks: {
@@ -22,14 +21,14 @@ export const workTracks: {
     no: '01',
     en: 'Product & AI',
     zh: 'Product & AI',
-    items: ['User problems and needs', 'Product solutions and prototypes', 'AI workflows', 'Validation and iteration'],
+    items: ['Deep research into user problems and needs, then product solutions and prototypes'],
   },
   {
     id: 'commercial',
     no: '02',
     en: 'Global growth',
     zh: 'Global growth',
-    items: ['Brand growth', 'Cross-border commercialisation', 'Content and creator ecosystems', 'Commercial post-mortems'],
+    items: ['Exploring growth through work with real commercial brands, and exploring cross-border commercial culture'],
   },
 ]
 
@@ -120,6 +119,3 @@ export const works: WorkCase[] = [
     pending: true,
   },
 ]
-
-export const worksNote =
-  'The case names come from the site owner. The mapping between cases and tracks (commercial / product & AI) is provisional; anything not supplied yet is left blank rather than invented. If there is no publishable cross-border client case, present it clearly as an independent research project — do not dress a simulation up as client results.'

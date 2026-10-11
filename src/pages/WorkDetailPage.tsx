@@ -87,10 +87,6 @@ export default function WorkDetailPage() {
                 <p>{work.reflection}</p>
               </div>
             ) : null}
-
-            <div className="doc-block">
-              <p className="section-lede">{c.worksNote}</p>
-            </div>
           </div>
         </div>
 
