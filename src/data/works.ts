@@ -114,6 +114,7 @@ export const works: WorkCase[] = [
   {
     slug: 'annakiki',
     title: '传统品牌通过跨境快闪进行形象重塑',
+    image: asset('work-annakiki.webp'),
     track: 'commercial',
     year: '待填',
     role: '待填：你的角色',

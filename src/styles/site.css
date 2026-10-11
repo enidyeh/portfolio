@@ -135,9 +135,9 @@ button, input, textarea { color: inherit; font: inherit; }
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-5); }
 
-/* 内页精简版 HERO：只留三个按钮，不要主标题 / 定位句 / 人物视频 / 提问框 */
-.hero--compact { padding: var(--s-6) 0; }
-.hero--compact .hero-grid { grid-template-columns: minmax(0, 1fr); }
+/* 内页原来的简化版 HERO（提问框 + 三个按钮 + 城市背景条）
+   2026-10-11 按用户要求整块移除：内页不再有这一条。
+   下面的 .hero 只服务首页。 */
 
 /* ---------- buttons ---------- */
 .btn {
@@ -204,7 +204,8 @@ button, input, textarea { color: inherit; font: inherit; }
   border-radius: var(--radius);
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
-a.card:hover { border-color: var(--rule); transform: translateY(-2px); }
+/* 鼠标指中 / 键盘选中时，灰边框换成信号色（桔红），跟主按钮同一个颜色 */
+a.card:hover, a.card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
 /* .card-top / .card-meta / .card-desc 现在只有「正在创造」的 VentureCard 在用：
    案例卡片（WorkCard）已按用户要求去掉灰字小标和一句话说明。 */
 .card-top { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
@@ -336,7 +337,7 @@ a.card:hover .card-go {
   padding: var(--s-4) 0;
   border-bottom: 1px solid var(--line);
 }
-.vrow:hover { border-bottom-color: var(--rule); }
+.vrow:hover { border-bottom-color: var(--accent); }
 .vrow-media {
   position: relative;
   aspect-ratio: 4 / 3;

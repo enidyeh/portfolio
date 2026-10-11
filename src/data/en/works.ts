@@ -86,6 +86,7 @@ export const works: WorkCase[] = [
   {
     slug: 'annakiki',
     title: 'A heritage brand rebuilding its image through cross-border pop-ups',
+    image: asset('work-annakiki.webp'),
     track: 'commercial',
     year: 'To be filled',
     role: 'To be filled: your role',

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
-import HeroBlock from '../components/HeroBlock'
 import VentureCard from '../components/VentureCard'
 
 export default function VenturePage() {
@@ -10,7 +9,6 @@ export default function VenturePage() {
   const { ui } = c
   return (
     <>
-      <HeroBlock variant="compact" />
       <header className="page-head">
         <div className="shell">
           <p className="eyebrow">{c.ventureHead.eyebrow}</p>

@@ -1,12 +1,10 @@
 import { useContent } from '../data/content'
-import HeroBlock from '../components/HeroBlock'
 import WorkCard from '../components/WorkCard'
 
 export default function WorkPage() {
   const c = useContent()
   return (
     <>
-      <HeroBlock variant="compact" />
       <header className="page-head">
         <div className="shell">
           <p className="eyebrow">{c.worksHead.eyebrow}</p>

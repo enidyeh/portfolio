@@ -1,5 +1,4 @@
 import { useContent } from '../data/content'
-import HeroBlock from '../components/HeroBlock'
 import Pending from '../components/Pending'
 
 export default function AboutPage() {
@@ -9,7 +8,6 @@ export default function AboutPage() {
 
   return (
     <>
-      <HeroBlock variant="compact" />
       <header className="page-head">
         <div className="shell">
           <p className="eyebrow">{c.aboutHead.eyebrow}</p>
