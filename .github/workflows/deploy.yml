@@ -1,0 +1,58 @@
+name: Deploy to GitHub Pages
+
+# 推送到 main 就构建并发布到 GitHub Pages：
+#   https://enidyeh.github.io/portfolio/
+# 站点挂在 /portfolio/ 子路径下，base 由 vite.config.ts 处理；
+# deep link（直接打开 /portfolio/work/xxx）靠 dist/404.html 回退到 index.html。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同时只跑一个发布；新的推送取消排队中的旧任务，但不动正在发布的那次
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # lint 不过就不发布 —— 免得把坏版本推上线
+      - name: Lint
+        run: npm run lint
+
+      # build = tsc -b && vite build，postbuild 会生成 dist/404.html
+      - name: Build
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,511 @@
+// 双语内容总装。
+//
+// 结构说明（方便逐条对照确认）：
+//   ./profile.ts  ./about.ts  ./works.ts  ./ventures.ts  ./avatar.ts   → 中文
+//   ./en/*.ts                                                          → 英文（一一对应）
+//   本文件只做三件事：① 把两种语言装成同一个形状；② 存放界面文案（按钮、标题、占位提示…）；
+//   ③ 提供 `useContent()`。
+//
+// 新增文案时：先看它是不是「界面文案」——是就加到下面的 ui，不是就加到对应的数据文件里（中英两边一起改）。
+
+import type { Lang } from '../i18n/lang'
+import { useLang } from '../i18n/locale'
+
+import type { DownloadItem, SocialLink } from './profile'
+import * as zhProfile from './profile'
+import * as enProfile from './en/profile'
+
+import type { TimelineItem } from './about'
+import * as zhAbout from './about'
+import * as enAbout from './en/about'
+
+import type { WorkCase, WorkTrackId } from './works'
+import * as zhWorks from './works'
+import * as enWorks from './en/works'
+
+import type { Venture } from './ventures'
+import * as zhVentures from './ventures'
+import * as enVentures from './en/ventures'
+
+import type { AvatarAnswer, AvatarReply } from './avatar'
+import * as zhAvatar from './avatar'
+import * as enAvatar from './en/avatar'
+
+import type { Company } from './companies'
+import * as zhCompanies from './companies'
+import * as enCompanies from './en/companies'
+
+/** 人物信息，两种语言共用同一形状。 */
+export type ProfileView = {
+  wordmark: string
+  name: string
+  /** 中文姓名（待填） */
+  nameZh: string
+  /** 页头副标 */
+  brandSub: string
+  /** 定位标签（页脚、About 侧栏） */
+  role: string
+  /** 首屏主标题 */
+  headline: string
+  /** 主标题下的一句补充（中文为空 —— 中文主标题本身就是那句话） */
+  lede: string
+  /** 简介里的定位句（页脚、About） */
+  statement: string
+  location: string
+  intro: string[]
+  pillars: string[]
+  email: string
+  wechat: string
+  social: SocialLink[]
+}
+
+export type MethodGroup = { label: string; items: string[] }
+export type TrackView = { id: WorkTrackId; no: string; label: string; items: string[] }
+
+/** 界面文案（按钮、区块标题、占位提示、无障碍标签…）。 */
+export type Ui = {
+  pageTitle: string
+  navAria: string
+  navWork: string
+  navVenture: string
+  navAbout: string
+  navDownloads: string
+  brandAria: string
+  langSwitchAria: string
+  langSwitchLabel: string
+
+  dlPanelAria: string
+  dlGroup: Record<'简历' | '项目资料', string>
+  dlPending: string
+  dlDownload: string
+  dlRequest: string
+  dlRequestAria: string
+
+  footContact: string
+  footSocial: string
+  footProjects: string
+  footResume: string
+  footAbout: string
+  wechatPrefix: string
+  pendingEmail: string
+  pendingWechat: string
+  pendingSocial: string
+
+  ctaWork: string
+  ctaVenture: string
+  ctaResume: string
+
+  sectionWork: string
+  homeVentureEyebrow: string
+  homeVentureTitle: string
+  homeExperienceEyebrow: string
+  homeExperienceTitle: string
+  homeCompaniesEyebrow: string
+  homeCompaniesTitle: string
+  companiesPending: string
+  allCases: string
+  allVentures: string
+  aboutMore: string
+  featuredCta: string
+  phImage: string
+  phVideo: string
+  tlExperience: string
+  tlEducation: string
+
+  turnUser: string
+  turnAvatar: string
+  turnReset: string
+  turnInputAria: string
+  turnSendAria: string
+  turnPrevAria: string
+  turnNextAria: string
+
+  dockOpenAria: string
+  dockCollapseAria: string
+  dockPanelAria: string
+  dockTitle: string
+  dockCloseAria: string
+
+  caseEyebrow: string
+  caseNext: string
+  casePrev: string
+  caseNavAria: string
+  blockProblem: string
+  blockRole: string
+  blockDecisions: string
+  blockOutcome: string
+  blockReflection: string
+
+  ventureEyebrow: string
+  blockSix: string
+  blockCollab: string
+  blockLive: string
+  qaKeys: string[]
+  demoLabel: string
+  openSite: string
+  contactCta: string
+
+  blockIntro: string
+  blockResume: string
+  blockCapability: string
+  blockExperience: string
+  blockEducation: string
+  blockContact: string
+  methodLede: string
+  resumeLede: string
+  resumeCta: string
+  resumePending: string
+  metaEmail: string
+  metaWechat: string
+  metaSocial: string
+
+  nfTitle: string
+  nfLede: string
+  nfCta: string
+}
+
+export type Content = {
+  profile: ProfileView
+  siteNote: string
+  downloads: DownloadItem[]
+  aboutHead: { eyebrow: string; title: string; lede: string }
+  methodGroups: MethodGroup[]
+  experience: TimelineItem[]
+  education: TimelineItem[]
+  aboutNote: string
+  worksHead: { eyebrow: string; title: string; lede: string }
+  workTracks: TrackView[]
+  works: WorkCase[]
+  worksNote: string
+  ventureHead: { eyebrow: string; title: string; lede: string }
+  ventures: Venture[]
+  dataRoom: { eyebrow: string; title: string; body: string }
+  ventureNote: string
+  companies: Company[]
+  companiesNote: string
+  avatarIntro: { question: string; placeholder: string; note: string; suggestions: string[] }
+  avatarQA: AvatarAnswer[]
+  avatarFallback: AvatarReply
+  ui: Ui
+}
+
+const uiZh: Ui = {
+  pageTitle: 'ENID — 产品 · 增长 · 青年文化',
+  navAria: '主导航',
+  navWork: '精选项目',
+  navVenture: '正在创造',
+  navAbout: '个人介绍',
+  navDownloads: '资料下载',
+  brandAria: 'ENID，回到首页',
+  langSwitchAria: '切换到英文',
+  langSwitchLabel: 'EN',
+
+  dlPanelAria: '资料下载',
+  dlGroup: { 简历: '简历', 项目资料: '项目资料' },
+  dlPending: '待上传',
+  dlDownload: '下载',
+  dlRequest: '按需索取',
+  dlRequestAria: '按需索取，前往联系方式',
+
+  footContact: '联系',
+  footSocial: '社交',
+  footProjects: '正在创造',
+  footResume: '简历',
+  footAbout: '个人介绍',
+  wechatPrefix: '微信 · ',
+  pendingEmail: '待填：邮箱',
+  pendingWechat: '待填：微信',
+  pendingSocial: '待填：社交账号',
+
+  ctaWork: '精选项目 →',
+  ctaVenture: '正在创造 →',
+  ctaResume: '下载简历',
+
+  sectionWork: '精选项目',
+  homeVentureEyebrow: '正在创造',
+  homeVentureTitle: '创业项目、合作与联系。',
+  homeExperienceEyebrow: '经历',
+  homeExperienceTitle: '经历与背景。',
+  homeCompaniesEyebrow: '履历',
+  homeCompaniesTitle: '我工作过的公司。',
+  companiesPending: '待上传 logo',
+  allCases: '全部案例 →',
+  allVentures: '全部项目 →',
+  aboutMore: '个人介绍 →',
+  featuredCta: '查看案例 →',
+  phImage: '图占位',
+  phVideo: '视频占位（待替换）',
+  tlExperience: '经历',
+  tlEducation: '教育 / 交换',
+
+  turnUser: '你',
+  turnAvatar: 'ENID · 分身',
+  turnReset: '清空对话',
+  turnInputAria: '向数字分身提问',
+  turnSendAria: '发送问题',
+  turnPrevAria: '看上一组问答',
+  turnNextAria: '看下一组问答',
+
+  dockOpenAria: '打开数字分身对话',
+  dockCollapseAria: '收起数字分身对话',
+  dockPanelAria: '数字分身对话',
+  dockTitle: 'ENID · 数字分身',
+  dockCloseAria: '关闭对话',
+
+  caseEyebrow: '精选案例',
+  caseNext: '下一个案例',
+  casePrev: '上一个案例',
+  caseNavAria: '案例导航',
+  blockProblem: '背景与问题',
+  blockRole: '我的角色',
+  blockDecisions: '关键决策与过程',
+  blockOutcome: '结果',
+  blockReflection: '反思',
+
+  ventureEyebrow: '正在创造',
+  blockSix: '六个问题',
+  blockCollab: '合作需求',
+  blockLive: '线上',
+  qaKeys: ['问题', '机会', '方案', '商业模式', '验证', '下一步'],
+  demoLabel: '演示',
+  openSite: '打开站点 ↗',
+  contactCta: '联系方式 →',
+
+  blockIntro: '简介',
+  blockResume: '简历',
+  blockCapability: '能力',
+  blockExperience: '经历',
+  blockEducation: '教育 / 交换',
+  blockContact: '联系',
+  methodLede: '把能力组织成方法，而不是罗列软件和关键词。',
+  resumeLede: '网站讲的是长期能力，简历则针对具体岗位。按投递方向选择对应的一份。',
+  resumeCta: '下载 PDF ↓',
+  resumePending: '待填：把两份简历 PDF 放进 public/',
+  metaEmail: '邮箱',
+  metaWechat: '微信',
+  metaSocial: '社交',
+
+  nfTitle: '这里没有内容。',
+  nfLede: '你要找的页面不存在，或者链接已经失效。',
+  nfCta: '回到首页 →',
+}
+
+const uiEn: Ui = {
+  pageTitle: 'ENID — Product · Growth · Youth Culture',
+  navAria: 'Main navigation',
+  navWork: 'WORK',
+  navVenture: 'BUILDING',
+  navAbout: 'ABOUT',
+  navDownloads: 'DOWNLOADS',
+  brandAria: 'ENID — back to home',
+  langSwitchAria: 'Switch to Chinese',
+  langSwitchLabel: '中文',
+
+  dlPanelAria: 'Downloads',
+  dlGroup: { 简历: 'Résumé', 项目资料: 'Materials' },
+  dlPending: 'Pending upload',
+  dlDownload: 'Download',
+  dlRequest: 'On request',
+  dlRequestAria: 'Available on request — go to contact details',
+
+  footContact: 'Contact',
+  footSocial: 'Social',
+  footProjects: 'Projects',
+  footResume: 'Résumé',
+  footAbout: 'About',
+  wechatPrefix: 'WeChat · ',
+  pendingEmail: 'To be filled: email',
+  pendingWechat: 'To be filled: WeChat',
+  pendingSocial: 'To be filled: social accounts',
+
+  ctaWork: 'Selected work →',
+  ctaVenture: 'What I’m building →',
+  ctaResume: 'Download résumé',
+
+  sectionWork: 'Selected Projects',
+  homeVentureEyebrow: 'Building what’s next',
+  homeVentureTitle: 'Ventures, partnership and contact.',
+  homeExperienceEyebrow: 'Experience',
+  homeExperienceTitle: 'Experience and background.',
+  homeCompaniesEyebrow: 'Track record',
+  homeCompaniesTitle: 'Companies I have worked with.',
+  companiesPending: 'Logo pending',
+  allCases: 'All cases →',
+  allVentures: 'All projects →',
+  aboutMore: 'About →',
+  featuredCta: 'View case →',
+  phImage: 'Image placeholder',
+  phVideo: 'Video placeholder (to be replaced)',
+  tlExperience: 'Experience',
+  tlEducation: 'Education',
+
+  turnUser: 'You',
+  turnAvatar: 'ENID · avatar',
+  turnReset: 'Clear chat',
+  turnInputAria: 'Ask the AI avatar a question',
+  turnSendAria: 'Send question',
+  turnPrevAria: 'See the previous question',
+  turnNextAria: 'See the next question',
+
+  dockOpenAria: 'Open the AI avatar chat',
+  dockCollapseAria: 'Collapse the AI avatar chat',
+  dockPanelAria: 'AI avatar chat',
+  dockTitle: 'ENID · AI avatar',
+  dockCloseAria: 'Close chat',
+
+  caseEyebrow: 'Selected Work',
+  caseNext: 'Next case',
+  casePrev: 'Previous case',
+  caseNavAria: 'Case navigation',
+  blockProblem: 'Context and problem',
+  blockRole: 'My role',
+  blockDecisions: 'Key decisions and process',
+  blockOutcome: 'Outcome',
+  blockReflection: 'Reflection',
+
+  ventureEyebrow: 'Venture',
+  blockSix: 'Six questions',
+  blockCollab: 'Partnership',
+  blockLive: 'Live',
+  qaKeys: ['Problem', 'Opportunity', 'Solution', 'Business Model', 'Validation', 'Next Milestone'],
+  demoLabel: 'Demo',
+  openSite: 'Open site ↗',
+  contactCta: 'Get in touch →',
+
+  blockIntro: 'Introduction',
+  blockResume: 'Résumé',
+  blockCapability: 'Capability',
+  blockExperience: 'Experience',
+  blockEducation: 'Education',
+  blockContact: 'Contact',
+  methodLede: 'Capability organised as a method, not a list of software and keywords.',
+  resumeLede:
+    'The site is about long-term capability; a résumé targets a specific role. Pick the one that matches where you are applying.',
+  resumeCta: 'Download PDF ↓',
+  resumePending: 'To be filled: place both résumé PDFs in public/',
+  metaEmail: 'Email',
+  metaWechat: 'WeChat',
+  metaSocial: 'Social',
+
+  nfTitle: 'Nothing here.',
+  nfLede: 'This page does not exist, or the link has expired.',
+  nfCta: 'Back home →',
+}
+
+const zh: Content = {
+  profile: {
+    wordmark: zhProfile.profile.wordmark,
+    name: zhProfile.profile.name,
+    nameZh: zhProfile.profile.nameZh,
+    brandSub: zhProfile.profile.roleZh,
+    role: zhProfile.profile.roleZh,
+    // 中英首屏结构一致：短主标题 + 一句定位副句
+    headline: zhProfile.profile.headlineZh,
+    lede: zhProfile.profile.statement,
+    statement: zhProfile.profile.statement,
+    location: zhProfile.profile.location,
+    intro: zhProfile.profile.intro,
+    pillars: zhProfile.profile.pillars,
+    email: zhProfile.profile.email,
+    wechat: zhProfile.profile.wechat,
+    social: zhProfile.profile.social,
+  },
+  siteNote: zhProfile.siteNote,
+  downloads: zhProfile.downloads,
+  aboutHead: zhAbout.aboutHead,
+  methodGroups: zhAbout.method.map((m) => ({ label: m.zh, items: m.items })),
+  experience: zhAbout.experience,
+  education: zhAbout.education,
+  aboutNote: zhAbout.aboutNote,
+  worksHead: zhWorks.worksHead,
+  workTracks: zhWorks.workTracks.map((t) => ({ id: t.id, no: t.no, label: t.zh, items: t.items })),
+  works: zhWorks.works,
+  worksNote: zhWorks.worksNote,
+  ventureHead: zhVentures.ventureHead,
+  ventures: zhVentures.ventures,
+  dataRoom: zhVentures.dataRoom,
+  ventureNote: zhVentures.ventureNote,
+  companies: zhCompanies.companies,
+  companiesNote: zhCompanies.companiesNote,
+  avatarIntro: zhAvatar.avatarIntro,
+  avatarQA: zhAvatar.avatarQA,
+  avatarFallback: zhAvatar.avatarFallback,
+  ui: uiZh,
+}
+
+const en: Content = {
+  profile: {
+    wordmark: enProfile.profile.wordmark,
+    name: enProfile.profile.name,
+    nameZh: enProfile.profile.nameZh,
+    brandSub: enProfile.profile.brandSub,
+    role: enProfile.profile.roleEn,
+    headline: enProfile.profile.headlineEn,
+    lede: enProfile.profile.statement,
+    statement: enProfile.profile.statement,
+    location: enProfile.profile.location,
+    intro: enProfile.profile.intro,
+    pillars: enProfile.profile.pillars,
+    email: enProfile.profile.email,
+    wechat: enProfile.profile.wechat,
+    social: enProfile.profile.social,
+  },
+  siteNote: enProfile.siteNote,
+  downloads: enProfile.downloads,
+  aboutHead: enAbout.aboutHead,
+  methodGroups: enAbout.method.map((m) => ({ label: m.en, items: m.items })),
+  experience: enAbout.experience,
+  education: enAbout.education,
+  aboutNote: enAbout.aboutNote,
+  worksHead: enWorks.worksHead,
+  workTracks: enWorks.workTracks.map((t) => ({ id: t.id, no: t.no, label: t.en, items: t.items })),
+  works: enWorks.works,
+  worksNote: enWorks.worksNote,
+  ventureHead: enVentures.ventureHead,
+  ventures: enVentures.ventures,
+  dataRoom: enVentures.dataRoom,
+  ventureNote: enVentures.ventureNote,
+  companies: enCompanies.companies,
+  companiesNote: enCompanies.companiesNote,
+  avatarIntro: enAvatar.avatarIntro,
+  avatarQA: enAvatar.avatarQA,
+  avatarFallback: enAvatar.avatarFallback,
+  ui: uiEn,
+}
+
+/**
+ * 「待填」两个字不展示，但**占位内容的格式全部保留**。
+ *
+ * 数据层写 `待填：你的角色`，页面上显示 `你的角色` —— 段落、列表、元信息的位置和结构都不变，
+ * 只是前缀连冒号一起摘掉。所以这里做的是「去掉前缀」，不是「清空整段」：
+ * 清空会让整块内容消失，版式就跟填好之前对不上了。
+ *
+ * 例外：数据里如果只写了 `待填` 两个字（没有后半句），摘完会是空字符串，
+ * 这时组件会跳过它（见 WorkCard / HomePage / WorkDetailPage 里的空值判断）。
+ */
+const PLACEHOLDER = /^\s*(待填|To be filled)\s*[：:]?\s*/
+
+function stripPlaceholders<T>(value: T): T {
+  if (typeof value === 'string') {
+    return value.replace(PLACEHOLDER, '') as T
+  }
+  if (Array.isArray(value)) {
+    return value.map(stripPlaceholders) as T
+  }
+  if (value && typeof value === 'object') {
+    const out: Record<string, unknown> = {}
+    for (const [key, item] of Object.entries(value)) out[key] = stripPlaceholders(item)
+    return out as T
+  }
+  return value
+}
+
+export const contentByLang: Record<Lang, Content> = {
+  zh: stripPlaceholders(zh),
+  en: stripPlaceholders(en),
+}
+
+/** 取当前语言的全部文案。 */
+export function useContent(): Content {
+  return contentByLang[useLang()]
+}

@@ -1,0 +1,82 @@
+/* aboutenid — 独立设计系统
+   方向：档案 / 索引式排版。冷调纸底、墨色字、细线，一个暖红作为唯一信号色。
+   本文件不引用、不继承任何其它项目（暗盒 / 域见）的令牌。 */
+
+:root {
+  color-scheme: light;
+
+  /* 纸与墨 */
+  --paper: #f6f6f4;
+  --paper-a: rgba(246, 246, 244, 0.86);
+  --paper-raised: #ffffff;
+  --paper-sunken: #eceae5;
+  --ink: #14161a;
+  --ink-soft: #4b5057;
+  --ink-faint: #8b9099;
+
+  /* 线：--line 用于分隔，--rule 用于需要压住的边框 */
+  --line: rgba(20, 22, 26, 0.14);
+  --rule: rgba(20, 22, 26, 0.34);
+
+  /* 信号色：取自人物视频里「红发」的亮调（用户在参考图里指定的颜色） */
+  --accent: #c55441;
+  /* 深一档，只用于 hover / active */
+  --accent-deep: #9c4030;
+  --accent-wash: #f7e6e4;
+
+  /* 字体族：英文等宽，中文黑体 */
+  --en: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  --zh-sans: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --mono: var(--en);
+  --sans: var(--zh-sans);
+
+  /* 字号：只允许五级（各级自带行高） */
+  --f-display: 52px;
+  --f-display-leading: 1.06;
+  --f-title: 27px;
+  --f-title-leading: 1.28;
+  --f-sub: 18px;
+  --f-sub-leading: 1.6;
+  --f-body: 15px;
+  --f-body-leading: 1.8;
+  --f-meta: 11px;
+  --f-meta-leading: 1.6;
+
+  /* 间距 */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 20px;
+  --s-5: 32px;
+  --s-6: 56px;
+  --s-7: 88px;
+
+  /* 布局 */
+  --shell: 1080px;
+  --gutter: 48px;
+  --header-h: 62px;
+  --radius: 10px;
+
+  /* 首屏背景：public/hero-bg.webp（1920×1020，已裁掉右下角水印）。
+     换图时把新文件覆盖同名文件即可；文件不存在时背景就是空的，不会报错。
+     历史：hero-room.jpg（房间照）、透明底城市插画 —— 都换过。
+     ⚠️ 这里不写死 url()：站点部署在 GitHub Pages 的 /portfolio/ 子路径下，
+        写死的 '/hero-bg.webp' 会 404。路径由 HeroBlock 用 lib/base.ts 的
+        asset() 拼好后写到 --hero-image 上，.hero 再消费这个变量。 */
+  --hero-image: none;
+}
+
+@media (max-width: 760px) {
+  :root {
+    --f-display: 33px;
+    --f-title: 22px;
+    --f-sub: 16.5px;
+    --f-body: 14.5px;
+    /* 手机端最小字号统一为 13px（= 页头「精选项目」的字号），不再往下探 */
+    --f-meta: 13px;
+    --gutter: 20px;
+    --s-6: 40px;
+    --s-7: 56px;
+    --header-h: 56px;
+  }
+}
