@@ -21,8 +21,8 @@ export default function VentureCard({
   layout?: 'card' | 'row'
 }) {
   const href = useHref()
-  // 英文站上 name 与 en 是同一个词（如 REVERIE），重复显示没意义
-  const showEn = venture.en !== venture.name
+  // 中文名里已经带了英文名（如「异想集 REVERIE」）就不再重复挂一个英文标签
+  const showEn = !venture.name.includes(venture.en)
 
   if (layout === 'row') {
     return (
