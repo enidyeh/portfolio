@@ -31,13 +31,13 @@ export default function VentureCard({
           <VentureMedia venture={venture} />
         </span>
         <span className="vrow-body">
+          {/* 读序：项目名 → 一句话定位 → 状态。状态做成圆角小胶囊，跟卡片上的标签同一套观感 */}
           <span className="vrow-title">{venture.name}</span>
-          {/* 状态做成圆角小胶囊，跟卡片上的标签同一套观感 */}
+          <span className="vrow-desc">{venture.oneLiner}</span>
           <span className="vrow-meta">
             {showEn ? <span className="vrow-en">{venture.en}</span> : null}
             <span className="status">{venture.status}</span>
           </span>
-          <span className="vrow-desc">{venture.oneLiner}</span>
         </span>
         <span className="vrow-arrow" aria-hidden="true">
           →

@@ -862,10 +862,11 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .nav { gap: var(--s-2); }
   .vrow { grid-template-columns: 112px minmax(0, 1fr); }
   .vrow-arrow { display: none; }
-  /* 案例网格（.grid--cases）在窄屏也保持 2 列，不塌成一条长列。
-     列窄了就把间距收紧一点，给卡片腾出宽度。 */
+  /* 案例网格：窄屏改成一条竖列，卡片一个接一个（用户 2026-10-12 要求；
+     原来是硬撑 2 列，手机上每张卡只有半个屏宽）。 */
   .grid--2 { grid-template-columns: minmax(0, 1fr); }
-  .grid--cases { gap: var(--s-3); }
+  .grid--cases,
+  .grid--cases--single { grid-template-columns: minmax(0, 1fr); }
 
   /* 窄屏没有 48px 的侧边留白，两侧悬浮箭头会压到正文：
      换成正文末尾的翻页条，一上一下两行。 */
@@ -896,8 +897,10 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   }
   .case-pager-title { font-size: 15px; line-height: 1.5; }
   .resume-grid { grid-template-columns: minmax(0, 1fr); }
-  /* 合作卡片：窄屏改成上下两行，按钮不会把句子挤成一条条 */
-  .callout--mini { flex-direction: column; align-items: flex-start; }
+  /* 合作卡片：窄屏也保持一行 —— 左边一句话、右边按钮（用户 2026-10-12 要求） */
+  .callout--mini { padding: var(--s-4); }
+  .callout--mini .callout-title { flex: 0 1 auto; min-width: 0; }
+  .callout--mini .btn { flex: none; }
   .grid--venture { grid-template-columns: minmax(0, 1fr); }
   .doc-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
   .doc-aside { position: static; flex-direction: row; flex-wrap: wrap; gap: var(--s-3); }
