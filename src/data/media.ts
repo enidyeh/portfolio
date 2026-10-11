@@ -27,23 +27,19 @@
 import { asset } from '../lib/base'
 
 /**
- * 当前浏览器能不能真的播「HEVC with alpha」。
+ * ⚠️ 保持 true。2026-10-12 我一度改成用 `canPlayType('video/mp4; codecs="hvc1"')`
+ * 探测「能不能播 HEVC with alpha」，**这是错的，已回退**：Chrome 对这个 codec 串返回
+ * `""`（声称拒绝），但实测它照样能解码 hvc1 并**正确渲染 alpha**
+ * （Chromium 150 实测：`.figure--alpha` + `mix-blend-mode: normal`，
+ * 人物干净地叠在涂鸦墙上，没有白块）。按那个探测走会让 Chrome 白白降级成
+ * multiply 的糊版，属于自己改坏自己。
  *
- * ⚠️ 这一步很关键，别删：只有 Safari / AVFoundation 系解码器认 hvc1 的 alpha 层。
- * Chrome、Edge、Firefox 会**照样把 .mov 装进 `<video>`**（因为 source 的 type 只写了
- * `video/mp4`，容器层面通过），但解码时丢掉 alpha 通道 —— 透明区域那层近白的 RGB
- * 就实打实地画出来了，也就是「画面里一块白底」。
- *
- * 所以：不支持时**主动不用** `hero-figure.mov`，退回白底 + multiply 的老素材
- * （效果差一点，但不会是白色矩形）。
+ * 真正的问题（用户 2026-10-12 反馈「画面还是有白底」）八成在**别的浏览器/设备**上
+ * —— 例如不支持 HEVC alpha 的平台会把透明区的近白 RGB 当不透明画出来。
+ * 要修的应该是「给不支持 HEVC alpha 的环境换一份带 alpha 的 VP9/WebM（或 WebP）」，
+ * 而不是关掉 alpha 通道。
  */
-function detectHevcAlpha(): boolean {
-  if (typeof document === 'undefined') return false
-  const probe = document.createElement('video')
-  return probe.canPlayType('video/mp4; codecs="hvc1"') !== ''
-}
-
-export const useTransparentFigure = detectHevcAlpha()
+export const useTransparentFigure = true
 
 /**
  * 透明底素材。浏览器按顺序取第一个「类型支持且能加载成功」的。
