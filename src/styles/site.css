@@ -319,7 +319,9 @@ a.card:hover .card-go {
 /* ---------- case document（案例详情：本人给的 PDF 逐页） ---------- */
 .case-doc { margin-top: var(--s-6); }
 .case-doc-title { margin-bottom: var(--s-4); font: 600 var(--f-sub) / 1.4 var(--sans); }
-.case-doc-pages { display: flex; flex-direction: column; gap: var(--s-4); }
+.case-doc-pages { display: flex; flex-direction: column; gap: var(--s-5); }
+.case-doc-item { display: flex; flex-direction: column; gap: 6px; }
+.case-doc-num { font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
 /* 每页都是 16:9 幻灯片 —— 写死比例，懒加载时页面不会来回跳 */
 .case-doc-page {
   display: block;
@@ -330,6 +332,8 @@ a.card:hover .card-go {
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
+/* 创业项目卡片：图片是小红书的入口，用 4:3 横屏（本人 2026-10-12 要求） */
+.card--venture .card-media { aspect-ratio: 4 / 3; }
 
 /* 页头下面的文字链接（如小红书主页） */
 .page-links { margin-top: var(--s-4); }
@@ -434,8 +438,28 @@ a.card:hover .card-go {
   color: var(--ink-faint);
 }
 .vrow-desc { margin-top: 6px; max-width: 62ch; font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
-/* 「正在创造」卡片 / 首页行里的小标签：浅红底 + 红字 */
-.tag--accent { color: var(--accent); background: var(--accent-wash); border-color: transparent; }
+/* 「正在创造」卡片 / 首页行里的小标签：浅橘红底 + 红字（与红色按钮同一色系） */
+.tag--accent { color: var(--accent); background: var(--accent-tint); border-color: transparent; }
+/* 创业项目卡片：整张卡不是链接，图是小红书的入口、标题才进详情 */
+.card--venture { transition: border-color 0.15s ease, transform 0.15s ease; }
+.card--venture:hover,
+.card--venture:focus-within { border-color: var(--accent); transform: translateY(-2px); }
+.card--venture .card-title-link { color: inherit; }
+.card--venture .card-title-link:hover { color: var(--accent); }
+.card-media-link { position: relative; display: block; height: 100%; }
+/* 图片右下角的角标：点图 = 进小红书主页 */
+.xhs-badge {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 5px 11px;
+  font: var(--f-meta) / 1 var(--mono);
+  letter-spacing: 0.08em;
+  color: var(--paper);
+  background: rgba(20, 22, 26, 0.62);
+  border-radius: 999px;
+}
+.card-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-3); margin-top: auto; }
 .vrow-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .vrow-arrow { font: var(--f-meta) / 1 var(--mono); color: var(--ink-faint); }
 
@@ -498,6 +522,33 @@ a.card:hover .card-go {
 /* 个人介绍页：去掉左侧那一栏，所有内容左对齐（2026-10-12 按本人要求） */
 .doc-grid--single { grid-template-columns: minmax(0, 1fr); }
 .doc-grid--single .doc-body { max-width: none; }
+/* 个人介绍页的双栏区块：左简介 / 右照片，左联系 / 右下载 */
+.about-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: start;
+}
+.photo-ph {
+  display: grid;
+  place-items: center;
+  gap: var(--s-3);
+  aspect-ratio: 4 / 3;
+  padding: var(--s-4);
+  background: var(--paper-sunken);
+  border: 1px dashed var(--rule);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.photo-ph-dots { display: flex; gap: 6px; }
+.photo-ph-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rule); }
+.photo-ph-dot.is-on { background: var(--accent); }
+/* 长形下载按钮：一行一个，占满右栏 */
+.dl-buttons { display: flex; flex-direction: column; gap: var(--s-3); }
+.btn--wide { width: 100%; justify-content: space-between; padding: 16px 18px; }
+@media (max-width: 760px) {
+  .about-pair { grid-template-columns: minmax(0, 1fr); }
+}
 .doc-aside {
   position: sticky;
   top: calc(var(--header-h) + 20px);
@@ -612,6 +663,16 @@ a.card:hover .card-go {
   background: var(--paper);
 }
 .tl-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+/* 「工作 / 学习」两条时间线的标签 */
+.tl-track-label {
+  margin-bottom: var(--s-2);
+  font: var(--f-meta) / 1 var(--mono);
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+}
+/* 学习那条：圆点与竖线走黑灰，不用红色 */
+.tl-track--study .tl-dot { border-color: var(--ink-soft); }
+.tl-track--study .tl-row::before { background: var(--rule); }
 .tl-go {
   font: var(--f-meta) / 1 var(--mono);
   color: var(--ink-faint);

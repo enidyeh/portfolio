@@ -80,7 +80,7 @@ export const experience: TimelineItem[] = [
     ],
   },
   {
-    when: '2023.10 — 2024.10',
+    when: '2023.10 — 2024.2',
     role: 'Commercial design intern',
     org: 'Xiaohongshu (Xingyin Information Technology)',
     details: [

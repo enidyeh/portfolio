@@ -8,6 +8,8 @@ import type { Company } from '../companies'
 
 /** Companies I have worked with. Logos supplied by the site owner. */
 export const companies: Company[] = [
+  { name: 'POP MART', logo: asset('logos/popmart.png') },
+  { name: 'Xiaohongshu', logo: asset('logos/xiaohongshu.png') },
   { name: 'komiko', logo: asset('logos/komiko.png') },
   { name: 'opencreator', logo: asset('logos/opencreator.png') },
   { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
@@ -15,6 +17,4 @@ export const companies: Company[] = [
   { name: 'TUBE', logo: asset('logos/tube.png') },
   { name: "Momo's Workshop", logo: asset('logos/momos-workshop.png') },
   { name: 'DEPTRUM', logo: asset('logos/deptrum.png') },
-  { name: 'POP MART', logo: asset('logos/popmart.png') },
-  { name: 'Xiaohongshu', logo: asset('logos/xiaohongshu.png') },
 ]

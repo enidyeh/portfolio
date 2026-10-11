@@ -40,8 +40,9 @@ export const works: WorkCase[] = [
     track: 'product',
     // Full project document: 33 pages, supplied by the owner
     docPages: { dir: 'phygital-base', count: 33 },
+    tags: ['Product design', 'Project management', 'UI design', 'Product strategy'],
     year: 'To be filled',
-    role: 'To be filled: your role',
+    role: '',
     type: 'Product design and project management',
     summary:
       'PHYGITAL BASE is a phygital intelligent-product design proposal that works across digital hardware, software design, contextual social features and digital identity — exploring a new approach to digital asset management in the era of data sovereignty.',
@@ -111,19 +112,24 @@ export const works: WorkCase[] = [
   },
   {
     slug: 'momos-workshop',
-    title: 'A beauty e-commerce brand expanding into overseas markets',
+    // 2026-10-12: content taken from the portfolio page the owner supplied
+    title: 'Cross-border brand planning · Momo’s Workshop',
     image: asset('work-momos-workshop.webp'),
     track: 'commercial',
-    tags: ['Cross-border e-commerce', 'Europe & US markets', 'Content marketing', 'KOL/KOC'],
-    year: 'To be filled',
-    role: 'To be filled: your role',
-    type: 'To be filled: project type',
-    summary: 'To be filled: one sentence on the target market, the brand and the growth goal.',
-    problem: 'To be filled: target market, platform rules and user needs, and why existing options fall short.',
-    contribution: ['To be filled: brand positioning, content or creator strategy, channel choices, conversion path.'],
-    decisions: ['To be filled: one key trade-off, and which metric you used to judge it.'],
-    outcome: ['To be filled: verifiable results; if they cannot be published, label it clearly as an independent research project.'],
-    reflection: 'To be filled: what you would change if you started again.',
-    pending: true,
+    docPages: { dir: 'momos-workshop', count: 1 },
+    tags: ['Cross-border e-commerce', 'Europe & US markets', 'Content marketing', 'Creator marketing'],
+    year: '2025',
+    role: 'Overseas PR intern (brand “Momo’s Workshop”)',
+    type: 'A Chinese e-commerce brand going global',
+    summary:
+      'Working with the brand’s categories and market goals, joining the cold start of the beauty brand “Momo’s Workshop” in European, American and Asian markets, and providing creative support for its content promotion.',
+    problem:
+      'Momo’s Workshop is a Chinese beauty-tool brand that built strong word of mouth and sales at home on the back of its hero products. With domestic competition intensifying and brand momentum rising, it wanted to open up global markets systematically while keeping its “professional, precise, delightful” DNA — targeting the US, South-East Asia and Europe, and using localisation plus digital marketing to build professional recognition and brand influence among international beauty fans from zero.',
+    contribution: ['Social media presence', 'DTC store', 'Creator partnerships', 'E-commerce pages'],
+    decisions: [
+      'Approach: start from the brand’s tone and build a brand-led marketing strategy, find strong content creators to work with, build the DTC site and e-commerce platform, and complete the full cross-border chain.',
+    ],
+    outcome: [''],
+    reflection: '',
   },
 ]

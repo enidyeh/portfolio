@@ -30,6 +30,8 @@ export const ventures: Venture[] = [
     validation: 'To be filled: what interviews, payments, repeat purchases or partnerships show; what is still an assumption.',
     nextMilestone: 'To be filled: what the next phase needs to validate, and what resources or partners it needs.',
     collab: 'To be filled: open partnership directions (brand sponsorship / collaborations / venues / content).',
+    // Partnership handbook (28 pages), same source as the Chinese page
+    docPages: { dir: 'reverie', count: 28 },
     pending: true,
   },
   {

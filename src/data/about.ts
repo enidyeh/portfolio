@@ -90,7 +90,7 @@ export const experience: TimelineItem[] = [
     ],
   },
   {
-    when: '2023.10 — 2024.10',
+    when: '2023.10 — 2024.2',
     role: '商业化设计实习生',
     org: '小红书 · 行吟信息科技（上海）有限公司',
     details: [

@@ -1,10 +1,9 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { useContent } from '../data/content'
+import { asset } from '../lib/base'
 
 /**
- * 微信：点一下就地弹出二维码。
- * 二维码图片本人还没提供，先用虚线占位框 —— 拿到图之后把 `.wx-qr` 里的占位文字
- * 换成 <img className="wx-img" src={asset('wechat-qr.png')} alt="" /> 即可。
+ * 微信：点一下就地弹出二维码（`public/wechat-qr.png`，本人 2026-10-12 提供）。
  * 点面板外面或按 Esc 收起。
  */
 export default function WeChatReveal({ handle, prefix }: { handle: string; prefix?: string }) {
@@ -43,9 +42,8 @@ export default function WeChatReveal({ handle, prefix }: { handle: string; prefi
       </button>
       {open ? (
         <span className="wx-pop" id={id}>
-          <span className="wx-qr">
-            <span>{c.ui.wxQrPending}</span>
-          </span>
+          {/* 二维码：public/wechat-qr.png（本人 2026-10-12 提供） */}
+          <img className="wx-img" src={asset('wechat-qr.png')} alt="" width={640} height={640} />
           <span className="wx-note">{c.ui.wxQrNote}</span>
         </span>
       ) : null}

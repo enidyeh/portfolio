@@ -166,11 +166,18 @@ export type Ui = {
   wxQrNote: string
   /** 案例详情页底部的完整项目文件（PDF 逐页）标题 */
   caseDocTitle: string
+  /** 创业项目图上那个跳小红书的角标 */
+  xhsCardLabel: string
   /** 个人介绍页：个人魅力 / 招聘视频两块 */
   aboutCharm: string
   aboutHiring: string
   aboutCharmNote: string
   aboutHiringNote: string
+  /** 个人介绍页：简介右边的照片轮播（占位） */
+  aboutPhotos: string
+  aboutPhotosPending: string
+  /** 「下载简历 / 下载作品集」按钮的前缀 */
+  downloadPrefix: string
   metaEmail: string
   metaWechat: string
   metaSocial: string
@@ -252,8 +259,8 @@ const uiZh: Ui = {
   featuredCta: '查看案例 →',
   phImage: '图占位',
   phVideo: '视频占位（待替换）',
-  tlExperience: '经历',
-  tlEducation: '教育 / 交换',
+  tlExperience: '工作',
+  tlEducation: '学习',
 
   turnUser: '你',
   turnAvatar: 'ENID · 分身',
@@ -302,11 +309,16 @@ const uiZh: Ui = {
   emailPrefix: '邮箱 · ',
   wxQrPending: '待填：微信二维码',
   wxQrNote: '扫码加微信',
-  caseDocTitle: '完整项目文件',
+  caseDocTitle: '项目方案',
+  /** 创业项目图上那个跳小红书的角标 */
+  xhsCardLabel: '小红书主页 ↗',
   aboutCharm: '个人魅力',
   aboutHiring: '招聘 / 视频',
   aboutCharmNote: '待填：工作之外的东西——爱好、长期在折腾的事、能一起玩起来的场景。',
   aboutHiringNote: '待填：自我介绍视频，或招聘入口。',
+  aboutPhotos: '照片',
+  aboutPhotosPending: '待填：照片轮播',
+  downloadPrefix: '下载',
   metaEmail: '邮箱',
   metaWechat: '微信',
   metaSocial: '社交',
@@ -365,8 +377,8 @@ const uiEn: Ui = {
   featuredCta: 'View case →',
   phImage: 'Image placeholder',
   phVideo: 'Video placeholder (to be replaced)',
-  tlExperience: 'Experience',
-  tlEducation: 'Education',
+  tlExperience: 'Work',
+  tlEducation: 'Study',
 
   turnUser: 'You',
   turnAvatar: 'ENID · avatar',
@@ -415,11 +427,15 @@ const uiEn: Ui = {
   emailPrefix: 'Email · ',
   wxQrPending: 'To be filled: WeChat QR code',
   wxQrNote: 'Scan to add on WeChat',
-  caseDocTitle: 'Full project document',
+  caseDocTitle: 'Project plan',
+  xhsCardLabel: 'Xiaohongshu ↗',
   aboutCharm: 'Beyond work',
   aboutHiring: 'Hiring / video',
   aboutCharmNote: 'To be filled: life outside work — interests, long-running side projects, things we could build together.',
   aboutHiringNote: 'To be filled: an intro video, or a hiring entry point.',
+  aboutPhotos: 'Photos',
+  aboutPhotosPending: 'To be filled: photo carousel',
+  downloadPrefix: 'Download ',
   metaEmail: 'Email',
   metaWechat: 'WeChat',
   metaSocial: 'Social',

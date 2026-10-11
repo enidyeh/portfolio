@@ -23,6 +23,8 @@
   /* 深一档，只用于 hover / active */
   --accent-deep: #9c4030;
   --accent-wash: #f7e6e4;
+  /* 小标签专用：比 wash 更偏橘的浅橘红（用户 2026-10-12 要求与红色按钮同色系） */
+  --accent-tint: #fbe3d6;
 
   /* 字体族：英文等宽，中文黑体 */
   --en: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;

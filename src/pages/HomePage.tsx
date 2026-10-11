@@ -89,9 +89,10 @@ export default function HomePage() {
               {ui.allVentures}
             </Link>
           </div>
-          <div className="vlist">
+          {/* 2026-10-12 按本人要求：首页「正在创造」也排成 2×2 卡片（与列表页同一套卡片） */}
+          <div className="grid grid--venture">
             {c.ventures.map((v) => (
-              <VentureCard key={v.slug} venture={v} layout="row" />
+              <VentureCard key={v.slug} venture={v} />
             ))}
           </div>
           {/* 合作：一句话 + 右边的联系方式按钮（与 /venture 页同一张） */}
@@ -171,10 +172,28 @@ export default function HomePage() {
             </Link>
           </div>
           {/* 时间线：鼠标移到任意一行都会浮起，点一下进「个人介绍」的简历区块看详细版。
-              经历与教育合成一条时间线（两侧的「经历 / 教育」小字 2026-10-12 按本人要求去掉）。 */}
+              2026-10-12 按本人要求：工作与学习分成两条，学习那条的圆点用黑灰（不加红）。 */}
           <div className="tl-track" style={{ marginTop: 'var(--s-5)' }}>
-            {[...c.experience, ...c.education].map((item, i) => (
-              <Link className="tl-row" to={href('/about#resume')} key={`${item.org}-${i}`}>
+            <p className="tl-track-label">{ui.tlExperience}</p>
+            {c.experience.map((item, i) => (
+              <Link className="tl-row" to={href('/about#resume')} key={`work-${i}`}>
+                <span className="tl-dot" aria-hidden="true" />
+                <span className="tl-when">{item.when}</span>
+                <span className="tl-main">
+                  {item.org ? <span className="tl-org">{item.org}</span> : null}
+                  <span className="tl-role">{item.role}</span>
+                </span>
+                <span className="tl-go" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+
+          <div className="tl-track tl-track--study" style={{ marginTop: 'var(--s-5)' }}>
+            <p className="tl-track-label">{ui.tlEducation}</p>
+            {c.education.map((item, i) => (
+              <Link className="tl-row" to={href('/about#resume')} key={`study-${i}`}>
                 <span className="tl-dot" aria-hidden="true" />
                 <span className="tl-when">{item.when}</span>
                 <span className="tl-main">

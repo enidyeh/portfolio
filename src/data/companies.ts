@@ -20,6 +20,9 @@ export type Company = {
 
 /** 我工作过的公司（logo 由本人提供；顺序 2026-10-12 按本人指定重排）。 */
 export const companies: Company[] = [
+  // 顺序由本人指定：泡泡玛特、小红书放第一第二
+  { name: 'POP MART', logo: asset('logos/popmart.png') },
+  { name: '小红书', logo: asset('logos/xiaohongshu.png') },
   { name: 'komiko', logo: asset('logos/komiko.png') },
   { name: 'opencreator', logo: asset('logos/opencreator.png') },
   { name: 'Ontimeshow', logo: asset('logos/ontimeshow.png') },
@@ -27,6 +30,4 @@ export const companies: Company[] = [
   { name: 'TUBE', logo: asset('logos/tube.png') },
   { name: "Momo's Workshop 毛吉吉", logo: asset('logos/momos-workshop.png') },
   { name: '光鉴科技 DEPTRUM', logo: asset('logos/deptrum.png') },
-  { name: 'POP MART', logo: asset('logos/popmart.png') },
-  { name: '小红书', logo: asset('logos/xiaohongshu.png') },
 ]

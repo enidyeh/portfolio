@@ -62,31 +62,53 @@ export default function VentureCard({
               {ui.followCta}
             </a>
           ) : null}
-          <span className="vrow-arrow" aria-hidden="true">
-            →
-          </span>
         </span>
       </div>
     )
   }
 
+  // card：首页与列表页的 2×2 卡片。
+  // 2026-10-12 按本人要求：图片本身就是「小红书主页」的卡片式入口（点图跳小红书），
+  // 标题/文案仍然进项目详情；右上角不再是箭头，而是圆角红色的「关注」按钮。
   return (
-    <Link className="card" to={href(`/venture/${venture.slug}`)}>
-      {/* 列表页卡片用 16:9（与精选项目子页面一致）；首页那一行保持方形（.vrow-media） */}
+    <div className="card card--venture">
       <span className="card-media">
-        <VentureMedia venture={venture} />
+        {venture.xhs ? (
+          <a
+            className="card-media-link"
+            href={venture.xhs}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`${venture.name} ${ui.xhsCardLabel}`}
+          >
+            <VentureMedia venture={venture} />
+            <span className="xhs-badge">{ui.xhsCardLabel}</span>
+          </a>
+        ) : (
+          <VentureMedia venture={venture} />
+        )}
       </span>
-      <h3 className="card-title">{venture.name}</h3>
+      <h3 className="card-title">
+        <Link className="card-title-link" to={href(`/venture/${venture.slug}`)}>
+          {venture.name}
+        </Link>
+      </h3>
       {showEn ? <span className="card-meta">{venture.en}</span> : null}
       <p className="card-desc">{venture.oneLiner}</p>
-      {/* 小标签统一用浅红底 + 红字，和首页「正在创造」那一行同一套观感 */}
-      <div className="card-tags">
-        {venture.tags.map((t) => (
-          <span key={t} className="tag tag--accent">
-            {t}
-          </span>
-        ))}
+      <div className="card-foot">
+        <div className="card-tags">
+          {venture.tags.map((t) => (
+            <span key={t} className="tag tag--accent">
+              {t}
+            </span>
+          ))}
+        </div>
+        {venture.xhs ? (
+          <a className="follow-btn" href={venture.xhs} target="_blank" rel="noreferrer">
+            {ui.followCta}
+          </a>
+        ) : null}
       </div>
-    </Link>
+    </div>
   )
 }

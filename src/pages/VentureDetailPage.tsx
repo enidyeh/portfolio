@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
+import { asset } from '../lib/base'
 import NotFoundPage from './NotFoundPage'
 
 export default function VentureDetailPage() {
@@ -15,6 +16,12 @@ export default function VentureDetailPage() {
   const venture = c.ventures[index]
   const prev = c.ventures[(index - 1 + c.ventures.length) % c.ventures.length]
   const next = c.ventures[(index + 1) % c.ventures.length]
+  /** 合作手册 / 项目方案（本人提供的 PDF 逐页图片，16:9） */
+  const docPages = venture.docPages
+    ? Array.from({ length: venture.docPages.count }, (_, i) =>
+        asset(`case-pages/${venture.docPages!.dir}/${String(i + 1).padStart(2, '0')}.webp`),
+      )
+    : []
 
   const answers = [
     venture.problem,
@@ -100,6 +107,23 @@ export default function VentureDetailPage() {
             </div>
           </div>
         </div>
+
+        {/* 合作需求之后：完整合作手册（2026-10-12 按本人要求加在异想集详情页） */}
+        {docPages.length ? (
+          <section className="shell case-doc">
+            <h2 className="case-doc-title">{ui.caseDocTitle}</h2>
+            <div className="case-doc-pages">
+              {docPages.map((src, i) => (
+                <div className="case-doc-item" key={src}>
+                  <span className="case-doc-num">
+                    {String(i + 1).padStart(2, '0')} / {docPages.length}
+                  </span>
+                  <img className="case-doc-page" src={src} alt="" loading="lazy" decoding="async" />
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         {/* 窄屏的翻页条（宽屏走下面的悬浮箭头），与精选案例详情页同一套 */}
         <div className="shell">

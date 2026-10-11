@@ -31,6 +31,11 @@ export type Venture = {
   nextMilestone: string
   /** 合作需求 */
   collab: string
+  /**
+   * 项目方案 / 合作手册：把本人给的 PDF 逐页转成图片
+   * （`public/case-pages/<dir>/NN.webp`），附在详情页正文后面。
+   */
+  docPages?: { dir: string; count: number }
   /** 线上地址（当前为本地演示地址，上线后替换） */
   liveUrl?: string
   liveNote?: string
@@ -65,6 +70,8 @@ export const ventures: Venture[] = [
     validation: '待填：有哪些访谈、付费、复购或合作证据；哪些仍是假设。',
     nextMilestone: '待填：下一阶段需要验证什么，需要哪些资源或合作。',
     collab: '待填：开放的合作方向（品牌招商 / 联名 / 场地 / 内容）。',
+    // 合作需求之后附上「异想集｜游园惊梦 合作手册」（28 页）
+    docPages: { dir: 'reverie', count: 28 },
     pending: true,
   },
   {
