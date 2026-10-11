@@ -584,8 +584,8 @@ a.card:hover .card-go {
 .hero-statement {
   margin: var(--s-4) 0 0;
   max-width: 44ch;
-  /* 2026-10-12 按本人要求：字号缩小一倍（27px → 13.5px 一档） */
-  font: 600 13.5px / 1.8 var(--sans);
+  /* 2026-10-12 按本人要求连续缩了两次：27px → 13.5px → 12px */
+  font: 600 12px / 1.9 var(--sans);
   letter-spacing: 0.01em;
   color: var(--ink-soft);
 }
@@ -976,6 +976,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 @media (max-width: 760px) {
   .nav-en { display: none; }
   .nav { gap: var(--s-2); }
+  /* 首屏定位句桌面端缩到 12px；手机端守住「最小字号 13px」这条线 */
+  .hero-statement { font-size: 13px; }
   .vrow { grid-template-columns: 112px minmax(0, 1fr); }
   .vrow-arrow { display: none; }
   /* 状态文案偏长时（如 REVERIE 那串）要能折行，否则整页会横向溢出、出现横向滚动条 */

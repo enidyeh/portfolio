@@ -67,9 +67,10 @@ export default function VentureCard({
       <h3 className="card-title">{venture.name}</h3>
       {showEn ? <span className="card-meta">{venture.en}</span> : null}
       <p className="card-desc">{venture.oneLiner}</p>
+      {/* 小标签统一用浅红底 + 红字，和首页「正在创造」那一行同一套观感 */}
       <div className="card-tags">
         {venture.tags.map((t) => (
-          <span key={t} className="tag">
+          <span key={t} className="tag tag--accent">
             {t}
           </span>
         ))}
