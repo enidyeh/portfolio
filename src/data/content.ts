@@ -288,7 +288,7 @@ const uiZh: Ui = {
   dockCloseAria: '关闭对话',
 
   caseEyebrow: '精选案例',
-  backCta: '返回上级',
+  backCta: '返回',
   caseNext: '下一个案例',
   casePrev: '上一个案例',
   caseNavAria: '案例导航',

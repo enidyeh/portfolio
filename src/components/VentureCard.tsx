@@ -10,7 +10,15 @@ function VentureMedia({ venture }: { venture: Venture }) {
   return (
     <>
       {venture.image ? (
-        <img className="work-media" src={venture.image} alt="" loading="lazy" decoding="async" />
+        <img
+          className="work-media"
+          src={venture.image}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          /* 个别项目单独指定裁剪位置（见 data/ventures.ts 的 imagePos） */
+          style={venture.imagePos ? { objectPosition: venture.imagePos } : undefined}
+        />
       ) : (
         <span className="ph">{c.ui.phImage}</span>
       )}

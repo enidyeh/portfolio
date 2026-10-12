@@ -39,6 +39,8 @@ export const ventures: Venture[] = [
     name: 'REVERIE SHOP',
     en: 'REVERIE SHOP',
     image: asset('venture-yixiang-shop.webp'),
+    // Same crop as the Chinese page: show the REVERIE signage in full.
+    imagePos: '50% 0%',
     oneLiner: 'A cultural-creative online market.',
     status: 'In preparation',
     badge: 'In preparation',

@@ -357,7 +357,8 @@ a.card:hover .card-go {
 /* 创业项目卡片：图片是小红书的入口，用 4:3 横屏（本人 2026-10-12 要求）
    2026-10-12 第二轮：本人说卡片太大 → 配图改成 16:9，文字三行行距收紧 */
 .card--venture { gap: var(--s-2); }
-.card--venture .card-media { aspect-ratio: 16 / 9; }
+/* 2026-10-12 按本人要求：配图与下面标题之间多留一点空（原先紧贴，只有 8px 的卡片间距） */
+.card--venture .card-media { aspect-ratio: 16 / 9; margin-bottom: var(--s-3); }
 /* 2026-10-12 按本人要求：卡片不动，只把裁剪位置往下挪一截，
    让画面里的主体落在正中间（源图是 800×800 方图，16:9 会裁掉上下各一半左右）。 */
 .card--venture .card-media .work-media { object-position: 50% 35%; }

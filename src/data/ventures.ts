@@ -32,6 +32,11 @@ export type Venture = {
   /** 合作需求 */
   collab: string
   /**
+   * 配图在卡片里的裁剪位置（inline style 的 object-position）。
+   * 不填就用 CSS 默认值 50% 35%；个别图需要单独调时在这里覆盖。
+   */
+  imagePos?: string
+  /**
    * 项目方案 / 合作手册：把本人给的 PDF 逐页转成图片
    * （`public/case-pages/<dir>/NN.webp`），附在详情页正文后面。
    */
@@ -79,6 +84,8 @@ export const ventures: Venture[] = [
     name: '异想商店 REVERIE SHOP',
     en: 'REVERIE SHOP',
     image: asset('venture-yixiang-shop.webp'),
+    // 2026-10-12 按本人要求：这张图再往下移，把上方「REVERIE」招牌完整露出来
+    imagePos: '50% 0%',
     oneLiner: '文化创意型线上集市。',
     status: '筹备中',
     badge: '筹备中',
