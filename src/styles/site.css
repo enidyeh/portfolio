@@ -708,9 +708,6 @@ a.card:hover .card-go {
 .doc-list li { display: flex; gap: 10px; color: var(--ink-soft); line-height: 1.75; }
 .doc-list li::before { content: '—'; flex: none; color: var(--ink-faint); }
 
-/* 案例正文顶部的信息行（项目名称 / 项目类型 / 项目主题 …）2026-10-12 按本人要求新增 */
-.doc-facts { display: flex; flex-direction: column; gap: 10px; }
-.doc-facts .meta-val { color: var(--ink); }
 /* 正文里的 **强调** 片段：用户文案用它标要点前缀，用墨色加重 */
 .doc-block strong { color: var(--ink); font-weight: 600; }
 

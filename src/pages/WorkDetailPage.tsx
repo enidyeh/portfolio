@@ -68,19 +68,6 @@ export default function WorkDetailPage() {
           </aside>
 
           <div className="doc-body">
-            {/* 2026-10-12 按本人要求：把「项目名称 / 项目类型 / 项目主题」这类信息行
-                加在「背景与问题」上面 */}
-            {work.facts?.length ? (
-              <div className="doc-facts">
-                {work.facts.map((f) => (
-                  <div className="meta-row" key={f.label}>
-                    <span className="meta-key">{f.label}</span>
-                    <span className="meta-val">{f.value}</span>
-                  </div>
-                ))}
-              </div>
-            ) : null}
-
             {work.problem ? (
               <div className="doc-block">
                 <h2>{ui.blockProblem}</h2>
