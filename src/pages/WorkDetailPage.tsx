@@ -34,14 +34,6 @@ export default function WorkDetailPage() {
           {/* 2026-10-12 按本人要求：删掉「精选案例 · 项目类型」那一行小字 */}
           <h1 className="page-title">{work.title}</h1>
           <p className="page-lede">{work.summary}</p>
-          {/* 2026-10-12 按本人要求：附件（如毕业论文）改成实色大按钮，放在荣誉标签上面 */}
-          {work.attachment ? (
-            <p className="page-attach">
-              <a className="btn btn--primary btn--lg" href={work.attachment.url} download>
-                {work.attachment.label} ↓
-              </a>
-            </p>
-          ) : null}
           {/* 荣誉标签：校级优秀毕设 / 专业Top3 这类（数据在 data/works.ts 的 awards） */}
           {work.awards?.length ? (
             <ul className="page-awards">
@@ -64,6 +56,15 @@ export default function WorkDetailPage() {
             {work.year ? <span>{work.year}</span> : null}
             {work.role ? <span>{work.role}</span> : null}
             {work.type ? <span>{work.type}</span> : null}
+            {/* 2026-10-12 按本人要求：附件（如毕业论文）放在左栏「产品设计与项目管理」
+                下面，沿用实色大按钮的款式（原来在页头荣誉标签上面） */}
+            {work.attachment ? (
+              <p className="doc-attach">
+                <a className="btn btn--primary btn--lg" href={work.attachment.url} download>
+                  {work.attachment.label} ↓
+                </a>
+              </p>
+            ) : null}
           </aside>
 
           <div className="doc-body">

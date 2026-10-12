@@ -584,10 +584,12 @@ a.card:hover .card-go {
   color: var(--ink-soft);
 }
 
-/* 详情页页头里的下载按钮（如毕业论文）：实色、比常规按钮大一号
-   （2026-10-12 按本人要求：放在荣誉标签上面） */
-.page-attach { margin: var(--s-4) 0 0; }
-.btn--lg { padding: 15px 28px; font-size: 14px; }
+/* 案例详情页左栏的一份附件（如毕业论文）：放在「产品设计与项目管理」下面。
+   2026-10-12 按本人要求：按钮款式沿用页头那颗实色大按钮，只是换了位置。 */
+.doc-attach { margin-top: var(--s-4); }
+.doc-attach .btn { width: 100%; justify-content: center; }
+/* 左栏只有 170px，横向内边距比页头那版收一点，避免文字换行 */
+.btn--lg { padding: 15px 20px; font-size: 14px; }
 
 /* ---------- detail document ---------- */
 .doc { padding: var(--s-6) 0; }
@@ -1364,6 +1366,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .case-doc-pages { gap: var(--s-3); }
   .doc-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
   .doc-aside { position: static; flex-direction: row; flex-wrap: wrap; gap: var(--s-3); }
+  /* 手机上左栏变成一行：附件按钮单独占一行，落在「产品设计与项目管理」下面 */
+  .doc-aside .doc-attach { flex: 1 1 100%; margin-top: 0; }
   .logo-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .logo-img { height: 34px; }
   .logo-item { margin-right: var(--s-5); }

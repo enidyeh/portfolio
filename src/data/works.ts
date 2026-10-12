@@ -87,7 +87,7 @@ export const works: WorkCase[] = [
     docPages: { dir: 'phygital-base', count: 32 },
     // 2026-10-12 按本人要求：详情页标题下加这两个荣誉标签
     awards: ['校级优秀毕设', '专业Top3'],
-    // 2026-10-12 按本人要求：毕业论文的下载入口放在本页视频下面，只留一颗按钮
+    // 2026-10-12 按本人要求：毕业论文的下载入口放在左栏「产品设计与项目管理」下面
     attachment: { label: '下载研究论文', url: asset('thesis.pdf') },
     tags: ['产品设计', '项目管理', 'ui设计', '产品策略'],
     year: '待填',
