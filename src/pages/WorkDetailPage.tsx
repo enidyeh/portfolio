@@ -51,17 +51,11 @@ export default function WorkDetailPage() {
         <div className="shell doc-media">
           <WorkMedia work={work} fallback={ui.phImage} />
         </div>
-        {/* 2026-10-12 按本人要求：附件（如毕业论文）放在视频 / 配图下面 */}
+        {/* 2026-10-12 按本人要求：附件（如毕业论文）放在视频 / 配图下面，只留一颗按钮 */}
         {work.attachment ? (
           <div className="shell doc-attach">
-            <span className="doc-attach-text">
-              <span className="doc-attach-label">{work.attachment.label}</span>
-              {work.attachment.note ? (
-                <span className="doc-attach-note">{work.attachment.note}</span>
-              ) : null}
-            </span>
             <a className="btn btn--soft" href={work.attachment.url} download>
-              {ui.dlDownload} ↓
+              {work.attachment.label} ↓
             </a>
           </div>
         ) : null}

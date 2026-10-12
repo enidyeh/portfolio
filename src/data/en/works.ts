@@ -43,12 +43,8 @@ export const works: WorkCase[] = [
     docPages: { dir: 'phygital-base', count: 32 },
     // Award badges shown under the case title
     awards: ['Outstanding graduation project (university level)', 'Top 3 in major'],
-    // Thesis download, placed under the video on this page
-    attachment: {
-      label: 'Thesis',
-      note: 'Intelligent product design for digital-physical experiences in the era of data sovereignty (full undergraduate thesis)',
-      url: asset('thesis.pdf'),
-    },
+    // Thesis download, placed under the video on this page (button only)
+    attachment: { label: 'Download thesis', url: asset('thesis.pdf') },
     tags: ['Product design', 'Project management', 'UI design', 'Product strategy'],
     year: 'To be filled',
     role: '',

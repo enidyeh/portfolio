@@ -31,9 +31,10 @@ export type WorkCase = {
   video?: { src: string; poster: string }
   /**
    * 媒体（视频 / 配图）下方的一份附件下载入口。
-   * 2026-10-12 按本人要求：毕业论文从「获取简历」浮窗移到案例详情页，放在视频下面。
+   * 2026-10-12 按本人要求：毕业论文从「获取简历」浮窗移到案例详情页，放在视频下面；
+   * 2026-10-12 第二轮：不要「标题 + 说明 + 按钮」三行，只留一颗按钮（label 即按钮文字）。
    */
-  attachment?: { label: string; note?: string; url: string }
+  attachment?: { label: string; url: string }
   /** true 表示内容尚未提供，界面会显示待填提示 */
   pending?: boolean
   /** true 表示占据首页「大展示」位，不再出现在下方三列卡片里 */
@@ -86,12 +87,8 @@ export const works: WorkCase[] = [
     docPages: { dir: 'phygital-base', count: 32 },
     // 2026-10-12 按本人要求：详情页标题下加这两个荣誉标签
     awards: ['校级优秀毕设', '专业Top3'],
-    // 2026-10-12 按本人要求：毕业论文的下载入口放在本页视频下面
-    attachment: {
-      label: '毕业论文',
-      note: '数据主权时代的虚实融合智能产品设计研究（本科毕业论文全文）',
-      url: asset('thesis.pdf'),
-    },
+    // 2026-10-12 按本人要求：毕业论文的下载入口放在本页视频下面，只留一颗按钮
+    attachment: { label: '下载研究论文', url: asset('thesis.pdf') },
     tags: ['产品设计', '项目管理', 'ui设计', '产品策略'],
     year: '待填',
     // 2026-10-12 按本人要求：aside 里的「你的角色」删掉
