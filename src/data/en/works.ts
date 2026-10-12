@@ -61,7 +61,7 @@ export const works: WorkCase[] = [
     track: 'commercial',
     // Full project document: 51 pages, supplied by the owner
     docPages: { dir: 'common-ground', count: 51 },
-    tags: ['Cross-context culture', 'Commercial growth', 'Brand partner', 'Event planning'],
+    tags: ['Cross-context culture', 'Global growth', 'Brand partner', 'Event planning'],
     year: 'To be filled',
     role: 'To be filled: your role',
     type: 'AI product',

@@ -354,8 +354,19 @@ a.card:hover .card-go {
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
-/* 创业项目卡片：图片是小红书的入口，用 4:3 横屏（本人 2026-10-12 要求） */
-.card--venture .card-media { aspect-ratio: 4 / 3; }
+/* 创业项目卡片：图片是小红书的入口，用 4:3 横屏（本人 2026-10-12 要求）
+   2026-10-12 第二轮：本人说卡片太大 → 配图改成 16:9，文字三行行距收紧 */
+.card--venture { gap: var(--s-2); }
+.card--venture .card-media { aspect-ratio: 16 / 9; }
+.card--venture .card-title { line-height: 1.3; }
+.card--venture .card-meta { line-height: 1.2; }
+.card--venture .card-desc { font-size: 13.5px; line-height: 1.5; }
+.card--venture .card-tags { gap: 5px; }
+/* 「正在创造」子页面：卡片区不画下边框，底部那张合作卡片也不带边框，
+   这样「欢迎一起探讨、创造。」上面就不会有一条分割线（2026-10-12 本人要求） */
+.section--no-rule { border-bottom: 0; }
+.section--callout { padding-block: 0; border-bottom: 0; }
+.section--callout .callout { margin-top: 0; }
 
 /* 页头下面的文字链接（如小红书主页） */
 .page-links { margin-top: var(--s-4); }
@@ -731,7 +742,7 @@ a.card:hover .card-go {
 .tl-left { display: flex; flex-direction: column; gap: 5px; }
 .tl-org { font: 700 14px / 1.5 var(--sans); color: var(--ink); }
 .tl-role { font-size: 13px; line-height: 1.6; color: var(--ink); }
-.tl-when { font: var(--f-meta) / 1.5 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); }
+.tl-when { font: var(--f-meta) / 1.5 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); white-space: nowrap; }
 .tl-right { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
 .tl-desc { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
 .tl-details { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -1255,7 +1266,7 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .logo-img { height: 34px; }
   .logo-item { margin-right: var(--s-5); }
   .tl-item, .skill-group, .qa-item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
-  .tl-row { grid-template-columns: 96px minmax(0, 1fr) auto; gap: var(--s-3); padding-left: var(--s-4); }
+  .tl-row { grid-template-columns: max-content minmax(0, 1fr) auto; gap: var(--s-3); padding-left: var(--s-4); }
   .meta-row { grid-template-columns: 80px minmax(0, 1fr); }
 }
 @media (max-width: 520px) {

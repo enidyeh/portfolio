@@ -17,7 +17,9 @@ export default function VenturePage() {
         </div>
       </header>
 
-      <section className="section">
+      {/* 卡片区：2026-10-12 按本人要求，这一段不再画下边框
+          —— 否则会正好落在下面合作卡片的上面，看起来像一条多余的线 */}
+      <section className="section section--no-rule">
         <div className="shell">
             {/* 四个项目排 2×2（原为三列，加进第四个后会变成 3+1） */}
             <div className="grid grid--venture">
@@ -28,9 +30,10 @@ export default function VenturePage() {
         </div>
       </section>
 
-      <section className="section">
+      {/* 合作卡片单独一段：2026-10-12 按本人要求去掉它上面那条分割线
+          （.section 默认带下边框，这里用 .section--callout 关掉） */}
+      <section className="section section--callout">
         <div className="shell">
-          {/* 合作：一句话 + 右边的联系方式按钮（与首页同一张） */}
           <div className="callout callout--mini">
             <p className="callout-title">{c.dataRoom.text}</p>
             <Link className="btn" to={href('/about#contact')}>

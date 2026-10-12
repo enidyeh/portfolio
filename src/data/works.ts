@@ -98,7 +98,7 @@ export const works: WorkCase[] = [
     track: 'commercial',
     // 完整项目文件：本人提供的「临时展览设计.pdf」，51 页
     docPages: { dir: 'common-ground', count: 51 },
-    tags: ['文化跨语境', '商业化与全球增长', '品牌单位', '活动策划'],
+    tags: ['文化跨语境', '全球增长', '品牌单位', '活动策划'],
     year: '待填',
     role: '待填：你的角色',
     type: 'AI 产品',
