@@ -72,12 +72,6 @@ export const downloads: DownloadItem[] = [
     url: asset('resume.pdf'),
   },
   {
-    group: '简历',
-    label: '毕业论文',
-    note: '本科毕业论文：数据主权时代的虚实融合智能产品设计研究。',
-    url: asset('thesis.pdf'),
-  },
-  {
     group: '作品集',
     label: '作品集',
     note: '完整作品集 PDF。',

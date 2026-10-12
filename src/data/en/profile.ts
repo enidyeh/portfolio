@@ -40,12 +40,6 @@ export const downloads: DownloadItem[] = [
     url: asset('resume.pdf'),
   },
   {
-    group: '简历',
-    label: 'Thesis',
-    note: 'Undergraduate thesis: intelligent product design for digital-physical experiences in the era of data sovereignty.',
-    url: asset('thesis.pdf'),
-  },
-  {
     group: '作品集',
     label: 'Portfolio',
     note: 'Full portfolio PDF.',

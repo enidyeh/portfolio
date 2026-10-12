@@ -51,6 +51,22 @@ export default function WorkDetailPage() {
         <div className="shell doc-media">
           <WorkMedia work={work} fallback={ui.phImage} />
         </div>
+        {/* 2026-10-12 按本人要求：毕业论文这类文件下载放在视频下面 */}
+        {work.files?.length ? (
+          <div className="shell doc-files">
+            {work.files.map((f) => (
+              <a
+                className="btn btn--soft"
+                href={f.url}
+                target="_blank"
+                rel="noreferrer"
+                key={f.label}
+              >
+                {f.label}
+              </a>
+            ))}
+          </div>
+        ) : null}
         <div className="shell doc-grid">
           <aside className="doc-aside">
             {work.year ? <span>{work.year}</span> : null}
