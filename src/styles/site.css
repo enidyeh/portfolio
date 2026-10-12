@@ -93,12 +93,20 @@ button, input, textarea { color: inherit; font: inherit; }
 .nav-link--cta .nav-en { color: var(--accent); }
 
 /* ---------- hero ---------- */
-/* 2026-10-13 按本人要求：首屏就是一条完整 16:9 的背景视频（左右贴齐页面左右，
-   上下左右都不裁切，按视频自身比例走），下面接对话框。
-   历史上那套「背景插画 + 渐变薄纱 + 人物视频 + 播完收起动画」已全部删除。 */
+/* 2026-10-13 按本人要求：首屏 = 一条完整 16:9 的视频 + 一个对话框。
+   视频宽 = min(100%, 可用高度 × 16/9) —— 窗口拉高 / 全屏时整帧都在、不会被切；
+   窄屏时就是 100% 宽。历史上那套「背景插画 + 渐变薄纱 + 人物视频 + 播完收起动画」
+   已全部删除。 */
 .hero {
   position: relative;
   border-bottom: 1px solid var(--line);
+}
+/* 视频、叠在视频上的热区、对话框共用这一个定位容器。
+   -1px 是页头那条下边框：页头总高 = --header-h + 1px。 */
+.hero-stage {
+  position: relative;
+  width: min(100%, calc((100svh - var(--header-h) - 1px) * 16 / 9));
+  margin-inline: auto;
 }
 .hero-video {
   display: block;
@@ -106,7 +114,42 @@ button, input, textarea { color: inherit; font: inherit; }
   /* 按视频自身比例（16:9）走 —— 不裁切、不拉伸 */
   height: auto;
 }
-.hero > .shell {
+/* 视频画面里本来就画着「活力派人物卡」和右下角两颗圆钮 —— 这里蒙一层透明热区
+   压在它们上面，点上去就等于点了画面里的那个 UI。
+   百分比是拿视频帧量出来的（见 memory：/tmp/vidtool/locate.js 那套）。 */
+.hero-spots {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* 跟视频同比例，热区的百分比才等于画面里的百分比 */
+  aspect-ratio: 16 / 9;
+}
+.hero-spot {
+  position: absolute;
+  display: block;
+  border-radius: var(--radius);
+  transition: box-shadow 0.15s ease, background-color 0.15s ease;
+}
+/* hover / 键盘聚焦时才描一圈红框，平时完全透明 */
+.hero-spot:hover {
+  box-shadow: inset 0 0 0 2px var(--accent);
+  /* = --accent(#d62828) 的 12% 透明版；写死是为了兼容旧 Safari（不能用 color-mix） */
+  background: rgba(214, 40, 40, 0.12);
+}
+.hero-spot:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+/* 左侧人物卡（活力派 / 叶琪）→ 精选项目 */
+.hero-spot--work { left: 2%; top: 5.5%; width: 29.5%; height: 85%; }
+/* 右下角两颗圆钮：左边＝档案（人物）→ 个人介绍；右边＝礼物 → 正在创造 */
+.hero-spot--about {
+  left: 83.3%; top: 90.3%; width: 9%; aspect-ratio: 1;
+  transform: translate(-50%, -50%); border-radius: 50%;
+}
+.hero-spot--venture {
+  left: 93.9%; top: 89.7%; width: 10%; aspect-ratio: 1;
+  transform: translate(-50%, -50%); border-radius: 50%;
+}
+.hero-stage > .shell {
   padding-top: var(--s-6);
   padding-bottom: var(--s-6);
 }
@@ -1343,13 +1386,33 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .lang-switch span { display: none; }
 }
 
+/* ---------- 大标题 / 粗分割线：一律用信号红 ---------- */
+/* 2026-10-13 按本人要求：「这些大标题都做成红色，黑色的粗分割线也是」。
+   标题 = 区块标题（精选项目 / 正在创造 / 曾就职于 / 经历与背景）、页面大标题
+   （不同的案例，形成完整的能力闭环。）、赛道标题（产品策略与 AI 应用）、
+   案例标题（美国街头展览进入意大利的「文化翻译」）与首页大展示标题。
+   放在文件末尾是因为同权重选择器后写的胜出。 */
+.section-title,
+.page-title,
+.track-title,
+.feature-title,
+.card-title,
+.vrow-title {
+  color: var(--accent);
+}
+/* 正文里那两条 2px 的黑色分割线（精选项目大展示上方、正在创造列表上方） */
+.feature,
+.vlist {
+  border-top-color: var(--accent);
+}
+
 /* ---------- 电脑版：对话框浮在首屏视频右上角 ---------- */
 /* 2026-10-13 按本人要求（参照截图）：≥901px 时把对话框挪进视频右上角。
    窄屏（≤900）仍然是「视频在上、对话框在下面纸底」的流式排版。
    ⚠️ 这一段必须写在文件末尾：`.avatar--inline { margin-top }` 在后面，
    同权重选择器后写的胜出，写在前面会被它覆盖掉。 */
 @media (min-width: 901px) {
-  .hero > .shell {
+  .hero-stage > .shell {
     position: absolute;
     inset: 0;
     max-width: none;
@@ -1358,7 +1421,7 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
     justify-content: flex-end;
     padding-top: var(--s-5);
     padding-bottom: var(--s-5);
-    /* 只有面板本身可点，其余区域不挡住视频 */
+    /* 只有面板本身可点，其余区域不挡住视频的热区 */
     pointer-events: none;
   }
   .hero-main {
