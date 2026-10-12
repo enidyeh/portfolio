@@ -584,9 +584,10 @@ a.card:hover .card-go {
   color: var(--ink-soft);
 }
 
-/* 案例详情页左栏的一份附件（如毕业论文）：放在「产品设计与项目管理」下面。
-   2026-10-12 按本人要求：按钮款式沿用页头那颗实色大按钮，只是换了位置。 */
-.doc-attach { margin-top: var(--s-4); }
+/* 案例详情页左栏的一份附件（如毕业论文）：实色大按钮。
+   2026-10-12 按本人要求：款式沿用页头那颗实色大按钮；左栏的年份 / 角色 /
+   项目类型小标题已删除，所以这里不再需要上边距。 */
+.doc-attach { margin-top: 0; }
 .doc-attach .btn { width: 100%; justify-content: center; }
 /* 左栏只有 170px，横向内边距比页头那版收一点，避免文字换行 */
 .btn--lg { padding: 15px 20px; font-size: 14px; }

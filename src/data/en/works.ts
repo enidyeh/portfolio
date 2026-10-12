@@ -52,7 +52,14 @@ export const works: WorkCase[] = [
     summary:
       'PHYGITAL BASE is a phygital intelligent-product design proposal that works across digital hardware, software design, contextual social features and digital identity — exploring a new approach to digital asset management in the era of data sovereignty.',
     video: { src: asset('work-phygital.mp4'), poster: asset('work-phygital-poster.jpg') },
-    problem: 'To be filled: who the users are, what the market problem is, and why existing options fall short.',
+    problem: {
+      items: [
+        '**Users**: digital-asset collectors — people new to Web3, gamers, NFT collectors, KOLs and gaming-community operators.',
+        '**Market problem**: digital assets (game items, NFTs) exist only on-chain or inside purely digital interfaces. They are highly fragmented and lack real-world ceremony and social trust — meeting offline, players struggle to prove their identity and holdings quickly (endless scrolling for screenshots, or verifying an address).',
+        '**Why existing options fall short**: purely online digital scenes (e.g. OpenSea) have no physical carrier, so the asset stays abstract and trust is hard to build; offline hardware (e.g. smart speakers) has fixed functions, cannot connect to Web3 data and has no data sovereignty.',
+        '**Opportunity**: the market lacks a product that delivers both “modular physical interaction” and “data sovereignty in practice”.',
+      ],
+    },
     // 2026-10-12 case copy supplied by the owner
     facts: [
       { label: 'Project type', value: 'Smart hardware and software system design' },
@@ -68,10 +75,24 @@ export const works: WorkCase[] = [
           'A complete phygital product system — modular hardware, a mobile app and an on-chain record system — plus a commercial outlook.',
       },
     ],
-    contribution: ['To be filled: what you personally owned in the team.'],
-    decisions: ['To be filled: one key trade-off — what you chose, what you gave up, and why.'],
-    outcome: ['To be filled: verifiable results (budget, revenue, scale, conversion).'],
-    reflection: 'To be filled: what you would change if you started again.',
+    contribution: [
+      '**Project lead & lead product designer**: owned the whole chain — market research, user interviews (five types of target user, e.g. gaming BD and anime KOLs), product definition, concept development, hardware sketches and 3D modelling, UI/UX design, through to the exhibition stand and the commercial plan.',
+    ],
+    decisions: [
+      '**Key trade-off**: chose a phone-mounted modular hardware form factor and gave up a standalone handheld device.',
+      '**Why**: a standalone device is too much to carry and costs more. Using the phone’s existing compute and screen as a magnetic module keeps the case light while giving Web3 assets a real sense of ownership and social currency through physical touch and on-screen feedback.',
+      '**How it was validated**: product-scale research (wrist-to-thumb reach), sketch iteration and a fast 3D-printed prototype, plus complete software interaction screens and hardware modules for several scenarios (asset management, game display, social connection).',
+    ],
+    outcome: [
+      '**Academic recognition**: awarded an Outstanding Graduation Project at Jiangnan University (top 5%).',
+      '**Delivered**: a concept taken all the way to a high-fidelity full-chain prototype — industrial design drawings, 3D render models, the full app UI/UX and the exhibition stand.',
+      '**User validation**: tested live at the exhibition against the research pain points, confirming the feasibility of touch recognition and NFC social exchange — breaking down the barrier between online assets and offline interaction.',
+    ],
+    reflection: [
+      'If I started again I would focus earlier on validating the MVP — for example shipping only the “NFC social card”, the sharpest pain point, instead of opening up every “game + social + management” module at once.',
+      'On the hardware side I would spend more time testing the stability of the magnetic connection and the battery constraints, to make it easier to land later.',
+      'On the commercial side I would calculate the stage-one cold-start acquisition cost (CAC) more precisely and sharpen the route into the market through gaming.',
+    ],
   },
   {
     slug: 'common-ground',
@@ -111,14 +132,17 @@ export const works: WorkCase[] = [
       {
         title: 'Deliverables',
         body: [
-          'End-to-end exhibition experience planning, site plan and 3D renders, interactive installation design, brand visual system, community sharing marketing plan and brand strategy plan.',
+          'End-to-end exhibition experience planning, site plan and 3D renders, interactive installation design, brand visual system, community sharing marketing plan, merchandise design and brand strategy plan.',
         ],
       },
     ],
-    contribution: ['To be filled: research, prioritisation, user flows, prototypes, the role of AI and its limits.'],
-    decisions: ['To be filled: how you cut a big platform idea down to one testable feature, and why.'],
+    contribution: ['Independent curation and exhibition design / cross-cultural planning'],
+    decisions: [
+      '**Trade-off 1**: gave up “reproducing the US original” in favour of “local reconstruction”.',
+      '**Trade-off 2**: gave up a “closed, high-end exhibition” in favour of “modular + contrast + social check-in”.',
+    ],
     outcome: ['To be filled: how it was tested, what the results were, and where it goes next.'],
-    reflection: 'To be filled: what you would change if you started again.',
+    reflection: 'If I started again I would bring local community co-creation in earlier and measure the conversion rate of the check-in sharing more precisely.',
     pending: true,
   },
   {
@@ -146,6 +170,7 @@ export const works: WorkCase[] = [
         title: 'Core strategy (localisation and breaking out)',
         body: [
           'A fusion strategy of “Italian quality × Eastern soul — No choice: your Italian qualities, your Eastern soul”. Rather than simply selling product, it distils Italian feminine thinking into an international lifestyle, rebuilding the brand’s competitiveness in China.',
+          'Presented as an “Italian minimalism + Eastern Zen” moodboard comparison.',
         ],
       },
       {
@@ -165,7 +190,7 @@ export const works: WorkCase[] = [
     contribution: ['To be filled: brand positioning, content or creator strategy, channel choices, conversion path.'],
     decisions: ['To be filled: one key trade-off, and which metric you used to judge it.'],
     outcome: ['To be filled: publishable growth results; if they cannot be published, label it clearly as an independent research project.'],
-    reflection: 'To be filled: what you would change if you started again.',
+    reflection: 'If I started again I would use AI tools to scale up the running of the everyday-people styling challenge.',
     pending: true,
   },
   {
@@ -182,8 +207,14 @@ export const works: WorkCase[] = [
     summary:
       'Laorentou, founded in 1899, teaming up with ANNAKIKI for a pop-up: using a high-contrast collaboration and social-media sharing to refresh a century-old brand for a younger female market.',
     // 2026-10-12 case copy supplied by the owner
-    problem:
-      'Laorentou, a national footwear brand founded in 1899, faced an ageing brand, a gap in its user base and little international presence. It urgently needed to move past the traditional craftsman story and speak to a young female consumer market.',
+    problem: {
+      body: [
+        'Laorentou, a national footwear brand founded in 1899, faced an ageing brand, a gap in its user base and little international presence. It urgently needed to move past the traditional craftsman story and speak to a young female consumer market.',
+      ],
+      items: [
+        '**Who it is for**: the old brand’s existing audience versus young women looking for a way to express themselves.',
+      ],
+    },
     facts: [
       { label: 'Project', value: 'Rejuvenating a century-old brand and reshaping retail — Laorentou × ANNAKIKI pop-up store' },
       { label: 'Project type', value: 'Brand strategy design × retail experience and route planning × cross-brand collaboration (pop-up)' },
@@ -212,9 +243,12 @@ export const works: WorkCase[] = [
       },
     ],
     contribution: ['To be filled: what you personally owned in the team.'],
-    decisions: ['To be filled: one key trade-off — what you chose, what you gave up, and why.'],
+    decisions: [
+      '**Brand choice**: partnering with ANNAKIKI rather than another fashion label.',
+      '**Location**: choosing Milan’s Brera fashion district rather than a regular shopping mall.',
+    ],
     outcome: ['To be filled: verifiable results; if they cannot be published, label it clearly as an independent research project.'],
-    reflection: 'To be filled: what you would change if you started again.',
+    reflection: 'If I started again I would focus on improving the offline-to-online conversion data.',
     pending: true,
   },
   {
@@ -263,7 +297,7 @@ export const works: WorkCase[] = [
     decisions: [
       'Approach: start from the brand’s tone and build a brand-led marketing strategy, find strong content creators to work with, build the DTC site and e-commerce platform, and complete the full cross-border chain.',
     ],
-    outcome: [''],
+    outcome: ['Through the creator matrix and the DTC site working together, we achieved a 0-to-1 overseas cold start.'],
     reflection: '',
   },
 ]

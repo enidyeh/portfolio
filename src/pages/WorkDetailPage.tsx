@@ -5,6 +5,7 @@ import { asset } from '../lib/base'
 import BackLink from '../components/BackLink'
 import WorkMedia from '../components/WorkMedia'
 import NotFoundPage from './NotFoundPage'
+import type { WorkText } from '../data/works'
 
 /** 把文案里的 `**强调**` 渲染成 <strong>（本人提供的案例文案只用到这一种标记） */
 function withBold(text: string) {
@@ -18,6 +19,24 @@ function withBold(text: string) {
         <span key={i}>{part}</span>
       ),
     )
+}
+
+/** 一块正文：段落 + 列表（项目背景与 sections 共用，格式由数据决定） */
+function BlockBody({ body, items }: WorkText) {
+  return (
+    <>
+      {body?.map((p, i) => (
+        <p key={i}>{withBold(p)}</p>
+      ))}
+      {items?.length ? (
+        <ul className="doc-list">
+          {items.map((item, i) => (
+            <li key={i}>{withBold(item)}</li>
+          ))}
+        </ul>
+      ) : null}
+    </>
+  )
 }
 
 export default function WorkDetailPage() {
@@ -48,7 +67,14 @@ export default function WorkDetailPage() {
           {/* 2026-10-12 按本人要求：删掉「精选案例 · 项目类型」那一行小字 */}
           <h1 className="page-title">{work.title}</h1>
           <p className="page-lede">{work.summary}</p>
-          {/* 荣誉标签：校级优秀毕设 / 专业Top3 这类（数据在 data/works.ts 的 awards） */}
+        </div>
+      </header>
+
+      <div className="doc">
+        <div className="shell doc-media">
+          <WorkMedia work={work} fallback={ui.phImage} />
+          {/* 2026-10-12 按本人要求：荣誉标签（校级优秀毕设 / 专业Top3）从页头标题
+              下面挪到视频下面。数据在 data/works.ts 的 awards */}
           {work.awards?.length ? (
             <ul className="page-awards">
               {work.awards.map((a) => (
@@ -59,19 +85,11 @@ export default function WorkDetailPage() {
             </ul>
           ) : null}
         </div>
-      </header>
-
-      <div className="doc">
-        <div className="shell doc-media">
-          <WorkMedia work={work} fallback={ui.phImage} />
-        </div>
         <div className="shell doc-grid">
           <aside className="doc-aside">
-            {work.year ? <span>{work.year}</span> : null}
-            {work.role ? <span>{work.role}</span> : null}
-            {work.type ? <span>{work.type}</span> : null}
-            {/* 2026-10-12 按本人要求：附件（如毕业论文）放在左栏「产品设计与项目管理」
-                下面，沿用实色大按钮的款式（原来在页头荣誉标签上面） */}
+            {/* 2026-10-12 按本人要求：左栏的「年份 / 你的角色 / 项目类型」三行小标题
+                全部删除。数据字段保留（卡片标签的 fallback 会用到），详情页不再显示 */}
+            {/* 附件（如毕业论文）：左栏唯一的内容，沿用实色大按钮 */}
             {work.attachment ? (
               <p className="doc-attach">
                 <a className="btn btn--primary btn--lg" href={work.attachment.url} download>
@@ -98,7 +116,11 @@ export default function WorkDetailPage() {
             {work.problem ? (
               <div className="doc-block">
                 <h2>{ui.blockProblem}</h2>
-                <p>{work.problem}</p>
+                {typeof work.problem === 'string' ? (
+                  <p>{withBold(work.problem)}</p>
+                ) : (
+                  <BlockBody {...work.problem} />
+                )}
               </div>
             ) : null}
 
@@ -106,16 +128,7 @@ export default function WorkDetailPage() {
             {work.sections?.map((s) => (
               <div className="doc-block" key={s.title}>
                 <h2>{s.title}</h2>
-                {s.body?.map((p, i) => (
-                  <p key={i}>{withBold(p)}</p>
-                ))}
-                {s.items?.length ? (
-                  <ul className="doc-list">
-                    {s.items.map((item, i) => (
-                      <li key={i}>{withBold(item)}</li>
-                    ))}
-                  </ul>
-                ) : null}
+                <BlockBody body={s.body} items={s.items} />
               </div>
             ))}
 
@@ -124,7 +137,7 @@ export default function WorkDetailPage() {
                 <h2>{ui.blockRole}</h2>
                 <ul className="doc-list">
                   {work.contribution.filter(Boolean).map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>{withBold(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -135,7 +148,7 @@ export default function WorkDetailPage() {
                 <h2>{ui.blockDecisions}</h2>
                 <ul className="doc-list">
                   {work.decisions.filter(Boolean).map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>{withBold(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -146,7 +159,7 @@ export default function WorkDetailPage() {
                 <h2>{ui.blockOutcome}</h2>
                 <ul className="doc-list">
                   {work.outcome.filter(Boolean).map((item) => (
-                    <li key={item}>{item}</li>
+                    <li key={item}>{withBold(item)}</li>
                   ))}
                 </ul>
               </div>
@@ -155,7 +168,15 @@ export default function WorkDetailPage() {
             {work.reflection ? (
               <div className="doc-block">
                 <h2>{ui.blockReflection}</h2>
-                <p>{work.reflection}</p>
+                {Array.isArray(work.reflection) ? (
+                  <ul className="doc-list">
+                    {work.reflection.map((item, i) => (
+                      <li key={i}>{withBold(item)}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p>{withBold(work.reflection)}</p>
+                )}
               </div>
             ) : null}
           </div>
