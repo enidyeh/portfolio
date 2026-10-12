@@ -32,7 +32,11 @@ export default function RichText({ value }: { value: string | RichTextValue }) {
       {paragraphs(items).length ? (
         <ul className="doc-list">
           {paragraphs(items).map((text, i) => (
-            <li key={`i${i}`}>{withBold(text)}</li>
+            // 包一层 <span>：.doc-list li 是 flex（前面挂「—」），不包的话
+            // **加粗标签** 和后面的正文会变成两个 flex 项，标签会被挤成竖排。
+            <li key={`i${i}`}>
+              <span>{withBold(text)}</span>
+            </li>
           ))}
         </ul>
       ) : null}

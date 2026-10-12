@@ -70,7 +70,7 @@ export const works: WorkCase[] = [
       ],
     },
     contribution: [
-      '**Project lead & lead product designer**: owned the whole chain — market research, user interviews (five types of target user, e.g. gaming BD and anime KOLs), product definition, concept development, hardware sketches and 3D modelling, UI/UX design, through to the exhibition stand and the commercial plan. (Note: if you have a supervisor or teammates, just mark it as “led over 90% of the work”.)',
+      '**Project lead & lead product designer**: owned the whole chain — market research, user interviews (five types of target user, e.g. gaming BD and anime KOLs), product definition, concept development, hardware sketches and 3D modelling, UI/UX design, through to the exhibition stand and the commercial plan.',
     ],
     decisions: [
       '**Core strategy**: turn abstract data sovereignty into something you can feel and touch every day — building a complete interaction loop: physical action ➔ software processing ➔ on-chain proof of ownership ➔ hardware feedback.',
@@ -102,7 +102,7 @@ export const works: WorkCase[] = [
     role: 'To be filled: your role',
     type: 'Cross-cultural exhibition design and localised brand experience',
     summary:
-      'Taking Beyond the Streets, a leading US street-culture brand, global — turning strongly regional American street culture into a “cultural translation” at the Milan Triennale.',
+      'The global expansion of Beyond the Streets, a leading US street-culture brand — turning strongly regional American street culture into a “cultural translation” at the Milan Triennale.',
     // 2026-10-13: the small info rows are gone — the project name is the page title and the
     // project type now opens the project background. Outline items are quoted verbatim.
     problem: {
@@ -159,7 +159,7 @@ export const works: WorkCase[] = [
     role: 'To be filled: your role',
     type: 'Cross-border brand strategy × localisation for a brand entering China × community marketing',
     summary:
-      'The Italian womenswear brand SOHO-T entering China: an “Italian quality × Eastern soul” fusion strategy for localisation and Xiaohongshu community marketing.',
+      'The Italian womenswear brand SOHO-T entering China — using an “Italian quality × Eastern soul” fusion strategy for localisation and Xiaohongshu community marketing.',
     // 2026-10-13: the small info rows are gone; outline items quoted verbatim.
     problem: {
       body: [
@@ -214,7 +214,7 @@ export const works: WorkCase[] = [
     role: 'To be filled: your role',
     type: 'Brand strategy design × retail experience and route planning × cross-brand collaboration (pop-up)',
     summary:
-      'Laorentou, founded in 1899, teaming up with ANNAKIKI for a pop-up: using a high-contrast collaboration and social-media sharing to refresh a century-old brand for a younger female market.',
+      'Laorentou, founded in 1899, teaming up with ANNAKIKI for a pop-up — using high-contrast collaboration and social-media virality to refresh a century-old brand for a younger female market.',
     // 2026-10-13: the small info rows are gone; outline items quoted verbatim.
     problem: {
       body: [
