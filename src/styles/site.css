@@ -100,6 +100,9 @@ button, input, textarea { color: inherit; font: inherit; }
       也只用 position，不加 z-index（会新建隔离组，影响别的混合元素）。 */
 .hero {
   position: relative;
+  /* 2026-10-13 按本人要求：首屏铺满一屏（去掉顶部导航的高度），
+     视频用 object-fit: cover 撑满 —— 窗口放大缩小都保持视频原始比例、画面不裁变形。 */
+  min-height: calc(100svh - var(--header-h));
   padding: var(--s-7) 0 var(--s-6);
   border-bottom: 1px solid var(--line);
   overflow: hidden;
