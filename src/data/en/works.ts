@@ -27,8 +27,8 @@ export const workTracks: {
   {
     id: 'commercial',
     no: '02',
-    en: 'Global growth',
-    zh: 'Global growth',
+    en: 'Brand marketing & global growth',
+    zh: 'Brand marketing & global growth',
     items: ['Exploring growth through work with real commercial brands, and exploring cross-border commercial culture'],
   },
 ]

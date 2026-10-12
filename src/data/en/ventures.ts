@@ -107,7 +107,7 @@ export const ventures: Venture[] = [
     imagePos: '50% 67%',
     tagline: 'Curated Marketplace · Youth Culture · Retail',
     oneLiner:
-      'With youth culture as the curatorial thread, bringing together independent brands, designer pieces, vintage objects and niche cultural products. Through themed buying, online retail and quarterly pop-ups, turning cultural discovery into a scene you can experience, collect and buy.',
+      'With youth culture as the curatorial thread, turning cultural discovery into a scene you can experience, collect and buy — through themed buying, online retail and quarterly pop-ups.',
     status: 'In preparation',
     badge: 'In preparation',
     xhs: 'https://www.xiaohongshu.com/user/profile/5ee3a7b0000000000101fb9d?xsec_token=ABzYFn55WHC8Qc6kKy2M4nKtvEENs24S9d27ta75NBNsE%3D&xsec_source=pc_search',
@@ -191,7 +191,7 @@ export const ventures: Venture[] = [
     image: asset('venture-unseen.webp'),
     tagline: 'AI × Youth Culture × Curated Discovery',
     oneLiner:
-      'A life-exploration prototype for young people in Shanghai, using magazine-style curation to connect city culture, offline experience and personal growth — exploring how discovery moves from browsing online to taking part for real.',
+      'Cultural exploration for today’s young people, using magazine-style curation to connect city culture, offline experience and personal growth — exploring every side of how young people discover culture today.',
     status: 'In preparation',
     badge: 'In preparation',
     xhs: 'https://www.xiaohongshu.com/user/profile/614dd5e400000000020249dd?xsec_token=AB_Vx9ak1d5jq8Hh5539hbBDYPIReL40PjeHF0THv5KVk%3D&xsec_source=pc_search',
@@ -293,7 +293,7 @@ export const ventures: Venture[] = [
     image: asset('venture-realmview.webp'),
     tagline: 'Cross-Market Growth · AI Marketing · Creator Ecosystem',
     oneLiner:
-      'Taking lifestyle and consumer brands as the entry point, exploring how brands turn market insight, content strategy, AI marketing tools and creator collaboration into the move from product to brand, and from a local market to cross-border growth.',
+      'See the world, and everything becomes value. Exploring global brands’ cross-border growth through market insight, content strategy and AI marketing tools.',
     status: 'In preparation',
     badge: 'In preparation',
     xhs: 'https://www.xiaohongshu.com/user/profile/5e3665730000000001000223?xsec_token=ABTbpa8xFFnHQaGi9EOH1bJnblHwxKKHxMtr_pojBPwpU%3D&xsec_source=pc_search',

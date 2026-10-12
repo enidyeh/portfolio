@@ -5,8 +5,9 @@ import type { TimelineItem } from '../about'
 
 export const aboutHead = {
   // 2026-10-12 at the owner’s request: eyebrow removed, self-description replaced.
+  // 2026-10-13: replaced again at the owner’s request.
   title: 'About me.',
-  lede: 'Someone who likes to tinker, with a global outlook and commercial experience, using AI tools and a product mindset to set curiosity free.',
+  lede: 'A restless maker! With a global outlook and commercial thinking, I want to use AI tools and product thinking to set curiosity free.',
 }
 
 /** Capability method. `zh` is left equal to `en` on purpose — the English page shows one label only. */
@@ -39,7 +40,7 @@ export const experience: TimelineItem[] = [
     role: 'Venture · independent planning and operations',
     org: 'REVERIE 异想集',
     tags: ['Market & user insight', 'Opportunity sizing', 'Business positioning'],
-    desc: 'Planned and ran more than ten events single-handedly: a community of 2,500+ members, 20,000+ in-person attendances and over 500k impressions from a Xiaohongshu topic, with 30+ artists brought in. Organised film screenings including Spider-Man: Across the Spider-Verse, Barbie and Taylor Swift: The Eras Tour — as the organiser I ran the team and the community, planned the event flow, pushed execution and locked the details, delivering each event smoothly and to strong feedback.',
+    desc: 'Led the planning and delivery of the youth activity community “REVERIE 异想集” from 0 to 1. Based on observation of Gen-Z youth-culture consumption and offline socialising, built around “themed markets + art exhibitions + community events”, used AI tools to explore, and planned and delivered multiple events: 20,000+ in-person attendances and over 500k impressions from a Xiaohongshu topic.',
     details: [
       'Designed posters, long-form graphics and copy that pulled in a large community following, with 700+ people attending offline events.',
       'Partnered with cinemas and brands to plan the events; voice actors from the films and creators with 10k+ likes on Chinese platforms made exclusive easter eggs.',
@@ -50,11 +51,11 @@ export const experience: TimelineItem[] = [
   {
     when: '2026.02 — 2026.04',
     role: 'Overseas creator operations · Intern',
-    org: 'Beijing Kunzhi Intelligent Technology · OpenCreator',
+    org: 'OpenCreator',
     tags: ['Prototyping & AI workflow', 'Content & creator ecosystem', 'Channel & conversion'],
     details: [
       'AI / large-model applications',
-      'Ran overseas creator-ecosystem operations for the “AI commercial creative video agent”. Reading the product’s “content creation as Lego” positioning precisely, established an “AI + vertical” (e.g. e-commerce) creator strategy. Built the overseas creator collaboration SOP and resource library from 0 to 1, using careful distribution to build a high-retention core user base and support the journey from trial to long-term subscription. Also tracked overseas social trends and comparable AI tools, using AI workflows to power ad creative production and multi-platform distribution. Landed partnerships with several commercial studios, growing performance 10× within three months of launch, and drove content co-creation and cross-cultural connection in the AI-native community.',
+      'Ran overseas creator-ecosystem operations for the “AI commercial creative visual agent”. Reading the product’s “content creation as Lego” positioning precisely, established an “AI + vertical” (e.g. e-commerce) creator strategy. Built the overseas creator collaboration SOP and resource library from 0 to 1, using careful distribution to build high-stickiness core users and running the full conversion loop from acquisition to long-term subscription. Also tracked overseas social trends and comparable AI tools, using AI workflows to power ad creative production and multi-platform distribution. Landed partnerships with several commercial studios, growing performance 10× within three months of launch, and drove content co-creation and cross-cultural connection in the AI-native community.',
     ],
   },
   {
@@ -64,7 +65,7 @@ export const experience: TimelineItem[] = [
     tags: ['Cross-border commercialisation', 'Channel & conversion', 'Data review'],
     details: [
       'Cross-border e-commerce / beauty FMCG',
-      'Worked on overseas social content marketing for a “new Chinese beauty brand”: understanding the needs of 18–30 year-old women overseas, setting a “healthy and diverse” content strategy, and planning core campaigns including the full-range launch and Halloween. Through brand seeding and real makeup-look sharing, shaped the product mind for the “air cotton-candy puff” precisely, in a market where overseas users barely knew the category. Built a vertical KOL matrix, growing the beauty and lifestyle creator base to 5,000+, with 300+ deep collaborations. Co-created quality content with creators and fed data reviews back into the community content ecosystem, closing the loop from “reaching creators” to “building word of mouth”.',
+      'Worked on overseas community content marketing for a “new Chinese beauty brand”. Understanding the needs of 18–30 year-old women overseas, setting a “healthy and diverse” content strategy, and planning core campaigns including the “Gold series” launch and Halloween. Through brand seeding and real makeup-look sharing, shaped the product mind for the “air cotton-candy puff” precisely, in a market where overseas users barely knew the category. Built a vertical KOL matrix, growing the beauty and lifestyle creator base to 5,000+, with 300+ deep collaborations. Co-created quality content with creators and fed data reviews back into the community content ecosystem, closing the loop from “reaching creators” to “building word of mouth”.',
     ],
   },
   {
@@ -84,7 +85,7 @@ export const experience: TimelineItem[] = [
     tags: ['User flows', 'Content & creator ecosystem'],
     details: [
       'Content community / lifestyle platform',
-      'Worked on commercial design and official campaign planning for a “lifestyle interest community”. Based on insight into how community users live, planned the 「我要这样就生活」 visual campaign assets, sparking the urge to share and community interaction. Ran the 「字体月报」 column, designing systematic professional content and building a design community, lifting stickiness and aesthetic awareness through co-creation. Delivered the visual presentation for the 2024 WILL Commercial Partner Conference, bridging brands and creators, and putting content ecosystem and community connection into practice.',
+      'Worked on commercial design and official campaign planning for a “lifestyle interest community”. Based on insight into how community users live, planned the 「我就要这样生活」 visual campaign assets, sparking the urge to share and community interaction. Ran the 「字体月月报」 column, designing systematic professional content and building a design community, lifting stickiness and aesthetic awareness through co-creation. Delivered the visual presentation for the 2024 WILL Commercial Partner Conference, bridging brands and creators, and putting content ecosystem and community connection into practice.',
     ],
   },
 ]

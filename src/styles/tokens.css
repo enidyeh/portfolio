@@ -59,13 +59,9 @@
   --header-h: 62px;
   --radius: 10px;
 
-  /* 首屏背景：public/hero-bg.webp（1920×1020，已裁掉右下角水印）。
-     换图时把新文件覆盖同名文件即可；文件不存在时背景就是空的，不会报错。
-     历史：hero-room.jpg（房间照）、透明底城市插画 —— 都换过。
-     ⚠️ 这里不写死 url()：站点部署在 GitHub Pages 的 /portfolio/ 子路径下，
-        写死的 '/hero-bg.webp' 会 404。路径由 HeroBlock 用 lib/base.ts 的
-        asset() 拼好后写到 --hero-image 上，.hero 再消费这个变量。 */
-  --hero-image: none;
+  /* 首屏背景：2026-10-13 起改成一条铺满首屏的视频（public/hero-bg.mp4 + hero-bg-poster.jpg），
+     由 HeroBlock 用 lib/base.ts 的 asset() 拼路径，CSS 里不再有背景图/薄纱。
+     历史：hero-room.jpg（房间照）、hero-bg.webp（透明底城市插画）—— 都已不再使用。 */
 }
 
 @media (max-width: 760px) {

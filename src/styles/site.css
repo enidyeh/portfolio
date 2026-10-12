@@ -93,39 +93,25 @@ button, input, textarea { color: inherit; font: inherit; }
 .nav-link--cta .nav-en { color: var(--accent); }
 
 /* ---------- hero ---------- */
+/* 2026-10-13 按本人要求：首屏改成「一条铺满的背景视频 + 左侧标题/对话框」。
+   背景插画（hero-bg.webp）与左侧那层渐变薄纱（.hero::before）已整块删除，
+   手机端「人物视频播完就地收起」的过渡也删了（.hero-aside 已不再渲染）。
+   ⚠️ 视频层不要加 filter / opacity / transform / mix-blend-mode；.hero > .shell
+      也只用 position，不加 z-index（会新建隔离组，影响别的混合元素）。 */
 .hero {
   position: relative;
   padding: var(--s-7) 0 var(--s-6);
   border-bottom: 1px solid var(--line);
-  /* 首屏城市插画：fig 放在 public/hero-bg.webp（透明底）。
-     构图是「左边空的马路/人行道，中右侧密集城市」，所以文字压在左侧、人物站在右侧城市前。
-     bottom 对齐让底部的街面正好落在人物脚下。 */
-  background-image: var(--hero-image);
-  background-size: cover;
-  background-position: center bottom;
-  background-repeat: no-repeat;
+  overflow: hidden;
 }
-/* 左侧压一层渐隐薄纱：文字可读，但左边也留一部分背景透出来（不压成实心纸色）；
-   右侧完全放开，让人物站在完整的背景里。
-   0.62 是调过的：0.82 会把深色照片冲成一片淡灰，建筑物和霓虹全看不见。 */
-.hero::before {
-  content: '';
+.hero-video {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
-  background: linear-gradient(
-    100deg,
-    rgba(246, 246, 244, 0.62) 0%,
-    rgba(246, 246, 244, 0.6) 42%,
-    rgba(246, 246, 244, 0.36) 56%,
-    rgba(246, 246, 244, 0.13) 64%,
-    rgba(246, 246, 244, 0) 72%
-  );
-  transition: background 0.4s ease;
 }
-/* 注意：这里只能用 position，不能加 z-index —— 加了会新建 stacking context，
-   把 .figure-media 的 mix-blend-mode 隔离掉，人物就会露出一块白底。
-   靠「定位元素后绘制」的顺序压在 ::before 薄纱之上就够了。 */
 .hero > .shell { position: relative; }
 .hero-title {
   margin: 0;
@@ -915,10 +901,9 @@ a.card:hover .card-go {
 }
 .foot-bottom a:hover { color: var(--ink); }
 
-/* ---------- hero: 左侧文字 + 右侧人物视频 ---------- */
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: var(--s-6); align-items: stretch; }
+/* ---------- hero: 视频背景 + 左侧文字 ---------- */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-6); }
 .hero-main { min-width: 0; }
-.hero-aside { position: relative; min-width: 0; }
 .hero-title { max-width: 26ch; }
 .hero-statement {
   margin: var(--s-4) 0 0;
@@ -1278,54 +1263,7 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 @media (max-width: 900px) {
   .grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .feature { grid-template-columns: minmax(0, 1fr); }
-  /* 手机端：背景图放大铺满整个首屏（cover），底部渐隐到纸色；人物贴右侧。
-     之前是 `100% auto`（按宽度完整铺开），但在手机上首屏有 850px 高，
-     1.88 的横图按宽度铺只会出现顶上一条 195px 的「半截」带子。
-     cover 会按高度缩放（0.83×，不糊），横向只留中间约 23%——
-     锚点 66% 把管道/电箱那片墙留在人物身后。 */
-  .hero {
-    background-size: cover;
-    background-position: 66% center;
-  }
-  .hero::before {
-    background: linear-gradient(
-      180deg,
-      rgba(246, 246, 244, 0) 0%,
-      rgba(246, 246, 244, 0.12) 20%,
-      rgba(246, 246, 244, 0.55) 38%,
-      var(--paper) 56%,
-      var(--paper) 100%
-    );
-  }
-  /* 人物收起来后标题升到顶部 —— 只把纸色线上移（房间留顶上一条），
-     不再像之前那样把房间整块抹掉 */
-  .hero[data-figure-gone='true']::before {
-    background: linear-gradient(
-      180deg,
-      rgba(246, 246, 244, 0) 0%,
-      rgba(246, 246, 244, 0.38) 14%,
-      var(--paper) 32%,
-      var(--paper) 100%
-    );
-  }
   .site-footer-inner { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  /* 手机端：人物视频排在最上方（order -1），只播一遍；播完高度收到 0、外边距也收到 0，
-     标题与下面的内容直接接上来。
-     ⚠️ 这里绝对不能加 opacity / transform / filter / will-change —— 它们会新建「隔离组」，
-        使 .figure-media 的 mix-blend-mode 失效；收缩动画那 0.6s 里就会露出白色矩形。
-        需要淡出只能加在 .figure-media 自身上（同一元素上的 opacity 不影响它与背景混合）。 */
-  .hero-aside {
-    order: -1;
-    position: static;
-    height: 320px;
-    margin-bottom: var(--s-5);
-    overflow: hidden;
-    transition: height 0.6s ease, margin-bottom 0.6s ease;
-  }
-  .hero-aside.is-collapsed { height: 0; margin-bottom: 0; }
-  .figure { position: static; height: 100%; justify-content: flex-end; }
-  .figure-media { height: 100%; }
 }
 @media (max-width: 760px) {
   .nav-en { display: none; }

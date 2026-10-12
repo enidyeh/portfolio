@@ -153,8 +153,9 @@ export const ventures: Venture[] = [
     // （源图 800×800，16:9 取景框高 450px，67% ≈ 从 y=235 开始往下取）
     imagePos: '50% 67%',
     tagline: 'Curated Marketplace · Youth Culture · Retail',
+    // 2026-10-13 按本人要求换掉导语
     oneLiner:
-      '以青年文化为策展线索，集合独立品牌、设计师作品、复古物件与小众文化产品。通过主题选品、线上零售与季度 POP-UP，将文化发现转化为可体验、可收藏、可交易的消费场景。',
+      '以青年文化为策展线索，通过主题选品、线上零售与季度 POP-UP，将文化发现转化为可体验、可收藏、可交易的消费场景。',
     status: '筹备中',
     badge: '筹备中',
     xhs: 'https://www.xiaohongshu.com/user/profile/5ee3a7b0000000000101fb9d?xsec_token=ABzYFn55WHC8Qc6kKy2M4nKtvEENs24S9d27ta75NBNsE%3D&xsec_source=pc_search',
@@ -237,8 +238,9 @@ export const ventures: Venture[] = [
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
     tagline: 'AI × Youth Culture × Curated Discovery',
+    // 2026-10-13 按本人要求换掉导语
     oneLiner:
-      '一个面向上海青年的生活探索原型，以杂志式策展连接城市文化、线下体验与个人成长，探索信息发现如何从线上浏览走向真实参与。',
+      '面向当代青年的文化探索，以杂志式策展连接城市文化、线下体验与个人成长，探索当代青年文化发现的方方面面。',
     status: '筹备中',
     badge: '筹备中',
     xhs: 'https://www.xiaohongshu.com/user/profile/614dd5e400000000020249dd?xsec_token=AB_Vx9ak1d5jq8Hh5539hbBDYPIReL40PjeHF0THv5KVk%3D&xsec_source=pc_search',
@@ -336,8 +338,9 @@ export const ventures: Venture[] = [
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
     tagline: 'Cross-Market Growth · AI Marketing · Creator Ecosystem',
+    // 2026-10-13 按本人要求换掉导语
     oneLiner:
-      '以生活方式与消费品牌为切入点，探索品牌如何通过市场洞察、内容策略、AI 营销工具与创作者协作，实现从产品到品牌、从本地市场到跨境增长的转化。',
+      '域见万象，皆成价值。通过市场洞察、内容策略、AI 营销工具，探索全球品牌的跨境增长之路。',
     status: '筹备中',
     badge: '筹备中',
     xhs: 'https://www.xiaohongshu.com/user/profile/5e3665730000000001000223?xsec_token=ABTbpa8xFFnHQaGi9EOH1bJnblHwxKKHxMtr_pojBPwpU%3D&xsec_source=pc_search',

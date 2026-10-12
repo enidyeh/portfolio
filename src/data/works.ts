@@ -82,7 +82,7 @@ export const workTracks: {
     id: 'commercial',
     no: '02',
     en: 'Global growth',
-    zh: '全球增长',
+    zh: '品牌营销与全球增长',
     items: ['通过与现实商业世界品牌合作探索增长，对跨境商业文化进行探索'],
   },
 ]
