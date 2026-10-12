@@ -329,8 +329,6 @@ a.card:hover .card-go {
   border-radius: var(--radius);
 }
 .doc-media { margin-bottom: var(--s-6); }
-/* 视频下面的额外下载（2026-10-12：毕业论文挂在 phygital 详情页） */
-.doc-files { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: calc(-1 * var(--s-4)); margin-bottom: var(--s-6); }
 
 /* 创业项目详情页顶部的项目图：整幅显示，不裁切 */
 .venture-hero {
@@ -525,8 +523,9 @@ a.card:hover .card-go {
 }
 
 /* ---------- inner page head ---------- */
-/* 详情页页头。2026-10-12 按本人要求：顶部留白**减小**
-   （原来 --s-7：桌面 88px / ≤760px 56px → 现在 --s-6：桌面 56px / 手机 40px） */
+/* 详情页页头。2026-10-12 按本人要求：顶部留白 **收小**
+   （原来 --s-7：桌面 88px / 窄屏 56px，现在用 --s-6：桌面 56px / 窄屏 40px）。
+   要再微调只改这一行。 */
 .page-head { padding: var(--s-6) 0 var(--s-5); border-bottom: 1px solid var(--line); }
 /* 详情页左上角的「返回上级」：灰色线框胶囊按钮（2026-10-12 按本人要求） */
 .back-row { margin-bottom: var(--s-4); }
@@ -584,6 +583,25 @@ a.card:hover .card-go {
   line-height: 1.75;
   color: var(--ink-soft);
 }
+
+/* 详情页媒体下面的一份附件（如毕业论文） */
+.doc-attach {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  margin-top: var(--s-5);
+  /* 下面紧跟着正文两栏，留出间距（2026-10-12） */
+  margin-bottom: var(--s-5);
+  padding: var(--s-4) var(--s-5);
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.doc-attach-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.doc-attach-label { font: 600 var(--f-sub) / 1.4 var(--sans); }
+.doc-attach-note { font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
+.doc-attach .btn { flex: none; }
 
 /* ---------- detail document ---------- */
 .doc { padding: var(--s-6) 0; }

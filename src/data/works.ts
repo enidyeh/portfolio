@@ -27,13 +27,13 @@ export type WorkCase = {
   tags?: string[]
   /** 荣誉 / 奖项标签：显示在详情页标题下面（如「校级优秀毕设」「专业Top3」） */
   awards?: string[]
-  /**
-   * 案例正文上方的额外文件下载（2026-10-12 按本人要求：
-   * 毕业论文挂在 phygital 详情页的视频下面）。
-   */
-  files?: { label: string; url: string }[]
   /** 案例视频；首页大展示位遇到它会换成播放器，而不是可点的链接卡片 */
   video?: { src: string; poster: string }
+  /**
+   * 媒体（视频 / 配图）下方的一份附件下载入口。
+   * 2026-10-12 按本人要求：毕业论文从「获取简历」浮窗移到案例详情页，放在视频下面。
+   */
+  attachment?: { label: string; note?: string; url: string }
   /** true 表示内容尚未提供，界面会显示待填提示 */
   pending?: boolean
   /** true 表示占据首页「大展示」位，不再出现在下方三列卡片里 */
@@ -86,8 +86,12 @@ export const works: WorkCase[] = [
     docPages: { dir: 'phygital-base', count: 32 },
     // 2026-10-12 按本人要求：详情页标题下加这两个荣誉标签
     awards: ['校级优秀毕设', '专业Top3'],
-    // 2026-10-12 按本人要求：毕业论文下载放在详情页视频下面
-    files: [{ label: '毕业论文', url: asset('thesis.pdf') }],
+    // 2026-10-12 按本人要求：毕业论文的下载入口放在本页视频下面
+    attachment: {
+      label: '毕业论文',
+      note: '数据主权时代的虚实融合智能产品设计研究（本科毕业论文全文）',
+      url: asset('thesis.pdf'),
+    },
     tags: ['产品设计', '项目管理', 'ui设计', '产品策略'],
     year: '待填',
     // 2026-10-12 按本人要求：aside 里的「你的角色」删掉
