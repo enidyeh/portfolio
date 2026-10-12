@@ -93,29 +93,23 @@ button, input, textarea { color: inherit; font: inherit; }
 .nav-link--cta .nav-en { color: var(--accent); }
 
 /* ---------- hero ---------- */
-/* 2026-10-13 按本人要求：首屏改成「一条铺满的背景视频 + 左侧标题/对话框」。
-   背景插画（hero-bg.webp）与左侧那层渐变薄纱（.hero::before）已整块删除，
-   手机端「人物视频播完就地收起」的过渡也删了（.hero-aside 已不再渲染）。
-   ⚠️ 视频层不要加 filter / opacity / transform / mix-blend-mode；.hero > .shell
-      也只用 position，不加 z-index（会新建隔离组，影响别的混合元素）。 */
+/* 2026-10-13 按本人要求：首屏就是一条完整 16:9 的背景视频（左右贴齐页面左右，
+   上下左右都不裁切，按视频自身比例走），下面接对话框。
+   历史上那套「背景插画 + 渐变薄纱 + 人物视频 + 播完收起动画」已全部删除。 */
 .hero {
   position: relative;
-  /* 2026-10-13 按本人要求：首屏铺满一屏（去掉顶部导航的高度），
-     视频用 object-fit: cover 撑满 —— 窗口放大缩小都保持视频原始比例、画面不裁变形。 */
-  min-height: calc(100svh - var(--header-h));
-  padding: var(--s-7) 0 var(--s-6);
   border-bottom: 1px solid var(--line);
-  overflow: hidden;
 }
 .hero-video {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  /* 按视频自身比例（16:9）走 —— 不裁切、不拉伸 */
+  height: auto;
 }
-.hero > .shell { position: relative; }
+.hero > .shell {
+  padding-top: var(--s-6);
+  padding-bottom: var(--s-6);
+}
 .hero-title {
   margin: 0;
   max-width: 20ch;
