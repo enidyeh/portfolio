@@ -587,9 +587,9 @@ a.card:hover .card-go {
 /* 详情页媒体下面的一份附件（如毕业论文） */
 .doc-attach {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-4);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-3);
   margin-top: var(--s-5);
   /* 下面紧跟着正文两栏，留出间距（2026-10-12） */
   margin-bottom: var(--s-5);
@@ -601,7 +601,14 @@ a.card:hover .card-go {
 .doc-attach-text { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .doc-attach-label { font: 600 var(--f-sub) / 1.4 var(--sans); }
 .doc-attach-note { font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
-.doc-attach .btn { flex: none; }
+/* 2026-10-12 按本人要求：下载按钮做成小胶囊，放在文字下方靠左 */
+.doc-attach .btn {
+  flex: none;
+  align-self: flex-start;
+  padding: 7px 16px;
+  font-size: 12px;
+  border-radius: 999px;
+}
 
 /* ---------- detail document ---------- */
 .doc { padding: var(--s-6) 0; }
