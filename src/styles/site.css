@@ -609,6 +609,58 @@ a.card:hover .card-go {
 .photo-ph-dots { display: flex; gap: 6px; }
 .photo-ph-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--rule); }
 .photo-ph-dot.is-on { background: var(--accent); }
+/* ---------- 照片轮播（个人介绍页）----------
+   2026-10-12：把照片放进 src/assets/photos/ 就自动变成轮播；没有图时退回上面的占位块。 */
+.photo-carousel {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--paper-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.photo-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.photo-slide.is-active { opacity: 1; }
+.photo-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 34px;
+  height: 34px;
+  margin-top: -17px;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.86);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.photo-arrow:hover { background: #fff; }
+.photo-arrow--prev { left: 10px; }
+.photo-arrow--next { right: 10px; }
+.photo-dots--overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  z-index: 2;
+  justify-content: center;
+}
+.photo-dots--overlay .photo-ph-dot { background: rgba(255, 255, 255, 0.7); }
+.photo-dots--overlay .photo-ph-dot.is-on { background: var(--accent); }
+
+/* 案例详情页标题下的荣誉标签（校级优秀毕设 / 专业Top3） */
+.page-awards { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--s-4); }
 /* 长形下载按钮：一行一个，占满右栏 */
 .dl-buttons { display: flex; flex-direction: column; gap: var(--s-3); }
 .btn--wide { width: 100%; justify-content: space-between; padding: 16px 18px; }

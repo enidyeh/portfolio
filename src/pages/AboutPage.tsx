@@ -1,5 +1,6 @@
 import { useContent } from '../data/content'
 import Pending from '../components/Pending'
+import PhotoCarousel from '../components/PhotoCarousel'
 import WeChatReveal from '../components/WeChatReveal'
 
 export default function AboutPage() {
@@ -33,16 +34,9 @@ export default function AboutPage() {
               </div>
 
               <div className="doc-block">
-                {/* 2026-10-12 按本人要求：删掉「照片」这个大标题，只留占位块 */}
-                {/* 照片轮播占位：本人给图后换成真实轮播 */}
-                <div className="photo-ph">
-                  <Pending>{ui.aboutPhotosPending}</Pending>
-                  <span className="photo-ph-dots" aria-hidden="true">
-                    <span className="photo-ph-dot is-on" />
-                    <span className="photo-ph-dot" />
-                    <span className="photo-ph-dot" />
-                  </span>
-                </div>
+                {/* 2026-10-12 按本人要求：删掉「照片」这个大标题，只留照片区。
+                    照片放进 src/assets/photos/ 就自动变成轮播（见 PhotoCarousel）。 */}
+                <PhotoCarousel pendingLabel={ui.aboutPhotosPending} />
               </div>
             </div>
 

@@ -41,6 +41,8 @@ export const works: WorkCase[] = [
     track: 'product',
     // Full project document: 33 pages, supplied by the owner
     docPages: { dir: 'phygital-base', count: 32 },
+    // Award badges shown under the case title
+    awards: ['Outstanding graduation project (university level)', 'Top 3 in major'],
     tags: ['Product design', 'Project management', 'UI design', 'Product strategy'],
     year: 'To be filled',
     role: '',
