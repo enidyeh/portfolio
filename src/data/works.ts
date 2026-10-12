@@ -3,6 +3,7 @@
 // 名称由本人提供；名称与分类的对应关系、以及案例内容，均为待确认 / 待填。
 
 import { asset } from '../lib/base'
+import type { RichTextValue } from './text'
 
 export type WorkTrackId = 'commercial' | 'product'
 
@@ -10,15 +11,10 @@ export type WorkTrackId = 'commercial' | 'product'
 export type WorkFact = { label: string; value: string }
 
 /**
- * 一块正文的两种排法：`body` 是段落，`items` 是列表项；两者都支持 `**加粗**` 片段。
- */
-export type WorkText = { body?: string[]; items?: string[] }
-
-/**
  * 详情页正文的自定义区块（2026-10-12 按本人提供的案例文案新增）。
  * 渲染在模板区块（项目背景 / 我的角色 / 关键决策与过程 / 结果 / 反思）**之前**。
  */
-export type WorkSection = WorkText & { title: string }
+export type WorkSection = RichTextValue & { title: string }
 
 export type WorkCase = {
   slug: string
@@ -31,7 +27,7 @@ export type WorkCase = {
   type: string
   summary: string
   /** 项目背景：一段文字，或带列表的结构（结构里不写标题，标题用 ui.blockProblem） */
-  problem?: string | WorkText
+  problem?: string | RichTextValue
   contribution: string[]
   decisions: string[]
   outcome: string[]

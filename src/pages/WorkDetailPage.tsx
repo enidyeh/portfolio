@@ -3,41 +3,9 @@ import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 import { asset } from '../lib/base'
 import BackLink from '../components/BackLink'
+import RichText from '../components/RichText'
 import WorkMedia from '../components/WorkMedia'
 import NotFoundPage from './NotFoundPage'
-import type { WorkText } from '../data/works'
-
-/** 把文案里的 `**强调**` 渲染成 <strong>（本人提供的案例文案只用到这一种标记） */
-function withBold(text: string) {
-  return text
-    .split(/(\*\*[^*]+\*\*)/g)
-    .filter((part) => part !== '')
-    .map((part, i) =>
-      part.startsWith('**') && part.endsWith('**') ? (
-        <strong key={i}>{part.slice(2, -2)}</strong>
-      ) : (
-        <span key={i}>{part}</span>
-      ),
-    )
-}
-
-/** 一块正文：段落 + 列表（项目背景与 sections 共用，格式由数据决定） */
-function BlockBody({ body, items }: WorkText) {
-  return (
-    <>
-      {body?.map((p, i) => (
-        <p key={i}>{withBold(p)}</p>
-      ))}
-      {items?.length ? (
-        <ul className="doc-list">
-          {items.map((item, i) => (
-            <li key={i}>{withBold(item)}</li>
-          ))}
-        </ul>
-      ) : null}
-    </>
-  )
-}
 
 export default function WorkDetailPage() {
   const { slug } = useParams()
@@ -116,11 +84,7 @@ export default function WorkDetailPage() {
             {work.problem ? (
               <div className="doc-block">
                 <h2>{ui.blockProblem}</h2>
-                {typeof work.problem === 'string' ? (
-                  <p>{withBold(work.problem)}</p>
-                ) : (
-                  <BlockBody {...work.problem} />
-                )}
+                <RichText value={work.problem} />
               </div>
             ) : null}
 
@@ -128,55 +92,39 @@ export default function WorkDetailPage() {
             {work.sections?.map((s) => (
               <div className="doc-block" key={s.title}>
                 <h2>{s.title}</h2>
-                <BlockBody body={s.body} items={s.items} />
+                <RichText value={s} />
               </div>
             ))}
 
             {work.contribution.filter(Boolean).length ? (
               <div className="doc-block">
                 <h2>{ui.blockRole}</h2>
-                <ul className="doc-list">
-                  {work.contribution.filter(Boolean).map((item) => (
-                    <li key={item}>{withBold(item)}</li>
-                  ))}
-                </ul>
+                <RichText value={{ items: work.contribution }} />
               </div>
             ) : null}
 
             {work.decisions.filter(Boolean).length ? (
               <div className="doc-block">
                 <h2>{ui.blockDecisions}</h2>
-                <ul className="doc-list">
-                  {work.decisions.filter(Boolean).map((item) => (
-                    <li key={item}>{withBold(item)}</li>
-                  ))}
-                </ul>
+                <RichText value={{ items: work.decisions }} />
               </div>
             ) : null}
 
             {work.outcome.filter(Boolean).length ? (
               <div className="doc-block">
                 <h2>{ui.blockOutcome}</h2>
-                <ul className="doc-list">
-                  {work.outcome.filter(Boolean).map((item) => (
-                    <li key={item}>{withBold(item)}</li>
-                  ))}
-                </ul>
+                <RichText value={{ items: work.outcome }} />
               </div>
             ) : null}
 
             {work.reflection ? (
               <div className="doc-block">
                 <h2>{ui.blockReflection}</h2>
-                {Array.isArray(work.reflection) ? (
-                  <ul className="doc-list">
-                    {work.reflection.map((item, i) => (
-                      <li key={i}>{withBold(item)}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>{withBold(work.reflection)}</p>
-                )}
+                <RichText
+                  value={
+                    Array.isArray(work.reflection) ? { items: work.reflection } : work.reflection
+                  }
+                />
               </div>
             ) : null}
           </div>

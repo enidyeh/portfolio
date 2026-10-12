@@ -339,6 +339,10 @@ a.card:hover .card-go {
   border-radius: var(--radius);
 }
 
+/* 2026-10-13 按本人提供的内容：标题下面那行定位（Youth Culture · Community · …）。
+   字号字体沿用 .eyebrow，但允许折行（.eyebrow 的 line-height:1 会叠字）。 */
+.venture-tagline { margin-top: var(--s-3); line-height: 1.7; }
+
 /* ---------- case document（案例详情：本人给的 PDF 逐页） ---------- */
 .case-doc { margin-top: var(--s-6); }
 .case-doc-title { margin-bottom: var(--s-4); font: 600 var(--f-sub) / 1.4 var(--sans); }
@@ -1177,6 +1181,15 @@ a.card:hover .card-go {
 .qa-key { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 .qa-sub { display: block; margin-top: 4px; font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.06em; text-transform: none; color: var(--ink-faint); }
 .qa-val { color: var(--ink-soft); line-height: 1.85; }
+/* 六问 / 合作需求现在是富文本（段落 + 列表 + 收尾段落）：全局 reset 把 p 的
+   margin 清零了，这里补回块间距（2026-10-13） */
+.doc-block > p + .doc-list,
+.doc-block > .doc-list + p,
+.qa-val > p + p,
+.qa-val > p + .doc-list,
+.qa-val > .doc-list + p { margin-top: 10px; }
+/* 「线上（原型状态）」那段说明与下面那颗按钮的间距 */
+.doc-live-note { margin-bottom: var(--s-4); }
 
 /* ---------- callout ---------- */
 .callout { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-3); margin-top: var(--s-5); padding: var(--s-5); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-sunken); }

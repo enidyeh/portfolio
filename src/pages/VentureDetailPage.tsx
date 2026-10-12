@@ -3,6 +3,7 @@ import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 import { asset } from '../lib/base'
 import BackLink from '../components/BackLink'
+import RichText from '../components/RichText'
 import NotFoundPage from './NotFoundPage'
 
 export default function VentureDetailPage() {
@@ -41,6 +42,8 @@ export default function VentureDetailPage() {
         <div className="shell">
           {/* 2026-10-12 按本人要求：删掉「正在创造 · 状态」小字，也删掉下面那排圆角小标题 */}
           <h1 className="page-title">{venture.name}</h1>
+          {/* 2026-10-13 按本人提供的内容：标题下面加一行英文定位（如 Youth Culture · Community · Commercialization） */}
+          {venture.tagline ? <p className="eyebrow venture-tagline">{venture.tagline}</p> : null}
           <p className="page-lede">{venture.oneLiner}</p>
           {venture.xhs ? (
             <p className="page-links">
@@ -75,7 +78,7 @@ export default function VentureDetailPage() {
           <div className="doc-body">
             <div className="doc-block">
               <h2>{ui.blockRole}</h2>
-              <p>{venture.role}</p>
+              <RichText value={venture.role} />
             </div>
 
             <div className="doc-block">
@@ -84,7 +87,9 @@ export default function VentureDetailPage() {
                 {answers.map((answer, i) => (
                   <div className="qa-item" key={ui.qaKeys[i]}>
                     <span className="qa-key">{ui.qaKeys[i]}</span>
-                    <span className="qa-val">{answer}</span>
+                    <div className="qa-val">
+                      <RichText value={answer} />
+                    </div>
                   </div>
                 ))}
               </div>
@@ -92,13 +97,17 @@ export default function VentureDetailPage() {
 
             <div className="doc-block">
               <h2>{ui.blockCollab}</h2>
-              <p>{venture.collab}</p>
+              <RichText value={venture.collab} />
             </div>
 
             {venture.liveUrl ? (
               <div className="doc-block">
                 <h2>{ui.blockLive}</h2>
-                <p style={{ marginBottom: 'var(--s-4)' }}>{venture.liveNote}</p>
+                {venture.liveNote ? (
+                  <div className="doc-live-note">
+                    <RichText value={venture.liveNote} />
+                  </div>
+                ) : null}
                 <a className="btn" href={venture.liveUrl} target="_blank" rel="noreferrer">
                   {ui.openSite}
                 </a>
@@ -107,19 +116,8 @@ export default function VentureDetailPage() {
           </div>
         </div>
 
-        {/* 合作需求之后：完整合作手册（2026-10-12 按本人要求加在异想集详情页） */}
-        {docPages.length ? (
-          <section className="shell case-doc">
-            <h2 className="case-doc-title">{ui.caseDocTitle}</h2>
-            <div className="case-doc-pages">
-              {docPages.map((src) => (
-                <img className="case-doc-page" key={src} src={src} alt="" loading="lazy" decoding="async" />
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        {/* 窄屏的翻页条（宽屏走下面的悬浮箭头），与精选案例详情页同一套 */}
+        {/* 窄屏的翻页条（宽屏走固定在两侧的悬浮箭头），与精选案例详情页同一套。
+            2026-10-13 按本人要求：挪到「项目方案」前面（下面是一长串 PDF 逐页图）。 */}
         <div className="shell">
           <nav className="case-pager" aria-label={ui.caseNavAria}>
             <Link
@@ -144,6 +142,18 @@ export default function VentureDetailPage() {
             </Link>
           </nav>
         </div>
+
+        {/* 合作需求之后：完整合作手册（2026-10-12 按本人要求加在异想集详情页） */}
+        {docPages.length ? (
+          <section className="shell case-doc">
+            <h2 className="case-doc-title">{ui.caseDocTitle}</h2>
+            <div className="case-doc-pages">
+              {docPages.map((src) => (
+                <img className="case-doc-page" key={src} src={src} alt="" loading="lazy" decoding="async" />
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
 
       {/* 宽屏：悬浮在页面左右两侧中间的上一个 / 下一个项目 */}
