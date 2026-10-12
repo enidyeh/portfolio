@@ -492,6 +492,16 @@ a.card:hover .card-go {
 .card--venture:focus-within { border-color: var(--accent); transform: translateY(-2px); }
 .card--venture .card-title-link { color: inherit; }
 .card--venture .card-title-link:hover { color: var(--accent); }
+/* 2026-10-12 按本人要求：整张卡片（含文案区）都可点进详情 —— 让标题链接用 ::after
+   铺满整张卡；右上角那颗「关注」用 z-index 压在它上面，点它仍然只跳小红书。
+   卡片自身必须 position: relative 这个 ::after 才有定位参照。 */
+.card--venture { position: relative; }
+.card--venture .card-title-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
 .card-media-link { position: relative; display: block; height: 100%; }
 /* 2026-10-12 按本人要求：图片上的灰色「小红书主页」角标撤掉（只留右上角那颗「关注」） */
 .card-foot { display: flex; align-items: flex-end; gap: var(--s-3); margin-top: auto; }
@@ -568,6 +578,7 @@ a.card:hover .card-go {
   display: grid;
   place-items: center;
   gap: var(--s-3);
+  /* 2026-10-12 按本人要求：横屏 3:4 —— 也就是 4:3 的横版照片框 */
   aspect-ratio: 4 / 3;
   padding: var(--s-4);
   background: var(--paper-sunken);

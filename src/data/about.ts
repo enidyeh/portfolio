@@ -22,7 +22,7 @@ export type TimelineItem = {
 export const aboutHead = {
   // 2026-10-12 按本人要求：删掉「个人介绍」小标题，换掉那句自我介绍
   title: '关于我。',
-  lede: '一个很爱折腾，具备全球视野与商业变现经验，希望用 AI 工具与产品思维解放好奇心的人。',
+  lede: '一个爱折腾的人！具备全球视野与商业变现经验，希望用 AI 工具与产品思维解放好奇心。',
 }
 
 /** 能力方法论：Strategy · Product · Growth（首页 WHAT I DO 复用同一份） */

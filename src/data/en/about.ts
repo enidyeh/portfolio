@@ -6,7 +6,7 @@ import type { TimelineItem } from '../about'
 export const aboutHead = {
   // 2026-10-12 at the owner’s request: eyebrow removed, self-description replaced.
   title: 'About me.',
-  lede: 'Someone who likes to tinker, with a global outlook and commercial experience, using AI tools and a product mindset to set curiosity free.',
+  lede: 'Someone who loves to tinker — with a global outlook and commercial experience, hoping to use AI tools and a product mindset to set curiosity free.',
 }
 
 /** Capability method. `zh` is left equal to `en` on purpose — the English page shows one label only. */
