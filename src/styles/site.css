@@ -611,7 +611,7 @@ a.card:hover .card-go {
 .doc-list li::before { content: '—'; flex: none; color: var(--ink-faint); }
 
 .meta-list { display: flex; flex-direction: column; gap: var(--s-3); }
-.meta-row { display: grid; grid-template-columns: 104px minmax(0, 1fr); gap: var(--s-3); align-items: baseline; }
+.meta-row { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 10px; align-items: baseline; }
 .meta-key { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
 .meta-val { color: var(--ink-soft); line-height: 1.75; overflow-wrap: anywhere; }
 /* 邮箱显示成大写（地址本身不动，链接仍是小写） */
@@ -752,6 +752,8 @@ a.card:hover .card-go {
 .tl-when { font: var(--f-meta) / 1.5 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); white-space: nowrap; }
 .tl-right { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
 .tl-desc { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
+/* 每条经历下面的能力小标签（2026-10-12：原来的「能力」栏删掉，标签挂到这里） */
+.tl-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tl-details { display: flex; flex-direction: column; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .tl-details li { position: relative; padding-left: 14px; font-size: 13px; line-height: 1.8; color: var(--ink-soft); }
 .tl-details li::before {
@@ -1276,7 +1278,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .logo-item { margin-right: var(--s-5); }
   .tl-item, .skill-group, .qa-item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .tl-row { grid-template-columns: max-content minmax(0, 1fr) auto; gap: var(--s-3); padding-left: var(--s-4); }
-  .meta-row { grid-template-columns: 80px minmax(0, 1fr); }
+  /* 联系那三行：标签列贴住文字宽度（2026-10-12 本人要求左右两列拉近） */
+  .meta-row { grid-template-columns: max-content minmax(0, 1fr); gap: 8px; }
 }
 @media (max-width: 520px) {
   .site-footer-inner { grid-template-columns: minmax(0, 1fr); }

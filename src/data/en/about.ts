@@ -38,6 +38,7 @@ export const experience: TimelineItem[] = [
     when: '2026.6 — Present',
     role: 'Venture · independent planning and operations',
     org: 'REVERIE 异想集',
+    tags: ['Market & user insight', 'Opportunity sizing', 'Business positioning'],
     desc: 'Planned and ran more than ten events single-handedly: a community of 2,500+ members, 5,000+ attendees on site, and 30+ artists brought in. Organised film screenings including Spider-Man: Across the Spider-Verse, Barbie and Taylor Swift: The Eras Tour — as the organiser I ran the team and the community, planned the event flow, pushed execution and locked the details, delivering each event smoothly and to strong feedback.',
     details: [
       'Designed posters, long-form graphics and copy that pulled in a large community following, with 700+ people attending offline events.',
@@ -50,6 +51,7 @@ export const experience: TimelineItem[] = [
     when: '2026.2 — 2026.4',
     role: 'AI product overseas marketing',
     org: 'Opencreator',
+    tags: ['Prototyping & AI workflow', 'Content & creator ecosystem', 'Channel & conversion'],
     details: [
       'Creator partnerships: built relationships with overseas KOL/KOC that matched the brand, ran collaborations, shot product videos, grew the creator database and set up an influencer SOP — supporting 50+ overseas creators and related anime communities.',
       'Community and user engagement: independently ran the Discord community — content and interaction — and planned and executed the “AI AMV” animation music-video challenge, using theme planning, competition design and community partnerships to lift activity and keep the space positive.',
@@ -61,6 +63,7 @@ export const experience: TimelineItem[] = [
     when: '2025.9 — 2025.12',
     role: 'Overseas PR intern',
     org: 'Guilin Jimuqiu Cosmetics',
+    tags: ['Cross-border commercialisation', 'Channel & conversion', 'Data review'],
     details: [
       'Creative planning: joined overseas promotion and creative planning for the brand “Momo’s Workshop”, helping land campaigns and plan the DTC site, and providing creative support for brand content.',
       'Creator partnerships: built and managed KOL/KOC on Instagram, TikTok and YouTube; the database now holds 5,000+ creators with 500+ collaborations.',
@@ -73,6 +76,7 @@ export const experience: TimelineItem[] = [
     when: '2024.3 — 2024.6',
     role: 'Creative project management intern',
     org: 'Pop Mart',
+    tags: ['Requirement prioritisation', 'Validation & iteration', 'Data review'],
     details: [
       'Product launches: worked on campaigns for 20+ launches including SKULLPANDA, Disney Donald Duck, Jackson Wang, LABUBU and MOLLY, building product positioning, campaign plans and social content strategy with the team.',
       'Project management: coordinated 25+ internal and external teams, optimising product, photography, design and KOL content distribution to protect delivery quality; cut the project cycle by 20% while delivering on time, with over 10 million social impressions within 48 hours of launch.',
@@ -83,6 +87,7 @@ export const experience: TimelineItem[] = [
     when: '2023.10 — 2024.2',
     role: 'Commercial design intern',
     org: 'Xiaohongshu (Xingyin Information Technology)',
+    tags: ['User flows', 'Content & creator ecosystem'],
     details: [
       'Campaign planning: cross-team visual marketing for the “REDesign” team, planning official campaigns and creative proposals against Xiaohongshu’s marketing goals; owned the 「我就要这样生活」 campaign, planning its communications and visual assets.',
       'Visual marketing: ran the “REDesign” account and created the 「字体月月报」 column, building a design community and lifting brand recognition; produced conference visuals and livestream assets for the 2024 WILL commercial partner conference.',

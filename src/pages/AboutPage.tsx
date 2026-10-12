@@ -123,34 +123,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* 2026-10-12 按本人要求：「把能力组织成方法…」这句说明删掉，
-                能力之后直接接经历与教育 */}
-            <div className="doc-block">
-              <h2>{ui.blockCapability}</h2>
-              {/* 2026-10-12 按本人要求：原来在「简介」下的四个支点标签挪到这里 */}
-              <ul className="pillars">
-                {c.profile.pillars.map((p) => (
-                  <li key={p} className="tag">
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <div>
-                {c.methodGroups.map((m) => (
-                  <div className="skill-group" key={m.label}>
-                    <span className="skill-label">{m.label}</span>
-                    <span className="skill-items">
-                      {m.items.map((i) => (
-                        <span className="tag" key={i}>
-                          {i}
-                        </span>
-                      ))}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
+            {/* 2026-10-12 按本人要求：「能力」这一栏删掉，
+                原来的能力标签改成挂到每条具体经历上（见 data/about.ts 的 tags） */}
             <div className="doc-block">
               <h2>{ui.blockExperience}</h2>
               <div className="timeline">
@@ -167,6 +141,15 @@ export default function AboutPage() {
                         <ul className="tl-details">
                           {item.details.map((d) => (
                             <li key={d}>{d}</li>
+                          ))}
+                        </ul>
+                      ) : null}
+                      {item.tags?.length ? (
+                        <ul className="tl-tags">
+                          {item.tags.map((t) => (
+                            <li className="tag" key={t}>
+                              {t}
+                            </li>
                           ))}
                         </ul>
                       ) : null}
