@@ -581,6 +581,13 @@ a.card:hover .card-go {
 /* 长形下载按钮：一行一个，占满右栏 */
 .dl-buttons { display: flex; flex-direction: column; gap: var(--s-3); }
 .btn--wide { width: 100%; justify-content: space-between; padding: 16px 18px; }
+/* 2026-10-12 按本人要求：下载按钮做成淡红色 */
+.btn--soft {
+  color: var(--accent);
+  background: var(--accent-tint);
+  border-color: transparent;
+}
+.btn--soft:hover { color: var(--paper); background: var(--accent); border-color: var(--accent); }
 @media (max-width: 760px) {
   .about-pair { grid-template-columns: minmax(0, 1fr); }
 }
@@ -1260,6 +1267,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .callout--mini .callout-title { flex: 0 1 auto; min-width: 0; }
   .callout--mini .btn { flex: none; }
   .grid--venture { grid-template-columns: minmax(0, 1fr); }
+  /* 项目方案 / 合作手册的逐页图：手机上把页间距收小（2026-10-12 本人要求） */
+  .case-doc-pages { gap: var(--s-3); }
   .doc-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s-4); }
   .doc-aside { position: static; flex-direction: row; flex-wrap: wrap; gap: var(--s-3); }
   .logo-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }

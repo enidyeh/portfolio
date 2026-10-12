@@ -30,25 +30,10 @@ export default function AboutPage() {
                 {c.profile.intro.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
-                <ul className="pillars">
-                  {c.profile.pillars.map((p) => (
-                    <li key={p} className="tag">
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                {/* 2026-10-12 按本人要求：「个人魅力」与「招聘 / 视频」不再单独成段，
-                    直接并进「简介」这里（内容仍待本人提供）。 */}
-                <p className="section-lede">
-                  <Pending>{ui.aboutCharmNote}</Pending>
-                </p>
-                <p className="section-lede">
-                  <Pending>{ui.aboutHiringNote}</Pending>
-                </p>
               </div>
 
               <div className="doc-block">
-                <h2>{ui.aboutPhotos}</h2>
+                {/* 2026-10-12 按本人要求：删掉「照片」这个大标题，只留占位块 */}
                 {/* 照片轮播占位：本人给图后换成真实轮播 */}
                 <div className="photo-ph">
                   <Pending>{ui.aboutPhotosPending}</Pending>
@@ -123,7 +108,13 @@ export default function AboutPage() {
                 <h2>{ui.blockResume}</h2>
                 <div className="dl-buttons">
                   {resumes.map((r) => (
-                    <a className="btn btn--wide" href={r.url} target="_blank" rel="noreferrer" key={r.label}>
+                    <a
+                      className="btn btn--wide btn--soft"
+                      href={r.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      key={r.label}
+                    >
                       {ui.downloadPrefix}
                       {r.label}
                     </a>
@@ -136,6 +127,14 @@ export default function AboutPage() {
                 能力之后直接接经历与教育 */}
             <div className="doc-block">
               <h2>{ui.blockCapability}</h2>
+              {/* 2026-10-12 按本人要求：原来在「简介」下的四个支点标签挪到这里 */}
+              <ul className="pillars">
+                {c.profile.pillars.map((p) => (
+                  <li key={p} className="tag">
+                    {p}
+                  </li>
+                ))}
+              </ul>
               <div>
                 {c.methodGroups.map((m) => (
                   <div className="skill-group" key={m.label}>

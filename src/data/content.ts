@@ -182,7 +182,7 @@ export type Ui = {
   /** 个人介绍页：简介右边的照片轮播（占位） */
   aboutPhotos: string
   aboutPhotosPending: string
-  /** 「下载简历 / 下载作品集」按钮的前缀 */
+  /** 「点此下载简历 / 点此下载作品集」按钮的前缀 */
   downloadPrefix: string
   metaEmail: string
   metaWechat: string
@@ -329,7 +329,7 @@ const uiZh: Ui = {
   aboutHiringNote: '待填：自我介绍视频，或招聘入口。',
   aboutPhotos: '照片',
   aboutPhotosPending: '待填：照片轮播',
-  downloadPrefix: '下载',
+  downloadPrefix: '点此下载',
   metaEmail: '邮箱',
   metaWechat: '微信',
   metaPhone: '电话',
