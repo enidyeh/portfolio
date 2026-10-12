@@ -523,7 +523,10 @@ a.card:hover .card-go {
 }
 
 /* ---------- inner page head ---------- */
-.page-head { padding: var(--s-7) 0 var(--s-5); border-bottom: 1px solid var(--line); }
+/* 详情页页头。2026-10-12 按本人要求：顶部留白再加 10px
+   （桌面 --s-7 88px → 98px；≤760px 时 56px → 66px）。
+   要再微调只改这里的 +10px。 */
+.page-head { padding: calc(var(--s-7) + 10px) 0 var(--s-5); border-bottom: 1px solid var(--line); }
 /* 详情页左上角的「返回上级」：灰色线框胶囊按钮（2026-10-12 按本人要求） */
 .back-row { margin-bottom: var(--s-4); }
 .back-btn {
