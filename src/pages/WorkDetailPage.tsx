@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 import { asset } from '../lib/base'
+import BackLink from '../components/BackLink'
 import WorkMedia from '../components/WorkMedia'
 import NotFoundPage from './NotFoundPage'
 
@@ -27,6 +28,8 @@ export default function WorkDetailPage() {
   return (
     <>
       <header className="page-head">
+        {/* 2026-10-12 按本人要求：左上角加一个灰色线框的「返回上级」 */}
+        <BackLink to="/work" />
         <div className="shell">
           {/* 2026-10-12 按本人要求：删掉「精选案例 · 项目类型」那一行小字 */}
           <h1 className="page-title">{work.title}</h1>

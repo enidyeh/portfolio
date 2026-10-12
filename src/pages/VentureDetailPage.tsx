@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
 import { asset } from '../lib/base'
+import BackLink from '../components/BackLink'
 import NotFoundPage from './NotFoundPage'
 
 export default function VentureDetailPage() {
@@ -35,6 +36,8 @@ export default function VentureDetailPage() {
   return (
     <>
       <header className="page-head">
+        {/* 2026-10-12 按本人要求：左上角加一个灰色线框的「返回上级」 */}
+        <BackLink to="/venture" />
         <div className="shell">
           {/* 2026-10-12 按本人要求：删掉「正在创造 · 状态」小字，也删掉下面那排圆角小标题 */}
           <h1 className="page-title">{venture.name}</h1>

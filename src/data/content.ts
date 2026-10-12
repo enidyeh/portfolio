@@ -132,6 +132,8 @@ export type Ui = {
   dockCloseAria: string
 
   caseEyebrow: string
+  /** 案例 / 项目详情页左上角的「返回上级」按钮 */
+  backCta: string
   caseNext: string
   casePrev: string
   caseNavAria: string
@@ -286,6 +288,7 @@ const uiZh: Ui = {
   dockCloseAria: '关闭对话',
 
   caseEyebrow: '精选案例',
+  backCta: '返回上级',
   caseNext: '下一个案例',
   casePrev: '上一个案例',
   caseNavAria: '案例导航',
@@ -409,6 +412,7 @@ const uiEn: Ui = {
   dockCloseAria: 'Close chat',
 
   caseEyebrow: 'Selected Work',
+  backCta: 'Back',
   caseNext: 'Next case',
   casePrev: 'Previous case',
   caseNavAria: 'Case navigation',
