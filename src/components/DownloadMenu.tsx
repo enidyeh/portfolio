@@ -97,7 +97,6 @@ export default function DownloadMenu() {
             if (items.length === 0) return null
             return (
               <div className="dl-group" key={group}>
-                <p className="dl-head">{ui.dlGroup[group]}</p>
                 <ul className="dl-list">
                   {items.map((item) => (
                     <li className="dl-item" key={item.label}>

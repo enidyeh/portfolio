@@ -2,6 +2,35 @@ import { useRef, useState } from 'react'
 import { useContent } from '../data/content'
 import type { WorkCase } from '../data/works'
 
+/** 喇叭图形按钮（内联 SVG，跟下载菜单一样不为一个图标引依赖）。 */
+function SpeakerIcon({ muted }: { muted: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path d="M11 5 6.5 9H3v6h3.5L11 19z" />
+      {muted ? (
+        <>
+          <path d="M15 9.5l4 5" />
+          <path d="M19 9.5l-4 5" />
+        </>
+      ) : (
+        <>
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M18.5 6a9 9 0 0 1 0 12" />
+        </>
+      )}
+    </svg>
+  )
+}
+
 /**
  * 案例的媒体块：优先视频，其次图片，都没有就渲染调用方给的占位文字。
  *
@@ -69,21 +98,25 @@ export default function WorkMedia({
     return (
       <span className="work-media-wrap">
         {video}
-        {muted ? (
-          <button
-            type="button"
-            className="unmute-btn"
-            onClick={() => {
-              const video = videoRef.current
-              if (!video) return
-              video.muted = false
-              video.volume = 1
-              setMuted(false)
-            }}
-          >
-            {c.ui.unmuteCta}
-          </button>
-        ) : null}
+        {/* 2026-10-12 按本人要求：不用「点击开启声音」文字按钮，改成一颗喇叭图形按钮
+            （静音时带斜杠，点一下出声，再点一下静音） */}
+        <button
+          type="button"
+          className="unmute-btn"
+          aria-label={c.ui.unmuteCta}
+          title={c.ui.unmuteCta}
+          aria-pressed={!muted}
+          onClick={() => {
+            const video = videoRef.current
+            if (!video) return
+            const next = !video.muted
+            video.muted = next
+            if (!next) video.volume = 1
+            setMuted(next)
+          }}
+        >
+          <SpeakerIcon muted={muted} />
+        </button>
       </span>
     )
   }

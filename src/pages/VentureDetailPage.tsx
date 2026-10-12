@@ -101,10 +101,6 @@ export default function VentureDetailPage() {
                 </a>
               </div>
             ) : null}
-
-            <div className="doc-block">
-              <p className="section-lede">{c.ventureNote}</p>
-            </div>
           </div>
         </div>
 

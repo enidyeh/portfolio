@@ -39,6 +39,17 @@ export default function SiteFooter() {
                 <Pending>{ui.pendingWechat}</Pending>
               )}
             </li>
+            {/* 电话：2026-10-12 按本人要求加进页脚联系栏 */}
+            <li>
+              {ui.phonePrefix}
+              <a
+                className="email-strong"
+                href={`tel:${c.profile.phone.replace(/[^+\d]/g, '')}`}
+                aria-label={ui.phoneAria}
+              >
+                {c.profile.phone}
+              </a>
+            </li>
             <li>
               <Link to={href('/about#resume')}>{ui.footResume}</Link>
             </li>

@@ -40,7 +40,7 @@ export const works: WorkCase[] = [
     featured: true,
     track: 'product',
     // Full project document: 33 pages, supplied by the owner
-    docPages: { dir: 'phygital-base', count: 33 },
+    docPages: { dir: 'phygital-base', count: 32 },
     tags: ['Product design', 'Project management', 'UI design', 'Product strategy'],
     year: 'To be filled',
     role: '',

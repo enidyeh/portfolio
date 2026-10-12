@@ -76,7 +76,7 @@ export const works: WorkCase[] = [
     featured: true,
     track: 'product',
     // 完整项目文件：本人提供的「（进行中）phygital base.pdf」，33 页
-    docPages: { dir: 'phygital-base', count: 33 },
+    docPages: { dir: 'phygital-base', count: 32 },
     tags: ['产品设计', '项目管理', 'ui设计', '产品策略'],
     year: '待填',
     // 2026-10-12 按本人要求：aside 里的「你的角色」删掉

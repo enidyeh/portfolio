@@ -88,6 +88,15 @@ export default function AboutPage() {
                       )}
                     </span>
                   </div>
+                  {/* 电话：2026-10-12 按本人要求加进「联系」 */}
+                  <div className="meta-row">
+                    <span className="meta-key">{ui.metaPhone}</span>
+                    <span className="meta-val">
+                      <a className="email-strong" href={`tel:${c.profile.phone.replace(/[^+\d]/g, '')}`}>
+                        {c.profile.phone}
+                      </a>
+                    </span>
+                  </div>
                   {/* 社交：小红书已于 2026-10-11 按本人要求撤下；没有条目时整行不渲染 */}
                   {c.profile.social.length > 0 ? (
                     <div className="meta-row">

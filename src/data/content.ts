@@ -56,6 +56,7 @@ export type ProfileView = {
   pillars: string[]
   email: string
   wechat: string
+  phone: string
   social: SocialLink[]
 }
 
@@ -87,6 +88,9 @@ export type Ui = {
   footResume: string
   footAbout: string
   wechatPrefix: string
+  /** 页脚联系栏里的「电话 · 」前缀 */
+  phonePrefix: string
+  phoneAria: string
   pendingEmail: string
   pendingWechat: string
   pendingSocial: string
@@ -182,6 +186,7 @@ export type Ui = {
   downloadPrefix: string
   metaEmail: string
   metaWechat: string
+  metaPhone: string
   metaSocial: string
 
   nfTitle: string
@@ -236,6 +241,8 @@ const uiZh: Ui = {
   footResume: '简历',
   footAbout: '个人介绍',
   wechatPrefix: '微信 · ',
+  phonePrefix: '电话 · ',
+  phoneAria: '拨打电话',
   pendingEmail: '待填：邮箱',
   pendingWechat: '待填：微信',
   pendingSocial: '待填：社交账号',
@@ -314,8 +321,8 @@ const uiZh: Ui = {
   caseDocTitle: '项目方案',
   /** 创业项目图上那个跳小红书的角标 */
   xhsCardLabel: '小红书主页 ↗',
-  /** 首页自动播放的视频：解除静音的按钮文案 */
-  unmuteCta: '点击开启声音',
+  /** 首页自动播放的视频：喇叭按钮的无障碍名称 */
+  unmuteCta: '开启声音',
   aboutCharm: '个人魅力',
   aboutHiring: '招聘 / 视频',
   aboutCharmNote: '待填：工作之外的东西——爱好、长期在折腾的事、能一起玩起来的场景。',
@@ -325,6 +332,7 @@ const uiZh: Ui = {
   downloadPrefix: '下载',
   metaEmail: '邮箱',
   metaWechat: '微信',
+  metaPhone: '电话',
   metaSocial: '社交',
 
   nfTitle: '这里没有内容。',
@@ -356,6 +364,8 @@ const uiEn: Ui = {
   footResume: 'Résumé',
   footAbout: 'About',
   wechatPrefix: 'WeChat · ',
+  phonePrefix: 'Phone · ',
+  phoneAria: 'Call this number',
   pendingEmail: 'To be filled: email',
   pendingWechat: 'To be filled: WeChat',
   pendingSocial: 'To be filled: social accounts',
@@ -433,8 +443,8 @@ const uiEn: Ui = {
   wxQrNote: 'Scan to add on WeChat',
   caseDocTitle: 'Project plan',
   xhsCardLabel: 'Xiaohongshu ↗',
-  /** Homepage autoplaying video: button to unmute */
-  unmuteCta: 'Tap for sound',
+  /** Homepage autoplaying video: accessible name for the speaker button */
+  unmuteCta: 'Turn sound on',
   aboutCharm: 'Beyond work',
   aboutHiring: 'Hiring / video',
   aboutCharmNote: 'To be filled: life outside work — interests, long-running side projects, things we could build together.',
@@ -444,6 +454,7 @@ const uiEn: Ui = {
   downloadPrefix: 'Download ',
   metaEmail: 'Email',
   metaWechat: 'WeChat',
+  metaPhone: 'Phone',
   metaSocial: 'Social',
 
   nfTitle: 'Nothing here.',
@@ -467,6 +478,7 @@ const zh: Content = {
     pillars: zhProfile.profile.pillars,
     email: zhProfile.profile.email,
     wechat: zhProfile.profile.wechat,
+    phone: zhProfile.profile.phone,
     social: zhProfile.profile.social,
   },
   siteNote: zhProfile.siteNote,
@@ -505,6 +517,7 @@ const en: Content = {
     pillars: enProfile.profile.pillars,
     email: enProfile.profile.email,
     wechat: enProfile.profile.wechat,
+    phone: enProfile.profile.phone,
     social: enProfile.profile.social,
   },
   siteNote: enProfile.siteNote,

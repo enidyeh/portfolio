@@ -53,6 +53,8 @@ export const profile = {
   /** 联系方式 */
   email: 'enidyeh2002@gmail.com',
   wechat: 'ENIDYEAH',
+  /** 联系电话：2026-10-12 按本人要求公开在「联系」里 */
+  phone: '+86 18702378098',
   /** 社交主页：2026-10-11 按本人要求先撤下小红书（原链带 xsec_token、易失效），有正式主页地址再加回来 */
   social: [] as SocialLink[],
 }

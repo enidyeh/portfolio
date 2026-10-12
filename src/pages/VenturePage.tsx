@@ -37,9 +37,6 @@ export default function VenturePage() {
               {ui.contactCta}
             </Link>
           </div>
-          <p className="section-lede" style={{ marginTop: 'var(--s-5)' }}>
-            {c.ventureNote}
-          </p>
         </div>
       </section>
     </>

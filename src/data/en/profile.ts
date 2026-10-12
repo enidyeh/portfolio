@@ -22,6 +22,8 @@ export const profile = {
   pillars: ['Product thinking', 'Global growth', 'AI in practice', 'Shipping'],
   email: 'enidyeh2002@gmail.com',
   wechat: 'ENIDYEAH',
+  /** Phone number: published in Contact at the owner’s request (2026-10-12). */
+  phone: '+86 18702378098',
   // Social profiles: Xiaohongshu links were taken down on 2026-10-11 (the old
   // URLs carried expiring xsec_token params). Add real profile URLs back here.
   social: [] as SocialLink[],
