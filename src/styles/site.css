@@ -1342,3 +1342,36 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 @media (max-width: 400px) {
   .lang-switch span { display: none; }
 }
+
+/* ---------- 电脑版：对话框浮在首屏视频右上角 ---------- */
+/* 2026-10-13 按本人要求（参照截图）：≥901px 时把对话框挪进视频右上角。
+   窄屏（≤900）仍然是「视频在上、对话框在下面纸底」的流式排版。
+   ⚠️ 这一段必须写在文件末尾：`.avatar--inline { margin-top }` 在后面，
+   同权重选择器后写的胜出，写在前面会被它覆盖掉。 */
+@media (min-width: 901px) {
+  .hero > .shell {
+    position: absolute;
+    inset: 0;
+    max-width: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding-top: var(--s-5);
+    padding-bottom: var(--s-5);
+    /* 只有面板本身可点，其余区域不挡住视频 */
+    pointer-events: none;
+  }
+  .hero-main {
+    pointer-events: auto;
+    width: min(400px, 100%);
+    padding: var(--s-4);
+    background: var(--paper-a);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 32px rgba(20, 22, 26, 0.16);
+  }
+  /* 面板自带内边距，抵消 .avatar--inline 的顶距 */
+  .hero .avatar--inline { margin-top: 0; }
+}

@@ -18,13 +18,13 @@
   --line: rgba(20, 22, 26, 0.14);
   --rule: rgba(20, 22, 26, 0.34);
 
-  /* 信号色：取自人物视频里「红发」的亮调（用户在参考图里指定的颜色） */
-  --accent: #c55441;
+  /* 信号色：2026-10-13 按本人给的正红参考图更换（此前是偏橘的暖红 #c55441） */
+  --accent: #d62828;
   /* 深一档，只用于 hover / active */
-  --accent-deep: #9c4030;
-  --accent-wash: #f7e6e4;
-  /* 小标签专用：比 wash 更偏橘的浅橘红（用户 2026-10-12 要求与红色按钮同色系） */
-  --accent-tint: #fbe3d6;
+  --accent-deep: #ab2020;
+  --accent-wash: #fbe6e6;
+  /* 小标签专用：比 wash 更暖一档的浅红（与红色按钮同色系） */
+  --accent-tint: #fbe2db;
 
   /* 字体族：英文等宽，中文黑体 */
   --en: 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
