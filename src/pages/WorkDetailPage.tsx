@@ -6,6 +6,20 @@ import BackLink from '../components/BackLink'
 import WorkMedia from '../components/WorkMedia'
 import NotFoundPage from './NotFoundPage'
 
+/** 把文案里的 `**强调**` 渲染成 <strong>（本人提供的案例文案只用到这一种标记） */
+function withBold(text: string) {
+  return text
+    .split(/(\*\*[^*]+\*\*)/g)
+    .filter((part) => part !== '')
+    .map((part, i) =>
+      part.startsWith('**') && part.endsWith('**') ? (
+        <strong key={i}>{part.slice(2, -2)}</strong>
+      ) : (
+        <span key={i}>{part}</span>
+      ),
+    )
+}
+
 export default function WorkDetailPage() {
   const { slug } = useParams()
   const c = useContent()
@@ -68,12 +82,42 @@ export default function WorkDetailPage() {
           </aside>
 
           <div className="doc-body">
+            {/* 2026-10-12 按本人要求：把「项目名称 / 项目类型 / 项目主题」这类信息行
+                加在「背景与问题」上面 */}
+            {work.facts?.length ? (
+              <div className="doc-facts">
+                {work.facts.map((f) => (
+                  <div className="meta-row" key={f.label}>
+                    <span className="meta-key">{f.label}</span>
+                    <span className="meta-val">{f.value}</span>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+
             {work.problem ? (
               <div className="doc-block">
                 <h2>{ui.blockProblem}</h2>
                 <p>{work.problem}</p>
               </div>
             ) : null}
+
+            {/* 本人提供的案例正文区块（底层策略 / 设计核心与执行 / 核心产出 …） */}
+            {work.sections?.map((s) => (
+              <div className="doc-block" key={s.title}>
+                <h2>{s.title}</h2>
+                {s.body?.map((p, i) => (
+                  <p key={i}>{withBold(p)}</p>
+                ))}
+                {s.items?.length ? (
+                  <ul className="doc-list">
+                    {s.items.map((item, i) => (
+                      <li key={i}>{withBold(item)}</li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ))}
 
             {work.contribution.filter(Boolean).length ? (
               <div className="doc-block">
