@@ -66,7 +66,7 @@ export const experience: TimelineItem[] = [
     // 2026-10-13 按本人新版简历更新（岗位名与经历描述为简历原文）
     when: '2026.02 — 2026.04',
     role: '海外创作者运营 · 实习',
-    org: '北京鸭智智能科技有限公司 · OpenCreator',
+    org: '北京鹍智智能科技有限公司 · OpenCreator',
     tags: ['原型与 AI 工作流', '内容与创作者生态', '渠道与转化'],
     details: [
       '人工智能 / 大模型应用',
