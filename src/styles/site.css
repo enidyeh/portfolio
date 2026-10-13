@@ -665,6 +665,8 @@ a.card:hover .card-go {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* 本人照片大多是人像竖图，4:3 框里裁切时往上偏一点，别把脸裁掉 */
+  object-position: center 35%;
   opacity: 0;
   transition: opacity 0.45s ease;
 }
@@ -730,8 +732,8 @@ a.card:hover .card-go {
 .doc-block > p { color: var(--ink-soft); line-height: 1.85; }
 .doc-block > p + p { margin-top: var(--s-3); }
 .doc-list { display: flex; flex-direction: column; gap: 10px; }
-.doc-list li { display: flex; gap: 10px; color: var(--ink-soft); line-height: 1.75; }
-.doc-list li::before { content: '—'; flex: none; color: var(--ink-faint); }
+/* 2026-10-13 按本人要求：正文列表前面不再出现那条灰色短横线 */
+.doc-list li { color: var(--ink-soft); line-height: 1.75; }
 
 /* 正文里的 **强调** 片段：用户文案用它标要点前缀，用墨色加重 */
 .doc-block strong { color: var(--ink); font-weight: 600; }
@@ -1461,12 +1463,15 @@ a.card:focus-visible .card-title,
 @media (max-width: 700px) {
   .hero { border-bottom: 0; }
   .hero-stage > .shell {
-    padding-top: var(--s-2);
-    padding-bottom: var(--s-4);
+    /* 2026-10-13 本人要求：和视频边界留一点距离、整体再往下一点，
+       同时把到下面「精选项目」的间距压小 */
+    padding-top: 16px;
+    padding-bottom: var(--s-2);
   }
   /* 贴住视频：去掉 .avatar--inline 的 32px 顶距 */
   .avatar--inline { margin-top: 0; }
   /* 问题框与下面两个常见问题之间也收一点，整块更扁 */
   .avatar { gap: var(--s-2); }
-  .hero-faq { margin-top: 0; }
+  /* 两颗常见问题胶囊居中 */
+  .hero-faq { margin-top: 0; justify-content: center; }
 }
