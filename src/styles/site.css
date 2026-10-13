@@ -403,8 +403,9 @@ a.card:hover .card-go {
 }
 .site-modal-box {
   position: relative;
-  width: min(1000px, 100%);
-  max-height: 88svh;
+  /* 2026-10-13 本人要求「搭建中的示意图缩小缩小」：1000px → 560px */
+  width: min(560px, 100%);
+  max-height: 80svh;
   overflow: hidden;
   background: var(--paper-raised);
   border-radius: var(--radius);
@@ -420,7 +421,7 @@ a.card:hover .card-go {
 }
 .site-modal-text {
   color: #fff;
-  font: 600 var(--f-sub) / 1 var(--sans);
+  font: 600 var(--f-body) / 1 var(--sans);
   letter-spacing: 0.18em;
 }
 .site-modal-close {
@@ -1412,8 +1413,9 @@ a.card:hover .card-go {
 .dl-group + .dl-group { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
 /* 2026-10-12 按本人要求：去掉分组上方那行灰色小标题 */
 .dl-list { display: flex; flex-direction: column; }
-/* 下载按钮全部靠右对齐（每行文字占满，图标就落在同一条右边线上） */
-.dl-item { display: flex; align-items: flex-start; gap: var(--s-3); padding: 8px 0; border-top: 1px solid var(--line); }
+/* 下载按钮全部靠右对齐（每行文字占满，图标就落在同一条右边线上）
+   2026-10-13 按本人要求：去掉小字后只剩标题，行内改成上下居中 */
+.dl-item { display: flex; align-items: center; gap: var(--s-3); padding: 10px 0; border-top: 1px solid var(--line); }
 .dl-item:first-child { padding-top: 0; border-top: 0; }
 .dl-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
 .dl-label { font-size: 14px; font-weight: 600; line-height: 1.35; }

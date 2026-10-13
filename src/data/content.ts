@@ -262,8 +262,8 @@ const uiZh: Ui = {
 
   sectionWork: '精选项目',
   heroFaq: [
-    '你做过哪些类型的案例？',
-    '你现在在做哪些项目？',
+    '你做过哪些类型的项目？',
+    '你现在的创业项目是什么？',
   ],
   homeVentureEyebrow: '正在创造',
   homeVentureTitle: '正在创造',
@@ -390,8 +390,8 @@ const uiEn: Ui = {
 
   sectionWork: 'Selected Projects',
   heroFaq: [
-    'What kinds of cases have you worked on?',
-    'What are you building right now?',
+    'What kinds of projects have you done?',
+    'What are you building now?',
   ],
   homeVentureEyebrow: 'Building what’s next',
   homeVentureTitle: 'Building',

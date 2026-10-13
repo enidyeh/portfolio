@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { asset } from '../lib/base'
 import { useContent } from '../data/content'
@@ -19,11 +20,31 @@ import AvatarConsole from './AvatarConsole'
 export default function HeroBlock() {
   const { ui } = useContent()
   const href = useHref()
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  /* 2026-10-13 按本人要求：手机版 / 电脑版都是「一打开网站就开始播」。
+     光靠 autoPlay 属性有些浏览器（尤其 iOS 低电量模式、页面刚挂载时）会先停在封面帧，
+     所以挂载后与 canplay 时各再主动调一次 play()；失败也不报错（交回浏览器默认行为）。 */
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    const kick = () => {
+      v.play().catch(() => {})
+    }
+    kick()
+    v.addEventListener('loadeddata', kick)
+    v.addEventListener('canplay', kick)
+    return () => {
+      v.removeEventListener('loadeddata', kick)
+      v.removeEventListener('canplay', kick)
+    }
+  }, [])
 
   return (
     <section className="hero">
       <div className="hero-stage">
         <video
+          ref={videoRef}
           className="hero-video"
           src={asset('hero-bg.mp4')}
           poster={asset('hero-bg-poster.jpg')}

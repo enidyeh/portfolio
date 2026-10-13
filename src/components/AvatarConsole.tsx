@@ -75,10 +75,20 @@ export default function AvatarConsole({ variant = 'dock' }: { variant?: 'inline'
     const text = question.trim()
     if (!text) return
     const lower = text.toLowerCase()
-    const reply =
-      c.avatarQA.find((item) =>
-        item.keywords.some((keyword) => lower.includes(keyword.toLowerCase())),
-      ) ?? c.avatarFallback
+    /* 2026-10-13：改成「命中的关键词最长的那条优先」。
+       原来是 find() 命中第一个就算 ——「你现在的创业项目是什么？」会先撞上 projects 里的
+       「项目」这种宽泛词，答错卡片；现在「创业项目」更长，就会命中 venture。 */
+    let reply = c.avatarFallback
+    let bestLen = 0
+    for (const item of c.avatarQA) {
+      for (const keyword of item.keywords) {
+        const k = keyword.toLowerCase()
+        if (lower.includes(k) && k.length > bestLen) {
+          bestLen = k.length
+          reply = item
+        }
+      }
+    }
     // slice(-MAX_PAIRS)：新的一组永远排在末尾，所以 active 指向末尾就是「最新一组」。
     // 用 ref 计数器生成 id，避免顶掉旧卡片后 key 撞车。
     const next = [

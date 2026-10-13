@@ -112,7 +112,7 @@ export const works: WorkCase[] = [
     role: '',
     type: '产品设计与项目管理',
     summary:
-      'PHYGITAL BASE 是一个虚实融合智能产品设计方案，通过数字硬件、软件设计、场景社交和数字身份，尝试为数据主权时代下的数字资产管理提出新可能。',
+      'PHYGITAL BASE 是虚实融合智能产品设计方案，通过数字硬件、软件设计、场景社交和数字身份，尝试为数据主权时代下数字资产管理提出新可能。',
     video: { src: asset('work-phygital.mp4'), poster: asset('work-phygital-poster.jpg') },
     // 2026-10-13 按本人要求：顶部那批「项目类型 / 项目主题 / 底层策略 / 核心产出」不再单独成块，
     // 按内容归位到下面（项目类型·主题 → 项目背景；底层策略 → 关键决策与过程；核心产出 → 结果）。
