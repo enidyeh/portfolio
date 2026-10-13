@@ -27,6 +27,7 @@ export const ventures: Venture[] = [
     role: {
       body: [
         '**Founder / brand strategy and commercialisation lead**',
+        'I founded and lead REVERIE, a cultural innovation project built around youth culture that brings together themed events, interest communities and brand experiences — planning multi-theme cultural events that connect young consumers, independent creators and commercial brands, and turning taste and interest into offline experiences people can join, share and buy into.',
         'Responsible for positioning, cultural theme planning, event experience design, brand and creator partnerships, venue and supplier coordination, content and ticketing operations — taking the project from concept through to delivery and commercial partnership.',
       ],
     },
@@ -103,6 +104,8 @@ export const ventures: Venture[] = [
     name: 'REVERIE SHOP',
     en: 'REVERIE SHOP',
     image: asset('venture-yixiang-shop.webp'),
+    // 2026-10-13 at the owner’s request: the detail hero shows the whole photo
+    imageFit: 'contain',
     // Same crop as the Chinese page: awning and shop window, no signage.
     imagePos: '50% 67%',
     tagline: 'Curated Marketplace · Youth Culture · Retail',
@@ -189,6 +192,8 @@ export const ventures: Venture[] = [
     name: 'UNSEEN',
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
+    // 2026-10-13 at the owner’s request: show the whole image, no crop
+    imageFit: 'contain',
     tagline: 'AI × Youth Culture × Curated Discovery',
     oneLiner:
       'Cultural exploration for today’s young people, using magazine-style curation to connect city culture, offline experience and personal growth — exploring every side of how young people discover culture today.',
@@ -199,8 +204,10 @@ export const ventures: Venture[] = [
     // 2026-10-13: full copy supplied by the owner (role / six questions / partnership / prototype status)
     role: {
       body: [
+        '**Founder / cultural curation and commercialisation lead**',
+        'I founded and lead UNSEEN BOX, planning monthly themed curation and content distribution around youth culture, city life and diverse interests; responsible for cultural-theme research, narrative, distribution planning and partnerships with creators, cultural events and lifestyle brands — exploring how online content discovery extends into offline experience and consumption. Built on a “theme curation → content distribution → experience participation → commercial conversion” loop, connecting youth culture, the content ecosystem and lifestyle consumption.',
         '**Product designer / independent prototype developer**',
-        'Responsible on my own for positioning, information architecture, UX and interaction design, and for building a working front-end prototype through vibe coding — exploring what one developer can build with AI, from product concept to shipped interface.',
+        'Starting from the project’s positioning and content-curation logic, I designed the information architecture, UX and interaction myself, and built a working front-end prototype through vibe coding — exploring how cultural content can be organised into a digital experience that keeps travelling and keeps people taking part.',
       ],
     },
     problem: {
@@ -281,7 +288,6 @@ export const ventures: Venture[] = [
         'This version shows the product idea, page structure and interaction design. No back end, real user data or transaction system is connected yet.',
       ],
     },
-    demo: true,
   },
   {
     // Added 2026-10-11 at the site owner's request: the fourth brand.
@@ -291,6 +297,8 @@ export const ventures: Venture[] = [
     name: 'REALMVIEW',
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
+    // 2026-10-13 at the owner’s request: show the whole image, no crop
+    imageFit: 'contain',
     tagline: 'Cross-Market Growth · AI Marketing · Creator Ecosystem',
     oneLiner:
       'See the world, and everything becomes value. Exploring global brands’ cross-border growth through market insight, content strategy and AI marketing tools.',
@@ -302,7 +310,7 @@ export const ventures: Venture[] = [
     role: {
       body: [
         '**Founder / brand strategy and commercialisation lead**',
-        'Responsible for business positioning, target-customer research, service design, business-model exploration and market development, and for planning the AI marketing tool and creator network — taking the project from commercial concept towards a validated service and product.',
+        'REALMVIEW is a brand-marketing project focused on **taking new brands from 0 to 1 and growing consumer brands across borders**, combining brand strategy, content marketing, AI marketing tools and cross-border creator resources to help brands reach new markets, build recognition and convert it commercially.',
       ],
     },
     problem: {

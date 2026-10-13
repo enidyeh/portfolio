@@ -59,20 +59,32 @@ export default function VentureDetailPage() {
         {/* 本人提供的项目图（点进来先看图，再看正文） */}
         {venture.image ? (
           <div className="shell doc-media">
-            <img
-              className="venture-hero"
-              src={venture.image}
-              alt=""
-              loading="lazy"
-              decoding="async"
-            />
-            {/* 2026-10-13 按本人要求：左栏（英文小标题）整个删掉，
-                原来的「演示」标注挪到图下面。 */}
-            {venture.demo ? (
-              <ul className="page-awards">
-                <li className="tag tag--accent">{ui.demoLabel}</li>
-              </ul>
-            ) : null}
+            <div className="venture-figure">
+              <img
+                className={
+                  venture.imageFit === 'contain'
+                    ? 'venture-hero venture-hero--contain'
+                    : 'venture-hero'
+                }
+                src={venture.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+              {/* 2026-10-13 按本人要求：图片右下角加一颗圆角半透明灰按钮，
+                  白字「查看网站」（域见 / 异想集）。 */}
+              {venture.siteUrl ? (
+                <a
+                  className="venture-site-btn"
+                  href={venture.siteUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {ui.viewSite}
+                </a>
+              ) : null}
+            </div>
+            {/* 2026-10-13 按本人要求：图下面那个「演示」小标签删掉 */}
           </div>
         ) : null}
         <div className="shell doc-grid doc-grid--single">

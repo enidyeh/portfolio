@@ -150,6 +150,8 @@ export type Ui = {
   qaKeys: string[]
   demoLabel: string
   openSite: string
+  /** 详情页大图右下角的「查看网站」按钮（2026-10-13 按本人要求新增） */
+  viewSite: string
   contactCta: string
 
   blockIntro: string
@@ -305,6 +307,7 @@ const uiZh: Ui = {
   qaKeys: ['问题', '机会', '方案', '商业模式', '验证', '下一步'],
   demoLabel: '演示',
   openSite: '打开站点 ↗',
+  viewSite: '查看网站',
   contactCta: '联系方式 →',
 
   blockIntro: '简介',
@@ -429,6 +432,7 @@ const uiEn: Ui = {
   qaKeys: ['Problem', 'Opportunity', 'Solution', 'Business Model', 'Validation', 'Next Milestone'],
   demoLabel: 'Demo',
   openSite: 'Open site ↗',
+  viewSite: 'View site',
   contactCta: 'Get in touch →',
 
   blockIntro: 'Introduction',
