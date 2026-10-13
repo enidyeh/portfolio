@@ -108,6 +108,8 @@ button, input, textarea { color: inherit; font: inherit; }
   width: min(100%, calc((100svh - var(--header-h) - 1px) * 16 / 9));
   margin-inline: auto;
 }
+/* 视频 + 热区 + 「点击播放」兜底 的共同参照（只包住视频那一块） */
+.hero-video-box { position: relative; }
 .hero-video {
   display: block;
   width: 100%;
@@ -126,10 +128,17 @@ button, input, textarea { color: inherit; font: inherit; }
   width: 100%;
   /* 跟视频同比例，热区的百分比才等于画面里的百分比 */
   aspect-ratio: 16 / 9;
+  /* 排在「点击播放」兜底之后，所以三个热区仍然优先拿到它们那块区域的点击 */
+  z-index: 2;
+  /* ⚠️ 这层必须 pointer-events:none —— 它盖住整块视频，否则中间的空区域会被它吃掉，
+     「点击播放」兜底按钮永远点不到（实测 elementFromPoint(中心) 返回就是 hero-spots）。
+     只有三个热区自己恢复成可点。 */
+  pointer-events: none;
 }
 .hero-spot {
   position: absolute;
   display: block;
+  pointer-events: auto;
 }
 /* 平时完全透明，hover 也不描边（本人 2026-10-13：不要出现红色边框）。
    只给键盘 Tab 留一个焦点框 —— 鼠标点击不会触发 :focus-visible。 */
@@ -354,25 +363,36 @@ a.card:hover .card-go {
 }
 .doc-media { margin-bottom: var(--s-6); }
 
-/* 2026-10-13：iOS 低电量 / 省流量模式会拒绝自动播放 → 露一颗「点击播放」兜底按钮 */
+/* 2026-10-13：iOS 低电量 / 省流量模式会拒绝自动播放 → 盖一层整块可点的兜底
+   （压住视频，但排在热区之前，所以三个热区仍然优先拿到它们那块区域的点击）。 */
 .hero-play {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  /* 手机上加一道保证：可点、不自带高亮块、双击不缩放 */
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.hero-play-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
-  font: 600 var(--f-body) / 1 var(--sans);
+  gap: 10px;
+  padding: 14px 24px;
+  font: 600 17px / 1 var(--sans);
   color: #fff;
-  background: rgba(20, 22, 26, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(20, 22, 26, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   border-radius: var(--radius);
-  cursor: pointer;
 }
-.hero-play:hover { background: rgba(20, 22, 26, 0.75); }
+.hero-play:hover .hero-play-badge { background: rgba(20, 22, 26, 0.8); }
 
 /* 创业项目详情页顶部的项目图：2026-10-13 按本人要求统一成 16:9 横屏。
    默认 cover（铺满）：16:9 的图（异想集）正好不吃裁切；

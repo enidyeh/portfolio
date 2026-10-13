@@ -70,49 +70,57 @@ export default function HeroBlock() {
   return (
     <section className="hero">
       <div className="hero-stage">
-        <video
-          ref={videoRef}
-          className="hero-video"
-          src={videoSrc}
-          poster={asset('hero-bg-poster.jpg')}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          disableRemotePlayback
-          aria-hidden="true"
-          onPlaying={() => setNeedsTap(false)}
-          onError={() => setNeedsTap(true)}
-        />
-        {/* 与视频画面对齐的透明热区（视频本身没有可点能力，这里补上） */}
-        <div className="hero-spots">
-          <Link className="hero-spot hero-spot--work" to={href('/work')} aria-label={ui.navWork} />
-          <Link className="hero-spot hero-spot--about" to={href('/about')} aria-label={ui.navAbout} />
-          <Link
-            className="hero-spot hero-spot--venture"
-            to={href('/venture')}
-            aria-label={ui.navVenture}
+        {/* 视频 + 与画面同比例的热区 + 「点击播放」兜底，包在一层里：
+            这样按钮定位的参照是视频本身，而不是「视频 + 下面那块对话框」的整块 stage
+            （手机上直接在 stage 里居中会落到对话框那一带，看着像点不到）。 */}
+        <div className="hero-video-box">
+          <video
+            ref={videoRef}
+            className="hero-video"
+            src={videoSrc}
+            poster={asset('hero-bg-poster.jpg')}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            disableRemotePlayback
+            aria-hidden="true"
+            onPlaying={() => setNeedsTap(false)}
+            onError={() => setNeedsTap(true)}
           />
+          {/* iOS 低电量模式会直接拦下自动播放 → 盖一层整块可点的兜底。
+              放在热区前面：三个热区仍然在它们自己的区域上截走点击，
+              其余区域点一下就开播。 */}
+          {needsTap ? (
+            <button
+              type="button"
+              className="hero-play"
+              onClick={() => {
+                const v = videoRef.current
+                if (!v) return
+                v.muted = true
+                const p = v.play()
+                if (p && typeof p.catch === 'function') p.catch(() => {})
+              }}
+            >
+              <span className="hero-play-badge">
+                <span aria-hidden="true">▶</span>
+                {ui.tapToPlay}
+              </span>
+            </button>
+          ) : null}
+          {/* 与视频画面对齐的透明热区（视频本身没有可点能力，这里补上） */}
+          <div className="hero-spots">
+            <Link className="hero-spot hero-spot--work" to={href('/work')} aria-label={ui.navWork} />
+            <Link className="hero-spot hero-spot--about" to={href('/about')} aria-label={ui.navAbout} />
+            <Link
+              className="hero-spot hero-spot--venture"
+              to={href('/venture')}
+              aria-label={ui.navVenture}
+            />
+          </div>
         </div>
-        {/* 被系统拦下自动播放（iOS 低电量 / 省流量模式）时露出的兜底按钮 */}
-        {needsTap ? (
-          <button
-            type="button"
-            className="hero-play"
-            onClick={() => {
-              setNeedsTap(false)
-              const v = videoRef.current
-              if (!v) return
-              v.muted = true
-              const p = v.play()
-              if (p && typeof p.catch === 'function') p.catch(() => setNeedsTap(true))
-            }}
-          >
-            <span aria-hidden="true">▶</span>
-            {ui.tapToPlay}
-          </button>
-        ) : null}
         <div className="shell hero-grid">
           <div className="hero-main">
             <AvatarConsole variant="inline" />
