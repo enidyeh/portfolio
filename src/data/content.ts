@@ -156,6 +156,8 @@ export type Ui = {
   officialSite: string
   /** 点「查看网站」弹出的浮窗里那行白字（2026-10-13） */
   underConstruction: string
+  /** 首屏视频被系统拦下自动播放时的兜底按钮（2026-10-13） */
+  tapToPlay: string
   modalClose: string
   contactCta: string
 
@@ -315,6 +317,7 @@ const uiZh: Ui = {
   viewSite: '查看网站',
   officialSite: '官方网站',
   underConstruction: '搭建中',
+  tapToPlay: '点击播放',
   modalClose: '关闭',
   contactCta: '联系方式 →',
 
@@ -443,6 +446,7 @@ const uiEn: Ui = {
   viewSite: 'View site',
   officialSite: 'Official site',
   underConstruction: 'Under construction',
+  tapToPlay: 'Tap to play',
   modalClose: 'Close',
   contactCta: 'Get in touch →',
 

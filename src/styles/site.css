@@ -354,6 +354,26 @@ a.card:hover .card-go {
 }
 .doc-media { margin-bottom: var(--s-6); }
 
+/* 2026-10-13：iOS 低电量 / 省流量模式会拒绝自动播放 → 露一颗「点击播放」兜底按钮 */
+.hero-play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  font: 600 var(--f-body) / 1 var(--sans);
+  color: #fff;
+  background: rgba(20, 22, 26, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+.hero-play:hover { background: rgba(20, 22, 26, 0.75); }
+
 /* 创业项目详情页顶部的项目图：2026-10-13 按本人要求统一成 16:9 横屏。
    默认 cover（铺满）：16:9 的图（异想集）正好不吃裁切；
    方形图（异想商店 / 暗盒 / 域见）在数据里写 imageFit: 'contain'，

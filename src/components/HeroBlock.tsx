@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { asset } from '../lib/base'
 import { useContent } from '../data/content'
@@ -22,37 +22,50 @@ export default function HeroBlock() {
   const href = useHref()
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  /* 2026-10-13 按本人要求：手机版 / 电脑版都是「一进网页就开始播」。
-     只写 autoPlay 属性，有些浏览器（iOS 低电量模式、页面刚挂载、后台标签页恢复）
-     会先停在封面帧，所以这里多补几道：
-       ① 挂载时、loadeddata / canplay 时各主动 play() 一次；
-       ② 每次 play 前重新断言 muted（iOS 只要检测到"可能出声"就直接拒绝播放）；
-       ③ 用户第一次点击 / 触摸时再播一次（低电量模式必须由手势触发）；
-       ④ 从后台切回前台（visibilitychange）时也再试一次。
-     全部失败都静默，交回浏览器默认行为。 */
+  /* 手机用更小的文件（960 宽 / 约 200KB；桌面版 1.2MB）——
+     蜂窝网络下小文件起播快得多，不容易出现「停在封面帧看着像卡住」。 */
+  const [videoSrc] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 760px)').matches
+      ? asset('hero-bg-mobile.mp4')
+      : asset('hero-bg.mp4'),
+  )
+  /* iOS 低电量模式 / 省流量模式会直接拒绝自动播放（或视频加载失败）——
+     这时露出一颗「点击播放」，用户点一下就能播，而不是看着像卡住。 */
+  const [needsTap, setNeedsTap] = useState(false)
+
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     const kick = () => {
       v.muted = true
-      v.play().catch(() => {})
+      const p = v.play()
+      if (p && typeof p.catch === 'function') p.catch(() => {})
     }
     kick()
-    v.addEventListener('loadeddata', kick)
     v.addEventListener('loadedmetadata', kick)
+    v.addEventListener('loadeddata', kick)
     v.addEventListener('canplay', kick)
+    /* iOS 低电量模式必须由手势触发；任何一次点击 / 触摸都再试一下 */
     document.addEventListener('pointerdown', kick)
     document.addEventListener('touchstart', kick)
     document.addEventListener('visibilitychange', kick)
+    /* iOS 从往返缓存（bfcache）回到页面时会把视频暂停，这里补一次 */
+    window.addEventListener('pageshow', kick)
+    /* 2.5 秒还没播起来 → 认定被策略拦住了，露「点击播放」按钮 */
+    const timer = window.setTimeout(() => {
+      if (v.paused) setNeedsTap(true)
+    }, 2500)
     return () => {
-      v.removeEventListener('loadeddata', kick)
       v.removeEventListener('loadedmetadata', kick)
+      v.removeEventListener('loadeddata', kick)
       v.removeEventListener('canplay', kick)
       document.removeEventListener('pointerdown', kick)
       document.removeEventListener('touchstart', kick)
       document.removeEventListener('visibilitychange', kick)
+      window.removeEventListener('pageshow', kick)
+      window.clearTimeout(timer)
     }
-  }, [])
+  }, [videoSrc])
 
   return (
     <section className="hero">
@@ -60,14 +73,17 @@ export default function HeroBlock() {
         <video
           ref={videoRef}
           className="hero-video"
-          src={asset('hero-bg.mp4')}
+          src={videoSrc}
           poster={asset('hero-bg-poster.jpg')}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          disableRemotePlayback
           aria-hidden="true"
+          onPlaying={() => setNeedsTap(false)}
+          onError={() => setNeedsTap(true)}
         />
         {/* 与视频画面对齐的透明热区（视频本身没有可点能力，这里补上） */}
         <div className="hero-spots">
@@ -79,6 +95,24 @@ export default function HeroBlock() {
             aria-label={ui.navVenture}
           />
         </div>
+        {/* 被系统拦下自动播放（iOS 低电量 / 省流量模式）时露出的兜底按钮 */}
+        {needsTap ? (
+          <button
+            type="button"
+            className="hero-play"
+            onClick={() => {
+              setNeedsTap(false)
+              const v = videoRef.current
+              if (!v) return
+              v.muted = true
+              const p = v.play()
+              if (p && typeof p.catch === 'function') p.catch(() => setNeedsTap(true))
+            }}
+          >
+            <span aria-hidden="true">▶</span>
+            {ui.tapToPlay}
+          </button>
+        ) : null}
         <div className="shell hero-grid">
           <div className="hero-main">
             <AvatarConsole variant="inline" />
