@@ -128,15 +128,9 @@ button, input, textarea { color: inherit; font: inherit; }
 .hero-spot {
   position: absolute;
   display: block;
-  border-radius: var(--radius);
-  transition: box-shadow 0.15s ease, background-color 0.15s ease;
 }
-/* hover / 键盘聚焦时才描一圈红框，平时完全透明 */
-.hero-spot:hover {
-  box-shadow: inset 0 0 0 2px var(--accent);
-  /* = --accent(#d62828) 的 12% 透明版；写死是为了兼容旧 Safari（不能用 color-mix） */
-  background: rgba(214, 40, 40, 0.12);
-}
+/* 平时完全透明，hover 也不描边（本人 2026-10-13：不要出现红色边框）。
+   只给键盘 Tab 留一个焦点框 —— 鼠标点击不会触发 :focus-visible。 */
 .hero-spot:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 /* 左侧人物卡（活力派 / 叶琪）→ 精选项目 */
 .hero-spot--work { left: 2%; top: 5.5%; width: 29.5%; height: 85%; }
@@ -274,8 +268,10 @@ a.card:hover .card-go {
   padding: 4px 9px;
   font: var(--f-meta) / 1 var(--mono);
   letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  border: 1px solid var(--line);
+  /* 2026-10-13 按本人要求：小标签一律浅红底 + 红字（原来是白底灰字） */
+  color: var(--accent);
+  background: var(--accent-tint);
+  border: 1px solid transparent;
   border-radius: 999px;
 }
 .status {
@@ -1395,9 +1391,15 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 .section-title,
 .page-title,
 .track-title,
-.feature-title,
-.card-title,
-.vrow-title {
+.feature-title {
+  color: var(--accent);
+}
+/* 卡片标题不常红，鼠标放到卡片上才变红（与「正在创造」的卡片一致）——
+   2026-10-13 本人要求「所有卡片标题都像正在创造的一样，鼠标放上去就变红」。 */
+a.card:hover .card-title,
+a.card:focus-visible .card-title,
+.card--venture:hover .card-title,
+.vrow:hover .vrow-title {
   color: var(--accent);
 }
 /* 正文里那两条 2px 的黑色分割线（精选项目大展示上方、正在创造列表上方） */
@@ -1406,12 +1408,14 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   border-top-color: var(--accent);
 }
 
-/* ---------- 电脑版：对话框浮在首屏视频右上角 ---------- */
-/* 2026-10-13 按本人要求（参照截图）：≥901px 时把对话框挪进视频右上角。
-   窄屏（≤900）仍然是「视频在上、对话框在下面纸底」的流式排版。
+/* ---------- 对话框浮在首屏视频右上角 ---------- */
+/* 2026-10-13 按本人要求（参照截图）：≥721px 就把对话框挪进视频右上角。
+   ⚠️ 原来是 901px —— 但本人常用 VS Code 内嵌浏览器面板看页面（实测面板视口在
+   737~887 之间），门槛高于它就永远看不到面板浮起来，所以降到 721（大于平板竖屏）；
+   ≤720 仍旧是「视频在上、对话框在下面纸底」的流式排版。
    ⚠️ 这一段必须写在文件末尾：`.avatar--inline { margin-top }` 在后面，
    同权重选择器后写的胜出，写在前面会被它覆盖掉。 */
-@media (min-width: 901px) {
+@media (min-width: 721px) {
   .hero-stage > .shell {
     position: absolute;
     inset: 0;
@@ -1426,7 +1430,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   }
   .hero-main {
     pointer-events: auto;
-    width: min(400px, 100%);
+    /* 视频窄的时候面板跟着收窄，别把整个视频盖住 */
+    width: min(400px, 52%);
     padding: var(--s-4);
     background: var(--paper-a);
     backdrop-filter: blur(10px);
