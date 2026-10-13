@@ -22,21 +22,35 @@ export default function HeroBlock() {
   const href = useHref()
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  /* 2026-10-13 按本人要求：手机版 / 电脑版都是「一打开网站就开始播」。
-     光靠 autoPlay 属性有些浏览器（尤其 iOS 低电量模式、页面刚挂载时）会先停在封面帧，
-     所以挂载后与 canplay 时各再主动调一次 play()；失败也不报错（交回浏览器默认行为）。 */
+  /* 2026-10-13 按本人要求：手机版 / 电脑版都是「一进网页就开始播」。
+     只写 autoPlay 属性，有些浏览器（iOS 低电量模式、页面刚挂载、后台标签页恢复）
+     会先停在封面帧，所以这里多补几道：
+       ① 挂载时、loadeddata / canplay 时各主动 play() 一次；
+       ② 每次 play 前重新断言 muted（iOS 只要检测到"可能出声"就直接拒绝播放）；
+       ③ 用户第一次点击 / 触摸时再播一次（低电量模式必须由手势触发）；
+       ④ 从后台切回前台（visibilitychange）时也再试一次。
+     全部失败都静默，交回浏览器默认行为。 */
   useEffect(() => {
     const v = videoRef.current
     if (!v) return
     const kick = () => {
+      v.muted = true
       v.play().catch(() => {})
     }
     kick()
     v.addEventListener('loadeddata', kick)
+    v.addEventListener('loadedmetadata', kick)
     v.addEventListener('canplay', kick)
+    document.addEventListener('pointerdown', kick)
+    document.addEventListener('touchstart', kick)
+    document.addEventListener('visibilitychange', kick)
     return () => {
       v.removeEventListener('loadeddata', kick)
+      v.removeEventListener('loadedmetadata', kick)
       v.removeEventListener('canplay', kick)
+      document.removeEventListener('pointerdown', kick)
+      document.removeEventListener('touchstart', kick)
+      document.removeEventListener('visibilitychange', kick)
     }
   }, [])
 

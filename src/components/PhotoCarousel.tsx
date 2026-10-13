@@ -21,15 +21,11 @@ const modules = import.meta.glob('../assets/photos/*.{webp,WEBP,jpg,JPG,jpeg,JPE
 /** 单独调取景的照片：键是文件名前面的序号（如 03），值是 object-position。
  *  不写就用 CSS 里 .photo-slide 的默认值（center 35%）。
  *  2026-10-13 按本人要求：
- *    03 = 带圆形耳环、没在笑的大头照 → 再往上（5%）
- *    04 = 多人合照 → 往上（15%）
- *    05 = 涂鸦墙那张 → 往上（15%）
- *  ⚠️ 序号 = 显示顺序，2026-10-13 已按色系（暖棕 → 墨绿 → 冷蓝）重排过，
- *     改这张表前先确认序号对应哪张图（见文件夹里各图的主色）。 */
+ *    涂鸦墙那张、红发没在笑的大头照（带圆形耳环）两张已删 → 只剩 5 张；
+ *    多人合照（现在是 03）往上 15%。
+ *  ⚠️ 序号 = 显示顺序，换过图（删了两张、重编过号）→ 改这张表前先看图确认序号。 */
 const PHOTO_POS: Record<string, string> = {
-  '03': 'center 5%',
-  '04': 'center 15%',
-  '05': 'center 15%',
+  '03': 'center 15%',
 }
 
 const photos = Object.keys(modules)
