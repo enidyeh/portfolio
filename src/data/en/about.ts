@@ -36,6 +36,14 @@ export const method: { en: string; zh: string; items: string[] }[] = [
  */
 export const experience: TimelineItem[] = [
   {
+    // Added 2026-10-13 at the owner's request. No dates provided yet (the case
+    // page's `year` is still a placeholder too), so `when` stays empty.
+    when: '',
+    role: 'Graduation project · product design and project management',
+    org: 'PHYGITAL BASE',
+    desc: 'A phygital product design proposal that uses digital hardware, software design, scene-based social interaction and digital identity to propose new possibilities for digital asset management in the era of data sovereignty. Awarded Outstanding Graduation Project (university level) and Top 3 in the major.',
+  },
+  {
     when: '2026.6 — Present',
     role: 'Venture · independent planning and operations',
     org: 'REVERIE 异想集',

@@ -51,6 +51,14 @@ export const method: { en: string; zh: string; items: string[] }[] = [
  */
 export const experience: TimelineItem[] = [
   {
+    // 2026-10-13 按本人要求加进「经历与背景」（首页与个人介绍页共用这份数据）。
+    // 时间本人还没给（案例页的 year 也是「待填」），所以留空不显示；要补告诉我。
+    when: '',
+    role: '毕业设计 · 产品设计与项目管理',
+    org: 'PHYGITAL BASE',
+    desc: '虚实融合智能产品设计方案：通过数字硬件、软件设计、场景社交和数字身份，为数据主权时代的数字资产管理提出新可能。获校级优秀毕设、专业 Top 3。',
+  },
+  {
     when: '2026.6 — 至今',
     role: '创业项目 · 独立策划与运营',
     org: '异想集 REVERIE',
