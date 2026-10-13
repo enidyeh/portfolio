@@ -155,21 +155,20 @@ export default function WorkDetailPage() {
         {/* 完整项目文件：本人提供的 PDF 逐页转成图片。
             手机端要求排在「上一篇 / 下一篇」翻页条之后 —— 宽屏下 .case-pager 是
             display:none 不占位，所以放在它后面既满足手机顺序、又不影响桌面。 */}
-        {docPages.length ? (
+        {docPages.length || work.banner ? (
           <section className="shell case-doc">
             <h2 className="case-doc-title">{ui.caseDocTitle}</h2>
             <div className="case-doc-pages">
               {docPages.map((src) => (
                 <img className="case-doc-page" key={src} src={src} alt="" loading="lazy" decoding="async" />
               ))}
+              {/* 2026-10-13 按本人要求：末尾那张整幅配图放进同一个 .case-doc-pages，
+                  与上一张图之间就是 32px（跟其他案例页里逐页图的间距一致），
+                  不要它单独当一个 section（那样会多吃 56px 的 margin-top，显得太远）。 */}
+              {work.banner ? (
+                <img className="case-banner" src={work.banner} alt="" loading="lazy" decoding="async" />
+              ) : null}
             </div>
-          </section>
-        ) : null}
-
-        {/* 2026-10-13 按本人要求：正文最后再补一张整幅配图（毛吉吉的活动页截图） */}
-        {work.banner ? (
-          <section className="shell case-doc">
-            <img className="case-banner" src={work.banner} alt="" loading="lazy" decoding="async" />
           </section>
         ) : null}
       </div>
