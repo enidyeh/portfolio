@@ -45,13 +45,8 @@ export default function VentureDetailPage() {
           {/* 2026-10-13 按本人提供的内容：标题下面加一行英文定位（如 Youth Culture · Community · Commercialization） */}
           {venture.tagline ? <p className="eyebrow venture-tagline">{venture.tagline}</p> : null}
           <p className="page-lede">{venture.oneLiner}</p>
-          {venture.xhs ? (
-            <p className="page-links">
-              <a className="link-arrow" href={venture.xhs} target="_blank" rel="noreferrer">
-                {ui.ventureXhs}
-              </a>
-            </p>
-          ) : null}
+          {/* 2026-10-13 按本人要求：社交媒体主页入口不再放在标题下面（原来那行小字删掉），
+              改成图下面一颗和 PHYGITAL BASE 详情页同款的按钮（见 .doc-media 里那份）。 */}
         </div>
       </header>
 
@@ -61,15 +56,14 @@ export default function VentureDetailPage() {
           <div className="shell doc-media">
             <div className="venture-figure">
               <img
-                className={
-                  venture.imageFit === 'contain'
-                    ? 'venture-hero venture-hero--contain'
-                    : 'venture-hero'
-                }
+                className="venture-hero"
                 src={venture.image}
                 alt=""
                 loading="lazy"
                 decoding="async"
+                /* 2026-10-13 按本人要求：详情页大图填满 16:9，构图与首页「正在创造」卡片一致
+                   （卡片用的是 50% 35%，个别项目在数据里用 imagePos 覆盖）。 */
+                style={{ objectPosition: venture.imagePos ?? '50% 35%' }}
               />
               {/* 2026-10-13 按本人要求：图片右下角加一颗圆角半透明灰按钮，
                   白字「查看网站」（域见 / 异想集）。 */}
@@ -84,7 +78,22 @@ export default function VentureDetailPage() {
                 </a>
               ) : null}
             </div>
-            {/* 2026-10-13 按本人要求：图下面那个「演示」小标签删掉 */}
+            {/* 2026-10-13 按本人要求：图下面那个「演示」小标签删掉；
+                改成社交媒体主页入口 —— 与 PHYGITAL BASE 详情页那颗下载按钮同款。
+                ⚠️ 不能复用 .doc-attach：宽屏下 `.doc-media .doc-attach` 是 display:none
+                （那条规则是给论文按钮做两版切换的），用在这里会让按钮在电脑版直接消失。 */}
+            {venture.xhs ? (
+              <p className="venture-social">
+                <a
+                  className="btn btn--primary btn--lg"
+                  href={venture.xhs}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {ui.ventureXhs}
+                </a>
+              </p>
+            ) : null}
           </div>
         ) : null}
         <div className="shell doc-grid doc-grid--single">

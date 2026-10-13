@@ -680,6 +680,12 @@ a.card:hover .card-go {
 /* 左栏只有 170px，横向内边距比页头那版收一点，避免文字换行 */
 .btn--lg { padding: 15px 20px; font-size: 14px; }
 
+/* 2026-10-13 按本人要求：创业详情页图下面的社交媒体主页入口按钮
+   （和 PHYGITAL BASE 那颗论文按钮同一套 .btn.btn--primary.btn--lg 外观）。
+   ⚠️ 不能挂在 .doc-attach 上：宽屏下 `.doc-media .doc-attach` 是 display:none。 */
+.venture-social { margin-top: var(--s-3); }
+.venture-social .btn { width: auto; }
+
 /* ---------- detail document ---------- */
 .doc { padding: var(--s-6) 0; }
 .doc-grid { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: var(--s-5); align-items: start; }
@@ -726,8 +732,9 @@ a.card:hover .card-go {
   object-fit: cover;
   /* 本人照片大多是人像竖图；4:3 框里裁切时往上偏一点（跳起来 / 钓鱼那两张
      本身是 4:3，裁不到，调这个不起作用）
-     2026-10-13 本人要求「竖屏照片往上移、展示完整人物」：25% → 10% */
-  object-position: center 10%;
+     2026-10-13 本人要求「照片整体往上移、露出人物身体」→ 取景往下挪到 35%
+     （之前 10% 太贴顶，只露头到肩；再往上就没有身体了）。 */
+  object-position: center 35%;
   opacity: 0;
   transition: opacity 0.45s ease;
 }

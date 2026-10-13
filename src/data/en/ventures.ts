@@ -106,8 +106,6 @@ export const ventures: Venture[] = [
     name: 'REVERIE SHOP',
     en: 'REVERIE SHOP',
     image: asset('venture-yixiang-shop.webp'),
-    // 2026-10-13 at the owner’s request: the detail hero shows the whole photo
-    imageFit: 'contain',
     // Same crop as the Chinese page: awning and shop window, no signage.
     imagePos: '50% 67%',
     tagline: 'Curated Marketplace · Youth Culture · Retail',
@@ -194,8 +192,6 @@ export const ventures: Venture[] = [
     name: 'UNSEEN',
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
-    // 2026-10-13 at the owner’s request: show the whole image, no crop
-    imageFit: 'contain',
     tagline: 'AI × Youth Culture × Curated Discovery',
     oneLiner:
       'Cultural exploration for today’s young people, using magazine-style curation to connect city culture, offline experience and personal growth — exploring every side of how young people discover culture today.',
@@ -208,8 +204,6 @@ export const ventures: Venture[] = [
       body: [
         '**Founder / cultural curation and commercialisation lead**',
         'I founded and lead UNSEEN BOX, planning monthly themed curation and content distribution around youth culture, city life and diverse interests; responsible for cultural-theme research, narrative, distribution planning and partnerships with creators, cultural events and lifestyle brands — exploring how online content discovery extends into offline experience and consumption. Built on a “theme curation → content distribution → experience participation → commercial conversion” loop, connecting youth culture, the content ecosystem and lifestyle consumption.',
-        '**Product designer / independent prototype developer**',
-        'Starting from the project’s positioning and content-curation logic, I designed the information architecture, UX and interaction myself, and built a working front-end prototype through vibe coding — exploring how cultural content can be organised into a digital experience that keeps travelling and keeps people taking part.',
       ],
     },
     problem: {
@@ -299,8 +293,6 @@ export const ventures: Venture[] = [
     name: 'REALMVIEW',
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
-    // 2026-10-13 at the owner’s request: show the whole image, no crop
-    imageFit: 'contain',
     tagline: 'Cross-Market Growth · AI Marketing · Creator Ecosystem',
     oneLiner:
       'See the world, and everything becomes value. Exploring global brands’ cross-border growth through market insight, content strategy and AI marketing tools.',

@@ -41,8 +41,9 @@ export type Venture = {
   imagePos?: string
   /**
    * 详情页大图怎么放（默认 cover 铺满）。
-   * 2026-10-13 按本人要求：方形源图（异想商店 / 暗盒 / 域见）写 'contain'，
-   * 整张图缩小居中显示，不裁切。
+   * 2026-10-13 本人先要求方形图用 'contain'（整张缩小居中），后来改成
+   * 「填满 16:9、构图跟首页卡片一致」→ 现在没有项目在用这个字段，
+   * 留着方便以后单独把某个项目的图改成 contain（配 .venture-hero--contain）。
    */
   imageFit?: 'cover' | 'contain'
   /**
@@ -166,8 +167,6 @@ export const ventures: Venture[] = [
     // 2026-10-12 按本人要求：不要上方的「REVERIE」招牌，只要遮雨棚和橱窗
     // （源图 800×800，16:9 取景框高 450px，67% ≈ 从 y=235 开始往下取）
     imagePos: '50% 67%',
-    // 2026-10-13 按本人要求：详情页大图要完整展示招牌下的遮雨棚与橱窗 → contain
-    imageFit: 'contain',
     tagline: 'Curated Marketplace · Youth Culture · Retail',
     // 2026-10-13 按本人要求换掉导语
     oneLiner:
@@ -253,8 +252,6 @@ export const ventures: Venture[] = [
     name: '暗盒 UNSEEN',
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
-    // 2026-10-13 按本人要求：图片缩小、完整展示盒子，不用放大裁切
-    imageFit: 'contain',
     tagline: 'AI × Youth Culture × Curated Discovery',
     // 2026-10-13 按本人要求换掉导语
     oneLiner:
@@ -264,13 +261,12 @@ export const ventures: Venture[] = [
     xhs: 'https://www.xiaohongshu.com/user/profile/614dd5e400000000020249dd?xsec_token=AB_Vx9ak1d5jq8Hh5539hbBDYPIReL40PjeHF0THv5KVk%3D&xsec_source=pc_search',
     tags: ['文化研究', '人物访谈', '内容共创'],
     // 2026-10-13 按本人提供的完整内容填写（我的角色 / 六问 / 合作方向 / 原型状态）
-    // 2026-10-13 第二批：我的角色补上「项目发起人 / 文化策展与商业化负责人」这一段
+    // 2026-10-13 第二批：只留「项目发起人 / 文化策展与商业化负责人」这一段
+    //（「产品设计师 / 独立原型开发者」那段本人已明确要删）
     role: {
       body: [
         '**项目发起人 / 文化策展与商业化负责人**',
         '发起并主导 UNSEEN 暗盒项目，围绕青年文化、城市生活与多元兴趣，规划月度主题策展与内容传播机制；负责文化主题挖掘、内容叙事、传播策划及创作者、文化活动与生活方式品牌的合作方向，探索将线上内容发现延伸为线下体验与消费场景。以“主题策展—内容传播—体验参与—商业转化”为核心，构建连接青年文化、内容生态与生活方式消费的项目框架。',
-        '**产品设计师 / 独立原型开发者**',
-        '从项目定位与内容策展逻辑出发，独立完成产品信息架构、用户体验与交互设计，并通过 Vibe Coding 搭建可运行的前端原型，探索如何将文化内容组织成具有持续传播力与参与感的数字体验。',
       ],
     },
     problem: {
@@ -357,8 +353,6 @@ export const ventures: Venture[] = [
     name: '域见 REALMVIEW',
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
-    // 2026-10-13 按本人要求：图片缩小、完整展示（不放大裁切）
-    imageFit: 'contain',
     tagline: 'Cross-Market Growth · AI Marketing · Creator Ecosystem',
     // 2026-10-13 按本人要求换掉导语
     oneLiner:
