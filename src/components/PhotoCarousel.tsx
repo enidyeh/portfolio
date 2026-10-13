@@ -20,13 +20,10 @@ const modules = import.meta.glob('../assets/photos/*.{webp,WEBP,jpg,JPG,jpeg,JPE
 
 /** 单独调取景的照片：键是文件名前面的序号（如 03），值是 object-position。
  *  不写就用 CSS 里 .photo-slide 的默认值（center 35%）。
- *  2026-10-13 按本人要求：
- *    涂鸦墙那张、红发没在笑的大头照（带圆形耳环）两张已删 → 只剩 5 张；
- *    多人合照（现在是 03）往上 15%。
- *  ⚠️ 序号 = 显示顺序，换过图（删了两张、重编过号）→ 改这张表前先看图确认序号。 */
-const PHOTO_POS: Record<string, string> = {
-  '03': 'center 15%',
-}
+ *  2026-10-13 按本人要求先后删掉了三张（涂鸦墙、红发没在笑的大头照、多人合照）→
+ *  现在只剩 4 张，都不需要单独调取景，所以这里先留空表，机制留着备用。
+ *  ⚠️ 序号 = 显示顺序，换图 / 删图后会重编，改这张表前先看图确认序号。 */
+const PHOTO_POS: Record<string, string> = {}
 
 const photos = Object.keys(modules)
   .sort((a, b) => a.localeCompare(b, 'zh-Hans-CN', { numeric: true }))
