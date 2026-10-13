@@ -165,6 +165,13 @@ export default function WorkDetailPage() {
             </div>
           </section>
         ) : null}
+
+        {/* 2026-10-13 按本人要求：正文最后再补一张整幅配图（毛吉吉的活动页截图） */}
+        {work.banner ? (
+          <section className="shell case-doc">
+            <img className="case-banner" src={work.banner} alt="" loading="lazy" decoding="async" />
+          </section>
+        ) : null}
       </div>
 
         {/* 宽屏：上一个 / 下一个案例，悬浮在页面左右两侧中间。

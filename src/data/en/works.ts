@@ -266,6 +266,8 @@ export const works: WorkCase[] = [
     image: asset('work-momos-workshop.webp'),
     track: 'commercial',
     docPages: { dir: 'momos-workshop', count: 1 },
+    // 2026-10-13: full-width screenshot added at the end of the case body
+    banner: asset('work-momos-banner.webp'),
     tags: ['Cross-border e-commerce', 'Europe & US markets', 'Content marketing', 'Creator marketing'],
     year: '2025',
     role: 'Overseas PR intern (brand “Momo’s Workshop”)',

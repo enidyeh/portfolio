@@ -383,6 +383,15 @@ a.card:hover .card-go {
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
+/* 2026-10-13 按本人要求：案例正文末尾单独补的一张整幅配图。
+   按图片自身比例显示（不写 aspect-ratio / object-fit），免得被裁或被补边。 */
+.case-banner {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
 /* 创业项目卡片：图片是小红书的入口，用 4:3 横屏（本人 2026-10-12 要求）
    2026-10-12 第二轮：本人说卡片太大 → 配图改成 16:9，文字三行行距收紧 */
 .card--venture { gap: var(--s-2); }
@@ -1010,7 +1019,8 @@ a.card:hover .card-go {
   padding: 7px 7px 7px 16px;
   background: var(--paper-raised);
   border: 1px solid var(--rule);
-  border-radius: 999px;
+  /* 2026-10-13 本人要求：问题框不要做成完全圆的胶囊，圆角程度跟卡片边框一致 */
+  border-radius: var(--radius);
   box-shadow: 0 6px 20px rgba(20, 22, 26, 0.05);
 }
 .avatar-input:focus-within { border-color: var(--accent); }
@@ -1226,9 +1236,13 @@ a.card:hover .card-go {
 
 /* ---------- six questions (venture) ---------- */
 .qa { display: flex; flex-direction: column; }
-.qa-item { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: var(--s-4); padding: var(--s-4) 0; border-top: 1px solid var(--line); }
+/* 2026-10-13 本人要求：左侧小标题再放大一档。
+   层级 = 低于「六个问题」标题（--f-title 桌面 27px / 窄屏 22px），高于右边黑色粗体正文（15px）
+   → 桌面 20px、窄屏 17px（见文件末尾 ≤760 那段）。
+   左栏 150 → 170px：英文站「Next Milestone」这种长标题放大后不会被折成两行。 */
+.qa-item { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: var(--s-4); padding: var(--s-4) 0; border-top: 1px solid var(--line); }
 .qa-item:last-child { border-bottom: 1px solid var(--line); }
-.qa-key { font: 700 var(--f-body) / 1.5 var(--sans); letter-spacing: 0; color: var(--accent); }
+.qa-key { font: 700 20px / 1.4 var(--sans); letter-spacing: 0; color: var(--accent); }
 .qa-sub { display: block; margin-top: 4px; font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.06em; text-transform: none; color: var(--ink-faint); }
 .qa-val { color: var(--ink-soft); line-height: 1.85; }
 /* 六问 / 合作需求现在是富文本（段落 + 列表 + 收尾段落）：全局 reset 把 p 的
@@ -1396,6 +1410,8 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
   .logo-img { height: 34px; }
   .logo-item { margin-right: var(--s-5); }
   .tl-item, .skill-group, .qa-item { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  /* 六问左侧小标题窄屏也放大一档（桌面 20px → 这里 17px，仍小于 22px 的区块标题） */
+  .qa-key { font-size: 17px; }
   .tl-row { grid-template-columns: max-content minmax(0, 1fr) auto; gap: var(--s-3); padding-left: var(--s-4); }
   /* 联系那三行：标签列贴住文字宽度（2026-10-12 本人要求左右两列拉近） */
   .meta-row { grid-template-columns: max-content minmax(0, 1fr); gap: 8px; }

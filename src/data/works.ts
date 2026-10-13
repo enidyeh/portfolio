@@ -56,6 +56,11 @@ export type WorkCase = {
    * 附在案例正文后面。`count` 是页数。
    */
   docPages?: { dir: string; count: number }
+  /**
+   * 案例正文末尾单独补的一张整幅配图（`public/` 下的路径）。
+   * 2026-10-13 按本人要求新增：毛吉吉（Momo’s Workshop）详情页最后加一张活动页截图。
+   */
+  banner?: string
 }
 
 export const worksHead = {
@@ -297,6 +302,8 @@ export const works: WorkCase[] = [
     track: 'commercial',
     // 项目方案：本人从作品集导出的一页
     docPages: { dir: 'momos-workshop', count: 1 },
+    // 2026-10-13 按本人要求：正文最后加一张万圣节活动页的整幅截图
+    banner: asset('work-momos-banner.webp'),
     tags: ['跨境电商', '欧美市场', '内容营销', '达人营销'],
     year: '2025',
     role: '海外 PR 实习生（品牌「毛吉吉」）',
