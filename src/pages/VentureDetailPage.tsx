@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useContent } from '../data/content'
 import { useHref } from '../i18n/locale'
@@ -12,6 +13,19 @@ export default function VentureDetailPage() {
   const href = useHref()
   const { ui } = c
   const index = c.ventures.findIndex((v) => v.slug === slug)
+
+  /** 2026-10-13 按本人要求：点「查看网站」先不跳站点，弹一张站点截图、
+      蒙一层半透明灰罩、中间写白字「搭建中」。 */
+  const [siteOpen, setSiteOpen] = useState(false)
+  const closeSite = () => setSiteOpen(false)
+  useEffect(() => {
+    if (!siteOpen) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSiteOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [siteOpen])
 
   if (index < 0) return <NotFoundPage />
 
@@ -66,16 +80,15 @@ export default function VentureDetailPage() {
                 style={{ objectPosition: venture.imagePos ?? '50% 35%' }}
               />
               {/* 2026-10-13 按本人要求：图片右下角加一颗圆角半透明灰按钮，
-                  白字「查看网站」（域见 / 异想集）。 */}
-              {venture.siteUrl ? (
-                <a
+                  白字「查看网站」（域见 / 异想集）。点它不跳站点，弹浮窗。 */}
+              {venture.siteShot || venture.siteUrl ? (
+                <button
+                  type="button"
                   className="venture-site-btn"
-                  href={venture.siteUrl}
-                  target="_blank"
-                  rel="noreferrer"
+                  onClick={() => setSiteOpen(true)}
                 >
                   {ui.viewSite}
-                </a>
+                </button>
               ) : null}
             </div>
             {/* 2026-10-13 按本人要求：图下面那个「演示」小标签删掉；
@@ -195,6 +208,35 @@ export default function VentureDetailPage() {
       >
         <span aria-hidden="true">→</span>
       </Link>
+
+      {/* 2026-10-13 按本人要求：站点还在搭 → 点「查看网站」弹站点截图，
+          上面蒙一层半透明灰罩，中间白字「搭建中」。点灰罩 / 按 Esc / 点关闭都关掉。 */}
+      {siteOpen ? (
+        <div
+          className="site-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label={ui.viewSite}
+          onClick={closeSite}
+        >
+          <div className="site-modal-box" onClick={(e) => e.stopPropagation()}>
+            {venture.siteShot ? (
+              <img className="site-modal-shot" src={venture.siteShot} alt="" />
+            ) : null}
+            <div className="site-modal-veil">
+              <span className="site-modal-text">{ui.underConstruction}</span>
+            </div>
+            <button
+              type="button"
+              className="site-modal-close"
+              onClick={closeSite}
+              aria-label={ui.modalClose}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      ) : null}
     </>
   )
 }

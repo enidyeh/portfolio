@@ -14,7 +14,8 @@ export type SocialLink = {
 
 export type DownloadItem = {
   label: string
-  note: string
+  /** 标签下面那行小字。2026-10-13 按本人要求：三项的小字全删 → 改成可选，留空就不渲染 */
+  note?: string
   /** 直链；留空表示「按需索取」，引导到联系方式 */
   url?: string
   /** 文件下载后保存成什么名字（2026-10-13 按本人要求指定，含手机号） */
@@ -73,21 +74,18 @@ export const downloads: DownloadItem[] = [
   {
     group: '简历',
     label: '简历',
-    note: '一页版简历，含教育、实习与项目经历。',
     url: asset('resume.pdf'),
     file: '叶琪-简历-AI商业化-18702378098.pdf',
   },
   {
     group: '作品集',
     label: '作品集',
-    note: '完整作品集 PDF。',
     url: asset('portfolio.pdf'),
     file: '叶琪-作品集-18702378098.pdf',
   },
   {
     group: '异想集',
     label: '异想集品牌合作',
-    note: '异想集「游园惊梦」合作手册，供品牌与场地方了解合作方式。',
     url: asset('reverie-collab.pdf'),
     file: '异想集-合作手册.pdf',
   },

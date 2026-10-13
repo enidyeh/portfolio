@@ -99,6 +99,7 @@ export const ventures: Venture[] = [
     docPages: { dir: 'reverie', count: 28 },
     // 2026-10-13 site address given by the owner (the 查看网站 button)
     siteUrl: 'https://github.com/enidyeh/REVERIE',
+    siteShot: asset('site-reverie.webp'),
     pending: true,
   },
   {
@@ -378,6 +379,7 @@ export const ventures: Venture[] = [
     },
     // 2026-10-13 site address given by the owner (the 查看网站 button)
     siteUrl: 'https://github.com/enidyeh/REALMVIEW',
+    siteShot: asset('site-realmview.webp'),
     pending: true,
   },
 ]

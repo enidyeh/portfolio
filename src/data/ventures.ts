@@ -52,6 +52,12 @@ export type Venture = {
    */
   siteUrl?: string
   /**
+   * 站点截图（`public/` 下）。
+   * 2026-10-13 本人要求：点「查看网站」先不跳站点，弹一张截图、
+   * 蒙一层半透明灰罩，中间写白字「搭建中」。
+   */
+  siteShot?: string
+  /**
    * 项目方案 / 合作手册：把本人给的 PDF 逐页转成图片
    * （`public/case-pages/<dir>/NN.webp`），附在详情页正文后面。
    */
@@ -157,6 +163,8 @@ export const ventures: Venture[] = [
     docPages: { dir: 'reverie', count: 28 },
     // 2026-10-13 本人给的站点地址（图右下角「查看网站」按钮）
     siteUrl: 'https://github.com/enidyeh/REVERIE',
+    // 2026-10-13 弹窗里的站点截图（从本地 dev 站 realhost 截的，站点上线后可换）
+    siteShot: asset('site-reverie.webp'),
     pending: true,
   },
   {
@@ -440,6 +448,7 @@ export const ventures: Venture[] = [
     },
     // 2026-10-13 本人给的站点地址（图右下角「查看网站」按钮）
     siteUrl: 'https://github.com/enidyeh/REALMVIEW',
+    siteShot: asset('site-realmview.webp'),
     pending: true,
   },
 ]

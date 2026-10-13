@@ -15,9 +15,20 @@ const modules = import.meta.glob('../assets/photos/*.{webp,WEBP,jpg,JPG,jpeg,JPE
   import: 'default',
 }) as Record<string, string>
 
+/** 单独调取景的照片：键是文件名前面的序号（如 05），值是 object-position。
+ *  不写就用 CSS 里 .photo-slide 的默认值。
+ *  2026-10-13 本人要求：带圆形耳环的大头照（06）和多人合照（05）再往上一点。 */
+const PHOTO_POS: Record<string, string> = {
+  '05': 'center 15%',
+  '06': 'center 15%',
+}
+
 const photos = Object.keys(modules)
   .sort((a, b) => a.localeCompare(b, 'zh-Hans-CN', { numeric: true }))
-  .map((key) => modules[key])
+  .map((key) => ({
+    src: modules[key],
+    pos: PHOTO_POS[key.match(/(\d+)\.[a-z]+$/i)?.[1] ?? ''] ?? undefined,
+  }))
 
 export default function PhotoCarousel({ pendingLabel }: { pendingLabel: string }) {
   const [index, setIndex] = useState(0)
@@ -48,15 +59,16 @@ export default function PhotoCarousel({ pendingLabel }: { pendingLabel: string }
 
   return (
     <div className="photo-carousel">
-      {photos.map((src, i) => (
+      {photos.map((photo, i) => (
         <img
-          key={src}
+          key={photo.src}
           className={i === index ? 'photo-slide is-active' : 'photo-slide'}
-          src={src}
+          src={photo.src}
           alt=""
           loading={i === 0 ? 'eager' : 'lazy'}
           decoding="async"
           aria-hidden={i === index ? undefined : true}
+          style={photo.pos ? { objectPosition: photo.pos } : undefined}
         />
       ))}
 

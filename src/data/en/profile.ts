@@ -38,19 +38,16 @@ export const downloads: DownloadItem[] = [
   {
     group: '简历',
     label: 'Résumé',
-    note: 'One-page résumé covering education, internships and projects.',
     url: asset('resume.pdf'),
   },
   {
     group: '作品集',
     label: 'Portfolio',
-    note: 'Full portfolio PDF.',
     url: asset('portfolio.pdf'),
   },
   {
     group: '异想集',
     label: 'REVERIE brand partnerships',
-    note: 'The REVERIE “Garden Dream” partnership handbook for brands and venues.',
     url: asset('reverie-collab.pdf'),
   },
 ]

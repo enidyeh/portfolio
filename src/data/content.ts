@@ -152,6 +152,9 @@ export type Ui = {
   openSite: string
   /** 详情页大图右下角的「查看网站」按钮（2026-10-13 按本人要求新增） */
   viewSite: string
+  /** 点「查看网站」弹出的浮窗里那行白字（2026-10-13） */
+  underConstruction: string
+  modalClose: string
   contactCta: string
 
   blockIntro: string
@@ -308,6 +311,8 @@ const uiZh: Ui = {
   demoLabel: '演示',
   openSite: '打开站点 ↗',
   viewSite: '查看网站',
+  underConstruction: '搭建中',
+  modalClose: '关闭',
   contactCta: '联系方式 →',
 
   blockIntro: '简介',
@@ -433,6 +438,8 @@ const uiEn: Ui = {
   demoLabel: 'Demo',
   openSite: 'Open site ↗',
   viewSite: 'View site',
+  underConstruction: 'Under construction',
+  modalClose: 'Close',
   contactCta: 'Get in touch →',
 
   blockIntro: 'Introduction',

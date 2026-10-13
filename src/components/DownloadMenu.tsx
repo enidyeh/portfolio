@@ -102,7 +102,8 @@ export default function DownloadMenu() {
                     <li className="dl-item" key={item.label}>
                       <span className="dl-text">
                         <span className="dl-label">{item.label}</span>
-                        <span className="dl-note">{item.note}</span>
+                        {/* 2026-10-13 按本人要求：三项的说明小字全删（数据里也不再写 note） */}
+                        {item.note ? <span className="dl-note">{item.note}</span> : null}
                         {item.pending ? <span className="dl-tag">{ui.dlPending}</span> : null}
                       </span>
                       {item.url ? (
