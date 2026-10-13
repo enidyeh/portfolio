@@ -15,6 +15,7 @@ type Pair = {
 const MAX_PAIRS = 5
 
 function SendIcon() {
+  // 2026-10-13 按本人要求：发送按钮的图标从「向上箭头」换成纸飞机
   return (
     <svg
       viewBox="0 0 24 24"
@@ -26,8 +27,8 @@ function SendIcon() {
       aria-hidden="true"
       focusable="false"
     >
-      <path d="M12 19V5" />
-      <path d="M6 11l6-6 6 6" />
+      <path d="M22 2 11 13" />
+      <path d="M22 2 15 22l-4-9-9-4Z" />
     </svg>
   )
 }
