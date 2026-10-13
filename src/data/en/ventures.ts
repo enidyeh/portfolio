@@ -97,6 +97,8 @@ export const ventures: Venture[] = [
     },
     // Partnership handbook (28 pages), same source as the Chinese page
     docPages: { dir: 'reverie', count: 28 },
+    // 2026-10-13 site address given by the owner (the 查看网站 button)
+    siteUrl: 'https://github.com/enidyeh/REVERIE',
     pending: true,
   },
   {
@@ -382,6 +384,8 @@ export const ventures: Venture[] = [
         '**Pilot Projects:** small paid pilots that validate service value, workflow and business model through real projects.',
       ],
     },
+    // 2026-10-13 site address given by the owner (the 查看网站 button)
+    siteUrl: 'https://github.com/enidyeh/REALMVIEW',
     pending: true,
   },
 ]

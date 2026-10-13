@@ -154,6 +154,8 @@ export const ventures: Venture[] = [
     },
     // 合作需求之后附上「异想集｜游园惊梦 合作手册」（28 页）
     docPages: { dir: 'reverie', count: 28 },
+    // 2026-10-13 本人给的站点地址（图右下角「查看网站」按钮）
+    siteUrl: 'https://github.com/enidyeh/REVERIE',
     pending: true,
   },
   {
@@ -442,6 +444,8 @@ export const ventures: Venture[] = [
         '**Pilot Projects：** 开放小规模付费试点，以真实项目验证服务价值、工作流程与商业模型。',
       ],
     },
+    // 2026-10-13 本人给的站点地址（图右下角「查看网站」按钮）
+    siteUrl: 'https://github.com/enidyeh/REALMVIEW',
     pending: true,
   },
 ]
