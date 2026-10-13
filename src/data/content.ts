@@ -220,7 +220,7 @@ export type Content = {
 }
 
 const uiZh: Ui = {
-  pageTitle: 'ENID — 产品 · 增长 · 青年文化',
+  pageTitle: 'ENID',
   navAria: '主导航',
   navWork: '精选项目',
   navVenture: '正在创造',
@@ -344,7 +344,7 @@ const uiZh: Ui = {
 }
 
 const uiEn: Ui = {
-  pageTitle: 'ENID — Product · Growth · Youth Culture',
+  pageTitle: 'ENID',
   navAria: 'Main navigation',
   navWork: 'WORK',
   navVenture: 'BUILDING',

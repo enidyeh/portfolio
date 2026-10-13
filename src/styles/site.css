@@ -117,6 +117,8 @@ button, input, textarea { color: inherit; font: inherit; }
 /* 视频画面里本来就画着「活力派人物卡」和右下角两颗圆钮 —— 这里蒙一层透明热区
    压在它们上面，点上去就等于点了画面里的那个 UI。
    百分比是拿视频帧量出来的（见 memory：/tmp/vidtool/locate.js 那套）。 */
+/* 问与答之间收一点（2026-10-13 本人要求：「搜索框和下面两个按钮距离太远」） */
+.hero .avatar { gap: 6px; }
 .hero-spots {
   position: absolute;
   left: 0;
@@ -557,6 +559,23 @@ a.card:hover .card-go {
    （原来 --s-7：桌面 88px / 窄屏 56px，现在用 --s-6：桌面 56px / 窄屏 40px）。
    要再微调只改这一行。 */
 .page-head { padding: var(--s-6) 0 var(--s-5); border-bottom: 1px solid var(--line); }
+/* 2026-10-13 按本人要求：详情页大标题 + 右边的附件（下载研究论文）按钮一行 */
+.page-head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.page-head-row .page-title { margin: var(--s-3) 0 0; }
+.page-head-attach { flex: none; }
+/* 手机版：页头那颗藏起来，用视频下面那一份；宽屏反过来 */
+@media (max-width: 700px) {
+  .page-head-attach { display: none; }
+}
+@media (min-width: 701px) {
+  .doc-media .doc-attach { display: none; }
+}
 /* 详情页左上角的「返回上级」：灰色线框胶囊按钮（2026-10-12 按本人要求） */
 .back-row { margin-bottom: var(--s-4); }
 .back-btn {
@@ -619,8 +638,8 @@ a.card:hover .card-go {
    项目类型小标题已删除，所以这里不再需要上边距。 */
 .doc-attach { margin-top: 0; }
 .doc-attach .btn { width: 100%; justify-content: center; }
-/* 2026-10-13：附件按钮从详情页左栏挪到了媒体区下面，那里不需要拉满整行 */
-.doc-media .doc-attach { margin-top: var(--s-4); }
+/* 2026-10-13 按本人要求：附件按钮与上面小标签的边距，做成和「小标签↔视频」一样（12px） */
+.doc-media .doc-attach { margin-top: var(--s-3); }
 .doc-media .doc-attach .btn { width: auto; }
 /* 左栏只有 170px，横向内边距比页头那版收一点，避免文字换行 */
 .btn--lg { padding: 15px 20px; font-size: 14px; }
@@ -669,8 +688,9 @@ a.card:hover .card-go {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* 本人照片大多是人像竖图，4:3 框里裁切时往上偏一点，别把脸裁掉 */
-  object-position: center 35%;
+  /* 本人照片大多是人像竖图；4:3 框里裁切时往上偏一点（跳起来 / 钓鱼那两张
+     本身是 4:3，裁不到，调这个不起作用） */
+  object-position: center 25%;
   opacity: 0;
   transition: opacity 0.45s ease;
 }
@@ -706,7 +726,7 @@ a.card:hover .card-go {
 .photo-dots--overlay .photo-ph-dot.is-on { background: var(--accent); }
 
 /* 案例详情页标题下的荣誉标签（校级优秀毕设 / 专业Top3） */
-.page-awards { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--s-4); }
+.page-awards { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--s-3); }
 /* 长形下载按钮：一行一个，占满右栏 */
 .dl-buttons { display: flex; flex-direction: column; gap: var(--s-3); }
 .btn--wide { width: 100%; justify-content: space-between; padding: 16px 18px; }
@@ -1443,22 +1463,26 @@ a.card:focus-visible .card-title,
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    padding-top: var(--s-5);
+    padding-top: var(--s-4);
     padding-bottom: var(--s-5);
+    /* 2026-10-13 本人要求：面板右边对齐视频里那颗圆形按钮的右边（约 98.4%），
+       所以把 .shell 的 48px 右内边距换成 1.6% */
+    padding-right: 1.6%;
     /* 只有面板本身可点，其余区域不挡住视频的热区 */
     pointer-events: none;
   }
   .hero-main {
     pointer-events: auto;
     /* 2026-10-13 本人要求「悬浮框不要挡到人物」：只占视频右侧 30%（人物在中间偏右），
-       窄屏时跟着收窄，宽屏最多 380px。 */
-    width: min(380px, 30%);
+       窄屏时跟着收窄，宽屏最多 400px。 */
+    width: min(400px, 32%);
     padding: var(--s-3) var(--s-4);
     background: var(--paper-a);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    /* 2026-10-13 本人要求：圆角再圆一些 */
+    border-radius: 16px;
     box-shadow: 0 12px 32px rgba(20, 22, 26, 0.16);
   }
   /* 面板自带内边距，抵消 .avatar--inline 的顶距 */

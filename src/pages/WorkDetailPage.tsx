@@ -26,6 +26,11 @@ export default function WorkDetailPage() {
       )
     : []
 
+  /* 2026-10-13 按本人要求：正文每个小标题前面都加序号（01 项目背景 / 02 …）。
+     计数器每次渲染都从 0 开始，按 JSX 里的实际渲染顺序递增 —— 被条件跳过的区块不占号。 */
+  let blockNo = 0
+  const numbered = (title: string) => `${String((blockNo += 1)).padStart(2, '0')} ${title}`
+
   return (
     <>
       <header className="page-head">
@@ -33,7 +38,20 @@ export default function WorkDetailPage() {
         <BackLink to="/work" />
         <div className="shell">
           {/* 2026-10-12 按本人要求：删掉「精选案例 · 项目类型」那一行小字 */}
-          <h1 className="page-title">{work.title}</h1>
+          {/* 2026-10-13 按本人要求：附件按钮（下载研究论文）电脑版放在大标题右边，
+              手机版放到下文视频下面（见 .doc-media 里那一份，两边靠媒体查询切换）。 */}
+          <div className="page-head-row">
+            <h1 className="page-title">{work.title}</h1>
+            {work.attachment ? (
+              <a
+                className="btn btn--primary btn--lg page-head-attach"
+                href={work.attachment.url}
+                download
+              >
+                {work.attachment.label} ↓
+              </a>
+            ) : null}
+          </div>
           <p className="page-lede">{work.summary}</p>
         </div>
       </header>
@@ -66,7 +84,7 @@ export default function WorkDetailPage() {
           <div className="doc-body">
             {work.problem ? (
               <div className="doc-block">
-                <h2>{ui.blockProblem}</h2>
+                <h2>{numbered(ui.blockProblem)}</h2>
                 <RichText value={work.problem} />
               </div>
             ) : null}
@@ -74,35 +92,35 @@ export default function WorkDetailPage() {
             {/* 本人提供的案例正文区块（底层策略 / 设计核心与执行 / 核心产出 …） */}
             {work.sections?.map((s) => (
               <div className="doc-block" key={s.title}>
-                <h2>{s.title}</h2>
+                <h2>{numbered(s.title)}</h2>
                 <RichText value={s} />
               </div>
             ))}
 
             {work.contribution.filter(Boolean).length ? (
               <div className="doc-block">
-                <h2>{ui.blockRole}</h2>
+                <h2>{numbered(ui.blockRole)}</h2>
                 <RichText value={{ items: work.contribution }} />
               </div>
             ) : null}
 
             {work.decisions.filter(Boolean).length ? (
               <div className="doc-block">
-                <h2>{ui.blockDecisions}</h2>
+                <h2>{numbered(ui.blockDecisions)}</h2>
                 <RichText value={{ items: work.decisions }} />
               </div>
             ) : null}
 
             {work.outcome.filter(Boolean).length ? (
               <div className="doc-block">
-                <h2>{ui.blockOutcome}</h2>
+                <h2>{numbered(ui.blockOutcome)}</h2>
                 <RichText value={{ items: work.outcome }} />
               </div>
             ) : null}
 
             {work.reflection ? (
               <div className="doc-block">
-                <h2>{ui.blockReflection}</h2>
+                <h2>{numbered(ui.blockReflection)}</h2>
                 <RichText
                   value={
                     Array.isArray(work.reflection) ? { items: work.reflection } : work.reflection
