@@ -52,21 +52,17 @@ export default function WorkDetailPage() {
               ))}
             </ul>
           ) : null}
+          {/* 2026-10-13 按本人要求：正文整块靠页面左边（左栏那一片是空白）。
+              原来只放附件按钮的左栏整个去掉，附件按钮挪到图下面。 */}
+          {work.attachment ? (
+            <p className="doc-attach">
+              <a className="btn btn--primary btn--lg" href={work.attachment.url} download>
+                {work.attachment.label} ↓
+              </a>
+            </p>
+          ) : null}
         </div>
-        <div className="shell doc-grid">
-          <aside className="doc-aside">
-            {/* 2026-10-12 按本人要求：左栏的「年份 / 你的角色 / 项目类型」三行小标题
-                全部删除。数据字段保留（卡片标签的 fallback 会用到），详情页不再显示 */}
-            {/* 附件（如毕业论文）：左栏唯一的内容，沿用实色大按钮 */}
-            {work.attachment ? (
-              <p className="doc-attach">
-                <a className="btn btn--primary btn--lg" href={work.attachment.url} download>
-                  {work.attachment.label} ↓
-                </a>
-              </p>
-            ) : null}
-          </aside>
-
+        <div className="shell doc-grid doc-grid--single">
           <div className="doc-body">
             {work.problem ? (
               <div className="doc-block">

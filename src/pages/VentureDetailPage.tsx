@@ -66,15 +66,16 @@ export default function VentureDetailPage() {
               loading="lazy"
               decoding="async"
             />
+            {/* 2026-10-13 按本人要求：左栏（英文小标题）整个删掉，
+                原来的「演示」标注挪到图下面。 */}
+            {venture.demo ? (
+              <ul className="page-awards">
+                <li className="tag tag--accent">{ui.demoLabel}</li>
+              </ul>
+            ) : null}
           </div>
         ) : null}
-        <div className="shell doc-grid">
-          <aside className="doc-aside">
-            <span>{venture.en}</span>
-            {/* 状态文案已改成图片上的徽标 / 列表页的小标签，这里不再重复（2026-10-12） */}
-            {venture.demo ? <span>{ui.demoLabel}</span> : null}
-          </aside>
-
+        <div className="shell doc-grid doc-grid--single">
           <div className="doc-body">
             <div className="doc-block">
               <h2>{ui.blockRole}</h2>

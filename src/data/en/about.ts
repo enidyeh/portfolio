@@ -7,7 +7,7 @@ export const aboutHead = {
   // 2026-10-12 at the owner’s request: eyebrow removed, self-description replaced.
   // 2026-10-13: replaced again at the owner’s request.
   title: 'About me.',
-  lede: 'A restless maker! With a global outlook and commercial thinking, I use AI tools and product thinking to set curiosity free.',
+  lede: 'A restless maker! With a global outlook, I use AI tools and product thinking to set curiosity free.',
 }
 
 /** Capability method. `zh` is left equal to `en` on purpose — the English page shows one label only. */
@@ -41,13 +41,24 @@ export const experience: TimelineItem[] = [
     org: 'REVERIE 异想集',
     tags: ['Market & user insight', 'Opportunity sizing', 'Business positioning'],
     desc: 'Led the planning and delivery of the youth activity community “REVERIE 异想集” from 0 to 1. Based on observation of Gen-Z youth-culture consumption and offline socialising, built around “themed markets + art exhibitions + community events”, used AI tools to explore, and planned and delivered multiple events: 20,000+ in-person attendances and over 500k impressions from a Xiaohongshu topic.',
+    details: [
+      'Designed posters, long-form graphics and copy that pulled in a large community following, with 700+ people attending offline events.',
+      'Partnered with cinemas and brands to plan the events; voice actors from the films and creators with 10k+ likes on Chinese platforms made exclusive easter eggs.',
+      'Worked with 20+ artists on merchandise: more than 50 product types and more than 6,000 units.',
+      'Built a 20+ person team covering promotion, community management, external partnerships, merchandise production and on-site order.',
+    ],
   },
   {
     // 2026-10-13 at the owner’s request: placed below REVERIE; dates as provided.
     when: '2026.02 — 2026.06',
     role: 'Graduation project · product design and project management',
     org: 'PHYGITAL BASE',
+    tags: ['Outstanding graduation project', 'Product design'],
     desc: 'A phygital product design proposal that uses digital hardware, software design, scene-based social interaction and digital identity to propose new possibilities for digital asset management in the era of data sovereignty. Awarded Outstanding Graduation Project (university level) and Top 3 in the major.',
+    details: [
+      'Project lead & lead product designer: owned the full chain from market research and user interviews (five typical user types, e.g. game BD and ACG KOLs) through product definition, concept development, hardware sketches and 3D modelling, UI/UX software design, to the final exhibition stand build and business plan.',
+      'Outcome: awarded Outstanding Graduation Project (university level, Top 5%); delivered the concept through to a full-fidelity prototype — industrial design drawings, 3D renders, the complete app UI/UX and the exhibition stand.',
+    ],
   },
   {
     when: '2026.02 — 2026.04',

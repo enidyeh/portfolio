@@ -352,11 +352,12 @@ a.card:hover .card-go {
 }
 .doc-media { margin-bottom: var(--s-6); }
 
-/* 创业项目详情页顶部的项目图：整幅显示，不裁切 */
+/* 创业项目详情页顶部的项目图：2026-10-13 按本人要求统一成 16:9 横屏（居中裁切） */
 .venture-hero {
   display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   border: 1px solid var(--line);
   border-radius: var(--radius);
 }
@@ -618,6 +619,9 @@ a.card:hover .card-go {
    项目类型小标题已删除，所以这里不再需要上边距。 */
 .doc-attach { margin-top: 0; }
 .doc-attach .btn { width: 100%; justify-content: center; }
+/* 2026-10-13：附件按钮从详情页左栏挪到了媒体区下面，那里不需要拉满整行 */
+.doc-media .doc-attach { margin-top: var(--s-4); }
+.doc-media .doc-attach .btn { width: auto; }
 /* 左栏只有 170px，横向内边距比页头那版收一点，避免文字换行 */
 .btn--lg { padding: 15px 20px; font-size: 14px; }
 
@@ -1204,7 +1208,7 @@ a.card:hover .card-go {
 .qa { display: flex; flex-direction: column; }
 .qa-item { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: var(--s-4); padding: var(--s-4) 0; border-top: 1px solid var(--line); }
 .qa-item:last-child { border-bottom: 1px solid var(--line); }
-.qa-key { font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.qa-key { font: 700 var(--f-body) / 1.5 var(--sans); letter-spacing: 0; color: var(--accent); }
 .qa-sub { display: block; margin-top: 4px; font: var(--f-meta) / 1.6 var(--mono); letter-spacing: 0.06em; text-transform: none; color: var(--ink-faint); }
 .qa-val { color: var(--ink-soft); line-height: 1.85; }
 /* 六问 / 合作需求现在是富文本（段落 + 列表 + 收尾段落）：全局 reset 把 p 的
@@ -1400,6 +1404,10 @@ a.dl-action:hover { color: var(--accent); border-color: var(--accent); backgroun
 .section-title,
 .page-title,
 .track-title {
+  color: var(--accent);
+}
+/* 2026-10-13 按本人要求：详情页里每个小标题（项目背景 / 底层策略 / 核心产出…）都用红字 */
+.doc-block h2 {
   color: var(--accent);
 }
 /* 案例标题不常红，鼠标放到卡片上才变红（与「正在创造」的卡片一致）——
