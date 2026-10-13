@@ -300,7 +300,7 @@ const uiZh: Ui = {
 
   ventureEyebrow: '正在创造',
   blockSix: '六个问题',
-  blockCollab: '合作需求',
+  blockCollab: '合作共创',
   blockLive: '线上',
   qaKeys: ['问题', '机会', '方案', '商业模式', '验证', '下一步'],
   demoLabel: '演示',
@@ -424,7 +424,7 @@ const uiEn: Ui = {
 
   ventureEyebrow: 'Venture',
   blockSix: 'Six questions',
-  blockCollab: 'Partnership',
+  blockCollab: 'Co-creation',
   blockLive: 'Live',
   qaKeys: ['Problem', 'Opportunity', 'Solution', 'Business Model', 'Validation', 'Next Milestone'],
   demoLabel: 'Demo',
