@@ -40,6 +40,17 @@ export type Venture = {
    */
   imagePos?: string
   /**
+   * 详情页大图怎么放（默认 cover 铺满）。
+   * 2026-10-13 按本人要求：方形源图（异想商店 / 暗盒 / 域见）写 'contain'，
+   * 整张图缩小居中显示，不裁切。
+   */
+  imageFit?: 'cover' | 'contain'
+  /**
+   * 项目站点地址（详情页大图右下角那颗「查看网站」按钮）。
+   * 2026-10-13 按本人要求新增（域见 / 异想集）。
+   */
+  siteUrl?: string
+  /**
    * 项目方案 / 合作手册：把本人给的 PDF 逐页转成图片
    * （`public/case-pages/<dir>/NN.webp`），附在详情页正文后面。
    */
@@ -75,6 +86,7 @@ export const ventures: Venture[] = [
     role: {
       body: [
         '**项目发起人 / 品牌策略与商业化负责人**',
+        '发起并主导 REVERIE 异想集，一个以青年文化为核心、融合主题活动、兴趣社群与品牌体验的文化创新项目。通过策划多元文化主题活动，连接年轻消费者、独立创作者与商业品牌，将兴趣与审美转化为可参与、可传播、可商业化的线下体验。',
         '负责项目定位、文化主题策划、活动体验设计、品牌与创作者合作、场地及供应商协调、内容传播与票务运营，推动项目从概念构思到活动执行与商业合作。',
       ],
     },
@@ -152,6 +164,8 @@ export const ventures: Venture[] = [
     // 2026-10-12 按本人要求：不要上方的「REVERIE」招牌，只要遮雨棚和橱窗
     // （源图 800×800，16:9 取景框高 450px，67% ≈ 从 y=235 开始往下取）
     imagePos: '50% 67%',
+    // 2026-10-13 按本人要求：详情页大图要完整展示招牌下的遮雨棚与橱窗 → contain
+    imageFit: 'contain',
     tagline: 'Curated Marketplace · Youth Culture · Retail',
     // 2026-10-13 按本人要求换掉导语
     oneLiner:
@@ -237,6 +251,8 @@ export const ventures: Venture[] = [
     name: '暗盒 UNSEEN',
     en: 'UNSEEN',
     image: asset('venture-unseen.webp'),
+    // 2026-10-13 按本人要求：图片缩小、完整展示盒子，不用放大裁切
+    imageFit: 'contain',
     tagline: 'AI × Youth Culture × Curated Discovery',
     // 2026-10-13 按本人要求换掉导语
     oneLiner:
@@ -246,10 +262,13 @@ export const ventures: Venture[] = [
     xhs: 'https://www.xiaohongshu.com/user/profile/614dd5e400000000020249dd?xsec_token=AB_Vx9ak1d5jq8Hh5539hbBDYPIReL40PjeHF0THv5KVk%3D&xsec_source=pc_search',
     tags: ['文化研究', '人物访谈', '内容共创'],
     // 2026-10-13 按本人提供的完整内容填写（我的角色 / 六问 / 合作方向 / 原型状态）
+    // 2026-10-13 第二批：我的角色补上「项目发起人 / 文化策展与商业化负责人」这一段
     role: {
       body: [
+        '**项目发起人 / 文化策展与商业化负责人**',
+        '发起并主导 UNSEEN 暗盒项目，围绕青年文化、城市生活与多元兴趣，规划月度主题策展与内容传播机制；负责文化主题挖掘、内容叙事、传播策划及创作者、文化活动与生活方式品牌的合作方向，探索将线上内容发现延伸为线下体验与消费场景。以“主题策展—内容传播—体验参与—商业转化”为核心，构建连接青年文化、内容生态与生活方式消费的项目框架。',
         '**产品设计师 / 独立原型开发者**',
-        '独立完成产品定位、信息架构、用户体验与交互设计，并通过 Vibe Coding 实现可运行的前端原型。从产品概念到界面落地，探索 AI 时代个人开发者构建数字产品的可能性。',
+        '从项目定位与内容策展逻辑出发，独立完成产品信息架构、用户体验与交互设计，并通过 Vibe Coding 搭建可运行的前端原型，探索如何将文化内容组织成具有持续传播力与参与感的数字体验。',
       ],
     },
     problem: {
@@ -328,7 +347,6 @@ export const ventures: Venture[] = [
         '当前版本用于展示产品构想、页面结构与交互设计。尚未接入后端、真实用户数据或交易系统。',
       ],
     },
-    demo: true,
   },
   {
     // 2026-10-11 按本人要求新增的第四个品牌。
@@ -337,6 +355,8 @@ export const ventures: Venture[] = [
     name: '域见 REALMVIEW',
     en: 'REALMVIEW',
     image: asset('venture-realmview.webp'),
+    // 2026-10-13 按本人要求：图片缩小、完整展示（不放大裁切）
+    imageFit: 'contain',
     tagline: 'Cross-Market Growth · AI Marketing · Creator Ecosystem',
     // 2026-10-13 按本人要求换掉导语
     oneLiner:
@@ -346,10 +366,11 @@ export const ventures: Venture[] = [
     xhs: 'https://www.xiaohongshu.com/user/profile/5e3665730000000001000223?xsec_token=ABTbpa8xFFnHQaGi9EOH1bJnblHwxKKHxMtr_pojBPwpU%3D&xsec_source=pc_search',
     tags: ['品牌出海/入海', '文化策展', '全球营销资源'],
     // 2026-10-13 按本人提供的完整内容填写（我的角色 / 六问 / 合作方向）
+    // 2026-10-13 第二批：我的角色换成她新给的一段（项目介绍）
     role: {
       body: [
         '**项目发起人 / 品牌策略与商业化负责人**',
-        '负责业务定位、目标客户研究、服务产品设计、商业模式探索与市场拓展，规划 AI 营销策划工具及创作者合作网络，推动项目从商业概念走向可验证的服务与产品。',
+        '域见是一个聚焦**新品牌从 0 到 1 启动与消费品牌跨境增长**的品牌营销项目，整合品牌战略、内容营销、AI 营销工具与跨境创作者资源，帮助品牌连接新市场、建立用户认知并实现商业转化。',
       ],
     },
     problem: {

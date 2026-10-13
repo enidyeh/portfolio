@@ -354,7 +354,11 @@ a.card:hover .card-go {
 }
 .doc-media { margin-bottom: var(--s-6); }
 
-/* 创业项目详情页顶部的项目图：2026-10-13 按本人要求统一成 16:9 横屏（居中裁切） */
+/* 创业项目详情页顶部的项目图：2026-10-13 按本人要求统一成 16:9 横屏。
+   默认 cover（铺满）：16:9 的图（异想集）正好不吃裁切；
+   方形图（异想商店 / 暗盒 / 域见）在数据里写 imageFit: 'contain'，
+   整张图缩小居中显示，不裁切、不放大（见下面 .venture-hero--contain）。 */
+.venture-figure { position: relative; }
 .venture-hero {
   display: block;
   width: 100%;
@@ -362,6 +366,29 @@ a.card:hover .card-go {
   object-fit: cover;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+}
+/* 2026-10-13 本人要求：暗盒 / 域见 / 异想商店的方形图缩小、完整展示，不放大裁切 */
+.venture-hero--contain {
+  object-fit: contain;
+  background: var(--paper-sunken);
+}
+/* 2026-10-13 本人要求：图片右下角一颗圆角半透明灰按钮，白字「查看网站」 */
+.venture-site-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  padding: 10px 18px;
+  font: 600 var(--f-body) / 1 var(--sans);
+  color: #fff;
+  background: rgba(20, 22, 26, 0.42);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius);
+  text-decoration: none;
+}
+.venture-site-btn:hover {
+  background: rgba(20, 22, 26, 0.62);
+  border-color: #fff;
 }
 
 /* 2026-10-13 按本人提供的内容：标题下面那行定位（Youth Culture · Community · …）。
@@ -698,8 +725,9 @@ a.card:hover .card-go {
   height: 100%;
   object-fit: cover;
   /* 本人照片大多是人像竖图；4:3 框里裁切时往上偏一点（跳起来 / 钓鱼那两张
-     本身是 4:3，裁不到，调这个不起作用） */
-  object-position: center 25%;
+     本身是 4:3，裁不到，调这个不起作用）
+     2026-10-13 本人要求「竖屏照片往上移、展示完整人物」：25% → 10% */
+  object-position: center 10%;
   opacity: 0;
   transition: opacity 0.45s ease;
 }
@@ -1016,7 +1044,8 @@ a.card:hover .card-go {
   display: flex;
   align-items: center;
   gap: var(--s-2);
-  padding: 7px 7px 7px 16px;
+  /* 2026-10-13 本人要求：整块太高，要扁一点（原来 7px 内距 + 34px 按钮 = 59px） */
+  padding: 6px 6px 6px 14px;
   background: var(--paper-raised);
   border: 1px solid var(--rule);
   /* 2026-10-13 本人要求：问题框不要做成完全圆的胶囊，圆角程度跟卡片边框一致 */
@@ -1024,15 +1053,16 @@ a.card:hover .card-go {
   box-shadow: 0 6px 20px rgba(20, 22, 26, 0.05);
 }
 .avatar-input:focus-within { border-color: var(--accent); }
-.avatar-input input { flex: 1 1 auto; min-width: 0; padding: 8px 0; background: none; border: 0; outline: none; font-size: 15px; }
+.avatar-input input { flex: 1 1 auto; min-width: 0; padding: 6px 0; background: none; border: 0; outline: none; font: 400 15px / 1.3 var(--sans); }
 .avatar-input input::placeholder { color: var(--ink-faint); }
 .avatar-send {
   flex: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  /* 2026-10-13 按本人要求压扁：34px → 32px */
+  width: 32px;
+  height: 32px;
   color: var(--paper);
   background: var(--accent);
   border: 0;

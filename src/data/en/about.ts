@@ -40,12 +40,9 @@ export const experience: TimelineItem[] = [
     role: 'Venture · independent planning and operations',
     org: 'REVERIE 异想集',
     tags: ['Market & user insight', 'Opportunity sizing', 'Business positioning'],
-    desc: 'Led the planning and delivery of the youth activity community “REVERIE 异想集” from 0 to 1. Based on observation of Gen-Z youth-culture consumption and offline socialising, built around “themed markets + art exhibitions + community events”, used AI tools to explore, and planned and delivered multiple events: 20,000+ in-person attendances and over 500k impressions from a Xiaohongshu topic.',
+    // 2026-10-13 at the owner’s request: the four bullets are gone; one bullet now
     details: [
-      'Designed posters, long-form graphics and copy that pulled in a large community following, with 700+ people attending offline events.',
-      'Partnered with cinemas and brands to plan the events; voice actors from the films and creators with 10k+ likes on Chinese platforms made exclusive easter eggs.',
-      'Worked with 20+ artists on merchandise: more than 50 product types and more than 6,000 units.',
-      'Built a 20+ person team covering promotion, community management, external partnerships, merchandise production and on-site order.',
+      'Led the planning and delivery of the youth activity community “REVERIE 异想集” from 0 to 1. Based on observation of Gen-Z youth-culture consumption and offline socialising, built around “themed markets + art exhibitions + community events”, used AI tools to explore, and planned and delivered multiple events: 20,000+ in-person attendances and over 500k impressions from a Xiaohongshu topic.',
     ],
   },
   {
@@ -54,11 +51,7 @@ export const experience: TimelineItem[] = [
     role: 'Graduation project · product design and project management',
     org: 'PHYGITAL BASE',
     tags: ['Outstanding graduation project', 'Product design'],
-    desc: 'A phygital product design proposal that uses digital hardware, software design, scene-based social interaction and digital identity to propose new possibilities for digital asset management in the era of data sovereignty. Awarded Outstanding Graduation Project (university level) and Top 3 in the major.',
-    details: [
-      'Project lead & lead product designer: owned the full chain from market research and user interviews (five typical user types, e.g. game BD and ACG KOLs) through product definition, concept development, hardware sketches and 3D modelling, UI/UX software design, to the final exhibition stand build and business plan.',
-      'Outcome: awarded Outstanding Graduation Project (university level, Top 5%); delivered the concept through to a full-fidelity prototype — industrial design drawings, 3D renders, the complete app UI/UX and the exhibition stand.',
-    ],
+    desc: 'Led the full-chain design of “Phygital Base”, a data-sovereignty phygital smart product. Based on research into Web3 players’ offline socialising pain points, defined a solution that combines modular product design with on-chain verifiable software. Independently completed user interviews, product prototyping and 3D modelling; awarded Jiangnan University’s Outstanding Graduation Project (Top 5%).',
   },
   {
     when: '2026.02 — 2026.04',
