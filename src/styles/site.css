@@ -729,11 +729,22 @@ a.card:hover .card-go {
 /* 左栏只有 170px，横向内边距比页头那版收一点，避免文字换行 */
 .btn--lg { padding: 15px 20px; font-size: 14px; }
 
-/* 2026-10-13 按本人要求：创业详情页图下面的社交媒体主页入口按钮
-   （和 PHYGITAL BASE 那颗论文按钮同一套 .btn.btn--primary.btn--lg 外观）。
-   ⚠️ 不能挂在 .doc-attach 上：宽屏下 `.doc-media .doc-attach` 是 display:none。 */
-.venture-social { margin-top: var(--s-3); }
-.venture-social .btn { width: auto; }
+/* 2026-10-13 按本人要求：创业详情页图下面那排入口（社交媒体主页 + 官方网站）
+   —— 社交媒体那颗是实底红（与 PHYGITAL BASE 的论文按钮同一套外观），
+   官方网站那颗是灰的（站点还没上线，点开只弹「搭建中」浮窗）。 */
+.venture-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+}
+.venture-links .btn { width: auto; }
+.btn--grey {
+  color: var(--ink-soft);
+  background: var(--paper-sunken);
+  border-color: var(--line);
+}
+.btn--grey:hover { color: var(--ink); background: var(--paper-raised); border-color: var(--ink-faint); }
 
 /* ---------- detail document ---------- */
 .doc { padding: var(--s-6) 0; }

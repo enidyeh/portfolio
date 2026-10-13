@@ -79,33 +79,33 @@ export default function VentureDetailPage() {
                    （卡片用的是 50% 35%，个别项目在数据里用 imagePos 覆盖）。 */
                 style={{ objectPosition: venture.imagePos ?? '50% 35%' }}
               />
-              {/* 2026-10-13 按本人要求：图片右下角加一颗圆角半透明灰按钮，
-                  白字「查看网站」（域见 / 异想集）。点它不跳站点，弹浮窗。 */}
-              {venture.siteShot || venture.siteUrl ? (
-                <button
-                  type="button"
-                  className="venture-site-btn"
-                  onClick={() => setSiteOpen(true)}
-                >
-                  {ui.viewSite}
-                </button>
-              ) : null}
+              {/* 2026-10-13 按本人要求：网站入口不再压在图上，挪到图下面跟社交媒体按钮并排（见 .venture-links） */}
             </div>
-            {/* 2026-10-13 按本人要求：图下面那个「演示」小标签删掉；
-                改成社交媒体主页入口 —— 与 PHYGITAL BASE 详情页那颗下载按钮同款。
-                ⚠️ 不能复用 .doc-attach：宽屏下 `.doc-media .doc-attach` 是 display:none
-                （那条规则是给论文按钮做两版切换的），用在这里会让按钮在电脑版直接消失。 */}
-            {venture.xhs ? (
-              <p className="venture-social">
-                <a
-                  className="btn btn--primary btn--lg"
-                  href={venture.xhs}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {ui.ventureXhs}
-                </a>
-              </p>
+            {/* 2026-10-13 按本人要求：图下面放两个入口 ——
+                ① 社交媒体主页（实底红，和 PHYGITAL BASE 的论文按钮同款）
+                ② 官方网站（灰色，站点还没上线 → 点开弹「搭建中」浮窗）。 */}
+            {venture.xhs || venture.siteShot || venture.siteUrl ? (
+              <div className="venture-links">
+                {venture.xhs ? (
+                  <a
+                    className="btn btn--primary btn--lg"
+                    href={venture.xhs}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {ui.ventureXhs}
+                  </a>
+                ) : null}
+                {venture.siteShot || venture.siteUrl ? (
+                  <button
+                    type="button"
+                    className="btn btn--grey btn--lg"
+                    onClick={() => setSiteOpen(true)}
+                  >
+                    {ui.officialSite}
+                  </button>
+                ) : null}
+              </div>
             ) : null}
           </div>
         ) : null}

@@ -150,8 +150,10 @@ export type Ui = {
   qaKeys: string[]
   demoLabel: string
   openSite: string
-  /** 详情页大图右下角的「查看网站」按钮（2026-10-13 按本人要求新增） */
+  /** 详情页大图右下角的「官方网站」按钮（2026-10-13 按本人要求新增） */
   viewSite: string
+  /** 2026-10-13 本人要求：入口改名「官方网站」，比社交媒体那颗淡一点 */
+  officialSite: string
   /** 点「查看网站」弹出的浮窗里那行白字（2026-10-13） */
   underConstruction: string
   modalClose: string
@@ -311,6 +313,7 @@ const uiZh: Ui = {
   demoLabel: '演示',
   openSite: '打开站点 ↗',
   viewSite: '查看网站',
+  officialSite: '官方网站',
   underConstruction: '搭建中',
   modalClose: '关闭',
   contactCta: '联系方式 →',
@@ -324,7 +327,7 @@ const uiZh: Ui = {
   methodLede: '把能力组织成方法，而不是罗列软件和关键词。',
   resumeCta: '下载 PDF ↓',
   resumePending: '待填：把两份简历 PDF 放进 public/',
-  ventureXhs: '小红书主页 →',
+  ventureXhs: '社交媒体主页 →',
   followCta: '关注',
   emailPrefix: '邮箱 · ',
   wxQrPending: '待填：微信二维码',
@@ -438,6 +441,7 @@ const uiEn: Ui = {
   demoLabel: 'Demo',
   openSite: 'Open site ↗',
   viewSite: 'View site',
+  officialSite: 'Official site',
   underConstruction: 'Under construction',
   modalClose: 'Close',
   contactCta: 'Get in touch →',
@@ -451,7 +455,7 @@ const uiEn: Ui = {
   methodLede: 'Capability organised as a method, not a list of software and keywords.',
   resumeCta: 'Download PDF ↓',
   resumePending: 'To be filled: place both résumé PDFs in public/',
-  ventureXhs: 'Xiaohongshu profile →',
+  ventureXhs: 'Social profile →',
   followCta: 'Follow',
   emailPrefix: 'Email · ',
   wxQrPending: 'To be filled: WeChat QR code',
