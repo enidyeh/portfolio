@@ -114,7 +114,7 @@ export default function DownloadMenu() {
                           <a
                             className="dl-action"
                             href={item.url}
-                            download
+                            download={item.file ?? ''}
                             title={`${ui.dlDownload} ${item.label}`}
                             aria-label={`${ui.dlDownload} ${item.label}`}
                             onClick={() => setOpenFor(null)}

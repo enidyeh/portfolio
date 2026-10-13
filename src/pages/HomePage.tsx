@@ -184,6 +184,8 @@ export default function HomePage() {
                 <span className="tl-main">
                   {item.org ? <span className="tl-org">{item.org}</span> : null}
                   <span className="tl-role">{item.role}</span>
+                  {/* 2026-10-13 按本人要求：行业单独一行（与个人介绍页一致） */}
+                  {item.industry ? <span className="tl-industry">{item.industry}</span> : null}
                 </span>
                 <span className="tl-go" aria-hidden="true">
                   →

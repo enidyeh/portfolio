@@ -16,8 +16,7 @@ export const profile = {
     'I work where culture, consumer behaviour and technology meet — turning user insight into product decisions, growth strategy and real projects.',
   location: 'Shanghai',
   intro: [
-    'I have run commercial projects and led teams, and I have designed and built products end to end on my own: find the opportunity in users and markets, then push an idea into something that can actually be tested.',
-    'Right now I focus on AI product strategy and global commercialisation. Confirm the user problem first, then find the smallest workable solution and prove it.',
+    'I look for opportunity where culture, consumer behaviour and technology meet. I start from real user pain points and push ideas into testable product proposals and growth strategies. I have worked on commercial projects across several industries, organised offline events with tens of thousands of participants, and taken a Web3 phygital product from 0 to 1. Time in Milan and New York gave me a global outlook, so I spot market opportunities quickly and push them into reality. My focus now is AI product strategy and the global commercialisation of brands.',
   ],
   pillars: ['Product thinking', 'Global growth', 'AI in practice', 'Shipping'],
   email: 'enidyeh2002@gmail.com',

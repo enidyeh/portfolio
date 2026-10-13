@@ -26,8 +26,9 @@ export default function AboutPage() {
             <div className="about-pair">
               <div className="doc-block">
                 <h2>{ui.blockIntro}</h2>
-                {/* 定位这句话限宽成两行，不要让它被拉成一整行（见 .statement-block） */}
-                <p className="statement-block">{c.profile.statement}</p>
+                {/* 2026-10-13 按本人要求：简介整段用正文字体字号（.doc-block > p）。
+                    原来那句「定位」（profile.statement）与新简介第一句几乎重复，
+                    这里不再出现；它仍然用在页脚（SiteFooter）。 */}
                 {c.profile.intro.map((line) => (
                   <p key={line}>{line}</p>
                 ))}
@@ -105,6 +106,7 @@ export default function AboutPage() {
                     <a
                       className="btn btn--wide btn--soft"
                       href={r.url}
+                      download={r.file ?? ''}
                       target="_blank"
                       rel="noreferrer"
                       key={r.label}
@@ -127,6 +129,9 @@ export default function AboutPage() {
                     <div className="tl-left">
                       {item.org ? <span className="tl-org">{item.org}</span> : null}
                       <span className="tl-role">{item.role}</span>
+                      {/* 2026-10-13 按本人要求：行业（如「人工智能 / 大模型应用」）单独一行，
+                          紧贴在时间上方 */}
+                      {item.industry ? <span className="tl-industry">{item.industry}</span> : null}
                       {item.when ? <span className="tl-when">{item.when}</span> : null}
                     </div>
                     <div className="tl-right">

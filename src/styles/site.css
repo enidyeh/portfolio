@@ -876,6 +876,8 @@ a.card:hover .card-go {
 .tl-org { font: 700 14px / 1.5 var(--sans); color: var(--ink); }
 .tl-role { font-size: 13px; line-height: 1.6; color: var(--ink); }
 .tl-when { font: var(--f-meta) / 1.5 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); white-space: nowrap; }
+/* 行业（2026-10-13 按本人要求新增）：紧贴在时间上方的一行小字 */
+.tl-industry { font: var(--f-meta) / 1.5 var(--mono); letter-spacing: 0.08em; color: var(--ink-faint); }
 .tl-right { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
 .tl-desc { font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
 /* 每条经历下面的能力小标签（2026-10-12：原来的「能力」栏删掉，标签挂到这里） */
@@ -921,7 +923,8 @@ a.card:hover .card-go {
    2026-10-12 按本人要求：这句话的字号再小一点 */
 .foot-statement { max-width: 24em; font-size: 12px; }
 /* 「个人介绍」页的同一句话也限宽成两行；英文那句更长，放宽到 3 行以内 */
-.statement-block { max-width: 24em; font-size: 13.5px; }
+/* 2026-10-13 按本人要求：「简介」整块用正文字体字号 */
+.statement-block { max-width: 24em; font-size: var(--f-body); line-height: var(--f-body-leading); }
 :lang(en) .statement-block { max-width: 42em; }
 .foot-list { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--ink-soft); }
 .foot-list a { overflow-wrap: anywhere; }
@@ -1268,15 +1271,16 @@ a.card:hover .card-go {
   border-radius: var(--radius);
   box-shadow: 0 18px 48px rgba(20, 22, 26, 0.16);
 }
-.dl-group + .dl-group { margin-top: var(--s-4); padding-top: var(--s-4); border-top: 1px solid var(--line); }
+/* 2026-10-13 按本人要求：这一段行距整体做紧凑 */
+.dl-group + .dl-group { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
 /* 2026-10-12 按本人要求：去掉分组上方那行灰色小标题 */
 .dl-list { display: flex; flex-direction: column; }
 /* 下载按钮全部靠右对齐（每行文字占满，图标就落在同一条右边线上） */
-.dl-item { display: flex; align-items: flex-start; gap: var(--s-3); padding: var(--s-3) 0; border-top: 1px solid var(--line); }
+.dl-item { display: flex; align-items: flex-start; gap: var(--s-3); padding: 8px 0; border-top: 1px solid var(--line); }
 .dl-item:first-child { padding-top: 0; border-top: 0; }
-.dl-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
-.dl-label { font-size: 14px; font-weight: 600; }
-.dl-note { font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
+.dl-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.dl-label { font-size: 14px; font-weight: 600; line-height: 1.35; }
+.dl-note { font-size: 13px; line-height: 1.4; color: var(--ink-soft); }
 .dl-tag { margin-top: 2px; font: var(--f-meta) / 1 var(--mono); letter-spacing: 0.1em; color: var(--ink-faint); }
 .dl-action {
   flex: none;
@@ -1449,4 +1453,20 @@ a.card:focus-visible .card-title,
   }
   /* 面板自带内边距，抵消 .avatar--inline 的顶距 */
   .hero .avatar--inline { margin-top: 0; }
+}
+
+/* ---------- ≤700px：对话框紧贴上面的视频、整块扁一点、下面不要分割线 ---------- */
+/* 2026-10-13 按本人要求：窄屏这一块原来上下各留 56px、外加视频下沿一条 1px 分割线，
+   看起来又高又空。现在贴住视频、只留一点下边距。 */
+@media (max-width: 700px) {
+  .hero { border-bottom: 0; }
+  .hero-stage > .shell {
+    padding-top: var(--s-2);
+    padding-bottom: var(--s-4);
+  }
+  /* 贴住视频：去掉 .avatar--inline 的 32px 顶距 */
+  .avatar--inline { margin-top: 0; }
+  /* 问题框与下面两个常见问题之间也收一点，整块更扁 */
+  .avatar { gap: var(--s-2); }
+  .hero-faq { margin-top: 0; }
 }
